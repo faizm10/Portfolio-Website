@@ -32,14 +32,14 @@ const LandingPage: React.FC = () => {
             About Me
           </span>
         </Link> */}
-        {/* <div className="mt-6">
+        <div className="mt-6">
           <Image
             src="/images/profilepic.webp"
             alt="Full Stack Web Developer"
             width={200}
             height={200}
           />
-        </div> */}
+        </div>
       </div>
       {/* Additional page sections would go here... */}
       <footer className="bg-blue-800 p-4 text-center">
