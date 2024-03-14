@@ -1,12 +1,11 @@
 // src/components/Navbar.tsx
-
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="bg-blue-900 text-white p-4 flex justify-between items-center">
+    <nav className="bg-blue-900 text-white p-4 flex justify-between items-center sticky top-0 z-50">
       <Link href="/">
         <span className="flex items-center">
           <Image
@@ -26,7 +25,7 @@ const Navbar: React.FC = () => {
         <Link href="/about">
           <span className="hover:text-gray-300 cursor-pointer">About</span>
         </Link>
-        <Link href="/components/projects">
+        <Link href="/projects">
           <span className="hover:text-gray-300 cursor-pointer">Projects</span>
         </Link>
         <Link href="/contact">
