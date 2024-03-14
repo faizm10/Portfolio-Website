@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
         <Link href="/about">
           <span className="hover:text-gray-300 cursor-pointer">About</span>
         </Link>
-        <Link href="/project">
+        <Link href="/components/projects">
           <span className="hover:text-gray-300 cursor-pointer">Projects</span>
         </Link>
         <Link href="/contact">
