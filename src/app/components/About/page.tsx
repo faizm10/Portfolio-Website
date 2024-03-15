@@ -21,15 +21,14 @@ const AboutMeSection: React.FC = () => {
         </p>
         </div>
         
-        {/* <div className="mb-8 text-center">
-          <h3 className="text-3xl font-semibold text-gray-700 mb-3">Volunteer Work</h3>
-          <p className="mb-2 text-black" >💻 Volunteer Developer for Non-Profit Organization (2020)</p>
-          <p className='text-black'>🌍 Community Cleanup Organizer (2021)</p>
-        </div> */}
+        <div className="mb-8 text-center">
+          <h3 className="text-3xl font-semibold text-gray-700 mb-3">Volunteer Experience</h3>
+          <p className="mb-2 text-black" >Software Engineer and Co-Founder of Muslims In Tech (February 2024 - Present) </p>
+        </div>
         
         <div className="mb-8 text-center">
           <h3 className="text-3xl font-semibold text-gray-700 mb-3">Education</h3>
-          <p className="mb-2 text-black">🎓 Bachelor of Computing in Computer Science Honours at University of Guelph
+          <p className="mb-2 text-black">Bachelor of Computing in Computer Science Honours at University of Guelph
            (2023-2027)</p>
         </div>
       </div>
