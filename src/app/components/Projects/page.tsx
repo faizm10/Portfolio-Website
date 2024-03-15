@@ -29,6 +29,21 @@ const Projects: NextPage = () => {
               link=""
               imgSrc="/images/background1.webp"
             />
+            <ProjectItem
+              title="Upcoming Project!!"
+              link=""
+              imgSrc="/images/background1.webp"
+            />
+            <ProjectItem
+              title="Upcoming Project!!"
+              link=""
+              imgSrc="/images/background1.webp"
+            />
+            <ProjectItem
+              title="Find More On Github!"
+              link="https://github.com/faizm10/"
+              imgSrc="/images/githubpreview.png"
+            />
             
             {/* Repeat <ProjectItem> for other projects */}
           </div>
