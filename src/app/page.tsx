@@ -6,14 +6,17 @@ import ProjectCard from './components/Projects/page';
 import Navbar from './components/NavBar/page';
 import ContactMeSection from './components/ContactMe/page';
 import Footer from './components/Footer/page';
+import Experience from './components/Experience/page';
 const Page: React.FC = () => {
   return (
     <>
       <Navbar />
       <LandingPage />
       <AboutMeSection />
+      <Experience />
       <ProjectCard />
-      <ContactMeSection />
+      {/* <ContactMeSection /> */}
+      
       <Footer />
 
       
