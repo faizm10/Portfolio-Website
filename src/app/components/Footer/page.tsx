@@ -1,32 +1,30 @@
 import React from 'react';
-import Link from 'next/link';
+import Link from 'next/link'; // Assuming you're using Next.js
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-purple-900 text-white p-6">
-      <div className="max-w-6xl mx-auto flex flex-wrap justify-between items-center">
-        <div className="w-full md:w-auto text-center md:text-left">
-          <h3 className="text-lg font-bold">Faiz Mustansar</h3>
-          <p className="text-sm">© 2024 Faiz Mustansar. All rights reserved.</p>
-        </div>
-        <div className="flex flex-col md:flex-row items-center justify-center mt-4 md:mt-0">
-          <Link href="/about" passHref>
-            <span className="mx-2 text-sm hover:text-blue-400 cursor-pointer">About Us</span>
-          </Link>
-          <Link href="/contact" passHref>
-            <span className="mx-2 text-sm hover:text-blue-400 cursor-pointer">Contact</span>
-          </Link>
-        </div>
-        <div className="mt-4 md:mt-0">
-          <p className="text-center md:text-right text-sm">Follow us on:</p>
-          <div className="flex justify-center md:justify-end mt-2">
-            <Link href="https://www.linkedin.com/in/faiz-mustansar-a9a435213/" passHref>
-              <span className="mx-2 cursor-pointer">
-                <img src="/images/linkedin.svg" alt="LinkedIn" className="w-6 h-6" />
-              </span>
-            </Link>
-          </div>
-        </div>
+    <footer className="w-full bg-gray-800 text-white py-6">
+      <div className="flex justify-center items-center space-x-4">
+        <Link href="https://github.com/faizm10">
+          <span rel="noopener noreferrer" aria-label="GitHub" className="hover:opacity-75 transition-opacity duration-300">
+            <img src="/images/github.png" alt="GitHub" className="w-8 h-8" />
+          </span>
+        </Link>
+        <Link href="https://www.linkedin.com/in/faiz-mustansar-a9a435213/">
+          <span rel="noopener noreferrer" aria-label="LinkedIn" className="hover:opacity-75 transition-opacity duration-300">
+            <img src="/images/linkedin.png" alt="LinkedIn" className="w-8 h-8" />
+          </span>
+        </Link>
+        <Link href="https://www.instagram.com/_faiz_m_10/">
+          <span rel="noopener noreferrer" aria-label="Instagram" className="hover:opacity-75 transition-opacity duration-300">
+            <img src="/images/instagram.png" alt="Instagram" className="w-8 h-8" />
+          </span>
+        </Link>
+        <Link href="mailto:faizmustansar10@gmail.com">
+          <span rel="noopener noreferrer" aria-label="Gmail" className="hover:opacity-75 transition-opacity duration-300">
+            <img src="/images/gmail.png" alt="Gmail" className="w-8 h-8" />
+          </span>
+        </Link>
       </div>
     </footer>
   );
