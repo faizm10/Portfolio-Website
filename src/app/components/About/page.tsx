@@ -2,6 +2,7 @@
 import React from 'react';
 import Card from '@/app/mini-components/About/Cards';
 const AboutMeSection: React.FC = () => {
+
   return (
     <section className="bg-gray-50 py-12 px-4 md:px-12 lg:px-24">
       <div className="max-w-4xl mx-auto">
@@ -22,7 +23,9 @@ const AboutMeSection: React.FC = () => {
           content="Bachelor of Computing in Computer Science Honours at University of Guelph (2023-2027)"
         />
       </div>
+      
     </section>
+    
   );
 };
 
