@@ -1,5 +1,7 @@
+
+//src/app/components/Footer/page.tsx
 import React from 'react';
-import Link from "next/link"; // Assuming you're using Next.js
+import Link from "next/link"; 
 
 const Footer: React.FC = () => {
   return (
