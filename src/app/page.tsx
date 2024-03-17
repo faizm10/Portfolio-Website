@@ -15,10 +15,10 @@ const Page: React.FC = () => {
       <AboutMeSection />
       <Experience />
       <ProjectCard />
-      {/* <ContactMeSection /> */}
+        {/* <ContactMeSection /> */}
       <Footer />
+      
     </>
   );
 };
-
 export default Page;

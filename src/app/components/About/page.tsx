@@ -1,4 +1,4 @@
-// Assuming your AboutMeSection is in components/AboutMeSection.tsx
+//components/AboutMeSection.tsx
 import React from 'react';
 import Card from '@/app/mini-components/About/Cards';
 const AboutMeSection: React.FC = () => {
