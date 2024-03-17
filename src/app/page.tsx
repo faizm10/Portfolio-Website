@@ -17,8 +17,6 @@ const Page: React.FC = () => {
       <ProjectCard />
       {/* <ContactMeSection /> */}
       <Footer />
-
-      
     </>
   );
 };
