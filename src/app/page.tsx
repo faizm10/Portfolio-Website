@@ -7,6 +7,7 @@ import Navbar from './components/NavBar/page';
 import ContactMeSection from './components/ContactMe/page';
 import Footer from './components/Footer/page';
 import Experience from './components/Experience/page';
+import SkillsCards from './mini-components/About/SkillsCards';
 const Page: React.FC = () => {
   return (
     <>
@@ -17,6 +18,8 @@ const Page: React.FC = () => {
       <ProjectCard />
         {/* <ContactMeSection /> */}
       <Footer />
+      <SkillsCards/>
+
       
     </>
   );
