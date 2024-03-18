@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full bg-gray-800 text-white py-6" style={{background: 'linear-gradient(to bottom, #3573cf, #feb47b)'}}>
+    <footer className="w-full bg-gray-800 text-white py-6" style={{background: 'linear-gradient(to bottom, #feb47b, #3573cf)'}}>
       <div className="flex justify-center items-center space-x-4">
         <Link href="https://github.com/faizm10">
           <span

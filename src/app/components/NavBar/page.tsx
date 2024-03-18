@@ -32,18 +32,23 @@ export default function App() {
         <p className="font-bold text-inherit">Faiz Mustansar</p>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarItem>
+          <Link style={{ color: "white" }} href="/components/LandingPage">
+            Home
+          </Link>
+        </NavbarItem>
         <NavbarItem>
-          <Link style={{ color: "white" }} href="#">
+          <Link style={{ color: "white" }} href="/components/About">
             About Me
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link style={{ color: "white" }} href="#">
+          <Link style={{ color: "white" }} href="/components/Experience">
             Experience
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link style={{ color: "white" }} href="#">
+          <Link style={{ color: "white" }} href="/components/Projects">
             Projects
           </Link>
         </NavbarItem>

@@ -6,7 +6,8 @@ import ProjectCard from './components/Projects/page';
 import Navbar from './components/NavBar/page';
 import Footer from './components/Footer/page';
 import Experience from './components/Experience/page';
-import SkillsCards from './mini-components/About/SkillsCards';
+// Removed SkillsCards import as it's not used below, but you can add it wherever needed.
+
 const Page: React.FC = () => {
   return (
     <>
@@ -16,10 +17,8 @@ const Page: React.FC = () => {
       <Experience />
       <ProjectCard />
       <Footer />
-      
-
-      
     </>
   );
 };
+
 export default Page;

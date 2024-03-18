@@ -3,50 +3,52 @@
 import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
-
+import Layout from "../Layout/page";
 const Projects: NextPage = () => {
   return (
-    <div>
-      <section className="bg-white text-white py-20" id="projects">
-        <div className="container mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl font-bold text-black">Projects</h2>
+    <Layout>
+      <div>
+        <section className="bg-white text-white py-20" id="projects">
+          <div className="container mx-auto">
+            <div className="text-center mb-20">
+              <h2 className="text-4xl font-bold text-black">Projects</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <ProjectItem
+                title="To-Do List"
+                link="https://github.com/faizm10/todo-list"
+                imgSrc="/images/todolist.png"
+              />
+              <ProjectItem
+                title="Quiz App"
+                link="https://github.com/faizm10/QuizApp"
+                imgSrc="/images/quizapp.png"
+              />
+              <ProjectItem
+                title="Upcoming Project!!"
+                link=""
+                imgSrc="/images/background1.webp"
+              />
+              <ProjectItem
+                title="Upcoming Project!!"
+                link=""
+                imgSrc="/images/background1.webp"
+              />
+              <ProjectItem
+                title="Upcoming Project!!"
+                link=""
+                imgSrc="/images/background1.webp"
+              />
+              <ProjectItem
+                title="Find More On Github!"
+                link="https://github.com/faizm10/"
+                imgSrc="/images/githubpreview.png"
+              />
+            </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ProjectItem
-              title="To-Do List"
-              link="https://github.com/faizm10/todo-list"
-              imgSrc="/images/todolist.png"
-            />
-            <ProjectItem
-              title="Quiz App"
-              link="https://github.com/faizm10/QuizApp"
-              imgSrc="/images/quizapp.png"
-            />
-            <ProjectItem
-              title="Upcoming Project!!"
-              link=""
-              imgSrc="/images/background1.webp"
-            />
-            <ProjectItem
-              title="Upcoming Project!!"
-              link=""
-              imgSrc="/images/background1.webp"
-            />
-            <ProjectItem
-              title="Upcoming Project!!"
-              link=""
-              imgSrc="/images/background1.webp"
-            />
-            <ProjectItem
-              title="Find More On Github!"
-              link="https://github.com/faizm10/"
-              imgSrc="/images/githubpreview.png"
-            />
-          </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </Layout>
   );
 };
 
