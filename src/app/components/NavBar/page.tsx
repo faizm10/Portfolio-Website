@@ -1,74 +1,105 @@
+'use client'
 import React from "react";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link } from "@nextui-org/react";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  Link,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  useDisclosure,
+} from "@nextui-org/react";
 
 export default function App() {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   return (
-    <Navbar style={{ backgroundColor: '#0070f3', position: 'sticky', top: 0, zIndex: 1000 }}>
+    <Navbar
+      style={{
+        backgroundColor: "#3573cf",
+        position: "sticky",
+        top: 0,
+        zIndex: 1000,
+      }}
+      isBordered
+    >
       <NavbarBrand>
-        <p className="font-bold" style={{ color: 'white' }}>Faiz Mustansar</p>
+        <p className="font-bold text-inherit">Faiz Mustansar</p>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link style={{ color: 'white' }} href="#">
+          <Link style={{ color: "white" }} href="#">
             About Me
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link style={{ color: 'white' }} href="#">
+          <Link style={{ color: "white" }} href="#">
             Experience
           </Link>
         </NavbarItem>
-        <NavbarItem >
-          <Link style={{ color: 'white' }} href="#">
+        <NavbarItem>
+          <Link style={{ color: "white" }} href="#">
             Projects
           </Link>
         </NavbarItem>
+      </NavbarContent>
+      <NavbarContent justify="end">
         <NavbarItem>
-          <Link style={{ color: 'white' }} href="#">
-            Contact Me
-          </Link>
+          <Button onPress={onOpen} style={{backgroundColor:'#feb47b'}}>Contact Me</Button >
+          <Modal
+            backdrop="opaque"
+            isOpen={isOpen}
+            onOpenChange={onOpenChange}
+            motionProps={{
+              variants: {
+                enter: {
+                  y: 0,
+                  opacity: 1,
+                  transition: {
+                    duration: 0.3,
+                    ease: "easeOut",
+                  },
+                },
+                exit: {
+                  y: -20,
+                  opacity: 0,
+                  transition: {
+                    duration: 0.2,
+                    ease: "easeIn",
+                  },
+                },
+              },
+            }}
+          >
+           <ModalContent>
+           {(onClose) => (
+              <>
+                <ModalHeader className="flex flex-col gap-1 text-black">
+                  Contact Information
+                </ModalHeader>
+                <ModalBody>
+                  <div className="flex flex-col items-start gap-4">
+                    <p className="text-black">Email: <a href="mailto:faizmustansar10@gmail.com" className="text-blue-500 hover:underline">faizmustansar10@gmail.com</a></p>
+                    <p className="text-black">LinkedIn: <a href="https://www.linkedin.com/in/faiz-mustansar-a9a435213/" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">faiz-mustansar-a9a435213</a></p>
+                    <p className="text-black">GitHub: <a href="https://github.com/faizm10" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">faizm10</a></p>
+                  </div>
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="danger" onPress={onClose}>
+                    Close
+                  </Button>
+                </ModalFooter>
+              </>
+              )}
+            </ModalContent>
+          </Modal>
         </NavbarItem>
       </NavbarContent>
     </Navbar>
   );
 }
-
-// // src/components/Navbar.tsx
-// import React from 'react';
-// import Link from 'next/link';
-// import Image from 'next/image';
-
-// const Navbar: React.FC = () => {
-//   return (
-//     <nav className="bg-blue-800 text-white p-4 flex justify-between items-center sticky top-0 z-50">
-//       <Link href="/">
-//         <span className="flex items-center">
-//           <Image
-//             src="/images/logo.webp" // Adjust the path to your logo
-//             alt="Logo"
-//             width={40} // Adjust the size to match your design
-//             height={40} // Adjust the size to match your design
-//           />
-//           <span className="text-xl font-bold ml-3">FM</span>
-//         </span>
-//       </Link>
-
-//       <div className="space-x-4 text-lg">
-//         <Link href="/">
-//           <span className="hover:text-gray-300 cursor-pointer">Home</span>
-//         </Link>
-//         <Link href="/about">
-//           <span className="hover:text-gray-300 cursor-pointer">About</span>
-//         </Link>
-//         <Link href="/projects">
-//           <span className="hover:text-gray-300 cursor-pointer">Projects</span>
-//         </Link>
-//         <Link href="/contact">
-//           <span className="hover:text-gray-300 cursor-pointer">Contact</span>
-//         </Link>
-//       </div>
-//     </nav>
-//   );
-// };
-
-// export default Navbar;
