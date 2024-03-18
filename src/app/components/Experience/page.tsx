@@ -1,7 +1,7 @@
 // src/app/components/Experience/ExperienceSection.tsx
 'use client'
 import React from 'react';
-import { Tabs, Tab } from '@nextui-org/react';
+import { Tabs, Tab, image } from '@nextui-org/react';
 import Card from '@/app/mini-components/Experience/Card';
 
 const ExperienceSection = () => {
@@ -12,11 +12,11 @@ const ExperienceSection = () => {
       title: "Undergraduate Research Assistant",
       role: "University of Guelph",
       period: "May 2024 - August 2024",
-      description: "Languages Soon To Be Updated"
+      description: "Details To Be Updated"
     },
     {
       id: "dev",
-      label: "Software Developers", //tab title
+      label: "Software Developer", //tab title
       //description below
       title: "Software Developer",
       role: "Engineering Ambition",
@@ -30,7 +30,7 @@ const ExperienceSection = () => {
       title: "Software Engineer",
       role: "Muslims In Tech",
       period: "February 2024 - Present",
-      description: "Soon To Be Updated"
+      description: "Details To Be Updated"
     }
     // Add more tabs if needed
   ];

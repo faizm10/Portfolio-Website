@@ -1,10 +1,10 @@
-'use client';
-import React from 'react';
-import { Tab } from '@headlessui/react';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-
-
+"use client";
+import React from "react";
+import { Tab } from "@headlessui/react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { Accordion, AccordionItem } from "@nextui-org/react";
+import SkillsCards from "@/app/mini-components/About/SkillsCards";
 const AboutMeSection: React.FC = () => {
   return (
     <section className="bg-gray-50 py-12 px-4 md:px-12 lg:px-24">
@@ -36,7 +36,7 @@ const AboutMeSection: React.FC = () => {
 
           <Tab.Group>
             <Tab.List className="flex p-1 space-x-5 bg-blue-900/20 rounded-xl">
-              {["Skills", "Education", "Volunteer"].map((category) => (
+              {["Skills", "Education"].map((category) => (
                 <Tab as={React.Fragment} key={category}>
                   {({ selected }) => (
                     <motion.button
@@ -62,6 +62,7 @@ const AboutMeSection: React.FC = () => {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
+                  <SkillsCards/>
                 </motion.div>
               </Tab.Panel>
               <Tab.Panel className="text-gray-600">
@@ -70,25 +71,67 @@ const AboutMeSection: React.FC = () => {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  Currently pursuing a Bachelor of Computing specializing in
-                  Computer Science at University of Guelph.
-                </motion.p>
-              </Tab.Panel>
-              <Tab.Panel className="text-gray-600">
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  Volunteering at ABC Organization, helping with web development
-                  and IT support.
+                  <Accordion selectionMode="multiple" variant="splitted">
+                    <AccordionItem aria-label="Education" title="Education">
+                      <p>
+                        Bachelor of Computing Honours Degree, Specializing in
+                        Computer Science with a Minor in Sports & Event
+                        Management
+                      </p>
+                      <p>
+                        Relevant coursework:
+                        <br />
+                        CIS2910 - Discrete Mathematics in Computing II
+                        <br />
+                        CIS2500 - Intermediate Programming
+                        <br />
+                        STAT2400 - Statistics I<br />
+                        MATH1160 - Linear Algebra I<br />
+                        CIS1050 - Web Design & Development
+                      </p>
+                    </AccordionItem>
+
+                    <AccordionItem
+                      aria-label="Extracurricular Activities"
+                      title="Extracurricular Activities"
+                    >
+                      <p>
+                        Intramurals: Participated in Table-Tennis, Badminton,
+                        Soccer, and Basketball. Demonstrated teamwork and
+                        competitive spirit across a variety of sports.
+                      </p>
+                      <p>
+                        Drop-In Sports: Table Tennis,Basketball, and Soccer.
+                      </p>
+                    </AccordionItem>
+
+                    <AccordionItem
+                      aria-label="Clubs and Organizations"
+                      title="Clubs & Organizations"
+                    >
+                      <p>
+                        SOCIS (Society of Computing and Information Science) - Member
+                      </p>
+                      <p>
+                        Google Developer Student Club - Member
+                      </p>
+                      <p>
+                        Guelph MSA (Muslim Student Association) - Member
+                      </p>
+                      <p>
+                        Engineering Ambition - Software Developer
+                      </p>
+                      <p>
+                        Muslims in Tech - Co-Founder & Software Engineer
+                      </p>
+                    </AccordionItem>
+                  </Accordion>
                 </motion.p>
               </Tab.Panel>
             </Tab.Panels>
           </Tab.Group>
         </div>
       </div>
-      
     </section>
   );
 };
