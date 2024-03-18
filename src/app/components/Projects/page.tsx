@@ -1,8 +1,8 @@
 // src/components/Projects.tsx
 
-import { NextPage } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
+import { NextPage } from "next";
+import Image from "next/image";
+import Link from "next/link";
 
 const Projects: NextPage = () => {
   return (
@@ -13,7 +13,6 @@ const Projects: NextPage = () => {
             <h2 className="text-4xl font-bold text-black">Projects</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Project items mapped from an array */}
             <ProjectItem
               title="To-Do List"
               link="https://github.com/faizm10/todo-list"
@@ -44,8 +43,6 @@ const Projects: NextPage = () => {
               link="https://github.com/faizm10/"
               imgSrc="/images/githubpreview.png"
             />
-            
-            {/* Repeat <ProjectItem> for other projects */}
           </div>
         </div>
       </section>

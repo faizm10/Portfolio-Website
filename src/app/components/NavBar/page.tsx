@@ -13,6 +13,11 @@ export default function App() {
             About Me
           </Link>
         </NavbarItem>
+        <NavbarItem>
+          <Link style={{ color: 'white' }} href="#">
+            Experience
+          </Link>
+        </NavbarItem>
         <NavbarItem >
           <Link style={{ color: 'white' }} href="#">
             Projects

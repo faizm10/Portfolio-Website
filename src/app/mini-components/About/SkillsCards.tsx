@@ -4,42 +4,63 @@ import { Card, CardFooter, Image } from "@nextui-org/react";
 // Define the skill data array
 const skillsData = [
   {
-    title: "LinkedIn",
-    imageSrc: "/images/linkedin.png",
-    statusText: "Available soon."
+    title: "Python",
+    imageSrc: "/images/python.png",
   },
   {
-    title: "HTML5",
-    imageSrc: "/images/faizlogo.webp",
-    statusText: "Experienced."
+    title: "HTML",
+    imageSrc: "/images/html.png",
   },
   {
-    title: "CSS3",
+    title: "CSS",
     imageSrc: "/images/css.png",
-    statusText: "Advanced."
   },
-  // ...other skills
+  {
+    title: "Java",
+    imageSrc: "/images/java.png",
+  },
+  {
+    title: "Javascript",
+    imageSrc: "/images/javascript.png",
+  },
+  {
+    title: "React",
+    imageSrc: "/images/react.png",
+  },
+  {
+    title: "Next-JS",
+    imageSrc: "/images/next-js.png",
+  },
+  {
+    title: "Tailwind CSS",
+    imageSrc: "/images/tailwindcss.png",
+  },
+  {
+    title: "Git",
+    imageSrc: "/images/git.png",
+  },
+  
 ];
 
 // Define the type of props for the SkillsCard component for better type safety and autocompletion
 type SkillsCardProps = {
   title: string;
   imageSrc: string;
-  statusText: string;
 };
 
-const SkillsCard: React.FC<SkillsCardProps> = ({ title, imageSrc, statusText }) => {
+const SkillsCard: React.FC<SkillsCardProps> = ({ title, imageSrc }) => {
   return (
     <Card isFooterBlurred radius="lg" className="border-none">
       <Image
         alt={title}
-        className="object-cover"
-        height={200}
+        className="object-cover" // This class suggests you might want to cover the area of the card without stretching the image.
         src={imageSrc}
-        width={200}
+        width="100%" // Set width to 100% to cover the card width
+        height="100%" // Set height to 100% to cover the card height
       />
+
       <CardFooter className="justify-between items-center bg-opacity-40 backdrop-filter backdrop-blur-lg bg-black rounded-b-lg">
-        <p className="text-white">{statusText}</p>
+        <p className="text-white">{title}</p>
       </CardFooter>
     </Card>
   );
@@ -47,14 +68,9 @@ const SkillsCard: React.FC<SkillsCardProps> = ({ title, imageSrc, statusText }) 
 
 const SkillsCards: React.FC = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-5">
       {skillsData.map((skill, index) => (
-        <SkillsCard
-          key={index}
-          title={skill.title}
-          imageSrc={skill.imageSrc}
-          statusText={skill.statusText}
-        />
+        <SkillsCard key={index} title={skill.title} imageSrc={skill.imageSrc} />
       ))}
     </div>
   );
