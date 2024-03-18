@@ -3,8 +3,10 @@ import React from "react";
 import { Tab } from "@headlessui/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Accordion, AccordionItem } from "@nextui-org/react";
+import { Accordion, AccordionItem, Card, CardBody } from "@nextui-org/react";
 import SkillsCards from "@/app/mini-components/About/SkillsCards";
+import { Code } from "@nextui-org/react";
+
 const AboutMeSection: React.FC = () => {
   return (
     <section className="bg-gray-50 py-12 px-4 md:px-12 lg:px-24">
@@ -36,7 +38,7 @@ const AboutMeSection: React.FC = () => {
 
           <Tab.Group>
             <Tab.List className="flex p-1 space-x-5 bg-blue-900/20 rounded-xl">
-              {["Skills", "Education"].map((category) => (
+              {["Background", "Education"].map((category) => (
                 <Tab as={React.Fragment} key={category}>
                   {({ selected }) => (
                     <motion.button
@@ -62,7 +64,39 @@ const AboutMeSection: React.FC = () => {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <SkillsCards/>
+                  {/* <SkillsCards/> */}
+                  <Card>
+                    <CardBody>
+                      <ul className="list-disc space-y-2 ml-4">
+                        <li>👋🏽 Hey there, I'm Faiz M.</li>
+                        <li>
+                          🎓 Currently pursuing a Bachelor's in Computer Science
+                          at the University of Guelph, with a minor in Sports &
+                          Event Management.
+                        </li>
+                        <li>
+                          📚 Coursework: Discrete Structures II, Intermediate
+                          Programming, Statistics I, Linear Algebra, and Web
+                          Design and Development.
+                        </li>
+                        <li>
+                          💻 Passionate about software development and full
+                          stack technologies.
+                        </li>
+                        <li>
+                          💪🏽 Keen on sports: soccer, ping pong, and basketball.
+                        </li>
+                        <li>
+                          🛠️ Software Developer for Engineering Ambition at
+                          UofG.
+                        </li>
+                        <li>
+                          🏟️ Active member in clubs and intramural sports
+                          leagues on campus.
+                        </li>
+                      </ul>
+                    </CardBody>
+                  </Card>
                 </motion.div>
               </Tab.Panel>
               <Tab.Panel className="text-gray-600">
@@ -110,20 +144,13 @@ const AboutMeSection: React.FC = () => {
                       title="Clubs & Organizations"
                     >
                       <p>
-                        SOCIS (Society of Computing and Information Science) - Member
+                        SOCIS (Society of Computing and Information Science) -
+                        Member
                       </p>
-                      <p>
-                        Google Developer Student Club - Member
-                      </p>
-                      <p>
-                        Guelph MSA (Muslim Student Association) - Member
-                      </p>
-                      <p>
-                        Engineering Ambition - Software Developer
-                      </p>
-                      <p>
-                        Muslims in Tech - Co-Founder & Software Engineer
-                      </p>
+                      <p>Google Developer Student Club - Member</p>
+                      <p>Guelph MSA (Muslim Student Association) - Member</p>
+                      <p>Engineering Ambition - Software Developer</p>
+                      <p>Muslims in Tech - Co-Founder & Software Engineer</p>
                     </AccordionItem>
                   </Accordion>
                 </motion.p>

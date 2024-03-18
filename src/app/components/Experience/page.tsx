@@ -21,7 +21,7 @@ const ExperienceSection = () => {
       title: "Software Developer",
       role: "Engineering Ambition",
       period: "February 2024 - Present",
-      description: "Working on exciting projects with technologies like ClickUp, Next.js, React, and more."
+      description: "Currently working on developing Pipeline to Success website while utilizing the following languages:\nClickUp, Next.js, React, Tailwind CSS, Typescript, tRPC, Figma, Supabase, MySQL, PostgreSQL, Git, Vercel"
     },
     {
       id: "eng",
