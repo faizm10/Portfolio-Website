@@ -42,11 +42,11 @@ export default function App() {
             About Me
           </Link>
         </NavbarItem>
-        <NavbarItem>
+        {/* <NavbarItem>
           <Link style={{ color: "white" }} href="/components/Experience">
             Experience
           </Link>
-        </NavbarItem>
+        </NavbarItem> */}
         <NavbarItem>
           <Link style={{ color: "white" }} href="/components/Projects">
             Projects

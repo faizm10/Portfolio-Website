@@ -14,7 +14,7 @@ const Page: React.FC = () => {
       <Navbar />
       <LandingPage />
       <AboutMeSection />
-      <Experience />
+      {/* <Experience /> */}
       <ProjectCard />
       <Footer />
     </>
