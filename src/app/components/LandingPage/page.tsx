@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Layout from "../Layout/page";
+// import Layout from "../Layout/page";
 const LandingPage: React.FC = () => {
   return (
-    <Layout>
+    // <Layout>
     <div className="flex flex-col min-h-screen">
       <div
         className="flex-1 flex items-center justify-center flex-col text-center"
@@ -83,7 +83,7 @@ const LandingPage: React.FC = () => {
       </div>
       {/* Additional page sections and footer */}
     </div>
-    </Layout>
+    // </Layout>
   );
 };
 

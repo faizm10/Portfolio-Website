@@ -3,7 +3,7 @@
 import React from "react";
 import { Tabs, Tab, image } from "@nextui-org/react";
 import Card from "@/app/mini-components/Experience/Card";
-import Layout from "../Layout/page";
+// import Layout from "../Layout/page";
 
 const ExperienceSection = () => {
   let tabs = [
@@ -38,7 +38,7 @@ const ExperienceSection = () => {
   ];
 
   return (
-    <Layout>
+    // <Layout>
       <section className="bg-gray-50 py-12 px-4 md:px-12 lg:px-24">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-10">
@@ -59,7 +59,7 @@ const ExperienceSection = () => {
           </Tabs>
         </div>
       </section>
-    </Layout>
+    // </Layout>
   );
 };
 
