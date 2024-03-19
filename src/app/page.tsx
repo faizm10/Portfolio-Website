@@ -11,12 +11,12 @@ import Experience from './components/Experience/page';
 const Page: React.FC = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <LandingPage />
-      <AboutMeSection />
+      {/* <AboutMeSection /> */}
       {/* <Experience /> */}
-      <ProjectCard />
-      <Footer />
+      {/* <ProjectCard /> */}
+      {/* <Footer /> */}
     </>
   );
 };
