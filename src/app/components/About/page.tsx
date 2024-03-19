@@ -6,11 +6,14 @@ import Image from "next/image";
 import { Accordion, AccordionItem, Card, CardBody } from "@nextui-org/react";
 // import Layout from "../Layout/page";
 import ExperienceSection from "../Experience/page";
+import Footer from "../Footer/page";
+import { Navbar } from "@nextui-org/react";
+import App from "../NavBar/page";
 const AboutMeSection: React.FC = () => {
-  
   return (
     // <Layout>
-
+    <>
+    <App/>
     <section className="bg-gray-50 py-12 px-4 md:px-12 lg:px-24">
       <div className="container mx-auto flex justify-center lg:justify-between items-start lg:space-x-12">
         <motion.div
@@ -161,12 +164,12 @@ const AboutMeSection: React.FC = () => {
           </Tab.Group>
         </div>
       </div>
-      <ExperienceSection>
-
-      </ExperienceSection>
+      
+      
     </section>
-    // </Layout>
-
+    <ExperienceSection />
+      <Footer />
+  </>
   );
 };
 

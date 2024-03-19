@@ -4,9 +4,13 @@ import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 // import Layout from "../Layout/page";
+import App from "../NavBar/page";
+import Footer from "../Footer/page";
 const Projects: NextPage = () => {
   return (
-    // <Layout>
+    <>
+    <App/>
+    
       <div>
         <section className="bg-white text-white py-20" id="projects">
           <div className="container mx-auto">
@@ -48,7 +52,8 @@ const Projects: NextPage = () => {
           </div>
         </section>
       </div>
-    // </Layout>
+    <Footer/>
+    </>
   );
 };
 
@@ -60,6 +65,7 @@ interface ProjectItemProps {
 
 const ProjectItem: React.FC<ProjectItemProps> = ({ title, link, imgSrc }) => {
   return (
+
     <Link href={link}>
       <span className="block overflow-hidden rounded-lg shadow-lg group">
         <div className="relative">
