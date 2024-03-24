@@ -13,7 +13,7 @@ const ExperienceSection = () => {
       title: "Undergraduate Research Assistant",
       role: "University of Guelph",
       period: "May 2024 - August 2024",
-      description: "Details To Be Updated",
+      description: "Details To Be Updated. Stay Tuned!",
     },
     {
       id: "dev",
@@ -38,7 +38,6 @@ const ExperienceSection = () => {
   ];
 
   return (
-    // <Layout>
       <section className="bg-gray-50 py-12 px-4 md:px-12 lg:px-24">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-10">
@@ -59,7 +58,6 @@ const ExperienceSection = () => {
           </Tabs>
         </div>
       </section>
-    // </Layout>
   );
 };
 

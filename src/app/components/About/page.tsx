@@ -4,16 +4,10 @@ import { Tab } from "@headlessui/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Accordion, AccordionItem, Card, CardBody } from "@nextui-org/react";
-// import Layout from "../Layout/page";
 import ExperienceSection from "../Experience/page";
-import Footer from "../Footer/page";
-import { Navbar } from "@nextui-org/react";
-import App from "../NavBar/page";
 const AboutMeSection: React.FC = () => {
   return (
-    // <Layout>
     <>
-    <App/>
     <section className="bg-gray-50 py-12 px-4 md:px-12 lg:px-24">
       <div className="container mx-auto flex justify-center lg:justify-between items-start lg:space-x-12">
         <motion.div
@@ -124,8 +118,10 @@ const AboutMeSection: React.FC = () => {
                         <br />
                         CIS2500 - Intermediate Programming
                         <br />
-                        STAT2400 - Statistics I<br />
-                        MATH1160 - Linear Algebra I<br />
+                        STAT2400 - Statistics I
+                        <br />
+                        MATH1160 - Linear Algebra I
+                        <br />
                         CIS1050 - Web Design & Development
                       </p>
                     </AccordionItem>
@@ -135,12 +131,10 @@ const AboutMeSection: React.FC = () => {
                       title="Extracurricular Activities"
                     >
                       <p>
-                        Intramurals: Participated in Table-Tennis, Badminton,
-                        Soccer, and Basketball. Demonstrated teamwork and
-                        competitive spirit across a variety of sports.
+                        Intramurals: Table-Tennis, Badminton, Soccer, and Basketball.
                       </p>
                       <p>
-                        Drop-In Sports: Table Tennis,Basketball, and Soccer.
+                        Drop-In Sports: Table Tennis, Basketball, and Soccer.
                       </p>
                     </AccordionItem>
 
@@ -168,7 +162,6 @@ const AboutMeSection: React.FC = () => {
       
     </section>
     <ExperienceSection />
-      <Footer />
   </>
   );
 };
