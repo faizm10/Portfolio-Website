@@ -33,7 +33,7 @@ export default function App() {
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
       <NavbarItem>
-          <Link style={{ color: "white" }} href="/components/LandingPage">
+          <Link style={{ color: "white" }} href="/">
             Home
           </Link>
         </NavbarItem>
