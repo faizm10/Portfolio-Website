@@ -73,11 +73,11 @@ const AboutMeSection: React.FC = () => {
                           at the University of Guelph, with a minor in Sports &
                           Event Management.
                         </li>
-                        <li>
+                        {/* <li>
                           📚 Coursework: Discrete Structures II, Intermediate
                           Programming, Statistics I, Linear Algebra, and Web
                           Design and Development.
-                        </li>
+                        </li> */}
                         <li>
                           💻 Passionate about software development and full
                           stack technologies.
@@ -87,7 +87,7 @@ const AboutMeSection: React.FC = () => {
                         </li>
                         <li>
                           🛠️ Software Developer for Engineering Ambition at
-                          UofG.
+                          UofG and Software Engineer for Muslims In Tech.
                         </li>
                         <li>
                           🏟️ Active member in clubs and intramural sports

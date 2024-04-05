@@ -23,16 +23,23 @@ const Projects: NextPage = () => {
                 imgSrc="/images/quizapp.png"
               />
               <ProjectItem
-                title="Upcoming Project!!"
-                link=""
-                imgSrc="/images/background1.webp"
+                title="CL Fantasy Dashboard - In Progress"
+                link="https://github.com/faizm10/CLFantasyManager"
+                imgSrc="/images/cl.png"
               />
               <ProjectItem
                 title="Upcoming Project!!"
                 link=""
                 imgSrc="/images/background1.webp"
+                // title="CarVentory - Soon"
+                // link=""
+                // imgSrc="/images/addCars.png"
               />
+              
               <ProjectItem
+                // title="Muslims In Tech Projects"
+                // link="https://github.com/Muslims-in-Tech-MIT"
+                // imgSrc="/images/mit.png"
                 title="Upcoming Project!!"
                 link=""
                 imgSrc="/images/background1.webp"
