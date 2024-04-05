@@ -42,16 +42,16 @@ export default function App() {
             About Me
           </Link>
         </NavbarItem>
-        {/* <NavbarItem>
-          <Link style={{ color: "white" }} href="/components/Experience">
-            Experience
-          </Link>
-        </NavbarItem> */}
         <NavbarItem>
           <Link style={{ color: "white" }} href="/components/Projects">
             Projects
           </Link>
         </NavbarItem>
+        {/* <NavbarItem>
+          <Link style={{ color: "white" }} href="/components/...">
+          'fill in blank'
+          </Link>
+        </NavbarItem> */}
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>

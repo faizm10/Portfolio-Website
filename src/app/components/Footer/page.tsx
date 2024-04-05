@@ -1,11 +1,16 @@
-
-//src/app/components/Footer/page.tsx
-import React from 'react';
-import Link from "next/link"; 
+import React from "react";
+import Link from "next/link";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full bg-gray-800 text-white py-6" style={{background: 'linear-gradient(to bottom, #feb47b, #3573cf)'}}>
+    <footer
+      className="w-full bg-gray-800 text-white py-6"
+      style={{
+        background: "linear-gradient(to bottom, #feb47b, #3573cf)",
+        position: "static",
+        bottom: 0,
+      }}
+    >
       <div className="flex justify-center items-center space-x-4">
         <Link href="https://github.com/faizm10">
           <span

@@ -3,7 +3,6 @@
 import React from "react";
 import { Tabs, Tab, image } from "@nextui-org/react";
 import Card from "@/app/mini-components/Experience/Card";
-// import Layout from "../Layout/page";
 
 const ExperienceSection = () => {
   let tabs = [
@@ -13,7 +12,7 @@ const ExperienceSection = () => {
       title: "Undergraduate Research Assistant",
       role: "University of Guelph",
       period: "May 2024 - August 2024",
-      description: "Details To Be Updated. Stay Tuned!",
+      description: "My responsibilities includes creating a database using software tools, conducting queries for a scoping review, and supporting research on AI grading tools.",
     },
     {
       id: "dev",
