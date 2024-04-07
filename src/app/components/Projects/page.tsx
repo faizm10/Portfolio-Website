@@ -25,7 +25,7 @@ const Projects: NextPage = () => {
               <ProjectItem
                 title="CL Fantasy Dashboard - In Progress"
                 link="https://github.com/faizm10/CLFantasyManager"
-                imgSrc="/images/cl.png"
+                imgSrc="/images/CL.png"
               />
               <ProjectItem
                 title="Upcoming Project!!"
