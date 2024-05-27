@@ -6,9 +6,13 @@ const Projects: NextPage = () => {
   return (
     <>
       <div>
-        <section className= "text-white py-20" style={{
-          backgroundColor: '#fdddb7'
-        }} id="projects">
+        <section
+          className="text-white py-20"
+          style={{
+            backgroundColor: "#fdddb7",
+          }}
+          id="projects"
+        >
           <div className="container mx-auto">
             <div className="text-center mb-20">
               <h2 className="text-4xl font-bold text-black">Projects</h2>
@@ -17,39 +21,33 @@ const Projects: NextPage = () => {
               <ProjectItem
                 title="To-Do List"
                 link="https://github.com/faizm10/todo-list"
-                imgSrc="/images/todolist.png"
+                imgSrc="/images/projects/todolist.png"
               />
               <ProjectItem
                 title="Quiz App"
                 link="https://github.com/faizm10/QuizApp"
-                imgSrc="/images/quizapp.png"
+                imgSrc="/images/projects/quizapp.png"
               />
               <ProjectItem
                 title="CL Fantasy Dashboard"
                 link="https://github.com/faizm10/CLFantasyManager"
-                imgSrc="/images/CL.png"
+                imgSrc="/images/projects/CL.png"
               />
               <ProjectItem
                 title="Upcoming Project!!"
                 link=""
-                imgSrc="/images/background1.webp"
-                // title="CarVentory - Soon"
-                // link=""
-                // imgSrc="/images/addCars.png"
+                imgSrc="/images/projects/background1.webp"
               />
 
               <ProjectItem
-                // title="Muslims In Tech Projects"
-                // link="https://github.com/Muslims-in-Tech-MIT"
-                // imgSrc="/images/mit.png"
                 title="Upcoming Project!!"
                 link=""
-                imgSrc="/images/background1.webp"
+                imgSrc="/images/projects/background1.webp"
               />
               <ProjectItem
                 title="Find More On Github!"
                 link="https://github.com/faizm10/"
-                imgSrc="/images/githubpreview.png"
+                imgSrc="/images/projects/githubpreview.png"
               />
             </div>
           </div>

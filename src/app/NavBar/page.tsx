@@ -20,7 +20,7 @@ export default function App() {
       isBordered
     >
       <NavbarBrand>
-        <p className="font-bold text-black" style={{ fontSize: "28px" }}>
+        <p className="font-bold text-black" style={{ fontSize: "18px" }}>
           Faiz Mustansar
         </p>
       </NavbarBrand>
@@ -29,7 +29,7 @@ export default function App() {
           <Link
             href="/"
             className="relative nav-link"
-            style={{ color: "black", fontFamily: "bold", fontSize: "24px" }}
+            style={{ color: "black", fontFamily: "bold", fontSize: "14px" }}
           >
             Home
           </Link>
@@ -38,7 +38,7 @@ export default function App() {
           <Link
             href="/about"
             className="relative nav-link"
-            style={{ color: "black", fontFamily: "bold", fontSize: "24px" }}
+            style={{ color: "black", fontFamily: "bold", fontSize: "14px" }}
           >
             About Me
           </Link>
@@ -47,7 +47,7 @@ export default function App() {
           <Link
             href="/projects"
             className="relative nav-link"
-            style={{ color: "black", fontFamily: "bold", fontSize: "24px" }}
+            style={{ color: "black", fontFamily: "bold", fontSize: "14px" }}
           >
             Projects
           </Link>
