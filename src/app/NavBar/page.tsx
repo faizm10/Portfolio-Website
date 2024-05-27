@@ -19,7 +19,9 @@ export default function App() {
       }}
       isBordered
     >
-      <NavbarBrand>
+      <NavbarBrand
+        style={{ color: "black", fontFamily: "bold", fontSize: "14px" }}
+      >
         <p className="font-bold text-black" style={{ fontSize: "18px" }}>
           Faiz Mustansar
         </p>
