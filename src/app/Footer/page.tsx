@@ -4,9 +4,9 @@ import Link from "next/link";
 const Footer: React.FC = () => {
   return (
     <footer
-      className="w-full bg-gray-800 text-white py-6"
+      className="w-full text-white py-4 bg-white"
       style={{
-        background: "linear-gradient(to bottom, #feb47b, #3573cf)",
+        // background: "linear-gradient(to bottom, #feb47b, #3573cf)",
         position: "static",
         bottom: 0,
       }}
@@ -18,7 +18,11 @@ const Footer: React.FC = () => {
             aria-label="GitHub"
             className="hover:opacity-75 transition-opacity duration-300"
           >
-            <img src="/images/github.png" alt="GitHub" className="w-8 h-8" />
+            <img
+              src="/images/socials/github.png"
+              alt="GitHub"
+              className="w-8 h-8"
+            />
           </span>
         </Link>
         <Link href="https://www.linkedin.com/in/faiz-mustansar-a9a435213/">
@@ -28,7 +32,7 @@ const Footer: React.FC = () => {
             className="hover:opacity-75 transition-opacity duration-300"
           >
             <img
-              src="/images/linkedin.png"
+              src="/images/socials/linkedin.png"
               alt="LinkedIn"
               className="w-8 h-8"
             />
@@ -41,7 +45,7 @@ const Footer: React.FC = () => {
             className="hover:opacity-75 transition-opacity duration-300"
           >
             <img
-              src="/images/instagram.png"
+              src="/images/socials/instagram.png"
               alt="Instagram"
               className="w-8 h-8"
             />
@@ -53,7 +57,11 @@ const Footer: React.FC = () => {
             aria-label="Gmail"
             className="hover:opacity-75 transition-opacity duration-300"
           >
-            <img src="/images/gmail.png" alt="Gmail" className="w-8 h-8" />
+            <img
+              src="/images/socials/gmail.png"
+              alt="Gmail"
+              className="w-8 h-8"
+            />
           </span>
         </Link>
       </div>

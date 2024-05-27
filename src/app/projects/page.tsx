@@ -4,9 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 const Projects: NextPage = () => {
   return (
-    <>    
+    <>
       <div>
-        <section className="bg-white text-white py-20" id="projects">
+        <section className= "text-white py-20" style={{
+          backgroundColor: '#fdddb7'
+        }} id="projects">
           <div className="container mx-auto">
             <div className="text-center mb-20">
               <h2 className="text-4xl font-bold text-black">Projects</h2>
@@ -35,7 +37,7 @@ const Projects: NextPage = () => {
                 // link=""
                 // imgSrc="/images/addCars.png"
               />
-              
+
               <ProjectItem
                 // title="Muslims In Tech Projects"
                 // link="https://github.com/Muslims-in-Tech-MIT"
@@ -65,7 +67,6 @@ interface ProjectItemProps {
 
 const ProjectItem: React.FC<ProjectItemProps> = ({ title, link, imgSrc }) => {
   return (
-
     <Link href={link}>
       <span className="block overflow-hidden rounded-lg shadow-lg group">
         <div className="relative">
