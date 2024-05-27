@@ -16,7 +16,7 @@ const LandingPage: React.FC = () => {
         >
           <div className="mt-6">
             <Image
-              src="/images/profilepic.webp"
+              src="/images/me/profilepic.webp"
               alt="Software Developer"
               width={200}
               height={200}
