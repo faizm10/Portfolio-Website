@@ -13,13 +13,13 @@ const AboutMeSection: React.FC = () => {
           <div className="align-middle w-3/4">
             <h2 className="text-8xl font-bold mb-4">About Me</h2>
             <p className="text-lg mb-6 font-sans">
-              Hey there, I am Faiz, and I am a Software Developer with a passion
-              for creating innovative solutions and a deep interest in AI and
-              web development. I was born in Scarborough and currently live in
-              Brampton. I commute to university five times a week. I enjoy playing and
-              watching sports, and I am a full stack developer with a keen
-              interest in AI and web development. I am looking to apply my
-              skills in real-world settings.
+              Hi, I'm Faiz, a Software Developer with a passion for creating
+              innovative solutions. With a deep interest in AI and web
+              development, I aim to apply my full-stack development skills in
+              real-world settings. Originally from Scarborough, I now live in
+              Brampton and commute to university five days a week. In addition
+              to my technical pursuits, I enjoy playing and watching sports,
+              further enriching my dynamic lifestyle
             </p>
             <div className=" gap-8 flex flex-row text-black">
               <Accordion selectionMode="multiple" variant="splitted">
