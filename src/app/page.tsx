@@ -23,7 +23,7 @@ const LandingPage: React.FC = () => {
               className="rounded-full object-cover"
             />
           </div>
-          <h1 className="text-2xl font-bold mb-2">Faiz Mustansar</h1>
+          <h1 className="text-3xl font-bold mb-2">Faiz Mustansar</h1>
           <h1 className="text-medium font-bold mb-6">Software Developer</h1>
           {/* Social Media Links */}
           <div className="flex justify-center items-center space-x-4">

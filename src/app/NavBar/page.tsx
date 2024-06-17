@@ -6,8 +6,10 @@ import {
   NavbarContent,
   NavbarItem,
   Link,
+  Button,
 } from "@nextui-org/react";
 import "@/app/styles/navbar.css";
+
 export default function App() {
   return (
     <Navbar
@@ -49,10 +51,24 @@ export default function App() {
           <Link
             href="/projects"
             className="relative nav-link"
+            // underline="hover"
             style={{ color: "black", fontFamily: "bold", fontSize: "14px" }}
           >
             Projects
           </Link>
+        </NavbarItem>
+      </NavbarContent>
+      <NavbarContent justify="end">
+        <NavbarItem>
+          <Button
+            as="a"
+            href="/resume.pdf"
+            target="_blank"
+            className="bg-blue-300 hover:bg-blue-400"
+            style={{ fontFamily: "sans-serif" }}
+          >
+            Resume
+          </Button>
         </NavbarItem>
       </NavbarContent>
     </Navbar>

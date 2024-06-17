@@ -65,7 +65,7 @@ const ExperienceSection = () => {
               <ul className="list-disc list-inside space-y-2">
                 <li>
                   Contributed to the development of a chatbot by integrating AI
-                  models, facilitating more natural and responsive interactions.
+                  models such as ChatGPT 3.5, facilitating more natural and responsive interactions.
                 </li>
                 <li>
                   Participated in the preparation and submission of Research
@@ -77,11 +77,7 @@ const ExperienceSection = () => {
                   CSS to develop interactive web applications and APIs,
                   integrating AI components for enhanced functionality.
                 </li>
-                <li>
-                  Applied statistical graphing techniques to visualize research
-                  findings, effectively communicating insights and trends to
-                  stakeholders.
-                </li>
+                
               </ul>
             </CardBody>
 
@@ -99,10 +95,10 @@ const ExperienceSection = () => {
                   Python
                 </Card>
                 <Card className="shadow-sm p-3 text-center bg-blue-100 text-blue-800">
-                  API
+                  ChatGPT API
                 </Card>
                 <Card className="shadow-sm p-3 text-center bg-blue-100 text-blue-800">
-                  R Programming
+                  Git
                 </Card>
                 <Card className="shadow-sm p-3 text-center bg-blue-100 text-blue-800">
                   JavaScript
@@ -183,7 +179,7 @@ const ExperienceSection = () => {
                   Tailwind CSS
                 </Card>
                 <Card className="shadow-sm p-3 text-center bg-yellow-100 text-yellow-800">
-                  Python
+                  Git
                 </Card>
               </div>
             </CardBody>
