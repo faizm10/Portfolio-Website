@@ -62,7 +62,7 @@ export default function App() {
         <NavbarItem>
           <Button
             as="a"
-            href="/resume.pdf"
+            href="/FaizMustansarResume.pdf"
             target="_blank"
             className="bg-blue-300 hover:bg-blue-400"
             style={{ fontFamily: "sans-serif" }}
