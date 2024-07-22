@@ -26,15 +26,16 @@ import {
 }
 const ExperienceSection = () => {
   return (
-    <section className=" py-12 px-4 md:px-12 lg:px-24" style={
-      {backgroundColor: '#fdddb7'}
-    }>
+    <section
+      className=" py-12 px-4 md:px-12 lg:px-24"
+      style={{ backgroundColor: "#fdddb7" }}
+    >
       <div className="max-w-4xl mx-auto">
         <h2 className="text-4xl font-bold text-center text-gray-800 mb-10">
           Experience
         </h2>
         <div className="space-y-4">
-          <Card className="max-w-[1000px] shadow-xl p-5">
+          <Card className="max-w-[1000px] shadow-xl p-5 ">
             {/* Company Image */}
             <CardHeader className="flex gap-3">
               <Image
@@ -64,20 +65,21 @@ const ExperienceSection = () => {
               <p className="font-semibold">Responsibilities:</p>
               <ul className="list-disc list-inside space-y-2">
                 <li>
-                  Contributed to the development of a chatbot by integrating AI
-                  models such as ChatGPT 3.5, facilitating more natural and responsive interactions.
+                  Developing an AI chatbot using the ChatGPT API for MCS2020 and
+                  MGMT1000 courses to help answer student questions.
                 </li>
                 <li>
-                  Participated in the preparation and submission of Research
-                  Ethics Board (REB) proposals, ensuring compliance with ethical
-                  guidelines for research involving human subjects.
+                  Training and validating data so the chatbot can accurately
+                  answer questions related to course content.
                 </li>
                 <li>
-                  Utilized a tech stack including Python, NextJS, and Tailwind
-                  CSS to develop interactive web applications and APIs,
-                  integrating AI components for enhanced functionality.
+                  Using Python to train and test the chatbot through beta
+                  testing.
                 </li>
-                
+                <li>
+                  Expected to reduce professors' email and discussion board
+                  workload by <span className=" font-bold">14%</span> with the AI chatbot.
+                </li>
               </ul>
             </CardBody>
 
@@ -105,6 +107,9 @@ const ExperienceSection = () => {
                 </Card>
                 <Card className="shadow-sm p-3 text-center bg-blue-100 text-blue-800">
                   TypeScript
+                </Card>
+                <Card className="shadow-sm p-3 text-center bg-blue-100 text-blue-800">
+                  Fine-Tuning
                 </Card>
               </div>
             </CardBody>
@@ -142,7 +147,7 @@ const ExperienceSection = () => {
             <Divider />
             <CardBody>
               {/* Duration */}
-              <p className="text-small text-default-500">Feb 2024 - Present</p>
+              <p className="text-small text-default-500">Feb 2024 - Aug 2024</p>
             </CardBody>
             <Divider />
             <CardBody>

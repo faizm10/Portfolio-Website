@@ -84,20 +84,23 @@ const Projects = () => {
           My Projects
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* <Card className="shadow-xl p-5 w-full md:max-w-md lg:max-w-lg xl:max-w-xl">
+          {/* Hackathon Project */}
+          <Card className="shadow-xl p-5 w-full md:max-w-md lg:max-w-lg xl:max-w-xl">
             <CardHeader className="gap-3">
               <Image
                 height={1000}
                 width={1000}
                 radius="md"
-                src="./images/projects/leagueify.png"
+                src="./images/projects/predictor.png"
               />
             </CardHeader>
             <Divider />
             <CardBody className="flex flex-row gap-2">
-              <h1 className="font-semibold text-xl basis-2/4">Leaguify</h1>
+              <h1 className="font-semibold text-xl basis-2/4">
+                OlympicPredictor
+              </h1>
               <Chip className="bg-green-300 text-black basis-1/4">
-                Full Stack Application
+                Hackathon - 2nd Place
               </Chip>
             </CardBody>
             <Divider />
@@ -105,10 +108,25 @@ const Projects = () => {
               <p className="font-semibold">Languages & Frameworks</p>
               <div className="grid grid-cols-2 gap-2">
                 <Card className="shadow-sm p-3 text-center bg-blue-100 text-blue-800">
-                  JavaScript
+                  Next.js
                 </Card>
                 <Card className="shadow-sm p-3 text-center bg-blue-100 text-blue-800">
                   TypeScript
+                </Card>
+                <Card className="shadow-sm p-3 text-center bg-blue-100 text-blue-800">
+                  Tailwind CSS
+                </Card>
+                <Card className="shadow-sm p-3 text-center bg-blue-100 text-blue-800">
+                  Pandas
+                </Card>
+                <Card className="shadow-sm p-3 text-center bg-blue-100 text-blue-800">
+                  Python
+                </Card>
+                <Card className="shadow-sm p-3 text-center bg-blue-100 text-blue-800">
+                  R Programming
+                </Card>
+                <Card className="shadow-sm p-3 text-center bg-blue-100 text-blue-800">
+                  Flask
                 </Card>
               </div>
             </CardBody>
@@ -116,8 +134,9 @@ const Projects = () => {
             <CardFooter className="flex">
               <Link
                 isExternal
+                // isDisabled
                 showAnchorIcon
-                href="https://github.com/faizm10/Leagueify"
+                href="https://github.com/faizm10/CodeDexHackathon"
                 className="flex-1"
               >
                 GitHub Repository
@@ -125,13 +144,13 @@ const Projects = () => {
               <Link
                 isExternal
                 showAnchorIcon
-                href="https://leagueify.vercel.app/"
+                href="https://olympicpredict.vercel.app/"
                 className="flex-2"
               >
                 Live Demo
               </Link>
             </CardFooter>
-          </Card> */}
+          </Card>
           {/* Project Two */}
 
           <Card className="shadow-xl p-5 w-full md:max-w-md lg:max-w-lg xl:max-w-xl">
@@ -247,23 +266,7 @@ const Projects = () => {
               </Link>
             </CardFooter>
           </Card>
-          {/* 
-          {
 
-    imageUrl: "./images/projects/image.png",
-    type: "Research Project",
-    technologies: [
-      "Next.js",
-      "Tailwind CSS",
-      "TypeScript",
-      "ChatGPT API",
-      "Python",
-      "Flask/Django",
-    ],
-    repoUrl: "",
-    demoUrl: "https://mcs-2020.vercel.app/",
-  },
-          */}
           <Card className="shadow-xl p-5 w-full md:max-w-md lg:max-w-lg xl:max-w-xl">
             <CardHeader className="gap-3">
               <Image
@@ -318,73 +321,6 @@ const Projects = () => {
                 isExternal
                 showAnchorIcon
                 href="https://mcs-2020.vercel.app/"
-                className="flex-2"
-              >
-                Live Demo
-              </Link>
-            </CardFooter>
-          </Card>
-          {/* Hackathon Project */}
-          <Card className="shadow-xl p-5 w-full md:max-w-md lg:max-w-lg xl:max-w-xl">
-            <CardHeader className="gap-3">
-              <Image
-                height={1000}
-                width={1000}
-                radius="md"
-                src="./images/projects/predictor.png"
-              />
-            </CardHeader>
-            <Divider />
-            <CardBody className="flex flex-row gap-2">
-              <h1 className="font-semibold text-xl basis-2/4">
-                OlympicPredictor
-              </h1>
-              <Chip className="bg-green-300 text-black basis-1/4">
-                Hackathon - 2nd Place
-              </Chip>
-            </CardBody>
-            <Divider />
-            <CardBody>
-              <p className="font-semibold">Languages & Frameworks</p>
-              <div className="grid grid-cols-2 gap-2">
-                <Card className="shadow-sm p-3 text-center bg-blue-100 text-blue-800">
-                  Next.js
-                </Card>
-                <Card className="shadow-sm p-3 text-center bg-blue-100 text-blue-800">
-                  TypeScript
-                </Card>
-                <Card className="shadow-sm p-3 text-center bg-blue-100 text-blue-800">
-                  Tailwind CSS
-                </Card>
-                <Card className="shadow-sm p-3 text-center bg-blue-100 text-blue-800">
-                  Pandas
-                </Card>
-                <Card className="shadow-sm p-3 text-center bg-blue-100 text-blue-800">
-                  Python
-                </Card>
-                <Card className="shadow-sm p-3 text-center bg-blue-100 text-blue-800">
-                  R Programming
-                </Card>
-                <Card className="shadow-sm p-3 text-center bg-blue-100 text-blue-800">
-                  Flask
-                </Card>
-              </div>
-            </CardBody>
-            <Divider />
-            <CardFooter className="flex">
-              <Link
-                isExternal
-                // isDisabled
-                showAnchorIcon
-                href="https://github.com/faizm10/CodeDexHackathon"
-                className="flex-1"
-              >
-                GitHub Repository
-              </Link>
-              <Link
-                isExternal
-                showAnchorIcon
-                href="https://olympicpredict.vercel.app/"
                 className="flex-2"
               >
                 Live Demo
