@@ -19,6 +19,8 @@ export default function NavBar() {
     { label: "Home", href: "/" },
     { label: "About Me", href: "/about" },
     { label: "Projects", href: "/projects" },
+    // { label: "Athletics", href: "/athletics" },
+    { label: "Photography", href: "/photography" },
   ];
 
   return (
@@ -35,20 +37,35 @@ export default function NavBar() {
 
       <NavbarContent className="hidden sm:flex gap-4 " justify="center">
         <NavbarItem>
-          <Link href="/" className="nav-link text-black">Home</Link>
+          <Link href="/" className="nav-link text-black">
+            Home
+          </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="/about" className="nav-link text-black">About Me</Link>
+          <Link href="/about" className="nav-link text-black">
+            About Me
+          </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="/projects" className="nav-link text-black">Projects</Link>
+          <Link href="/projects" className="nav-link text-black">
+            Projects
+          </Link>
+        </NavbarItem>
+        {/* <NavbarItem>
+          <Link href="/athletics" className="nav-link text-black">Athletics</Link>
+        </NavbarItem> */}
+        <NavbarItem>
+          <Link href="/photography" className="nav-link text-black">
+            Photography
+          </Link>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
           <Button
             as="a"
-            href="/FaizMustansarResume.pdf"
+            // href="/FaizMustansarResume.pdf"
+            href="/MustansarFaizResume.pdf"
             target="_blank"
             className="bg-blue-300 hover:bg-blue-400"
             style={{ fontFamily: "sans-serif" }}
@@ -60,11 +77,7 @@ export default function NavBar() {
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item.label}-${index}`}>
-            <Link
-              className="w-full"
-              href={item.href}
-              size="lg"
-            >
+            <Link className="w-full" href={item.href} size="lg">
               {item.label}
             </Link>
           </NavbarMenuItem>
