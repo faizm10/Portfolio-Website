@@ -20,7 +20,7 @@ export default function NavBar() {
     { label: "About Me", href: "/about" },
     { label: "Projects", href: "/projects" },
     // { label: "Athletics", href: "/athletics" },
-    { label: "Photography", href: "/photography" },
+    // { label: "Photography", href: "/photography" },
   ];
 
   return (
@@ -54,11 +54,11 @@ export default function NavBar() {
         {/* <NavbarItem>
           <Link href="/athletics" className="nav-link text-black">Athletics</Link>
         </NavbarItem> */}
-        <NavbarItem>
+        {/* <NavbarItem>
           <Link href="/photography" className="nav-link text-black">
             Photography
           </Link>
-        </NavbarItem>
+        </NavbarItem> */}
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
