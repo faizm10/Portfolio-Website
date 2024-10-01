@@ -42,8 +42,8 @@ export default function NavBar() {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="/about" className="nav-link text-black">
-            About Me
+          <Link href="/experience" className="nav-link text-black">
+            Experience
           </Link>
         </NavbarItem>
         <NavbarItem>
@@ -51,14 +51,7 @@ export default function NavBar() {
             Projects
           </Link>
         </NavbarItem>
-        {/* <NavbarItem>
-          <Link href="/athletics" className="nav-link text-black">Athletics</Link>
-        </NavbarItem> */}
-        {/* <NavbarItem>
-          <Link href="/photography" className="nav-link text-black">
-            Photography
-          </Link>
-        </NavbarItem> */}
+        
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
