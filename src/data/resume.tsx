@@ -29,7 +29,7 @@ export const DATA = {
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    // { href: "/blog", icon: NotebookIcon, label: "Blog" },
+    { href: "/photo", icon: NotebookIcon, label: "Photography" },
   ],
   contact: {
     email: "faizmustansar10@gmail.com",
@@ -190,13 +190,11 @@ export const DATA = {
     },
   ],
   hackathons: [
-    
     {
       title: "uOttaHack 7",
       dates: "Jan 17th - 19th, 2025",
       location: "Ottawa, Ontario",
-      description:
-        "COMING SOON!",
+      description: "COMING SOON!",
       image: "/uotta.jpeg",
       mlh: "/uotta.jpeg",
       links: [
@@ -221,8 +219,7 @@ export const DATA = {
       title: "DeltaHacks XI",
       dates: "Jan 11th - 12th, 2025",
       location: "Hamilton, Ontario",
-      description:
-        "COMING SOON!",
+      description: "COMING SOON!",
       image: "/deltahack.jpeg",
       mlh: "/deltahack.jpeg",
       links: [
