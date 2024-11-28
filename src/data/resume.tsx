@@ -91,11 +91,41 @@ export const DATA = {
       href: "https://www.uoguelph.ca/",
       degree: "Bachelor's Degree of Computer Science (BCOMP)",
       logoUrl: "/uog.png",
-      start: "2024",
+      start: "2023",
       end: "2027",
     },
   ],
   projects: [
+    {
+      title: "MCS2020 ChatBot",
+      href: "https://mcs-2020.vercel.app/",
+      dates: "May 2024 - Aug 2024",
+      active: true,
+      description:
+        "The chatbot is an AI tool built with the ChatGPT API to help students get quick and accurate answers to course questions, making learning easier and more efficient.",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "TailwindCSS",
+        "Javascript",
+        "NextUI",
+        "ChatGPT API",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://mcs-2020.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        // {
+        //   type: "GitHub",
+        //   href: "https://github.com/faizm10/CodeDexHackathon",
+        //   icon: <Icons.github className="size-3" />,
+        // },
+      ],
+      image: "/chatbot.png",
+      video: "",
+    },
     {
       title: "OlympicPredictor",
       href: "https://olympicpredict.vercel.app",
@@ -160,6 +190,59 @@ export const DATA = {
     },
   ],
   hackathons: [
+    
+    {
+      title: "uOttaHack 7",
+      dates: "Jan 17th - 19th, 2025",
+      location: "Ottawa, Ontario",
+      description:
+        "COMING SOON!",
+      image: "/uotta.jpeg",
+      mlh: "/uotta.jpeg",
+      links: [
+        // {
+        //   title: "Devpost",
+        //   icon: <Icons.globe className="h-4 w-4" />,
+        //   href: "",
+        // },
+        // {
+        //   title: "Github",
+        //   icon: <Icons.github className="h-4 w-4" />,
+        //   href: "",
+        // },
+        // {
+        //   title: "Site",
+        //   icon: <Icons.globe className="h-4 w-4" />,
+        //   href: "",
+        // },
+      ],
+    },
+    {
+      title: "DeltaHacks XI",
+      dates: "Jan 11th - 12th, 2025",
+      location: "Hamilton, Ontario",
+      description:
+        "COMING SOON!",
+      image: "/deltahack.jpeg",
+      mlh: "/deltahack.jpeg",
+      links: [
+        // {
+        //   title: "Devpost",
+        //   icon: <Icons.globe className="h-4 w-4" />,
+        //   href: "",
+        // },
+        // {
+        //   title: "Github",
+        //   icon: <Icons.github className="h-4 w-4" />,
+        //   href: "",
+        // },
+        // {
+        //   title: "Site",
+        //   icon: <Icons.globe className="h-4 w-4" />,
+        //   href: "",
+        // },
+      ],
+    },
     {
       title: "HackTrent 2024",
       dates: "November 8th - 10th, 2024",

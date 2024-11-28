@@ -162,15 +162,15 @@ export default function Page() {
                   Hackathons
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  I like building things
+                  {/* I like building things */}
+                  Innovate. Collaborate. Code.
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Throughout my university journey, I had the opportunity to
-                  participate in over {DATA.hackathons.length} hackathons,
-                  collaborating with talented individuals from across the
-                  country. These fast-paced 2-3 day events were inspiring,
-                  showcasing how passion and teamwork can turn innovative ideas
-                  into impactful solutions.
+                  participate in over {DATA.hackathons.length} hackathons. I
+                  have met many talented individuals, networked with
+                  professionals, and collaborated on projects that pushed the
+                  boundaries of creativity and innovation.
                 </p>
               </div>
             </div>
