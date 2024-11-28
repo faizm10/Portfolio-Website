@@ -5,7 +5,7 @@ export const DATA = {
   name: "Faiz Mustansar",
   initials: "FM",
   githubData: "faizm10",
-  url: "https://dillion.io",
+  url: "https://faizm.vercel.app/",
   location: "Brampton, ON",
   // locationLink: "https://www.google.com/maps/place/sanfrancisco",
   description:
@@ -37,31 +37,19 @@ export const DATA = {
     social: {
       GitHub: {
         name: "GitHub",
-        url: "https://dub.sh/dillion-github",
+        url: "https://github.com/faizm10",
         icon: Icons.github,
 
         navbar: true,
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "https://dub.sh/dillion-linkedin",
+        url: "https://www.linkedin.com/in/faiz-mustansar-a9a435213/",
         icon: Icons.linkedin,
 
         navbar: true,
       },
-      // X: {
-      //   name: "X",
-      //   url: "https://dub.sh/dillion-twitter",
-      //   icon: Icons.x,
 
-      //   navbar: true,
-      // },
-      // Youtube: {
-      //   name: "Youtube",
-      //   url: "https://dub.sh/dillion-youtube",
-      //   icon: Icons.youtube,
-      //   navbar: true,
-      // },
       email: {
         name: "Send Email",
         url: "#",
