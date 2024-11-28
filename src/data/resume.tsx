@@ -136,12 +136,11 @@ export const DATA = {
         },
       ],
       image: "/predictor.png",
-      // video:
-      //   "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
+      video: "",
     },
     {
       title: "Spend Smart",
-      // href: "https://olympicpredict.vercel.app",
+      href: "",
       dates: "Nov 2024 - Current",
       active: true,
       description:
@@ -169,6 +168,7 @@ export const DATA = {
         },
       ],
       image: "/smartspend.png",
+      video: "",
     },
   ],
   hackathons: [
