@@ -80,7 +80,7 @@ export const DATA = {
       title: "Undergraduate Research Assistant",
       logoUrl: "/uog.png",
       start: "May 2024",
-      end: "Aug 2024",
+      end: "Current",
       description:
         "Developed and optimized an AI-powered chatbot for course support, integrating advanced AI techniques and ensuring seamless user interaction.",
     },
