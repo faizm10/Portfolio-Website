@@ -215,31 +215,31 @@ export const DATA = {
         // },
       ],
     },
-    {
-      title: "DeltaHacks XI",
-      dates: "Jan 11th - 12th, 2025",
-      location: "Hamilton, Ontario",
-      description: "COMING SOON!",
-      image: "/deltahack.jpeg",
-      mlh: "/deltahack.jpeg",
-      links: [
-        // {
-        //   title: "Devpost",
-        //   icon: <Icons.globe className="h-4 w-4" />,
-        //   href: "",
-        // },
-        // {
-        //   title: "Github",
-        //   icon: <Icons.github className="h-4 w-4" />,
-        //   href: "",
-        // },
-        // {
-        //   title: "Site",
-        //   icon: <Icons.globe className="h-4 w-4" />,
-        //   href: "",
-        // },
-      ],
-    },
+    // {
+    //   title: "DeltaHacks XI",
+    //   dates: "Jan 11th - 12th, 2025",
+    //   location: "Hamilton, Ontario",
+    //   description: "COMING SOON!",
+    //   image: "/deltahack.jpeg",
+    //   mlh: "/deltahack.jpeg",
+    //   links: [
+    //     // {
+    //     //   title: "Devpost",
+    //     //   icon: <Icons.globe className="h-4 w-4" />,
+    //     //   href: "",
+    //     // },
+    //     // {
+    //     //   title: "Github",
+    //     //   icon: <Icons.github className="h-4 w-4" />,
+    //     //   href: "",
+    //     // },
+    //     // {
+    //     //   title: "Site",
+    //     //   icon: <Icons.globe className="h-4 w-4" />,
+    //     //   href: "",
+    //     // },
+    //   ],
+    // },
     {
       title: "HackTrent 2024",
       dates: "November 8th - 10th, 2024",
