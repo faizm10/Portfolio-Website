@@ -190,31 +190,31 @@ export const DATA = {
     },
   ],
   hackathons: [
-    {
-      title: "uOttaHack 7",
-      dates: "Jan 17th - 19th, 2025",
-      location: "Ottawa, Ontario",
-      description: "COMING SOON!",
-      image: "/uotta.jpeg",
-      mlh: "/uotta.jpeg",
-      links: [
-        // {
-        //   title: "Devpost",
-        //   icon: <Icons.globe className="h-4 w-4" />,
-        //   href: "",
-        // },
-        // {
-        //   title: "Github",
-        //   icon: <Icons.github className="h-4 w-4" />,
-        //   href: "",
-        // },
-        // {
-        //   title: "Site",
-        //   icon: <Icons.globe className="h-4 w-4" />,
-        //   href: "",
-        // },
-      ],
-    },
+    // {
+    //   title: "uOttaHack 7",
+    //   dates: "Jan 17th - 19th, 2025",
+    //   location: "Ottawa, Ontario",
+    //   description: "COMING SOON!",
+    //   image: "/uotta.jpeg",
+    //   mlh: "/uotta.jpeg",
+    //   links: [
+    //     // {
+    //     //   title: "Devpost",
+    //     //   icon: <Icons.globe className="h-4 w-4" />,
+    //     //   href: "",
+    //     // },
+    //     // {
+    //     //   title: "Github",
+    //     //   icon: <Icons.github className="h-4 w-4" />,
+    //     //   href: "",
+    //     // },
+    //     // {
+    //     //   title: "Site",
+    //     //   icon: <Icons.globe className="h-4 w-4" />,
+    //     //   href: "",
+    //     // },
+    //   ],
+    // },
     // {
     //   title: "DeltaHacks XI",
     //   dates: "Jan 11th - 12th, 2025",
