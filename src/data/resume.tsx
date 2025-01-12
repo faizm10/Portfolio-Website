@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon } from "lucide-react";
+import { Camera, HomeIcon, NotebookIcon } from "lucide-react";
 
 export const DATA = {
   name: "Faiz Mustansar",
@@ -22,6 +22,8 @@ export const DATA = {
     "C",
     "Julia",
     "React",
+    "Docker",
+    "SQL",
     "HTML5",
     "CSS",
     "Postgres",
@@ -29,7 +31,7 @@ export const DATA = {
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    { href: "/photo", icon: NotebookIcon, label: "Photography" },
+    { href: "/photo", icon: Camera, label: "Photography" },
   ],
   contact: {
     email: "faizmustansar10@gmail.com",
@@ -49,6 +51,13 @@ export const DATA = {
 
         navbar: true,
       },
+      // Leetcode: {
+      //   name: "Leetcode",
+      //   url: "https://leetcode.com/u/faizm_10/",
+      //   icon: Icons.leetcode,
+
+      //   navbar: true,
+      // },
 
       email: {
         name: "Send Email",
@@ -170,13 +179,13 @@ export const DATA = {
         "MagicUI",
         "Shadcn UI",
         "NextUI",
-
-        "Postgres",
+        "Supabase",
+        "SQL",
       ],
       links: [
         // {
         //   type: "Website",
-        //   href: "https://olympicpredict.vercel.app/",
+        //   href: "https://spendsmart-pink.vercel.app/",
         //   icon: <Icons.globe className="size-3" />,
         // },
         {
@@ -191,52 +200,28 @@ export const DATA = {
   ],
   hackathons: [
     // {
-    //   title: "uOttaHack 7",
-    //   dates: "Jan 17th - 19th, 2025",
-    //   location: "Ottawa, Ontario",
-    //   description: "COMING SOON!",
-    //   image: "/uotta.jpeg",
-    //   mlh: "/uotta.jpeg",
+    //   title: "GeeseHacks 2024",
+    //   dates: "January 25th - 26th, 2024",
+    //   location: "Waterloo, Ontario",
+    //   description:
+    //     "coming soon",
+    //   image: "/geesehacks_logo.jpeg",
+    //   mlh: "/geesehacks_logo.jpeg",
     //   links: [
     //     // {
     //     //   title: "Devpost",
     //     //   icon: <Icons.globe className="h-4 w-4" />,
-    //     //   href: "",
+    //     //   href: "https://devpost.com/software/ecotracker-9y23wb?ref_content=my-projects-tab&ref_feature=my_projects",
     //     // },
     //     // {
     //     //   title: "Github",
     //     //   icon: <Icons.github className="h-4 w-4" />,
-    //     //   href: "",
+    //     //   href: "https://github.com/faizm10/HackTrent",
     //     // },
     //     // {
     //     //   title: "Site",
     //     //   icon: <Icons.globe className="h-4 w-4" />,
-    //     //   href: "",
-    //     // },
-    //   ],
-    // },
-    // {
-    //   title: "DeltaHacks XI",
-    //   dates: "Jan 11th - 12th, 2025",
-    //   location: "Hamilton, Ontario",
-    //   description: "COMING SOON!",
-    //   image: "/deltahack.jpeg",
-    //   mlh: "/deltahack.jpeg",
-    //   links: [
-    //     // {
-    //     //   title: "Devpost",
-    //     //   icon: <Icons.globe className="h-4 w-4" />,
-    //     //   href: "",
-    //     // },
-    //     // {
-    //     //   title: "Github",
-    //     //   icon: <Icons.github className="h-4 w-4" />,
-    //     //   href: "",
-    //     // },
-    //     // {
-    //     //   title: "Site",
-    //     //   icon: <Icons.globe className="h-4 w-4" />,
-    //     //   href: "",
+    //     //   href: "https://ecotrack-beryl.vercel.app",
     //     // },
     //   ],
     // },
