@@ -13,6 +13,7 @@ export const DATA = {
   summary:
     "I am a Computer Science student with a passion for creating innovative solutions, focusing on AI and web development to build efficient and user-friendly applications.",
   avatarUrl: "/me.png",
+
   skills: [
     "React",
     "Next.js",
@@ -20,7 +21,7 @@ export const DATA = {
     "Node.js",
     "Python",
     "C",
-    "Julia",
+    "Supabase",
     "React",
     "Docker",
     "SQL",
@@ -28,10 +29,12 @@ export const DATA = {
     "CSS",
     "Postgres",
     "Java",
+    "JavaScript",
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/photo", icon: Camera, label: "Photography" },
+    // { href: "/hacks", icon: Camera, label: "Hackathons" },
   ],
   contact: {
     email: "faizmustansar10@gmail.com",
@@ -101,38 +104,73 @@ export const DATA = {
       degree: "Bachelor's Degree of Computer Science (BCOMP)",
       logoUrl: "/uog.png",
       start: "2023",
-      end: "2027",
+      end: "2026",
     },
   ],
   projects: [
+
     {
-      title: "MCS2020 ChatBot",
-      href: "https://mcs-2020.vercel.app/",
-      dates: "May 2024 - Aug 2024",
+      title: "Coming Soon",
+      href: "",
+      dates: "Jan 2025 - Current",
       active: true,
       description:
-        "The chatbot is an AI tool built with the ChatGPT API to help students get quick and accurate answers to course questions, making learning easier and more efficient.",
+        "To Be Released Soon",
       technologies: [
         "Next.js",
         "Typescript",
         "TailwindCSS",
-        "Javascript",
+        "MagicUI",
+        "Shadcn UI",
         "NextUI",
-        "ChatGPT API",
+        "Supabase",
+        "Auth",
+        "Python",
+        "Web-Scraping",
       ],
       links: [
-        {
-          type: "Website",
-          href: "https://mcs-2020.vercel.app/",
-          icon: <Icons.globe className="size-3" />,
-        },
+        // {
+        //   type: "Website",
+        //   href: "https://spendsmart-pink.vercel.app/",
+        //   icon: <Icons.globe className="size-3" />,
+        // },
         // {
         //   type: "GitHub",
-        //   href: "https://github.com/faizm10/CodeDexHackathon",
+        //   href: "https://github.com/faizm10/SpendSmart",
         //   icon: <Icons.github className="size-3" />,
         // },
       ],
-      image: "/chatbot.png",
+      image: "/comingsoon.jpeg",
+      video: "",
+    },
+    {
+      title: "Spend Smart",
+      href: "",
+      dates: "Nov 2024 - Current",
+      active: true,
+      description:
+        "Personal finance tracker built with Next.js and Node.js, offering real-time analytics, categorized spending insights, and currency exchange management to help users better manage their income and expenses.",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "TailwindCSS",
+        "Supabase",
+        "SQL",
+        "Selenium",
+      ],
+      links: [
+        // {
+        //   type: "Website",
+        //   href: "https://spendsmart-pink.vercel.app/",
+        //   icon: <Icons.globe className="size-3" />,
+        // },
+        {
+          type: "GitHub",
+          href: "https://github.com/faizm10/SpendSmart",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/smartspend.png",
       video: "",
     },
     {
@@ -166,65 +204,38 @@ export const DATA = {
       video: "",
     },
     {
-      title: "Spend Smart",
-      href: "",
-      dates: "Nov 2024 - Current",
+      title: "MCS2020 ChatBot",
+      href: "https://mcs-2020.vercel.app/",
+      dates: "May 2024 - Aug 2024",
       active: true,
       description:
-        "Personal finance tracker built with Next.js and Node.js, offering real-time analytics, categorized spending insights, and currency exchange management to help users better manage their income and expenses.",
+        "The chatbot is an AI tool built with the ChatGPT API to help students get quick and accurate answers to course questions, making learning easier and more efficient.",
       technologies: [
         "Next.js",
         "Typescript",
         "TailwindCSS",
-        "MagicUI",
-        "Shadcn UI",
+        "Javascript",
         "NextUI",
-        "Supabase",
-        "SQL",
+        "ChatGPT API",
       ],
       links: [
-        // {
-        //   type: "Website",
-        //   href: "https://spendsmart-pink.vercel.app/",
-        //   icon: <Icons.globe className="size-3" />,
-        // },
         {
-          type: "GitHub",
-          href: "https://github.com/faizm10/SpendSmart",
-          icon: <Icons.github className="size-3" />,
+          type: "Website",
+          href: "https://mcs-2020.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
         },
+        // {
+        //   type: "GitHub",
+        //   href: "https://github.com/faizm10/CodeDexHackathon",
+        //   icon: <Icons.github className="size-3" />,
+        // },
       ],
-      image: "/smartspend.png",
+      image: "/chatbot.png",
       video: "",
     },
+    
   ],
   hackathons: [
-    // {
-    //   title: "GeeseHacks 2024",
-    //   dates: "January 25th - 26th, 2024",
-    //   location: "Waterloo, Ontario",
-    //   description:
-    //     "coming soon",
-    //   image: "/geesehacks_logo.jpeg",
-    //   mlh: "/geesehacks_logo.jpeg",
-    //   links: [
-    //     // {
-    //     //   title: "Devpost",
-    //     //   icon: <Icons.globe className="h-4 w-4" />,
-    //     //   href: "https://devpost.com/software/ecotracker-9y23wb?ref_content=my-projects-tab&ref_feature=my_projects",
-    //     // },
-    //     // {
-    //     //   title: "Github",
-    //     //   icon: <Icons.github className="h-4 w-4" />,
-    //     //   href: "https://github.com/faizm10/HackTrent",
-    //     // },
-    //     // {
-    //     //   title: "Site",
-    //     //   icon: <Icons.globe className="h-4 w-4" />,
-    //     //   href: "https://ecotrack-beryl.vercel.app",
-    //     // },
-    //   ],
-    // },
     {
       title: "HackTrent 2024",
       dates: "November 8th - 10th, 2024",
