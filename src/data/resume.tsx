@@ -120,13 +120,14 @@ export const DATA = {
         "Next.js",
         "Typescript",
         "TailwindCSS",
-        "MagicUI",
-        "Shadcn UI",
-        "NextUI",
+        // "MagicUI",
+        // "Shadcn UI",
+        // "NextUI",
         "Supabase",
-        "Auth",
+        // "Auth",
         "Python",
         "Web-Scraping",
+        "Selenium",
       ],
       links: [
         // {
@@ -136,7 +137,7 @@ export const DATA = {
         // },
         // {
         //   type: "GitHub",
-        //   href: "https://github.com/faizm10/SpendSmart",
+        //   href: "https://github.com/faizm10/guelph.courses",
         //   icon: <Icons.github className="size-3" />,
         // },
       ],
@@ -155,8 +156,8 @@ export const DATA = {
         "Typescript",
         "TailwindCSS",
         "Supabase",
-        "SQL",
-        "Selenium",
+        // "SQL",
+        // "Selenium",
       ],
       links: [
         // {
@@ -237,6 +238,32 @@ export const DATA = {
   ],
   hackathons: [
     {
+      title: "HackCanada 2025",
+      dates: "February 21st - 23rd, 2025",
+      location: "Waterloo, Ontario",
+      description:
+        "Coming Soon",
+      image: "/hackcanada.webp",
+      mlh: "/hackcanada.png",
+      links: [
+        // {
+        //   title: "Devpost",
+        //   icon: <Icons.globe className="h-4 w-4" />,
+        //   href: "https://devpost.com/software/ecotracker-9y23wb?ref_content=my-projects-tab&ref_feature=my_projects",
+        // },
+        // {
+        //   title: "Github",
+        //   icon: <Icons.github className="h-4 w-4" />,
+        //   href: "https://github.com/faizm10/HackTrent",
+        // },
+        // {
+        //   title: "Site",
+        //   icon: <Icons.globe className="h-4 w-4" />,
+        //   href: "https://ecotrack-beryl.vercel.app",
+        // },
+      ],
+    },
+    {
       title: "HackTrent 2024",
       dates: "November 8th - 10th, 2024",
       location: "Peterborough, Ontario",
@@ -277,6 +304,11 @@ export const DATA = {
           title: "Github",
           icon: <Icons.github className="h-4 w-4" />,
           href: "https://github.com/faizm10/CodeDexHackathon",
+        },
+        {
+          title: "Site",
+          icon: <Icons.globe className="h-4 w-4" />,
+          href: "https://olympicpredict.vercel.app",
         },
       ],
     },
