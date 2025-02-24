@@ -8,6 +8,7 @@ interface Props {
   dates: string;
   location: string;
   image?: string;
+  badges?: readonly string[];
   links?: readonly {
     icon: React.ReactNode;
     title: string;
@@ -21,6 +22,7 @@ export function HackathonCard({
   dates,
   location,
   image,
+  badges,
   links,
 }: Props) {
   return (
@@ -32,9 +34,24 @@ export function HackathonCard({
         </Avatar>
       </div>
       <div className="flex flex-1 flex-col justify-start gap-1">
-        {dates && (
-          <time className="text-xs text-muted-foreground">{dates}</time>
-        )}
+        <div className="flex items-center gap-2">
+          {dates && (
+            <time className="text-xs text-muted-foreground">{dates}</time>
+          )}
+          {badges && (
+            <span className="inline-flex gap-x-1">
+              {badges.map((badge, index) => (
+                <Badge
+                  variant="secondary"
+                  className="align-middle text-xs"
+                  key={index}
+                >
+                  {badge}
+                </Badge>
+              ))}
+            </span>
+          )}
+        </div>
         <h2 className="font-semibold leading-none">{title}</h2>
         {location && (
           <p className="text-sm text-muted-foreground">{location}</p>
@@ -47,7 +64,7 @@ export function HackathonCard({
       </div>
       {links && links.length > 0 && (
         <div className="mt-2 flex flex-row flex-wrap items-start gap-2">
-          {links?.map((link, idx) => (
+          {links.map((link, idx) => (
             <Link href={link.href} key={idx}>
               <Badge key={idx} title={link.title} className="flex gap-2">
                 {link.icon}
