@@ -10,6 +10,7 @@ export const DATA = {
   // locationLink: "https://www.google.com/maps/place/toronto",
   description:
     "I'm a second-year Computer Science student at the University of Guelph, currently seeking 2025 Summer SWE internship opportunities 🌱",
+    // "Software Developer",
   summary:
     "I am a Computer Science student with a passion for creating innovative solutions, focusing on AI and web development to build efficient and user-friendly applications.",
   avatarUrl: "/me.png",
@@ -95,7 +96,7 @@ export const DATA = {
       href: "https://www.uoguelph.ca/",
       degree: "Bachelor's Degree of Computer Science (BCOMP)",
       logoUrl: "/uog.png",
-      start: "2023",
+      start: "2023 - ",
       end: "2026",
     },
     // {
@@ -103,7 +104,15 @@ export const DATA = {
     //   href: "https://www.uottawa.ca/en",
     //   degree: "CSI 3131: Operating System",
     //   logoUrl: "/UOttawa.jpeg",
-    //   start: "2025",
+    //   start: "Summer ",
+    //   end: "2025",
+    // },
+    // {
+    //   school: "University of Waterloo",
+    //   href: "https://uwaterloo.ca/",
+    //   degree: "CS 350: Operating System",
+    //   logoUrl: "/uWaterloo.png",
+    //   start: "Summer ",
     //   end: "2025",
     // },
   ],
@@ -140,6 +149,36 @@ export const DATA = {
         // },
       ],
       image: "/comingsoon.jpeg",
+      video: "",
+    },
+    {
+      title: "TenantShield",
+      href: "",
+      dates: "Feb 2025 - Feb 2025",
+      active: true,
+      description:
+        "Built an AI-powered legal assistant to help renters understand their rights, document disputes, and generate legal documents",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "TailwindCSS",
+        "Supabase",
+        "Google Gemini",
+        "NodeJS",
+      ],
+      links: [
+        // {
+        //   type: "Website",
+        //   href: "https://spendsmart-pink.vercel.app/",
+        //   icon: <Icons.globe className="size-3" />,
+        // },
+        {
+          type: "GitHub",
+          href: "https://github.com/faizm10/TenantShield",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/tenantshield.png",
       video: "",
     },
     {
@@ -239,7 +278,8 @@ export const DATA = {
       badges: ["🥇 1st Place - Poker"],
       dates: "February 21st - 23rd, 2025",
       location: "Waterloo, Ontario",
-      description: "TenantShield is an AI-powered legal assistant that helps Canadian renters understand their rights, dispute illegal rent increases or evictions, and generate legal documents. It provides an AI chatbot for legal guidance, a case builder to log disputes and upload evidence, and an automated legal document generator to assist tenants in protecting themselves against unfair landlord practices.",
+      description:
+        "TenantShield is an AI-powered legal assistant that helps Canadian renters understand their rights, dispute illegal rent increases or evictions, and generate legal documents. It provides an AI chatbot for legal guidance, a case builder to log disputes and upload evidence, and an automated legal document generator to assist tenants in protecting themselves against unfair landlord practices.",
       image: "/hackcanada.webp",
       mlh: "/hackcanada.png",
       links: [

@@ -90,7 +90,9 @@ export default function Page() {
                 altText={education.school}
                 title={education.school}
                 subtitle={education.degree}
-                period={`${education.start} - ${education.end}`}
+                // period={`${education.start} - ${education.end}`}
+                period={`${education.start} ${education.end}`}
+                // description={education.description}
               />
             </BlurFade>
           ))}
@@ -145,6 +147,7 @@ export default function Page() {
                   image={project.image}
                   video={project.video}
                   links={project.links}
+                  
                 />
               </BlurFade>
             ))}
