@@ -273,6 +273,18 @@ export const DATA = {
     },
   ],
   hackathons: [
+    // {
+    //   title: "cuHacking 2025",
+    //   badges: [],
+    //   dates: "March 14th - 16th, 2025",
+    //   location: "Ottawa, Ontario",
+    //   description:
+    //     "coming soon",
+    //   image: "/cuhacking-logo.svg",
+    //   mlh: "/hackcanada.png",
+    //   links: [
+    //   ],
+    // },
     {
       title: "HackCanada 2025",
       badges: ["🥇 1st Place - Poker"],

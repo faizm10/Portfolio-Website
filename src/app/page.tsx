@@ -166,11 +166,7 @@ export default function Page() {
                   Innovate. Collaborate. Code.
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Throughout my university journey, I had the opportunity to
-                  participate in over {DATA.hackathons.length} hackathons. I
-                  have met many talented individuals, networked with
-                  professionals, and collaborated on projects that pushed the
-                  boundaries of creativity and innovation.
+                i joined {DATA.hackathons.length} hackathons, met great people, and built cool projects.
                 </p>
               </div>
             </div>
