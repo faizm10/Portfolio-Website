@@ -94,7 +94,7 @@ export const DATA = {
     {
       school: "University of Guelph",
       href: "https://www.uoguelph.ca/",
-      degree: "Bachelor's Degree of Computer Science (BCOMP)",
+      degree: "Bachelor of Computing Honours (BCOMP)",
       logoUrl: "/uog.png",
       start: "2023 - ",
       end: "2026",

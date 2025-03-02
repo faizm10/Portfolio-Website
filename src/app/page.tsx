@@ -116,7 +116,7 @@ export default function Page() {
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
+              {/* <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
                   My Projects
                 </div>
@@ -127,6 +127,17 @@ export default function Page() {
                   I&apos;ve worked on a variety of projects, from simple
                   websites to complex web applications. Here are some of my
                   projects
+                </p>
+              </div> */}
+              <div className="space-y-2">
+                <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
+                  Projects
+                </div>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  just building
+                </h2>
+                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  i build projects
                 </p>
               </div>
             </div>
@@ -163,7 +174,7 @@ export default function Page() {
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
                   {/* I like building things */}
-                  Innovate. Collaborate. Code.
+                  {/* Innovate. Collaborate. Code. */}
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 i joined {DATA.hackathons.length} hackathons, met great people, and built cool projects.
