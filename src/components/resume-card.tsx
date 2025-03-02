@@ -15,7 +15,7 @@ interface ResumeCardProps {
   title: string;
   subtitle?: string;
   href?: string;
-  badges?: readonly string[];
+  // badges?: readonly string[];
   period: string;
   description?: string;
 }
@@ -25,7 +25,7 @@ export const ResumeCard = ({
   title,
   subtitle,
   href,
-  badges,
+  // badges,
   period,
   description,
 }: ResumeCardProps) => {
@@ -60,7 +60,7 @@ export const ResumeCard = ({
             <div className="flex items-center justify-between gap-x-2 text-base">
               <h3 className="inline-flex items-center justify-center font-semibold leading-none text-xs sm:text-sm">
                 {title}
-                {badges && (
+                {/* {badges && (
                   <span className="inline-flex gap-x-1">
                     {badges.map((badge, index) => (
                       <Badge
@@ -72,7 +72,7 @@ export const ResumeCard = ({
                       </Badge>
                     ))}
                   </span>
-                )}
+                )} */}
                 <ChevronRightIcon
                   className={cn(
                     "size-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100",

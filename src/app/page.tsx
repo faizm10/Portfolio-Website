@@ -65,7 +65,7 @@ export default function Page() {
                 title={work.company}
                 subtitle={work.title}
                 href={work.href}
-                badges={work.badges}
+                // badges={work.badges}
                 period={`${work.start} - ${work.end ?? "Present"}`}
                 description={work.description}
               />
@@ -147,7 +147,6 @@ export default function Page() {
                   image={project.image}
                   video={project.video}
                   links={project.links}
-                  
                 />
               </BlurFade>
             ))}

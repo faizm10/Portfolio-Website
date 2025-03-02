@@ -10,7 +10,7 @@ export const DATA = {
   // locationLink: "https://www.google.com/maps/place/toronto",
   description:
     "I'm a second-year Computer Science student at the University of Guelph, currently seeking 2025 Summer SWE internship opportunities 🌱",
-    // "Software Developer",
+  // "Software Developer",
   summary:
     "I am a Computer Science student with a passion for creating innovative solutions, focusing on AI and web development to build efficient and user-friendly applications.",
   avatarUrl: "/me.png",
@@ -68,7 +68,7 @@ export const DATA = {
     {
       company: "University of Guelph",
       href: "https://www.uoguelph.ca/",
-      badges: [],
+      // badges: [],
       location: "Remote",
       title: "Teaching Assistant",
       logoUrl: "/uog.png",
@@ -80,7 +80,7 @@ export const DATA = {
     {
       company: "University of Guelph",
       href: "https://www.uoguelph.ca/",
-      badges: [],
+      // badges: [],
       location: "Remote",
       title: "Undergraduate Research Assistant",
       logoUrl: "/uog.png",
