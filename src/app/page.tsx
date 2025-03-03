@@ -174,10 +174,11 @@ export default function Page() {
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
                   {/* I like building things */}
-                  {/* Innovate. Collaborate. Code. */}
+                  Innovate. Collaborate. Code.
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                i joined {DATA.hackathons.length} hackathons, met great people, and built cool projects.
+                  i joined {DATA.hackathons.length} hackathons, met great
+                  people, and built cool projects.
                 </p>
               </div>
             </div>
