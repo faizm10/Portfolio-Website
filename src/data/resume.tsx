@@ -65,6 +65,29 @@ export const DATA = {
   },
 
   work: [
+    // {
+    //   company: "University of Guelph - School of Computer Science",
+    //   href: "https://www.uoguelph.ca/computing/",
+    //   location: "Hybrid",
+    //   title: "Contract Full-Stack Developer",
+    //   logoUrl: "/uog.png",
+    //   start: "April 2025",
+    //   end: "TBD",
+    //   description: "TBD"
+    // },    
+    {
+      company: "University of Guelph",
+      href: "https://www.uoguelph.ca/",
+      // badges: [],
+      location: "Hybrid",
+      title: "Full-Stack Developer",
+      logoUrl: "/lang.png",
+      start: "May 2025",
+      end: "August 2025",
+      description:
+        // "Building a full-stack web platform using Next.js and Supabase to manage inventory and streamline student access to professional attire.",
+        "TBD",
+    },
     {
       company: "University of Guelph",
       href: "https://www.uoguelph.ca/",
@@ -85,7 +108,7 @@ export const DATA = {
       title: "Undergraduate Research Assistant",
       logoUrl: "/uog.png",
       start: "May 2024",
-      end: "Current",
+      end: "April 2025",
       description:
         "Developed and optimized an AI-powered chatbot for course support, integrating advanced AI techniques and ensuring seamless user interaction.",
     },
