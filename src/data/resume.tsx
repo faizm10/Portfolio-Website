@@ -12,8 +12,11 @@ export const DATA = {
     "I'm a second-year Computer Science student at the University of Guelph, currently seeking 2025 Summer SWE internship opportunities 🌱",
   // "Software Developer",
   summary:
-    "i'm interested in **full-stack applications, large language models, and artificial intelligence**.  \n\noutside of coding, i enjoy **[photography](/photo)** and writing on my **[blog](blog)**, where i share my journey, projects, and experiences in tech.",
-  avatarUrl: "/me.png",
+    // "i'm interested in **full-stack applications, large language models, and artificial intelligence**.  \n\noutside of coding, i enjoy **[photography](/photo)** and writing on my **[blog](blog)**, where i share my journey, projects, and experiences in tech.",
+    "i'm interested in **full-stack applications, large language models, and artificial intelligence**.  \n\noutside of coding, i enjoy **[photography](/photo)**",
+
+    avatarUrl: "/me.png",
+
 
   skills: [
     "React",
@@ -35,7 +38,7 @@ export const DATA = {
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/photo", icon: Camera, label: "Photography" },
-    { href: "/blog", icon: Notebook, label: "Blogs" },
+    // { href: "/blog", icon: Notebook, label: "Blogs" },
   ],
   contact: {
     email: "faizmustansar10@gmail.com",
@@ -96,9 +99,10 @@ export const DATA = {
       title: "Teaching Assistant",
       logoUrl: "/uog.png",
       start: "Sept 2024",
-      end: "Current",
+      end: "Present",
+      // end: "April 2025",
       description:
-        "Supported over 60 students by providing detailed feedback, addressing queries, and fostering engagement through online discussions.",
+        "Supported over 100 students by providing detailed feedback, addressing queries, and fostering engagement through online discussions.",
     },
     {
       company: "University of Guelph",

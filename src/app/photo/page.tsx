@@ -31,6 +31,7 @@ export default function PhotoPage() {
       <div className="columns-2 gap-4 sm:columns-3">
         {images.map((imageUrl, idx) => (
           <BlurFade key={imageUrl} delay={0.25 + idx * 0.05} inView>
+            
             <img
               className={`mb-4 rounded-lg object-cover ${
                 randomSizes[idx].height === "large" ? "h-96" : "h-auto"
@@ -38,6 +39,7 @@ export default function PhotoPage() {
               src={imageUrl}
               alt={`Custom photo ${idx + 1}`}
             />
+
           </BlurFade>
         ))}
       </div>
