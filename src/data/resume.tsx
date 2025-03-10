@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { Camera, HomeIcon, Notebook, NotebookIcon } from "lucide-react";
+import { Camera, HomeIcon, Notebook, NotebookIcon, Trophy } from "lucide-react";
 
 export const DATA = {
   name: "Faiz Mustansar",
@@ -9,13 +9,14 @@ export const DATA = {
   location: "Brampton, ON",
   // locationLink: "https://www.google.com/maps/place/toronto",
   description:
-    "I'm a second-year Computer Science student at the University of Guelph, currently seeking 2025 Summer SWE internship opportunities 🌱",
+    // "I'm a second-year Computer Science student at the University of Guelph, currently seeking 2025 Summer SWE internship opportunities 🌱",
+    "I'm a second-year Computer Science student at the University of Guelph",
   // "Software Developer",
   summary:
     // "i'm interested in **full-stack applications, large language models, and artificial intelligence**.  \n\noutside of coding, i enjoy **[photography](/photo)** and writing on my **[blog](blog)**, where i share my journey, projects, and experiences in tech.",
-    "i'm interested in **full-stack applications, large language models, and artificial intelligence**.  \n\noutside of coding, i enjoy **[photography](/photo)**",
+    "i'm interested in **full-stack applications, large language models, and artificial intelligence**.  \n\noutside of coding, i enjoy **[photography](/photo)** and playing some competitive [sports](/sports)",
 
-    avatarUrl: "/me.png",
+    avatarUrl: "/cat.jpeg",
 
 
   skills: [
@@ -38,6 +39,7 @@ export const DATA = {
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/photo", icon: Camera, label: "Photography" },
+    { href: "/sports", icon: Trophy, label: "Sports" },
     // { href: "/blog", icon: Notebook, label: "Blogs" },
   ],
   contact: {
@@ -301,14 +303,14 @@ export const DATA = {
   ],
   hackathons: [
     // {
-    //   title: "cuHacking 2025",
+    //   title: "",
     //   badges: [],
-    //   dates: "March 14th - 16th, 2025",
-    //   location: "Ottawa, Ontario",
+    //   dates: ", 2025",
+    //   location: ", Ontario",
     //   description:
     //     "coming soon",
-    //   image: "/cuhacking-logo.svg",
-    //   mlh: "/hackcanada.png",
+    //   image: "/",
+    //   mlh: "/",
     //   links: [
     //   ],
     // },
