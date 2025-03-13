@@ -70,16 +70,16 @@ export const DATA = {
   },
 
   work: [
-    // {
-    //   company: "University of Guelph - School of Computer Science",
-    //   href: "https://www.uoguelph.ca/computing/",
-    //   location: "Hybrid",
-    //   title: "Contract Full-Stack Developer",
-    //   logoUrl: "/uog.png",
-    //   start: "April 2025",
-    //   end: "TBD",
-    //   description: "TBD"
-    // },    
+    {
+      company: "Start-Up",
+      href: "",
+      location: "Remote",
+      title: "Incoming Software Developer",
+      logoUrl: "",
+      start: "May 2025",
+      end: "Present",
+      description: "TBD"
+    },    
     {
       company: "University of Guelph",
       href: "https://www.uoguelph.ca/",
