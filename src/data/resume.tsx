@@ -16,8 +16,7 @@ export const DATA = {
     // "i'm interested in **full-stack applications, large language models, and artificial intelligence**.  \n\noutside of coding, i enjoy **[photography](/photo)** and writing on my **[blog](blog)**, where i share my journey, projects, and experiences in tech.",
     "i'm interested in **full-stack applications, large language models, and artificial intelligence**.  \n\noutside of coding, i enjoy **[photography](/photo)** and playing some competitive [sports](/sports)",
 
-    avatarUrl: "/cat.jpeg",
-
+  avatarUrl: "/cat.jpeg",
 
   skills: [
     "React",
@@ -77,10 +76,10 @@ export const DATA = {
       title: "Incoming Part-Time Software Developer",
       logoUrl: "",
       start: "May 2025",
-      end: "Present",
+      end: "",
       // description: "Will be working alongside with Joe Sawada, Jeff Lindquist and Levi Cooperman"
-      description: "tbd"
-    },    
+      description: "tbd",
+    },
     {
       company: "University of Guelph",
       href: "https://www.uoguelph.ca/",
@@ -89,7 +88,7 @@ export const DATA = {
       title: "Incoming Full-Stack Developer",
       logoUrl: "/lang.png",
       start: "May 2025",
-      end: "August 2025",
+      end: "",
       description:
         // "Building a full-stack web platform using Next.js and Supabase to manage inventory and streamline student access to professional attire.",
         "tbd",
@@ -101,9 +100,8 @@ export const DATA = {
       location: "Remote",
       title: "Teaching Assistant",
       logoUrl: "/uog.png",
-      start: "Sept 2024",
-      end: "Present",
-      // end: "April 2025",
+      start: "Sept 2024 -",
+      end: "April 2025",
       description:
         "Supported over 100 students by providing detailed feedback, addressing queries, and fostering engagement through online discussions.",
     },
@@ -114,7 +112,7 @@ export const DATA = {
       location: "Remote",
       title: "Undergraduate Research Assistant",
       logoUrl: "/uog.png",
-      start: "May 2024",
+      start: "May 2024 -",
       end: "April 2025",
       description:
         "Developed and optimized an AI-powered chatbot for course support, integrating advanced AI techniques and ensuring seamless user interaction.",
@@ -184,7 +182,7 @@ export const DATA = {
     {
       title: "TenantShield",
       href: "",
-      dates: "Feb 2025 - Feb 2025",
+      dates: "Feb 2025",
       active: true,
       description:
         "Built an AI-powered legal assistant to help renters understand their rights, document disputes, and generate legal documents",
