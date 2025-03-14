@@ -74,24 +74,25 @@ export const DATA = {
       company: "Start-Up",
       href: "",
       location: "Remote",
-      title: "Incoming Software Developer",
+      title: "Incoming Part-Time Software Developer",
       logoUrl: "",
       start: "May 2025",
       end: "Present",
-      description: "TBD"
+      // description: "Will be working alongside with Joe Sawada, Jeff Lindquist and Levi Cooperman"
+      description: "tbd"
     },    
     {
       company: "University of Guelph",
       href: "https://www.uoguelph.ca/",
       // badges: [],
       location: "Hybrid",
-      title: "Full-Stack Developer",
+      title: "Incoming Full-Stack Developer",
       logoUrl: "/lang.png",
       start: "May 2025",
       end: "August 2025",
       description:
         // "Building a full-stack web platform using Next.js and Supabase to manage inventory and streamline student access to professional attire.",
-        "TBD",
+        "tbd",
     },
     {
       company: "University of Guelph",
