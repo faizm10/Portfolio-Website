@@ -187,6 +187,11 @@ export default async function GridView() {
                 </li>
                 <li className="flex items-center gap-1.5">
                   <Star className="h-3.5 w-3.5 text-blue-500" />
+                  <span>Competitive Basketball - QF</span>
+                </li>
+
+                <li className="flex items-center gap-1.5">
+                  <Star className="h-3.5 w-3.5 text-blue-500" />
                   <span>Competitive Ping Pong - QF</span>
                 </li>
               </ul>
