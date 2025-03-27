@@ -130,7 +130,7 @@ export const DATA = {
     {
       school: "University of Waterloo",
       href: "https://uwaterloo.ca/",
-      degree: "TBD",
+      degree: "CS 349 - User Interfaces",
       logoUrl: "/uWaterloo.png",
       start: "Summer ",
       end: "2025",
@@ -138,7 +138,7 @@ export const DATA = {
     {
       school: "University of Ottawa",
       href: "https://www.uottawa.ca/en",
-      degree: "TBD",
+      degree: "CSI 3131 - Operating Systems",
       logoUrl: "/UOttawa.jpeg",
       start: "Summer ",
       end: "2025",
