@@ -130,7 +130,7 @@ export const DATA = {
     {
       school: "University of Waterloo",
       href: "https://uwaterloo.ca/",
-      degree: "CS 350: Operating System",
+      degree: "TBD",
       logoUrl: "/uWaterloo.png",
       start: "Summer ",
       end: "2025",
