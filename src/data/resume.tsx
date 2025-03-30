@@ -146,7 +146,7 @@ export const DATA = {
   ],
   projects: [
     {
-      title: "guelph.courses",
+      title: "uoguelph.courses",
       href: "",
       dates: "Jan 2025 - Current",
       active: true,
@@ -167,7 +167,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://guelph-courses.vercel.app/",
+          href: "https://uoguelph.courses",
           icon: <Icons.globe className="size-3" />,
         },
         // {
