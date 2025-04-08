@@ -171,7 +171,7 @@ export default function Page() {
 
                     <div className="flex flex-col gap-4">
                       <div className="flex flex-wrap gap-2">
-                        <Badge variant="outline">Zohair S</Badge>
+                        <Badge variant="outline">Zohair A</Badge>
                         <Badge variant="outline">Lina A</Badge>
                         <Badge variant="outline">Michael C</Badge>
                         <Badge variant="outline">Talha N</Badge>
