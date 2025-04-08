@@ -9,13 +9,14 @@ export const DATA = {
   location: "Brampton, ON",
   // locationLink: "https://www.google.com/maps/place/toronto",
   description:
-    // "I'm a second-year Computer Science student at the University of Guelph, currently seeking 2025 Summer SWE internship opportunities 🌱",
-    "I'm a second-year Computer Science student at the University of Guelph",
+    "I'm a second-year Computer Science student at the University of Guelph, currently seeking 2025 Fall SWE internship opportunities 🌱",
+    // "I'm a second-year Computer Science student at the University of Guelph",
   // "Software Developer",
   summary:
     // "i'm interested in **full-stack applications, large language models, and artificial intelligence**.  \n\noutside of coding, i enjoy **[photography](/photo)** and writing on my **[blog](blog)**, where i share my journey, projects, and experiences in tech.",
     "i'm interested in **full-stack applications, large language models, and artificial intelligence**.  \n\noutside of coding, i enjoy **[photography](/photo)** and playing some competitive [sports](/sports)",
 
+  // avatarUrl: "/aiMe.jpeg",
   avatarUrl: "/cat.jpeg",
 
   skills: [
@@ -73,13 +74,24 @@ export const DATA = {
       company: "Start-Up",
       href: "",
       location: "Remote",
-      title: "Incoming Part-Time Software Developer",
+      title: "Incoming Software Developer",
       logoUrl: "",
       start: "May 2025",
       end: "",
       // description: "Will be working alongside with Joe Sawada, Jeff Lindquist and Levi Cooperman"
       description: "tbd",
     },
+    // {
+    //   company: "uoguelph.courses",
+    //   href: "https://uoguelph.courses/",
+    //   location: "Remote",
+    //   title: "Founder",
+    //   logoUrl: "", // You can add the logo URL here if you have one
+    //   start: "Jan 2025 - ",
+    //   end: "Present",
+    //   description: "I founded uoguelph.courses to help students at the University of Guelph easily find and review courses, professors, and schedules all in one place. Built with my co-founders Michael, Talha, and Harkirat, the site was inspired by platforms like uwflow and laurierflow. I led the frontend development, managed our Supabase database, and wrote Python scripts to automate data extraction from university sources. Since launch, we've helped hundreds of students plan their semesters more efficiently."
+    // },
+
     {
       company: "University of Guelph",
       href: "https://www.uoguelph.ca/",
@@ -120,14 +132,6 @@ export const DATA = {
   ],
   education: [
     {
-      school: "University of Guelph",
-      href: "https://www.uoguelph.ca/",
-      degree: "Bachelor of Computing Honours (BCOMP)",
-      logoUrl: "/uog.png",
-      start: "2023 - ",
-      end: "2026",
-    },
-    {
       school: "University of Waterloo",
       href: "https://uwaterloo.ca/",
       degree: "CS 349 - User Interfaces",
@@ -143,6 +147,14 @@ export const DATA = {
       start: "Summer ",
       end: "2025",
     },
+    {
+      school: "University of Guelph",
+      href: "https://www.uoguelph.ca/",
+      degree: "Bachelor of Computing Honours (BCOMP)",
+      logoUrl: "/uog.png",
+      start: "2023 - ",
+      end: "2026",
+    },
   ],
   projects: [
     {
@@ -150,7 +162,8 @@ export const DATA = {
       href: "",
       dates: "Jan 2025 - Current",
       active: true,
-      description: "A course search and review platform for University of Guelph",
+      description:
+        "A course search and review platform for University of Guelph",
       technologies: [
         "Next.js",
         "Typescript",
