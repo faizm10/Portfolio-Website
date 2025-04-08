@@ -1,0 +1,86 @@
+---
+title: "uoguelph.courses"
+publishedAt: "2024-04-08"
+summary: "story of how uoguelph.courses was formed"
+---
+
+# the beginning
+
+ever get tired of manually finding out the best prof for *x* course during *y* semester? what about finding courses that are super easy, or figuring out which third-year cs electives are easy or medium difficulty?
+
+yeah, same here. i got tired of asking upper years, checking reddit, scrolling through course outlines from 2024, or waiting on a random discord reply. it was just... too much. course selection felt like a guessing game, and it really didn’t have to be that way.
+
+so one day, i was talking with harkirat during our cis*3750 lecture and we were looking for a side project idea. and it hit me — let’s actually solve a problem that every uofg student faces. we started talking about course selection and how annoying it is, and soon after, we got michael in on it too.
+
+at that point, we were all just ranting. but then we realized: what if we built a site where you could **see** all courses in one place, **filter** them based on difficulty, prof, term, etc — and actually make smart decisions?
+
+and that’s how **uoguelph.courses** was born.
+
+# the idea
+
+we didn’t wanna build something super fancy. just something **useful**. it started off with a simple goal:
+
+> help students at guelph pick courses without the usual pain.
+
+so we made a list of what we wanted:
+- a way to search all courses quickly  
+- filters for term, department, difficulty, and more  
+- space for student reviews  
+- clean ui. no clutter. no nonsense.  
+
+we looked at sites like uwflow, laurierflow, and mcgill.courses and thought,  
+> "okay, something like this — but for uoguelph."
+
+![uwflow.com](/content/uwflow.png)  
+![mcgill.courses](/content/mcgill.png)
+
+# the build
+
+first, harkirat and i worked on some frontend stuff — building out pages, testing layouts, and setting up the basic structure in next.js + tailwind.
+
+but then we realized we had a big problem: **no data**.
+
+so i messaged michael. he’s great with python, and i knew he could help us scrape data from webadvisor, ratemyprofessors, and other sources. once we had him on board, things started moving fast. we ended up building 3 pages — one for all courses, one for professors, and an "about us" section. it was looking clean and had some basic but important info like course offerings, semester offerings, and a few other details.
+
+i thought to myself, “okay, this kinda feels like webadvisor... but with a *cleaner* ui.” then another idea hit me — what if we also include who taught the course and when they taught it? that way, it becomes like webadvisor + ratemyprof in one place. so i added both components into the same page and made sure the ui stayed clean and easy to use. after a week or two, it started looking way nicer than i expected.
+
+once we got the professor and course data looking right, we made some small tweaks to make the flow feel natural — and in the end, we were actually really happy with how the site turned out.
+
+then i brought in talha to help us with the database side of things, as well as adding auth for course reviews (we didn’t want random people leaving fake reviews, so for now, only users with a google account can leave a review). we were using supabase and needed to manage everything from course data to user reviews. we wanted real students to leave real insights, and we needed feedback to make the site even better and actually helpful.
+
+# the first version
+
+within about 1 month, we had something solid:
+- search by course code or title  
+- filter by term or department  
+- clean cards showing course info  
+- login required for leaving reviews  
+- feedback form  
+
+just a solid v1 that worked — no fluff.
+
+# the reaction
+
+we posted it around — discord, reddit, group chats — and honestly, the response was 🔥. people actually started using it and saying things like “yo this saved me so much time” or “this is exactly what i needed.” we ended up reaching almost **20k–25k** views after just one week of launch. it was wild — we honestly didn’t expect that. it gave us a huge boost of motivation to keep grinding and roll out more features to help students even more.
+
+below you’ll see that the site had almost 1.5k **unique** visitors and 6k total views — and that’s not even counting the views from reddit, snapchat, and discord, where we estimate the total reach was well over 20k.
+
+![launch stats](/content/launch.png)
+
+# what’s next
+
+shortly after launch, i recruited lina and zohair to help us roll out more advanced features — stuff like GPA graphs, better filtering, and a full review system that goes beyond just star ratings.
+
+we’re still working on this in our free time. here’s what’s coming:
+- GPA calculator  
+- improved course UI  
+- schedule builder  
+- better filtering (by difficulty, breadth, interest, etc.)  
+- improved search query system  
+- degree planner  
+- course alerts  
+- and more!!
+
+stay tuned to our updates!!
+
+—Faiz M

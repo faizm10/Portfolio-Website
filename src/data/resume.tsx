@@ -40,7 +40,7 @@ export const DATA = {
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/photo", icon: Camera, label: "Photography" },
     { href: "/sports", icon: Trophy, label: "Sports" },
-    // { href: "/blog", icon: Notebook, label: "Blogs" },
+    { href: "/blog", icon: Notebook, label: "Blogs" },
   ],
   contact: {
     email: "faizmustansar10@gmail.com",
@@ -315,13 +315,13 @@ export const DATA = {
   ],
   hackathons: [
     // {
-    //   title: "",
+    //   title: "JACHacks 2025",
     //   badges: [],
-    //   dates: ", 2025",
-    //   location: ", Ontario",
+    //   dates: "April 25th - 26th, 2025",
+    //   location: "Montreal, Quebec",
     //   description:
     //     "coming soon",
-    //   image: "/",
+    //   image: "/jachacks.png",
     //   mlh: "/",
     //   links: [
     //   ],
