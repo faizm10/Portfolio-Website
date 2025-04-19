@@ -314,18 +314,7 @@ export const DATA = {
     },
   ],
   hackathons: [
-    {
-      title: "JACHacks 2025",
-      badges: [],
-      dates: "April 25th - 26th, 2025",
-      location: "Montreal, Quebec",
-      description:
-        "coming soon",
-      image: "/jachacks.png",
-      mlh: "/",
-      links: [
-      ],
-    },
+   
     {
       title: "HackCanada 2025",
       badges: ["🥇 1st Place - Poker"],
