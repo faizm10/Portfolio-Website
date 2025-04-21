@@ -10,7 +10,7 @@ export const DATA = {
   // locationLink: "https://www.google.com/maps/place/toronto",
   description:
     "I'm a second-year Computer Science student at the University of Guelph, currently seeking 2025 Fall SWE internship opportunities 🌱",
-    // "I'm a second-year Computer Science student at the University of Guelph",
+  // "I'm a second-year Computer Science student at the University of Guelph",
   // "Software Developer",
   summary:
     // "i'm interested in **full-stack applications, large language models, and artificial intelligence**.  \n\noutside of coding, i enjoy **[photography](/photo)** and writing on my **[blog](blog)**, where i share my journey, projects, and experiences in tech.",
@@ -74,12 +74,13 @@ export const DATA = {
       company: "Start-Up",
       href: "",
       location: "Remote",
-      title: "Incoming Software Developer",
+      title: "Incoming Software Developer Intern",
       logoUrl: "",
       start: "May 2025",
-      end: "",
-      // description: "Will be working alongside with Joe Sawada, Jeff Lindquist and Levi Cooperman"
-      description: "tbd",
+      end: "- Present",
+      description:
+        "Will be working alongside with Joe Sawada, Jeff Lindquist and Levi Cooperman",
+      // description: "tbd",
     },
     // {
     //   company: "uoguelph.courses",
@@ -100,10 +101,9 @@ export const DATA = {
       title: "Incoming Full-Stack Developer",
       logoUrl: "/lang.png",
       start: "May 2025",
-      end: "",
+      end: "- Present",
       description:
-        // "Building a full-stack web platform using Next.js and Supabase to manage inventory and streamline student access to professional attire.",
-        "tbd",
+        "Building a full-stack web platform using Next.js and Supabase to manage inventory and streamline student access to professional attire.",
     },
     {
       company: "University of Guelph",
@@ -314,7 +314,6 @@ export const DATA = {
     },
   ],
   hackathons: [
-   
     {
       title: "HackCanada 2025",
       badges: ["🥇 1st Place - Poker"],
