@@ -8,7 +8,15 @@ import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import { ExternalLink, Newspaper } from "lucide-react";
 import Markdown from "react-markdown";
+import { CalendarIcon } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import { LinkPreview } from "@/components/ui/LinkPreview";
 const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
@@ -47,6 +55,22 @@ export default function Page() {
           <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
             {DATA.summary}
           </Markdown>
+          {/*           
+          <p className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+            I am currently a Computer Science student at the{" "}
+            <LinkPreview
+              url="https://www.uoguelph.ca/"
+              className="inline font-semibold underline-offset-2 hover:underline"
+            >
+              University of Guelph
+            </LinkPreview>
+            .
+            
+          </p>
+          <p className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+          i'm interested in <span className="  font-bold">full-stack applications</span>, <span>large language models</span>, and <span>artificial intelligence</span>.
+
+          </p> */}
         </BlurFade>
       </section>
       <section id="work">

@@ -10,13 +10,8 @@ export const DATA = {
   // locationLink: "https://www.google.com/maps/place/toronto",
   description:
     "I'm a second-year Computer Science student at the University of Guelph, currently seeking 2025 Fall SWE internship opportunities 🌱",
-  // "I'm a second-year Computer Science student at the University of Guelph",
-  // "Software Developer",
   summary:
-    // "i'm interested in **full-stack applications, large language models, and artificial intelligence**.  \n\noutside of coding, i enjoy **[photography](/photo)** and writing on my **[blog](blog)**, where i share my journey, projects, and experiences in tech.",
     "i'm interested in **full-stack applications, large language models, and artificial intelligence**.  \n\noutside of coding, i enjoy **[photography](/photo)** and playing some competitive [sports](/sports)",
-
-  // avatarUrl: "/aiMe.jpeg",
   avatarUrl: "/cat.jpeg",
 
   skills: [
