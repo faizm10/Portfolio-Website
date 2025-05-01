@@ -33,7 +33,7 @@
     "**/*.tsx",
     "src/components/latestcode.jsx",
     ".next/types/**/*.ts"
-  ],
+, "src/components/latestcode.js"  ],
   "exclude": [
     "node_modules",
     ".next"

@@ -3,20 +3,10 @@ import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import { ExternalLink, Newspaper } from "lucide-react";
 import Markdown from "react-markdown";
-import { CalendarIcon } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
-import { LinkPreview } from "@/components/ui/LinkPreview";
 const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
@@ -39,10 +29,13 @@ export default function Page() {
               />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
-              <Avatar className="bordered size-40">
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-                <AvatarFallback>{DATA.initials}</AvatarFallback>
-              </Avatar>
+              <div className="w-28 h-28 md:w-44 md:h-44 rounded-full overflow-hidden shadow-lg">
+                <img
+                  src={DATA.avatarUrl}
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </BlurFade>
           </div>
         </div>
@@ -55,22 +48,6 @@ export default function Page() {
           <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
             {DATA.summary}
           </Markdown>
-          {/*           
-          <p className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-            I am currently a Computer Science student at the{" "}
-            <LinkPreview
-              url="https://www.uoguelph.ca/"
-              className="inline font-semibold underline-offset-2 hover:underline"
-            >
-              University of Guelph
-            </LinkPreview>
-            .
-            
-          </p>
-          <p className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-          i'm interested in <span className="  font-bold">full-stack applications</span>, <span>large language models</span>, and <span>artificial intelligence</span>.
-
-          </p> */}
         </BlurFade>
       </section>
       <section id="work">
@@ -90,7 +67,7 @@ export default function Page() {
                 title={work.company}
                 subtitle={work.title}
                 href={work.href}
-                // badges={work.badges}
+                badges={work.badges}
                 period={`${work.start} ${work.end ?? "Present"}`}
                 description={work.description}
               />

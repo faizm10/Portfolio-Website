@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { Camera, HomeIcon, Notebook, NotebookIcon, Trophy } from "lucide-react";
+import { Camera, HomeIcon, Notebook, Trophy } from "lucide-react";
 
 export const DATA = {
   name: "Faiz Mustansar",
@@ -11,8 +11,11 @@ export const DATA = {
   description:
     "I'm a second-year Computer Science student at the University of Guelph, currently seeking 2025 Fall SWE internship opportunities 🌱",
   summary:
-    "i'm interested in **full-stack applications, large language models, and artificial intelligence**.  \n\noutside of coding, i enjoy **[photography](/photo)** and playing some competitive [sports](/sports)",
-  avatarUrl: "/cat.jpeg",
+    // "i'm interested in **full-stack applications, large language models, and artificial intelligence**. \n\nthis summer, i'm working as a **full-stack developer** for the university of guelph as well as working alongside with Joe Sawada for a side project. \n\noutside of coding, i enjoy **[photography](/photo)**, playing competitive **[sports](/sports)**, and participating in hackathons to build cool things with friends.",
+    "i'm interested in **full-stack applications, large language models, and artificial intelligence**. \n\noutside of coding, i enjoy **[photography](/photo)**, playing competitive **[sports](/sports)**, and participating in hackathons to build cool things with friends.",
+
+    avatarUrl: "/faiz.jpeg",
+
 
   skills: [
     "React",
@@ -30,6 +33,16 @@ export const DATA = {
     "Postgres",
     "Java",
     "JavaScript",
+    "REST API",
+    "Flask",
+    "Linux",
+    "Bash",
+    "CI/CD",
+    "Figma",
+    "GitHub Actions",
+    "Agile/Scrum",
+    "ChatGPT API",
+    "Google Gemini",
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -66,34 +79,23 @@ export const DATA = {
 
   work: [
     {
-      company: "Start-Up",
+      company: "Brown & Beatty",
       href: "",
+      badges: [],
       location: "Remote",
-      title: "Incoming Software Developer Intern",
-      logoUrl: "",
+      title: "Software Developer Intern",
+      logoUrl: "./image.png",
       start: "May 2025",
       end: "- Present",
       description:
-        "Will be working alongside with Joe Sawada, Jeff Lindquist and Levi Cooperman",
-      // description: "tbd",
+        "Will be working alongside with Joe Sawada, Jeff Lindquist and Levi Cooperman on a AI-leveraged software solution transforming the labour dispute resolution process for unions, associations, and their employers.",
     },
-    // {
-    //   company: "uoguelph.courses",
-    //   href: "https://uoguelph.courses/",
-    //   location: "Remote",
-    //   title: "Founder",
-    //   logoUrl: "", // You can add the logo URL here if you have one
-    //   start: "Jan 2025 - ",
-    //   end: "Present",
-    //   description: "I founded uoguelph.courses to help students at the University of Guelph easily find and review courses, professors, and schedules all in one place. Built with my co-founders Michael, Talha, and Harkirat, the site was inspired by platforms like uwflow and laurierflow. I led the frontend development, managed our Supabase database, and wrote Python scripts to automate data extraction from university sources. Since launch, we've helped hundreds of students plan their semesters more efficiently."
-    // },
-
     {
       company: "University of Guelph",
       href: "https://www.uoguelph.ca/",
-      // badges: [],
+      badges: [],
       location: "Hybrid",
-      title: "Incoming Full-Stack Developer",
+      title: "Full-Stack Developer",
       logoUrl: "/lang.png",
       start: "May 2025",
       end: "- Present",
@@ -103,7 +105,7 @@ export const DATA = {
     {
       company: "University of Guelph",
       href: "https://www.uoguelph.ca/",
-      // badges: [],
+      badges: [],
       location: "Remote",
       title: "Teaching Assistant",
       logoUrl: "/uog.png",
@@ -115,21 +117,22 @@ export const DATA = {
     {
       company: "University of Guelph",
       href: "https://www.uoguelph.ca/",
-      // badges: [],
+      badges: [],
       location: "Remote",
       title: "Undergraduate Research Assistant",
       logoUrl: "/uog.png",
       start: "May 2024 -",
       end: "April 2025",
       description:
-        "Developed and optimized an AI-powered chatbot for course support, integrating advanced AI techniques and ensuring seamless user interaction.",
+        "Developed and optimized an AI-powered chatbot for course support, integrating advanced AI techniques and ensuring seamless user interactions while reserching the ethics of utilizing chatbots in university classroom setting.",
     },
   ],
   education: [
     {
       school: "University of Waterloo",
       href: "https://uwaterloo.ca/",
-      degree: "CS 349 - User Interfaces",
+      degree:
+        "Mathematics, Non-Degree - Letter of Permission, Computer Science",
       logoUrl: "/uWaterloo.png",
       start: "Summer ",
       end: "2025",
@@ -137,7 +140,8 @@ export const DATA = {
     {
       school: "University of Ottawa",
       href: "https://www.uottawa.ca/en",
-      degree: "CSI 3131 - Operating Systems",
+      degree:
+        "Engineering, Non-Degree - Letter of Permission, Computer Science",
       logoUrl: "/UOttawa.jpeg",
       start: "Summer ",
       end: "2025",
