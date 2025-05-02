@@ -11,8 +11,7 @@ export const DATA = {
   description:
     "I'm a second-year Computer Science student at the University of Guelph, currently seeking 2025 Fall SWE internship opportunities 🌱",
   summary:
-    // "i'm interested in **full-stack applications, large language models, and artificial intelligence**. \n\nthis summer, i'm working as a **full-stack developer** for the university of guelph as well as working alongside with Joe Sawada for a side project. \n\noutside of coding, i enjoy **[photography](/photo)**, playing competitive **[sports](/sports)**, and participating in hackathons to build cool things with friends.",
-    "i'm interested in **full-stack applications, large language models, and artificial intelligence**. \n\noutside of coding, i enjoy **[photography](/photo)**, playing competitive **[sports](/sports)**, and participating in hackathons to build cool things with friends.",
+    "i'm passionate about **full-stack applications**, experimenting with **large language models**, and applying **artificial intelligence** to solve real-world problems. \n\nthis summer, i’m working as a **full-stack developer** at the university of guelph, building student-focused tools, and contributing to a **AI-leveraged software solution** project alongside professor joe sawada. \n\noutside of tech, i enjoy **[photography](/photo)**, playing competitive **[sports](/sports)**, and participating in **hackathons** to bring creative ideas to life with friends.",
   avatarUrl: "/faiz.jpeg",
 
   skills: [
@@ -44,7 +43,8 @@ export const DATA = {
     "CI/CD",
     "Figma",
     "GitHub Actions",
-    "Agile/Scrum",
+    "Agile",
+    "Scrum",
     "ChatGPT API",
     "Google Gemini",
   ],
@@ -91,8 +91,8 @@ export const DATA = {
       logoUrl: "./image.png",
       start: "May 2025",
       end: "- Present",
-      description: "Will be working alongside with [Joe Sawada](https://www.socs.uoguelph.ca/~sawada/), [Jeff Lindquist](https://www.linkedin.com/in/jeff-lindquist-0497b625/) and [Levi Cooperman](https://www.linkedin.com/in/levi-cooperman-44a1a52/) on an AI-leveraged software solution transforming the labour dispute resolution process for unions, associations, and their employers",
-
+      description:
+        "Will be working alongside with [Joe Sawada](https://www.socs.uoguelph.ca/~sawada/), [Jeff Lindquist](https://www.linkedin.com/in/jeff-lindquist-0497b625/) and [Levi Cooperman](https://www.linkedin.com/in/levi-cooperman-44a1a52/) on an AI-leveraged software solution transforming the labour dispute resolution process for unions, associations, and their employers",
     },
     {
       company: "University of Guelph",
@@ -171,7 +171,7 @@ export const DATA = {
   projects: [
     {
       title: "uoguelph.courses",
-      href: "",
+      href: "/blog/uoguelph.courses",
       dates: "Jan 2025 - Current",
       active: true,
       description:

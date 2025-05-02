@@ -1,86 +1,77 @@
 ---
 title: "uoguelph.courses"
-publishedAt: "2024-04-08"
-summary: "story of how uoguelph.courses was formed"
+publishedAt: "2025-04-08"
+summary: "The story of how uoguelph.courses came to life"
 ---
 
-# the beginning
+## A lightbulb moment in CIS*3750
 
-ever get tired of manually finding out the best prof for *x* course during *y* semester? what about finding courses that are super easy, or figuring out which third-year cs electives are easy or medium difficulty?
+Ever spent way too long hunting down the perfect professor for a course, or refreshing Reddit threads for difficulty ratings? That was me last year—scrolling through 2024 outlines, pestering upper years, and waiting on Discord notifications. Course selection shouldn’t feel like blindfolded pinball, but that’s exactly how choosing classes at Guelph felt.
 
-yeah, same here. i got tired of asking upper years, checking reddit, scrolling through course outlines from 2024, or waiting on a random discord reply. it was just... too much. course selection felt like a guessing game, and it really didn’t have to be that way.
+One afternoon in CIS*3750, I was venting to Harkirat about this mess of links and PDFs. We sketched out the idea on a whiteboard: what if there was one place to **browse** every course, **filter** by term or professor, and read **real student reviews**? I hit up Michael and he was down to help us tackle data scraping. In minutes, we had the core concept—uoguelph.courses was officially born.
 
-so one day, i was talking with harkirat during our cis*3750 lecture and we were looking for a side project idea. and it hit me — let’s actually solve a problem that every uofg student faces. we started talking about course selection and how annoying it is, and soon after, we got michael in on it too.
+## Defining a clear goal
 
-at that point, we were all just ranting. but then we realized: what if we built a site where you could **see** all courses in one place, **filter** them based on difficulty, prof, term, etc — and actually make smart decisions?
+We didn’t need a flashy launch—that would only slow us down. Our mission was simple:
 
-and that’s how **uoguelph.courses** was born.
+> Build a no-nonsense course search that actually helps UofG students plan their semesters.
 
-# the idea
+Key features at launch:
+- Fast course search by title or code  
+- Filters for term, department, and difficulty  
+- Professor profiles with past teaching history  
+- Student reviews (guarded by Google-only login)  
+- Clean, responsive UI in Next.js + Tailwind  
 
-we didn’t wanna build something super fancy. just something **useful**. it started off with a simple goal:
-
-> help students at guelph pick courses without the usual pain.
-
-so we made a list of what we wanted:
-- a way to search all courses quickly  
-- filters for term, department, difficulty, and more  
-- space for student reviews  
-- clean ui. no clutter. no nonsense.  
-
-we looked at sites like uwflow, laurierflow, and mcgill.courses and thought,  
-> "okay, something like this — but for uoguelph."
-
+We looked at sites like:
 ![uwflow.com](/content/uwflow.png)  
 ![mcgill.courses](/content/mcgill.png)
 
-# the build
+—and thought, “Okay, something like this—but built for Guelph.”
 
-first, harkirat and i worked on some frontend stuff — building out pages, testing layouts, and setting up the basic structure in next.js + tailwind.
+## From sketch to site
 
-but then we realized we had a big problem: **no data**.
+1. **Frontend groundwork**  
+   Harkirat and I set up the Next.js pages, crafted layouts with Tailwind, and wired in basic search and filter components.
 
-so i messaged michael. he’s great with python, and i knew he could help us scrape data from webadvisor, ratemyprofessors, and other sources. once we had him on board, things started moving fast. we ended up building 3 pages — one for all courses, one for professors, and an "about us" section. it was looking clean and had some basic but important info like course offerings, semester offerings, and a few other details.
+2. **Data gathering**  
+   Michael built Python scrapers to pull course listings from WebAdvisor and ratings from RateMyProfessors. Suddenly, we had hundreds of courses and professor records ready to display.
 
-i thought to myself, “okay, this kinda feels like webadvisor... but with a *cleaner* ui.” then another idea hit me — what if we also include who taught the course and when they taught it? that way, it becomes like webadvisor + ratemyprof in one place. so i added both components into the same page and made sure the ui stayed clean and easy to use. after a week or two, it started looking way nicer than i expected.
+3. **UI polish & integration**  
+   I merged course and professor data into unified cards—now you could see who taught CS*3760 in Fall 2023 alongside real student feedback, all in one glance.
 
-once we got the professor and course data looking right, we made some small tweaks to make the flow feel natural — and in the end, we were actually really happy with how the site turned out.
+4. **Authentication & reviews**  
+   Talha stepped in to design our Supabase schema and add Google-account login. That way, reviews came from actual students, not anonymous bots.
 
-then i brought in talha to help us with the database side of things, as well as adding auth for course reviews (we didn’t want random people leaving fake reviews, so for now, only users with a google account can leave a review). we were using supabase and needed to manage everything from course data to user reviews. we wanted real students to leave real insights, and we needed feedback to make the site even better and actually helpful.
+In four weeks, we went from blank repo to a working v1:
 
-# the first version
+- **Search** by code/title  
+- **Filter** by term & department  
+- **Course cards** with offerings, instructors, and average ratings  
+- **Login-gated** review system  
+- **Feedback form** for future ideas  
 
-within about 1 month, we had something solid:
-- search by course code or title  
-- filter by term or department  
-- clean cards showing course info  
-- login required for leaving reviews  
-- feedback form  
+## Early reactions
 
-just a solid v1 that worked — no fluff.
+We dropped the link in Discord and Reddit, fully expecting a polite nod and crickets. Instead, students dove in:
 
-# the reaction
+> “This saved me hours—thank you!”  
+> “Finally, something that feels built for Guelph.”
 
-we posted it around — discord, reddit, group chats — and honestly, the response was 🔥. people actually started using it and saying things like “yo this saved me so much time” or “this is exactly what i needed.” we ended up reaching almost **20k–25k** views after just one week of launch. it was wild — we honestly didn’t expect that. it gave us a huge boost of motivation to keep grinding and roll out more features to help students even more.
-
-below you’ll see that the site had almost 1.5k **unique** visitors and 6k total views — and that’s not even counting the views from reddit, snapchat, and discord, where we estimate the total reach was well over 20k.
+In the first week alone, the site logged **1.5 k unique visitors**, **6 k pageviews**, and an estimated **20–25 k** total reach across social shares:
 
 ![launch stats](/content/launch.png)
 
-# what’s next
+## What’s on deck
 
-shortly after launch, i recruited lina and zohair to help us roll out more advanced features — stuff like GPA graphs, better filtering, and a full review system that goes beyond just star ratings.
+With the core live and feedback rolling in, we’re already planning the next features:
 
-we’re still working on this in our free time. here’s what’s coming:
-- GPA calculator  
-- improved course UI  
-- schedule builder  
-- better filtering (by difficulty, breadth, interest, etc.)  
-- improved search query system  
-- degree planner  
-- course alerts  
-- and more!!
+- **GPA calculator** for planning course loads  
+- **Schedule builder** to spot timetable conflicts  
+- **Advanced filters** by difficulty, breadth requirement, and interest tags  
+- **Degree planner** to track progress toward graduation  
+- **Course alerts** for enrollment openings  
 
-stay tuned to our updates!!
+uoguelph.courses isn’t done—it’s only getting started. If you’re a Guelph student and haven’t tried it yet, give it a spin and let us know what you need next.
 
-—Faiz M
+—Faiz Mustansar  

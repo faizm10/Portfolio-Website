@@ -226,6 +226,32 @@ export default async function GridView() {
           </Card>
         </div>
       </div>
+      <div>
+        <h2 className="text-lg font-bold mb-3 flex items-center">
+          University of Waterloo
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {/* Summer 2025 */}
+          <Card className="border-l-4 border-l-orange-400">
+            <CardContent className="p-3">
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="font-semibold text-sm">Summer 2025</h3>
+              </div>
+              <ul className="space-y-1.5 text-xs">
+                <li className="flex items-center gap-1.5">
+                  {/* <Star className="h-3.5 w-3.5 text-blue-500" /> */}
+                  <span>Competitive Soccer 11v11 - TBD</span>
+                </li>
+                <li className="flex items-center gap-1.5">
+                  {/* <Star className="h-3.5 w-3.5 text-blue-500" /> */}
+                  <span>Competitive Soccer 6v6 - TBD</span>
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
       {/* Summer Leagues */}
       <div className="mb-8">
         <h2 className="text-lg font-bold mb-3 flex items-center">

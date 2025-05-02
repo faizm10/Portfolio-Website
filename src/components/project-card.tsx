@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import Markdown from "react-markdown";
-
+import { BorderBeam } from "./magicui/border-beam";
 interface Props {
   title: string;
   href?: string;
@@ -111,6 +111,7 @@ export function ProjectCard({
           </div>
         )}
       </CardFooter>
+      {/* <BorderBeam duration={8} size={500} /> */}
     </Card>
   );
 }
