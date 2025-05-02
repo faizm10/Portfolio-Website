@@ -13,9 +13,7 @@ export const DATA = {
   summary:
     // "i'm interested in **full-stack applications, large language models, and artificial intelligence**. \n\nthis summer, i'm working as a **full-stack developer** for the university of guelph as well as working alongside with Joe Sawada for a side project. \n\noutside of coding, i enjoy **[photography](/photo)**, playing competitive **[sports](/sports)**, and participating in hackathons to build cool things with friends.",
     "i'm interested in **full-stack applications, large language models, and artificial intelligence**. \n\noutside of coding, i enjoy **[photography](/photo)**, playing competitive **[sports](/sports)**, and participating in hackathons to build cool things with friends.",
-
-    avatarUrl: "/faiz.jpeg",
-
+  avatarUrl: "/faiz.jpeg",
 
   skills: [
     "React",
@@ -27,6 +25,12 @@ export const DATA = {
     "Supabase",
     "React",
     "Docker",
+    "Zod",
+    "Material UI",
+    "Mongoose",
+    "Prisma",
+    "GraphQL",
+    "pandas",
     "SQL",
     "HTML5",
     "CSS",
@@ -87,8 +91,8 @@ export const DATA = {
       logoUrl: "./image.png",
       start: "May 2025",
       end: "- Present",
-      description:
-        "Will be working alongside with Joe Sawada, Jeff Lindquist and Levi Cooperman on a AI-leveraged software solution transforming the labour dispute resolution process for unions, associations, and their employers.",
+      description: "Will be working alongside with [Joe Sawada](https://www.socs.uoguelph.ca/~sawada/), [Jeff Lindquist](https://www.linkedin.com/in/jeff-lindquist-0497b625/) and [Levi Cooperman](https://www.linkedin.com/in/levi-cooperman-44a1a52/) on an AI-leveraged software solution transforming the labour dispute resolution process for unions, associations, and their employers",
+
     },
     {
       company: "University of Guelph",
@@ -128,6 +132,15 @@ export const DATA = {
     },
   ],
   education: [
+    // {
+    //   school: "University of Waterloo",
+    //   href: "https://uwaterloo.ca/",
+    //   degree:
+    //     "Master of Mathematics in Computer Science",
+    //   logoUrl: "/uWaterloo.png",
+    //   start: "September 2026 ",
+    //   end: "April 2028",
+    // },
     {
       school: "University of Waterloo",
       href: "https://uwaterloo.ca/",
