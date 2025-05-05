@@ -47,6 +47,8 @@ export const DATA = {
     "Scrum",
     "ChatGPT API",
     "Google Gemini",
+    "Cohere API",
+    "AWS S3"
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -138,8 +140,8 @@ export const DATA = {
     //   degree:
     //     "Master of Mathematics in Computer Science",
     //   logoUrl: "/uWaterloo.png",
-    //   start: "September 2026 ",
-    //   end: "April 2028",
+    //   start: "Sept 2026 - ",
+    //   end: "Apr 2028",
     // },
     {
       school: "University of Waterloo",
