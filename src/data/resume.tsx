@@ -147,7 +147,7 @@ export const DATA = {
       school: "University of Waterloo",
       href: "https://uwaterloo.ca/",
       degree:
-        "Mathematics, Non-Degree - Letter of Permission, Computer Science",
+        "Mathematics, Computer Science",
       logoUrl: "/uWaterloo.png",
       start: "Summer ",
       end: "2025",
@@ -156,7 +156,7 @@ export const DATA = {
       school: "University of Ottawa",
       href: "https://www.uottawa.ca/en",
       degree:
-        "Engineering, Non-Degree - Letter of Permission, Computer Science",
+        "Engineering, Computer Science",
       logoUrl: "/UOttawa.jpeg",
       start: "Summer ",
       end: "2025",
