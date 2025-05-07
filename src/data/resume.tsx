@@ -89,7 +89,7 @@ export const DATA = {
       href: "",
       badges: [],
       location: "Remote",
-      title: "Software Developer Intern",
+      title: "Full-Stack Developer",
       logoUrl: "./image.png",
       start: "May 2025",
       end: "- Present",
@@ -328,6 +328,28 @@ export const DATA = {
     },
   ],
   hackathons: [
+    {
+      title: "Global Hack Week: Open Source Week",
+      badges: [],
+      dates: "May 9nd - 15th, 2025",
+      location: "Remote",
+      description:
+        "",
+      image: "/mlh.svg",
+      mlh: "/mlh.svg",
+      links: [
+        // {
+        //   title: "Devpost",
+        //   icon: <Icons.globe className="h-4 w-4" />,
+        //   href: "https://dorahacks.io/buidl/23096",
+        // },
+        // {
+        //   title: "Github",
+        //   icon: <Icons.github className="h-4 w-4" />,
+        //   href: "https://github.com/faizm10/hackCanada",
+        // },
+      ],
+    },
     {
       title: "HackCanada 2025",
       badges: ["🥇 1st Place - Poker"],
