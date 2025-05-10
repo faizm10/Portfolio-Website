@@ -69,7 +69,7 @@ export const DATA = {
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "https://www.linkedin.com/in/faiz-mustansar-a9a435213/",
+        url: "https://www.linkedin.com/in/faizmustansar/",
         icon: Icons.linkedin,
 
         navbar: true,
