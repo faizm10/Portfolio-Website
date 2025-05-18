@@ -134,23 +134,14 @@ export const DATA = {
     },
   ],
   education: [
-    // {
-    //   school: "University of Waterloo",
-    //   href: "https://uwaterloo.ca/",
-    //   degree:
-    //     "Master of Mathematics in Computer Science",
-    //   logoUrl: "/uWaterloo.png",
-    //   start: "Sept 2026 - ",
-    //   end: "Apr 2028",
-    // },
     {
       school: "University of Waterloo",
       href: "https://uwaterloo.ca/",
       degree:
         "Mathematics, Computer Science",
       logoUrl: "/uWaterloo.png",
-      start: "Summer ",
-      end: "2025",
+      start: "Summer 2025 - ",
+      end: "Present",
     },
     {
       school: "University of Ottawa",
