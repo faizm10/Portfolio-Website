@@ -4,8 +4,9 @@ import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { DATA } from "@/data/resume";
-import { ExternalLink, Newspaper } from "lucide-react";
+import { ArrowRight, ExternalLink, Newspaper } from "lucide-react";
 import Markdown from "react-markdown";
 const BLUR_FADE_DELAY = 0.04;
 
@@ -27,6 +28,12 @@ export default function Page() {
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
+              <a href="/NewFaizMustansarResume.pdf">
+                <Button variant="outline">
+                  <ArrowRight />
+                  Resume
+                </Button>
+              </a>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
               <div className="w-28 h-28 md:w-44 md:h-44 rounded-full overflow-hidden shadow-lg">
