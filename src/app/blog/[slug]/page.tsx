@@ -1,28 +1,31 @@
-import { getBlogPosts, getPost } from "@/data/blog"
-import { DATA } from "@/data/resume"
-import { formatDate } from "@/lib/utils"
-import { getViews } from "@/data/page-views"
-import type { Metadata } from "next"
-import { notFound } from "next/navigation"
-import { Suspense } from "react"
-import ViewCounter from "@/components/view-counter"
+import { getBlogPosts, getPost } from "@/data/blog";
+import { DATA } from "@/data/resume";
+import { formatDate } from "@/lib/utils";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 export async function generateStaticParams() {
-  const posts = await getBlogPosts()
-  return posts.map((post) => ({ slug: post.slug }))
+  const posts = await getBlogPosts();
+  return posts.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: {
   params: {
-    slug: string
-  }
+    slug: string;
+  };
 }): Promise<Metadata | undefined> {
-  const post = await getPost(params.slug)
+  let post = await getPost(params.slug);
 
-  const { title, publishedAt: publishedTime, summary: description, image } = post.metadata
-  const ogImage = image ? `${DATA.url}${image}` : `${DATA.url}/og?title=${title}`
+  let {
+    title,
+    publishedAt: publishedTime,
+    summary: description,
+    image,
+  } = post.metadata;
+  let ogImage = image ? `${DATA.url}${image}` : `${DATA.url}/og?title=${title}`;
 
   return {
     title,
@@ -45,23 +48,21 @@ export async function generateMetadata({
       description,
       images: [ogImage],
     },
-  }
+  };
 }
 
 export default async function Blog({
   params,
 }: {
   params: {
-    slug: string
-  }
+    slug: string;
+  };
 }) {
-  const post = await getPost(params.slug)
+  let post = await getPost(params.slug);
 
   if (!post) {
-    notFound()
+    notFound();
   }
-
-  const views = await getViews(post.slug)
 
   return (
     <section id="blog">
@@ -87,16 +88,20 @@ export default async function Blog({
           }),
         }}
       />
-      <h1 className="title font-medium text-2xl tracking-tighter max-w-[650px]">{post.metadata.title}</h1>
+      <h1 className="title font-medium text-2xl tracking-tighter max-w-[650px]">
+        {post.metadata.title}
+      </h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
         <Suspense fallback={<p className="h-5" />}>
-          <p className="text-sm text-neutral-600 dark:text-neutral-400">{formatDate(post.metadata.publishedAt)}</p>
-        </Suspense>
-        <Suspense fallback={<p className="h-5" />}>
-          <ViewCounter slug={post.slug} initialViews={views} trackView={true} />
+          <p className="text-sm text-neutral-600 dark:text-neutral-400">
+            {formatDate(post.metadata.publishedAt)}
+          </p>
         </Suspense>
       </div>
-      <article className="prose dark:prose-invert" dangerouslySetInnerHTML={{ __html: post.source }}></article>
+      <article
+        className="prose dark:prose-invert"
+        dangerouslySetInnerHTML={{ __html: post.source }}
+      ></article>
     </section>
-  )
+  );
 }
