@@ -141,7 +141,7 @@ export const DATA = {
         "Mathematics, Computer Science",
       logoUrl: "/uWaterloo.png",
       start: "Summer 2025 - ",
-      end: "Present",
+      end: "December 2025",
     },
     {
       school: "University of Ottawa",
