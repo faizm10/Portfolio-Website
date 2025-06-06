@@ -1,3 +1,4 @@
+import { InstagramLogoIcon } from "@radix-ui/react-icons";
 import { GlobeIcon, MailIcon } from "lucide-react";
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
@@ -5,6 +6,8 @@ export type IconProps = React.HTMLAttributes<SVGElement>;
 export const Icons = {
   globe: (props: IconProps) => <GlobeIcon {...props} />,
   email: (props: IconProps) => <MailIcon {...props} />,
+  instagram: (props: IconProps) => <InstagramLogoIcon/>,
+
   camara: (props: IconProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -74,6 +74,13 @@ export const DATA = {
 
         navbar: true,
       },
+      Instagram: {
+        name: "Instagram",
+        url: "https://www.linkedin.com/in/faizmustansar/",
+        icon: Icons.instagram,
+
+        navbar: true,
+      },
       email: {
         name: "Send Email",
         url: "#",
