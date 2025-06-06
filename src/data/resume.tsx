@@ -76,7 +76,7 @@ export const DATA = {
       },
       Instagram: {
         name: "Instagram",
-        url: "https://www.linkedin.com/in/faizmustansar/",
+        url: "https://instagram.com/faizm.30",
         icon: Icons.instagram,
 
         navbar: true,
