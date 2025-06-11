@@ -9,7 +9,7 @@ export const DATA = {
   location: "Brampton, ON",
   // locationLink: "https://www.google.com/maps/place/toronto",
   description:
-    "I'm a second-year Computer Science student at the University of Guelph, currently seeking 2025 Fall SWE internship opportunities 🌱",
+    "I'm a third-year Computer Science student at the University of Guelph, currently seeking 2026 Winter SWE internship opportunities 🌱",
   summary:
     "i'm passionate about **full-stack applications**, experimenting with **large language models**, and applying **artificial intelligence** to solve real-world problems. \n\nthis summer, i’m working as a **full-stack developer** at the university of guelph, building student-focused tools, and contributing to a **AI-leveraged software solution** project alongside professor joe sawada. \n\noutside of tech, i enjoy **[photography](/photo)**, playing competitive **[sports](/sports)**, and participating in **hackathons** to bring creative ideas to life with friends.",
   avatarUrl: "/faiz.jpeg",
