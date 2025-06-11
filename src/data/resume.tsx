@@ -48,7 +48,7 @@ export const DATA = {
     "ChatGPT API",
     "Google Gemini",
     "Cohere API",
-    "AWS S3"
+    "AWS S3",
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -144,8 +144,7 @@ export const DATA = {
     {
       school: "University of Waterloo",
       href: "https://uwaterloo.ca/",
-      degree:
-        "Mathematics, Computer Science",
+      degree: "Mathematics, Computer Science",
       logoUrl: "/uWaterloo.png",
       start: "Summer 2025 - ",
       end: "December 2025",
@@ -153,8 +152,7 @@ export const DATA = {
     {
       school: "University of Ottawa",
       href: "https://www.uottawa.ca/en",
-      degree:
-        "Engineering, Computer Science",
+      degree: "Engineering, Computer Science",
       logoUrl: "/UOttawa.jpeg",
       start: "Summer ",
       end: "2025",
@@ -175,7 +173,7 @@ export const DATA = {
       dates: "Jan 2025 - Current",
       active: true,
       description:
-        "A course search and review platform for University of Guelph",
+        "A course search and review platform for University of Guelph. Reached 1.5k users with over 5k views",
       technologies: [
         "Next.js",
         "Typescript",
@@ -202,6 +200,36 @@ export const DATA = {
         // },
       ],
       image: "/guelphcourses.png",
+      video: "",
+    },
+    {
+      title: "MeetSum",
+      href: "",
+      dates: "June 2025 - Current",
+      active: true,
+      description: "An AI-powered web app that summarizes meeting transcripts from uploaded PDFs and extracts key action items using LLaMA 3 via Groq API, helping users quickly understand and follow up on meeting outcomes.",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "TailwindCSS",
+        "Node.Js",
+        "REST API",
+        "Groq API",
+        "Supabase",
+      ],
+      links: [
+        // {
+        //   type: "Website",
+        //   href: "https://uoguelph.courses",
+        //   icon: <Icons.globe className="size-3" />,
+        // },
+        {
+          type: "GitHub",
+          href: "https://github.com/faizm10/AI-Meeting-Agent",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/MeetSum.png",
       video: "",
     },
     {
@@ -326,7 +354,19 @@ export const DATA = {
     },
   ],
   hackathons: [
-    
+    {
+      title: "HackCanada 2025",
+      badges: [],
+      dates: "June 20th - 22nd, 2025",
+      location: "Waterloo, Ontario",
+      description:
+        "coming soon",
+      image: "/spurhack.svg",
+      mlh: "",
+      links: [
+       
+      ],
+    },
     {
       title: "HackCanada 2025",
       badges: ["🥇 1st Place - Poker"],

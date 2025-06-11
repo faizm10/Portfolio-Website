@@ -298,7 +298,7 @@ export default async function GridView() {
               <ul className="space-y-1.5 text-xs">
                 <li className="flex items-center gap-1.5">
                   <Star className="h-3.5 w-3.5 text-blue-500" />
-                  <span>Toronto Footy Sevens (fri) - TBD </span>
+                  <span>Stadium Sports League (fri) - TBD </span>
                 </li>
               </ul>
             </CardContent>
