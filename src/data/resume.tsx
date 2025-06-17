@@ -355,7 +355,7 @@ export const DATA = {
   ],
   hackathons: [
     {
-      title: "HackCanada 2025",
+      title: "SpurHacks 2025",
       badges: [],
       dates: "June 20th - 22nd, 2025",
       location: "Waterloo, Ontario",
