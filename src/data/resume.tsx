@@ -360,11 +360,20 @@ export const DATA = {
       dates: "June 20th - 22nd, 2025",
       location: "Waterloo, Ontario",
       description:
-        "coming soon",
+        "A plug-and-play SaaS platform that enables small and mid-sized businesses to deploy AI-powered voice agents for phone-based customer interactions. No development work is required—just configure, and your virtual agent is live!",
       image: "/spurhack.svg",
       mlh: "",
       links: [
-       
+        {
+          title: "Devpost",
+          icon: <Icons.globe className="h-4 w-4" />,
+          href: "https://devpost.com/",
+        },
+        {
+          title: "Github",
+          icon: <Icons.github className="h-4 w-4" />,
+          href: "https://github.com/JashanjotP/spurhacks",
+        },
       ],
     },
     {
