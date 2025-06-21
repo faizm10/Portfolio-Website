@@ -203,11 +203,40 @@ export const DATA = {
       video: "",
     },
     {
+      title: "Voice AI",
+      href: "",
+      dates: "June 2025",
+      active: true,
+      description:
+        "Plug-and-play SaaS platform that enables small and mid-sized businesses to deploy AI-powered voice agents for phone-based customer interactions. No development work is required—just configure, and your virtual agent is live!",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "TailwindCSS",
+        "ShadCN UI",
+        "Eleven Labs",
+        "Twillo",
+        "Python",
+        "Vector",
+        "RestAPI",
+      ],
+      links: [
+        {
+          type: "GitHub",
+          href: "https://github.com/JashanjotP/spurhacks",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/VoiceAI.png",
+      video: "",
+    },
+    {
       title: "MeetSum",
       href: "",
       dates: "June 2025 - Current",
       active: true,
-      description: "An AI-powered web app that summarizes meeting transcripts from uploaded PDFs and extracts key action items using LLaMA 3 via Groq API, helping users quickly understand and follow up on meeting outcomes.",
+      description:
+        "An AI-powered web app that summarizes meeting transcripts from uploaded PDFs and extracts key action items using LLaMA 3 via Groq API, helping users quickly understand and follow up on meeting outcomes.",
       technologies: [
         "Next.js",
         "Typescript",
