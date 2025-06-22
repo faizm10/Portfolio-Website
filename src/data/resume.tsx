@@ -203,7 +203,7 @@ export const DATA = {
       video: "",
     },
     {
-      title: "Voice AI",
+      title: "FrontDesk AI",
       href: "",
       dates: "June 2025",
       active: true,
@@ -372,11 +372,6 @@ export const DATA = {
           href: "https://mcs-2020.vercel.app/",
           icon: <Icons.globe className="size-3" />,
         },
-        // {
-        //   type: "GitHub",
-        //   href: "https://github.com/faizm10/CodeDexHackathon",
-        //   icon: <Icons.github className="size-3" />,
-        // },
       ],
       image: "/chatbot.png",
       video: "",
@@ -396,7 +391,7 @@ export const DATA = {
         {
           title: "Devpost",
           icon: <Icons.globe className="h-4 w-4" />,
-          href: "https://devpost.com/",
+          href: "https://devpost.com/software/voiceai-rzedcp?ref_content=user-portfolio&ref_feature=in_progress",
         },
         {
           title: "Github",
