@@ -7,7 +7,7 @@ export const DATA = {
   githubData: "faizm10",
   url: "https://faizm.vercel.app/",
   location: "Brampton, ON",
-  // locationLink: "https://www.google.com/maps/place/toronto",
+  locationLink: "https://www.google.com/maps/place/toronto",
   description:
     "I'm a third-year Computer Science student at the University of Guelph, currently seeking 2026 Winter SWE internship opportunities 🌱",
   summary:
@@ -178,9 +178,8 @@ export const DATA = {
         "Next.js",
         "Typescript",
         "TailwindCSS",
-        // "MagicUI",
-        // "Shadcn UI",
-        // "NextUI",
+        "MagicUI",
+        "Shadcn UI",
         "Supabase",
         "Auth0",
         "Python",
@@ -200,6 +199,60 @@ export const DATA = {
         // },
       ],
       image: "/guelphcourses.png",
+      video: "",
+    },
+    {
+      title: "Student Awards Portal",
+      href: "",
+      dates: "May 2025",
+      active: true,
+      description:
+        "Built a web platform for the University of Guelph that allows students to apply for awards, committees to rank applicants, and admins to manage award data and forms with role-based access.",
+      technologies: [
+        "Next.js",
+        "TailwindCSS",
+        "ShadCN UI",
+        "Supabase",
+        "GraphQL",
+        "react-pdf",
+        "pdf.js",
+      ],
+      links: [
+        // {
+        //   type: "Website",
+        //   href: "https://meetsum-hazel.vercel.app/",
+        //   icon: <Icons.globe className="size-3" />,
+        // },
+      ],
+      image: "/studentsawardsportal.png",
+      video: "",
+    },
+    {
+      title: "Dress To Impress - LANG",
+      href: "",
+      dates: "Summer 2025",
+      active: true,
+      description:
+        "Built a full-featured professional attire rental platform for the University of Guelph's Lang School of Business, helping students access business clothing while enabling admins to manage inventory, requests, and content through a robust dashboard.",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "TailwindCSS",
+        "Supabase",
+        "Radix UI",
+        "Lucide React",
+        "Motion.dev",
+        "PostgreSQL",
+        "Resend",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://langdresstoimpress.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/dresstoimpress.png",
       video: "",
     },
     {
@@ -249,7 +302,7 @@ export const DATA = {
       links: [
         // {
         //   type: "Website",
-        //   href: "https://uoguelph.courses",
+        //   href: "https://meetsum-hazel.vercel.app/",
         //   icon: <Icons.globe className="size-3" />,
         // },
         {
@@ -379,6 +432,38 @@ export const DATA = {
   ],
   hackathons: [
     {
+      title: "TerrHacks 2025",
+      badges: [],
+      dates: "Aug 1st 2025 - Aug 3rd 2025",
+      location: "Toronto, Ontario",
+      description: "coming soon",
+      image: "/terrahacks.webp",
+      mlh: "",
+      links: [],
+    },
+    {
+      title: "Hack The 6ix",
+      badges: [],
+      dates: "July 18th 2025 - July 20th 2025",
+      location: "Toronto, Ontario",
+      description: "coming soon",
+      image: "/hackthe6ix.png",
+      mlh: "",
+      links: [],
+    },
+    // {
+    //   title: "Hack The Skies",
+    //   badges: ["Mentor"],
+    //   dates: "tbd",
+    //   location: "tbd",
+    //   description:
+    //     "mentoring high school students",
+    //   image: "/hacktheskies.jpeg",
+    //   mlh: "",
+    //   links: [
+    //   ],
+    // },
+    {
       title: "SpurHacks 2025",
       badges: [],
       dates: "June 20th - 22nd, 2025",
@@ -448,6 +533,16 @@ export const DATA = {
           href: "https://ecotrack-beryl.vercel.app",
         },
       ],
+    },
+    {
+      title: "Hack The North",
+      badges: ["Volunteer"],
+      dates: "Sept 11th - Sept 12th",
+      location: "Waterloo, Ontario",
+      description: "Volunteering for the Canada's biggest hackathon",
+      image: "/htn2024.jpeg",
+      mlh: "",
+      links: [],
     },
     {
       title: "CodeDex Hackathon 2024",
