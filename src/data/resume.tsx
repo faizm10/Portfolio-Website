@@ -463,6 +463,18 @@ export const DATA = {
       links: [
       ],
     },
+     {
+      title: "Hack 404",
+      badges: ["Mentor"],
+      dates: "July 4th - July 6th",
+      location: "Toronto, Ontario",
+      description:
+        "mentoring high school/univeristy students",
+      image: "/hack404.jpeg",
+      mlh: "",
+      links: [
+      ],
+    },
     {
       title: "SpurHacks 2025",
       badges: [],
