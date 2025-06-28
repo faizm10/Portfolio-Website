@@ -451,18 +451,18 @@ export const DATA = {
       mlh: "",
       links: [],
     },
-    // {
-    //   title: "Hack The Skies",
-    //   badges: ["Mentor"],
-    //   dates: "tbd",
-    //   location: "tbd",
-    //   description:
-    //     "mentoring high school students",
-    //   image: "/hacktheskies.jpeg",
-    //   mlh: "",
-    //   links: [
-    //   ],
-    // },
+    {
+      title: "Hack The Skies",
+      badges: ["Mentor"],
+      dates: "tbd",
+      location: "tbd",
+      description:
+        "mentoring high school students",
+      image: "/hacktheskies.jpeg",
+      mlh: "",
+      links: [
+      ],
+    },
     {
       title: "SpurHacks 2025",
       badges: [],
