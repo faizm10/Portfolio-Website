@@ -469,7 +469,7 @@ export const DATA = {
       dates: "July 4th - July 6th",
       location: "Toronto, Ontario",
       description:
-        "mentoring high school/univeristy students",
+        "mentoring high school/university students",
       image: "/hack404.jpeg",
       mlh: "",
       links: [
