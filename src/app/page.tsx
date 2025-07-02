@@ -28,7 +28,7 @@ export default function Page() {
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
-              <a href="/NewFaizMustansarResume.pdf">
+              <a href="/resume/MustansarFaizResume.pdf">
                 <Button variant="outline">
                   <ArrowRight />
                   Resume
