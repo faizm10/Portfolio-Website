@@ -454,8 +454,8 @@ export const DATA = {
     {
       title: "Hack The Skies",
       badges: ["Mentor"],
-      dates: "tbd",
-      location: "tbd",
+      dates: "July 12th",
+      location: "Remote",
       description:
         "mentoring high school students",
       image: "/hacktheskies.jpeg",
