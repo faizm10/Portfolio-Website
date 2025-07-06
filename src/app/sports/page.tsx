@@ -301,16 +301,11 @@ export default async function GridView() {
                   <span>Stadium Sports League (fri) - TBD </span>
                 </li>
               </ul>
-              <ul className="space-y-1.5 text-xs">
-                <li className="flex items-center gap-1.5">
-                  <Star className="h-3.5 w-3.5 text-blue-500" />
-                  <span>Milton Tournament (July 5th-6th) - TBD</span>
-                </li>
-              </ul>
+            
                <ul className="space-y-1.5 text-xs">
                 <li className="flex items-center gap-1.5">
                   <Star className="h-3.5 w-3.5 text-blue-500" />
-                  <span>Inter-MSA Tournament (July 6th) - TBD</span>
+                  <span>Inter-MSA Tournament (July 6th) - Group Stage</span>
                 </li>
               </ul>
             </CardContent>
