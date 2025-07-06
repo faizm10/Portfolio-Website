@@ -11,7 +11,7 @@ export const DATA = {
   description:
     "I'm a third-year Computer Science student at the University of Guelph, currently seeking 2026 Winter SWE internship opportunities 🌱",
   summary:
-    "i'm passionate about **full-stack applications**, experimenting with **large language models**, and applying **artificial intelligence** to solve real-world problems. \n\nthis summer, i’m working as a **full-stack developer** at the university of guelph, building student-focused tools, and contributing to a **AI-leveraged software solution** project alongside professor joe sawada. \n\noutside of tech, i enjoy **[photography](/photo)**, playing competitive **[sports](/sports)**, and participating in **hackathons** to bring creative ideas to life with friends.",
+    "I'm a dual student at the **University of Waterloo** and **University of Guelph**, where I focus on **system design**, **AI**, and building **full-stack products** that people actually use. I'm driven by the challenge of turning ideas into real tools—whether it's for students, startups, or research. Outside of tech, I enjoy photography, playing competitive sports, and building new ideas with friends at hackathons.",
   avatarUrl: "/faiz.jpeg",
 
   skills: [

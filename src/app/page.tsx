@@ -3,13 +3,46 @@ import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
+import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { DATA } from "@/data/resume";
 import { ArrowRight, ExternalLink, Newspaper } from "lucide-react";
 import Markdown from "react-markdown";
 const BLUR_FADE_DELAY = 0.04;
-
+const people = [
+  {
+    id: 1,
+    name: "John Doe",
+    designation: "Software Engineer",
+  },
+  {
+    id: 2,
+    name: "Robert Johnson",
+    designation: "Product Manager",
+  },
+  {
+    id: 3,
+    name: "Jane Smith",
+    designation: "Data Scientist",
+  },
+  {
+    id: 4,
+    name: "Emily Davis",
+    designation: "UX Designer",
+  },
+  {
+    id: 5,
+    name: "Tyler Durden",
+    designation: "Soap Developer",
+  },
+  {
+    id: 6,
+    name: "Dora",
+    
+  },
+];
+ 
 export default function Page() {
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
@@ -54,7 +87,9 @@ export default function Page() {
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
           <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
             {DATA.summary}
+            
           </Markdown>
+          
         </BlurFade>
       </section>
       <section id="work">
