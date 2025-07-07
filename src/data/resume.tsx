@@ -442,16 +442,6 @@ export const DATA = {
       links: [],
     },
     {
-      title: "Hack The 6ix",
-      badges: [],
-      dates: "July 18th 2025 - July 20th 2025",
-      location: "Toronto, Ontario",
-      description: "coming soon",
-      image: "/hackthe6ix.png",
-      mlh: "",
-      links: [],
-    },
-    {
       title: "Hack The Skies",
       badges: ["Mentor"],
       dates: "July 12th",
