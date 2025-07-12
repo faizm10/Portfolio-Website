@@ -11,44 +11,71 @@ export const DATA = {
   description:
     "I'm a third-year Computer Science student at the University of Guelph, currently seeking 2026 Winter SWE internship opportunities 🌱",
   summary:
-    "I'm a dual student at the **University of Waterloo** and **University of Guelph**, where I focus on **system design**, **AI**, and building **full-stack products** that people actually use. I'm driven by the challenge of turning ideas into real tools—whether it's for students, startups, or research. Outside of tech, I enjoy photography, playing competitive sports, and building new ideas with friends at hackathons.",
+    "I'm a dual student at the **University of Guelph** and **University of Waterloo**, where I focus on **system design**, **AI**, and building **full-stack products** that people actually use. I'm driven by the challenge of turning ideas into real tools—whether it's for students, startups, or research. Outside of tech, I enjoy photography, playing competitive sports, and building new ideas with friends at hackathons.",
   avatarUrl: "/faiz.jpeg",
 
   skills: [
-    "React",
-    "Next.js",
-    "Typescript",
-    "Node.js",
+    // Languages
+    "JavaScript",
+    "TypeScript",
     "Python",
+    "Java",
     "C",
-    "Supabase",
-    "React",
-    "Docker",
-    "Zod",
-    "Material UI",
-    "Mongoose",
-    "Prisma",
-    "GraphQL",
-    "pandas",
-    "SQL",
     "HTML5",
     "CSS",
-    "Postgres",
-    "Java",
-    "JavaScript",
-    "REST API",
+    "SQL",
+    
+    // Frontend Frameworks & Libraries
+    "React",
+    "Next.js",
+    "TailwindCSS",
+    "Material UI",
+    "ShadCN UI",
+    "Radix UI",
+    "Lucide React",
+    "Motion.dev",
+    "NextUI",
+    
+    // Backend & APIs
+    "Node.js",
     "Flask",
-    "Linux",
-    "Bash",
-    "CI/CD",
-    "Figma",
-    "GitHub Actions",
-    "Agile",
-    "Scrum",
+    "GraphQL",
+    "REST API",
+    "Supabase",
+    "PostgreSQL",
+    "MongoDB",
+    "Mongoose",
+    "Prisma",
+    "Auth0",
+    
+    // AI & ML
     "ChatGPT API",
     "Google Gemini",
     "Cohere API",
+    "Groq API",
+    "Eleven Labs",
+    "Vector",
+    "pandas",
+    
+    // DevOps & Tools
+    "Docker",
+    "Git",
+    "GitHub Actions",
+    "CI/CD",
+    "Linux",
+    "Bash",
     "AWS S3",
+    "Twillo",
+    "Resend",
+    
+    // Development Tools
+    "Zod",
+    "Figma",
+    "Agile",
+    "Scrum",
+    "Web-Scraping",
+    "react-pdf",
+    "pdf.js",
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -446,24 +473,20 @@ export const DATA = {
       badges: ["Mentor"],
       dates: "July 12th",
       location: "Remote",
-      description:
-        "mentoring high school students",
+      description: "mentoring high school students",
       image: "/hacktheskies.jpeg",
       mlh: "",
-      links: [
-      ],
+      links: [],
     },
-     {
+    {
       title: "Hack 404",
       badges: ["Mentor"],
       dates: "July 4th - July 6th",
       location: "Toronto, Ontario",
-      description:
-        "mentoring high school/university students",
+      description: "mentoring high school/university students",
       image: "/hack404.jpeg",
       mlh: "",
-      links: [
-      ],
+      links: [],
     },
     {
       title: "SpurHacks 2025",
