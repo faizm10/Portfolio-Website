@@ -458,6 +458,26 @@ export const DATA = {
     },
   ],
   hackathons: [
+      {
+      title: "Hack The Valley 9",
+      badges: [],
+      dates: "Oct 3rd - Oct 5th",
+      location: "Scarborough, Ontario",
+      description: "tbd",
+      image: "/htv.png",
+      mlh: "",
+      links: [],
+    },
+     {
+      title: "Hack The North 2025",
+      badges: [],
+      dates: "Sept 12 - Sept 14th",
+      location: "Waterloo, Ontario",
+      description: "tbd",
+      image: "/htn2024.jpeg",
+      mlh: "",
+      links: [],
+    },
     {
       title: "TerrHacks 2025",
       badges: [],
