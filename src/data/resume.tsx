@@ -24,7 +24,7 @@ export const DATA = {
     "HTML5",
     "CSS",
     "SQL",
-    
+
     // Frontend Frameworks & Libraries
     "React",
     "Next.js",
@@ -35,7 +35,8 @@ export const DATA = {
     "Lucide React",
     "Motion.dev",
     "NextUI",
-    
+    "Vue.Js",
+
     // Backend & APIs
     "Node.js",
     "Flask",
@@ -47,7 +48,7 @@ export const DATA = {
     "Mongoose",
     "Prisma",
     "Auth0",
-    
+
     // AI & ML
     "ChatGPT API",
     "Google Gemini",
@@ -56,7 +57,7 @@ export const DATA = {
     "Eleven Labs",
     "Vector",
     "pandas",
-    
+
     // DevOps & Tools
     "Docker",
     "Git",
@@ -67,7 +68,7 @@ export const DATA = {
     "AWS S3",
     "Twillo",
     "Resend",
-    
+
     // Development Tools
     "Zod",
     "Figma",

@@ -10,39 +10,6 @@ import { DATA } from "@/data/resume";
 import { ArrowRight, ExternalLink, Newspaper } from "lucide-react";
 import Markdown from "react-markdown";
 const BLUR_FADE_DELAY = 0.04;
-const people = [
-  {
-    id: 1,
-    name: "John Doe",
-    designation: "Software Engineer",
-  },
-  {
-    id: 2,
-    name: "Robert Johnson",
-    designation: "Product Manager",
-  },
-  {
-    id: 3,
-    name: "Jane Smith",
-    designation: "Data Scientist",
-  },
-  {
-    id: 4,
-    name: "Emily Davis",
-    designation: "UX Designer",
-  },
-  {
-    id: 5,
-    name: "Tyler Durden",
-    designation: "Soap Developer",
-  },
-  {
-    id: 6,
-    name: "Dora",
-    
-  },
-];
- 
 export default function Page() {
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
@@ -87,9 +54,7 @@ export default function Page() {
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
           <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
             {DATA.summary}
-            
           </Markdown>
-          
         </BlurFade>
       </section>
       <section id="work">
@@ -134,9 +99,7 @@ export default function Page() {
                 altText={education.school}
                 title={education.school}
                 subtitle={education.degree}
-                // period={`${education.start} - ${education.end}`}
                 period={`${education.start} ${education.end}`}
-                // description={education.description}
               />
             </BlurFade>
           ))}
@@ -253,19 +216,6 @@ export default function Page() {
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              {/* <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                  My Projects
-                </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  Check out my latest work
-                </h2>
-                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  I&apos;ve worked on a variety of projects, from simple
-                  websites to complex web applications. Here are some of my
-                  projects
-                </p>
-              </div> */}
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
                   Projects
