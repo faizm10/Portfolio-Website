@@ -243,7 +243,12 @@ export default async function GridView() {
                   <Medal className="h-3.5 w-3.5 text-amber-500" />
                   <span>Competitive Soccer 11v11 - 3rd Place </span>
                 </li>
-                
+              </ul>
+              <ul className="space-y-1.5 text-xs">
+                <li className="flex items-center gap-1.5">
+                  <Star className="h-3.5 w-3.5 text-blue-500" />
+                  <span>Table Tennis Tournament - TBD </span>
+                </li>
               </ul>
             </CardContent>
           </Card>
@@ -298,11 +303,13 @@ export default async function GridView() {
               <ul className="space-y-1.5 text-xs">
                 <li className="flex items-center gap-1.5">
                   <Medal className="h-3.5 w-3.5 text-amber-500" />
-                  <span>Stadium Sports League (fri) - Semi Finalist (ongoing) </span>
+                  <span>
+                    Stadium Sports League (fri) - Semi Finalist (ongoing){" "}
+                  </span>
                 </li>
               </ul>
-            
-               <ul className="space-y-1.5 text-xs">
+
+              <ul className="space-y-1.5 text-xs">
                 <li className="flex items-center gap-1.5">
                   <Star className="h-3.5 w-3.5 text-blue-500" />
                   <span>Inter-MSA Tournament (July 6th) - Group Stage</span>
