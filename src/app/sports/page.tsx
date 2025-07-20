@@ -303,9 +303,7 @@ export default async function GridView() {
               <ul className="space-y-1.5 text-xs">
                 <li className="flex items-center gap-1.5">
                   <Medal className="h-3.5 w-3.5 text-amber-500" />
-                  <span>
-                    Stadium Sports League (fri) - Semi Finalist (ongoing){" "}
-                  </span>
+                  <span>Stadium Sports League (fri) - 3rd Place</span>
                 </li>
               </ul>
 
