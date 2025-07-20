@@ -124,7 +124,7 @@ export const DATA = {
       href: "",
       badges: [],
       location: "Remote",
-      title: "Full-Stack Developer",
+      title: "Software Engineer",
       logoUrl: "./image.png",
       start: "May 2025",
       end: "- Present",
