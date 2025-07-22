@@ -479,6 +479,16 @@ export const DATA = {
     //   mlh: "",
     //   links: [],
     // },
+     {
+      title: "Ignition Hacks v6",
+      badges: ["Judge"],
+      dates: "Aug 15th - Aug 16th",
+      location: "Toronto, Ontario",
+      description: "judging",
+      image: "/ignition.png",
+      mlh: "",
+      links: [],
+    },
     {
       title: "TerrHacks 2025",
       badges: [],
