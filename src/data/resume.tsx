@@ -227,7 +227,7 @@ export const DATA = {
     },
     {
       title: "SkillMatch",
-      href: "",
+      href: "SkillMatch*is a web platform that helps students and developers find hackathon teammates based on shared interests, skills, and project goals. Think of it as 'LinkedIn meets Tinder for hackathons' — users create profiles with their skillsets, interests, and past projects, then get matched with compatible teammates via a smart recommendation engine powered by GraphQL.",
       dates: "July 2025",
       active: true,
       description:
