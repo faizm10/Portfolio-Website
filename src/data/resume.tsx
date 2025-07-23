@@ -220,13 +220,37 @@ export const DATA = {
           href: "https://uoguelph.courses",
           icon: <Icons.globe className="size-3" />,
         },
-        // {
-        //   type: "GitHub",
-        //   href: "https://github.com/faizm10/guelph.courses",
-        //   icon: <Icons.github className="size-3" />,
-        // },
+     
       ],
       image: "/guelphcourses.png",
+      video: "",
+    },
+    {
+      title: "SkillMatch",
+      href: "",
+      dates: "July 2025",
+      active: true,
+      description:
+        "",
+      technologies: [
+        "Next.js",
+        "TailwindCSS",
+        "ShadCN UI",
+        "Docker",
+        "GraphQL",
+        "Golang",
+        "PostgreSQL",
+        "Prisma",
+
+      ],
+      links: [
+        {
+          type: "GitHub",
+          href: "https://github.com/faizm10/skillmatch",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/skillmatch.png",
       video: "",
     },
     {
@@ -246,11 +270,11 @@ export const DATA = {
         "pdf.js",
       ],
       links: [
-        // {
-        //   type: "Website",
-        //   href: "https://meetsum-hazel.vercel.app/",
-        //   icon: <Icons.globe className="size-3" />,
-        // },
+         {
+          type: "Website",
+          href: "https://awards-application-platform.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
       ],
       image: "/studentsawardsportal.png",
       video: "",
@@ -328,11 +352,7 @@ export const DATA = {
         "Supabase",
       ],
       links: [
-        // {
-        //   type: "Website",
-        //   href: "https://meetsum-hazel.vercel.app/",
-        //   icon: <Icons.globe className="size-3" />,
-        // },
+
         {
           type: "GitHub",
           href: "https://github.com/faizm10/AI-Meeting-Agent",
