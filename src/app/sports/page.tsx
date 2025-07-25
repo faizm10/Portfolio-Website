@@ -324,6 +324,7 @@ export default async function GridView() {
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">
                   {/* <Medal className="h-4 w-4 text-stone-500" /> */}
+                  <Star className="h-4 w-4 text-blue-600" />
                   <span>
                     Stadium Sports League (Summer - Fridays) - TBD (Ongoing)
                   </span>
