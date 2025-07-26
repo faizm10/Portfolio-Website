@@ -3,11 +3,11 @@ import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
-import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
+import { BlogCard } from "@/components/blog-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { DATA } from "@/data/resume";
-import { ArrowRight, ExternalLink, Newspaper } from "lucide-react";
+import { ArrowRight, ExternalLink, Newspaper, BookOpen } from "lucide-react";
 import Markdown from "react-markdown";
 const BLUR_FADE_DELAY = 0.04;
 export default function Page() {
@@ -28,12 +28,14 @@ export default function Page() {
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
-              <a href="/resume/MustansarFaizResume.pdf">
-                <Button variant="outline">
-                  <ArrowRight />
-                  Resume
-                </Button>
-              </a>
+              <div className="flex items-center gap-3">
+                <a href="/resume/MustansarFaizResume.pdf">
+                  <Button variant="outline">
+                    <ArrowRight />
+                    Resume
+                  </Button>
+                </a>
+              </div>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
               <div className="w-28 h-28 md:w-44 md:h-44 rounded-full overflow-hidden shadow-lg">
@@ -119,6 +121,45 @@ export default function Page() {
           </div>
         </div>
       </section>
+      
+      <section id="latest-blogs">
+        <div className="flex min-h-0 flex-col gap-y-3">
+          <BlurFade delay={BLUR_FADE_DELAY * 11}>
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-bold flex items-center gap-2">
+                
+                Recently....
+              </h2>
+              <a href="/blog">
+                <Button variant="outline" size="sm">
+                  View All
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </a>
+            </div>
+          </BlurFade>
+          <div className="space-y-3">
+            {DATA.blogs.slice(0, 2).map((blog, id) => (
+              <BlurFade
+                key={blog.title}
+                delay={BLUR_FADE_DELAY * 12 + id * 0.05}
+              >
+                <BlogCard
+                  title={blog.title}
+                  description={blog.description}
+                  author={blog.author}
+                  date={blog.date}
+                  readTime={blog.readTime}
+                  href={blog.href}
+                  
+                  
+                />
+              </BlurFade>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="featured">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>

@@ -643,4 +643,22 @@ export const DATA = {
       ],
     },
   ],
+  blogs: [
+    {
+      title: "Building uoguelph.courses: A Student's Journey",
+      description: "How I built a course search platform that reached 1.5k users and helped students plan their academic journey. From web scraping to user feedback, here's the complete story.",
+      author: "Faiz Mustansar",
+      date: "March 2025",
+      readTime: "5 min read",
+      href: "/blog/uoguelph.courses",
+    },
+    {
+      title: "Summer 2025: Chaos",
+      description: "Read about my summer 2025 journey, from hackathons to jobs, and everything in between.",
+      author: "Faiz Mustansar",
+      date: "May 2025",
+      readTime: "6 min read",
+      href: "/blog/summer25",
+    },
+  ],
 } as const;
