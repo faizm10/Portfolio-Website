@@ -120,8 +120,20 @@ export const DATA = {
 
   work: [
     {
+      company: "Octree",
+      href: "https://useoctree.com/",
+      badges: [],
+      location: "Remote",
+      title: "Founding Engineer",
+      logoUrl: "./octree.svg",
+      start: "July 2025",
+      end: "- Present",
+      description:
+        "Building an AI agent-drive LaTeX editor ",
+    },
+    {
       company: "Brown & Beatty",
-      href: "",
+      href: "https://www.brownandbeatty.com/",
       badges: [],
       location: "Remote",
       title: "Software Engineer",
