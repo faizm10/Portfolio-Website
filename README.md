@@ -1,1 +1,1 @@
-portfolio website
+portfolio website consisting of education, work exp, projects, hacks, blogs and sports
