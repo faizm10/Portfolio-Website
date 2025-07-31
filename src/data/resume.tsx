@@ -142,6 +142,7 @@ export const DATA = {
       end: "- Present",
       description:
         "Will be working alongside with [Joe Sawada](https://www.socs.uoguelph.ca/~sawada/), [Jeff Lindquist](https://www.linkedin.com/in/jeff-lindquist-0497b625/) and [Levi Cooperman](https://www.linkedin.com/in/levi-cooperman-44a1a52/) on an AI-leveraged software solution transforming the labour dispute resolution process for unions, associations, and their employers",
+        // "Engineering an AI-leveraged software solution transforming the labour dispute resolution process for unions, associations, and their employers",
     },
     {
       company: "University of Guelph",
