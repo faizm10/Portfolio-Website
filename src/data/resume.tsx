@@ -555,7 +555,7 @@ export const DATA = {
       badges: [],
       dates: "Aug 1st 2025 - Aug 3rd 2025",
       location: "Toronto, Ontario",
-      description: "coming soon",
+      description: "CareLens is an AI-powered video health consultation platform that helps users identify symptoms in real-time through live video and audio analysis.",
       image: "/terrahacks.webp",
       mlh: "",
       links: [
