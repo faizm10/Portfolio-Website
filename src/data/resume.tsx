@@ -267,6 +267,34 @@ export const DATA = {
       video: "",
     },
     {
+      title: "CareLens",
+      href: "",
+      dates: "Aug 2025",
+      active: true,
+      description:
+        "CareLens is an AI-powered video health consultation platform that helps users identify symptoms in real-time through live video and audio analysis. ",
+      technologies: [
+        "Next.js",
+        "TailwindCSS",
+        "ShadCN UI",
+        "Supabase",
+        "FastAPI",
+        "Python",
+        "OpenAI API",
+        "WebRTC",
+        "Whisper API",
+      ],
+      links: [
+          {
+          type: "GitHub",
+          href: "https://github.com/faizm10/terrahacks",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/carelens.png",
+      video: "",
+    },
+    {
       title: "Student Awards Portal",
       href: "",
       dates: "May 2025",
@@ -530,7 +558,18 @@ export const DATA = {
       description: "coming soon",
       image: "/terrahacks.webp",
       mlh: "",
-      links: [],
+      links: [
+        {
+          title: "Devpost",
+          icon: <Icons.globe className="h-4 w-4" />,
+          href: "https://devpost.com/software/tbd-fizl58",
+        },
+        {
+          title: "Github",
+          icon: <Icons.github className="h-4 w-4" />,
+          href: "https://github.com/faizm10/terrahacks",
+        },
+      ],
     },
     {
       title: "Hack The Skies",
