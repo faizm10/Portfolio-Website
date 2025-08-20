@@ -710,7 +710,7 @@ export const DATA = {
       author: "Faiz Mustansar",
       date: "May 2025",
       readTime: "6 min read",
-      href: "/blog/summer25",
+      href: "/blog/s25",
     },
   ],
 } as const;
