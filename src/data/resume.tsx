@@ -152,7 +152,7 @@ export const DATA = {
       title: "Full-Stack Developer",
       logoUrl: "/lang.png",
       start: "May 2025",
-      end: "- Present",
+      end: "- August 2025",
       description:
         "Building a full-stack web platform using Next.js and Supabase to manage inventory and streamline student access to professional attire.",
     },
