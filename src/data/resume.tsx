@@ -148,6 +148,18 @@ export const DATA = {
       company: "University of Guelph",
       href: "https://www.uoguelph.ca/",
       badges: [],
+      location: "Remote",
+      title: "Teaching Assistant",
+      logoUrl: "/uog.png",
+      start: "Sept 2025 -",
+      end: "Present",
+      description:
+        "fall 2025",
+    },
+    {
+      company: "University of Guelph",
+      href: "https://www.uoguelph.ca/",
+      badges: [],
       location: "Hybrid",
       title: "Full-Stack Developer",
       logoUrl: "/lang.png",
