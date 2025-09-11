@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { Camera, HomeIcon, Notebook, Trophy } from "lucide-react";
+import { Camera, HomeIcon, Notebook, Trophy, Briefcase } from "lucide-react";
 
 export const DATA = {
   name: "Faiz Mustansar",
@@ -80,6 +80,7 @@ export const DATA = {
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
+    // { href: "/recruiter", icon: Briefcase, label: "Recruiter" },
     { href: "/photo", icon: Camera, label: "Photography" },
     { href: "/sports", icon: Trophy, label: "Sports" },
     { href: "/blog", icon: Notebook, label: "Blogs" },
