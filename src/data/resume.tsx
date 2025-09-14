@@ -9,7 +9,7 @@ export const DATA = {
   location: "Brampton, ON",
   locationLink: "https://www.google.com/maps/place/toronto",
   description:
-    "I'm a third-year Computer Science student at the University of Guelph, currently seeking 2026 Winter SWE internship opportunities 🌱",
+    "I'm a third-year Computer Science student at the University of Guelph, currently seeking 2026 Summer SWE internship opportunities 🌱",
   summary:
     "I'm a dual student at the **University of Guelph** and **University of Waterloo**, where I focus on **system design**, **AI**, and building **full-stack products** that people actually use. I'm driven by the challenge of turning ideas into real tools—whether it's for students, startups, or research. Outside of tech, I enjoy photography, playing competitive sports, and building new ideas with friends at hackathons.",
   avatarUrl: "/faiz.jpeg",
@@ -121,17 +121,28 @@ export const DATA = {
 
   work: [
     {
-      company: "Octree",
-      href: "https://useoctree.com/",
+      company: "TD Bank",
+      href: "https://www.td.com/us/en/personal-banking",
       badges: [],
-      location: "Remote",
-      title: "Founding Engineer",
-      logoUrl: "./octree.svg",
-      start: "July 2025",
-      end: "- Present",
-      description:
-        "Building an AI agent-drive LaTeX editor ",
+      location: "Hybrid",
+      title: "Software Engineer Intern",
+      logoUrl: "./tdbank.png",
+      start: "Jan 2026",
+      end: "- Apr 2026",
+      description: "incoming swe intern | winter 2026",
     },
+    // {
+    //   company: "Octree",
+    //   href: "https://useoctree.com/",
+    //   badges: [],
+    //   location: "Remote",
+    //   title: "Founding Engineer",
+    //   logoUrl: "./octree.svg",
+    //   start: "July 2025",
+    //   end: "- Present",
+    //   description:
+    //     "Building an AI agent-drive LaTeX editor ",
+    // },
     {
       company: "Brown & Beatty",
       href: "https://www.brownandbeatty.com/",
@@ -143,7 +154,7 @@ export const DATA = {
       end: "- Present",
       description:
         "Will be working alongside with [Joe Sawada](https://www.socs.uoguelph.ca/~sawada/), [Jeff Lindquist](https://www.linkedin.com/in/jeff-lindquist-0497b625/) and [Levi Cooperman](https://www.linkedin.com/in/levi-cooperman-44a1a52/) on an AI-leveraged software solution transforming the labour dispute resolution process for unions, associations, and their employers",
-        // "Engineering an AI-leveraged software solution transforming the labour dispute resolution process for unions, associations, and their employers",
+      // "Engineering an AI-leveraged software solution transforming the labour dispute resolution process for unions, associations, and their employers",
     },
     {
       company: "University of Guelph",
@@ -154,8 +165,7 @@ export const DATA = {
       logoUrl: "/uog.png",
       start: "Sept 2025 -",
       end: "Present",
-      description:
-        "fall 2025",
+      description: "fall 2025",
     },
     {
       company: "University of Guelph",
@@ -246,9 +256,33 @@ export const DATA = {
           href: "https://uoguelph.courses",
           icon: <Icons.globe className="size-3" />,
         },
-     
       ],
       image: "/guelphcourses.png",
+      video: "",
+    },
+    {
+      title: "Octree",
+      href: "https://useoctree.com/",
+      dates: "August 2025 - Current",
+      active: true,
+      description: "Building an AI agent-drive LaTeX editor ",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "TailwindCSS",
+        "DeepSeek AI",
+        "Supabase",
+        "DigitalOcean",
+        "Stripe",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://useoctree.com/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/octree1.png",
       video: "",
     },
     {
@@ -267,7 +301,6 @@ export const DATA = {
         "Golang",
         "PostgreSQL",
         "Prisma",
-
       ],
       links: [
         {
@@ -298,7 +331,7 @@ export const DATA = {
         "Whisper API",
       ],
       links: [
-          {
+        {
           type: "GitHub",
           href: "https://github.com/faizm10/terrahacks",
           icon: <Icons.github className="size-3" />,
@@ -324,7 +357,7 @@ export const DATA = {
         "pdf.js",
       ],
       links: [
-         {
+        {
           type: "Website",
           href: "https://awards-application-platform.vercel.app/",
           icon: <Icons.globe className="size-3" />,
@@ -406,7 +439,6 @@ export const DATA = {
         "Supabase",
       ],
       links: [
-
         {
           type: "GitHub",
           href: "https://github.com/faizm10/AI-Meeting-Agent",
@@ -543,7 +575,7 @@ export const DATA = {
     //   mlh: "",
     //   links: [],
     // },
-     {
+    {
       title: "Hack The North 2025",
       badges: [],
       dates: "Sept 12 - Sept 14th",
@@ -553,7 +585,7 @@ export const DATA = {
       mlh: "",
       links: [],
     },
-     {
+    {
       title: "Ignition Hacks v6",
       badges: ["Judge"],
       dates: "Aug 15th - Aug 16th",
@@ -568,7 +600,8 @@ export const DATA = {
       badges: [],
       dates: "Aug 1st 2025 - Aug 3rd 2025",
       location: "Toronto, Ontario",
-      description: "CareLens is an AI-powered video health consultation platform that helps users identify symptoms in real-time through live video and audio analysis.",
+      description:
+        "CareLens is an AI-powered video health consultation platform that helps users identify symptoms in real-time through live video and audio analysis.",
       image: "/terrahacks.webp",
       mlh: "",
       links: [
@@ -711,7 +744,8 @@ export const DATA = {
   blogs: [
     {
       title: "Building uoguelph.courses: A Student's Journey",
-      description: "How I built a course search platform that reached 1.5k users and helped students plan their academic journey. From web scraping to user feedback, here's the complete story.",
+      description:
+        "How I built a course search platform that reached 1.5k users and helped students plan their academic journey. From web scraping to user feedback, here's the complete story.",
       author: "Faiz Mustansar",
       date: "March 2025",
       readTime: "5 min read",
@@ -719,7 +753,8 @@ export const DATA = {
     },
     {
       title: "Summer 2025: Chaos",
-      description: "Read about my summer 2025 journey, from hackathons to jobs, and everything in between.",
+      description:
+        "Read about my summer 2025 journey, from hackathons to jobs, and everything in between.",
       author: "Faiz Mustansar",
       date: "May 2025",
       readTime: "6 min read",
