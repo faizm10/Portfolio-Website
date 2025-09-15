@@ -129,7 +129,7 @@ export const DATA = {
       logoUrl: "./tdbank.png",
       start: "Jan 2026",
       end: "- Apr 2026",
-      description: "incoming swe intern | winter 2026",
+      description: "Incoming Software Engineer Intern 🚀",
     },
     // {
     //   company: "Octree",
@@ -152,8 +152,8 @@ export const DATA = {
       logoUrl: "./image.png",
       start: "May 2025",
       end: "- Present",
-      description:
-        "Will be working alongside with [Joe Sawada](https://www.socs.uoguelph.ca/~sawada/), [Jeff Lindquist](https://www.linkedin.com/in/jeff-lindquist-0497b625/) and [Levi Cooperman](https://www.linkedin.com/in/levi-cooperman-44a1a52/) on an AI-leveraged software solution transforming the labour dispute resolution process for unions, associations, and their employers",
+      description: "Modernizing Labour Disputes with AI 🤖",
+      // "Will be working alongside with [Joe Sawada](https://www.socs.uoguelph.ca/~sawada/), [Jeff Lindquist](https://www.linkedin.com/in/jeff-lindquist-0497b625/) and [Levi Cooperman](https://www.linkedin.com/in/levi-cooperman-44a1a52/) on an AI-leveraged software solution transforming the labour dispute resolution process for unions, associations, and their employers",
       // "Engineering an AI-leveraged software solution transforming the labour dispute resolution process for unions, associations, and their employers",
     },
     {
@@ -165,7 +165,7 @@ export const DATA = {
       logoUrl: "/uog.png",
       start: "Sept 2025 -",
       end: "Present",
-      description: "fall 2025",
+      description: "MCS2000 DE",
     },
     {
       company: "University of Guelph",
@@ -176,8 +176,7 @@ export const DATA = {
       logoUrl: "/lang.png",
       start: "May 2025",
       end: "- August 2025",
-      description:
-        "Building a full-stack web platform using Next.js and Supabase to manage inventory and streamline student access to professional attire.",
+      description: "Improving Student Experience 🎓",
     },
     {
       company: "University of Guelph",
@@ -188,8 +187,7 @@ export const DATA = {
       logoUrl: "/uog.png",
       start: "Sept 2024 -",
       end: "April 2025",
-      description:
-        "Supported over 100 students by providing detailed feedback, addressing queries, and fostering engagement through online discussions.",
+      description: "MCS2020 DE",
     },
     {
       company: "University of Guelph",
@@ -201,7 +199,7 @@ export const DATA = {
       start: "May 2024 -",
       end: "April 2025",
       description:
-        "Developed and optimized an AI-powered chatbot for course support, integrating advanced AI techniques and ensuring seamless user interactions while reserching the ethics of utilizing chatbots in university classroom setting.",
+        "Researching and Building AI Chatbots for Classroom Support 🔍",
     },
   ],
   education: [
@@ -283,6 +281,31 @@ export const DATA = {
         },
       ],
       image: "/octree1.png",
+      video: "",
+    },
+    {
+      title: "Cognify",
+      href: "",
+      dates: "Sept 2025",
+      active: true,
+      description:
+        "Developed a smart learning platform that helps you study by turning any text or document into organized learning modules using AI.",
+      technologies: [
+        "Next.js",
+        "TailwindCSS",
+        "ShadCN UI",
+        "Cohere API",
+        "AI Agent",
+        "Supabase",
+      ],
+      links: [
+        {
+          type: "GitHub",
+          href: "https://github.com/faizm10/HackTheNorth2025",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/skillmatch.png",
       video: "",
     },
     {
@@ -580,7 +603,8 @@ export const DATA = {
       badges: [],
       dates: "Sept 12 - Sept 14th",
       location: "Waterloo, Ontario",
-      description: "tbd",
+      description:
+        "Developed a smart learning platform that helps you study by turning any text or document into organized learning modules using AI.",
       image: "/htn2024.jpeg",
       mlh: "",
       links: [],
