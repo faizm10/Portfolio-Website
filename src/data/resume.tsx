@@ -120,17 +120,17 @@ export const DATA = {
   },
 
   work: [
-    // {
-    //   company: "TD Bank",
-    //   href: "https://www.td.com/us/en/personal-banking",
-    //   badges: [],
-    //   location: "Hybrid",
-    //   title: "Software Engineer Intern",
-    //   logoUrl: "./tdbank.png",
-    //   start: "Jan 2026",
-    //   end: "- Apr 2026",
-    //   description: "Incoming Software Engineer Intern 🚀",
-    // },
+    {
+      company: "TD Bank",
+      href: "https://www.td.com/us/en/personal-banking",
+      badges: [],
+      location: "Hybrid",
+      title: "Software Engineer Intern",
+      logoUrl: "./tdbank.png",
+      start: "Jan 2026",
+      end: "- Apr 2026",
+      description: "Incoming Software Engineer | Platforms & Technology 🚀",
+    },
     // {
     //   company: "Octree",
     //   href: "https://useoctree.com/",
