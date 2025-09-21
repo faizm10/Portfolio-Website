@@ -297,6 +297,7 @@ export const DATA = {
         "Cohere API",
         "AI Agent",
         "Supabase",
+        
       ],
       links: [
         {
