@@ -131,6 +131,17 @@ export const DATA = {
       end: "- Apr 2026",
       description: "Incoming Software Engineer | Platforms & Technology 🚀",
     },
+     {
+      company: "Hack Canada",
+      href: "https://hackcanada.org/",
+      badges: [],
+      location: "Remote",
+      title: "Frontend Engineer",
+      logoUrl: "./hackcanada.webp",
+      start: "Sept 2025",
+      end: "- Present",
+      description: "building",
+    },
     // {
     //   company: "Octree",
     //   href: "https://useoctree.com/",
