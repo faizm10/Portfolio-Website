@@ -136,7 +136,7 @@ export const DATA = {
       href: "https://hackcanada.org/",
       badges: [],
       location: "Remote",
-      title: "Frontend Engineer",
+      title: "Frontend Developer",
       logoUrl: "./hackcanada.webp",
       start: "Sept 2025",
       end: "- Present",
