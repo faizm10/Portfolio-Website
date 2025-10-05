@@ -295,9 +295,43 @@ export const DATA = {
       video: "",
     },
     {
+      title: "The Dryness Eliminator",
+      href: "https://www.textanxietygot.us/",
+      dates: "Hack The Valley 9 - Oct 3rd-5th 2025",
+      active: true,
+      description: "Your AI wingman that keeps conversations alive, prevents dry chats, and helps you maintain meaningful connections with smart suggestions and real-time coaching.",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "TailwindCSS",
+        "SQL",
+        "Supabase",
+        "Google Gemini",
+      ],
+      links: [
+        {
+          type: "Devpost",
+          icon: <Icons.globe className="h-4 w-4" />,
+          href: "https://devpost.com/software/ghostwing?ref_content=user-portfolio&ref_feature=in_progress",
+        },
+        {
+          type: "Github",
+          icon: <Icons.github className="h-4 w-4" />,
+          href: "https://github.com/faizm10/htv",
+        },
+         {
+          type: "Site",
+          icon: <Icons.globe className="h-4 w-4" />,
+          href: "https://www.textanxietygot.us/",
+        },
+      ],
+      image: "/htv1.png",
+      video: "",
+    },
+    {
       title: "Cognify",
       href: "",
-      dates: "Sept 2025",
+      dates: "Hack The North 2025",
       active: true,
       description:
         "Developed a smart learning platform that helps you study by turning any text or document into organized learning modules using AI.",
@@ -350,7 +384,7 @@ export const DATA = {
     {
       title: "CareLens",
       href: "",
-      dates: "Aug 2025",
+      dates: "TerraHacks Aug 2025",
       active: true,
       description:
         "CareLens is an AI-powered video health consultation platform that helps users identify symptoms in real-time through live video and audio analysis. ",
@@ -432,7 +466,7 @@ export const DATA = {
     {
       title: "FrontDesk AI",
       href: "",
-      dates: "June 2025",
+      dates: "SpurHacks June 2025",
       active: true,
       description:
         "Plug-and-play SaaS platform that enables small and mid-sized businesses to deploy AI-powered voice agents for phone-based customer interactions. No development work is required—just configure, and your virtual agent is live!",
@@ -486,7 +520,7 @@ export const DATA = {
     {
       title: "TenantShield",
       href: "",
-      dates: "Feb 2025",
+      dates: "HackCanadaFeb 2025",
       active: true,
       description:
         "Built an AI-powered legal assistant to help renters understand their rights, document disputes, and generate legal documents",
@@ -546,7 +580,7 @@ export const DATA = {
     {
       title: "OlympicPredictor",
       href: "https://olympicpredict.vercel.app",
-      dates: "Aug 2024",
+      dates: "CodeDex Hackathon 2024",
       active: true,
       description:
         "Built a predictive model for the 2024 Paris Olympics using historical data, achieving high accuracy through efficient data analysis.",
@@ -608,7 +642,23 @@ export const DATA = {
       description: "just chilled and networked with new people",
       image: "/htv.png",
       mlh: "",
-      links: [],
+      links: [
+        {
+          title: "Devpost",
+          icon: <Icons.globe className="h-4 w-4" />,
+          href: "https://devpost.com/software/ghostwing?ref_content=user-portfolio&ref_feature=in_progress",
+        },
+        {
+          title: "Github",
+          icon: <Icons.github className="h-4 w-4" />,
+          href: "https://github.com/faizm10/htv",
+        },
+         {
+          title: "Site",
+          icon: <Icons.globe className="h-4 w-4" />,
+          href: "https://www.textanxietygot.us/",
+        },
+      ],
     },
     {
       title: "Hack The North 2025",
