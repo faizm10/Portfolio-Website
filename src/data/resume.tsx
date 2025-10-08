@@ -312,7 +312,7 @@ export const DATA = {
         {
           type: "Devpost",
           icon: <Icons.globe className="h-4 w-4" />,
-          href: "https://devpost.com/software/ghostwing?ref_content=user-portfolio&ref_feature=in_progress",
+          href: "https://devpost.com/software/ghostwing",
         },
         {
           type: "Github",
@@ -349,6 +349,11 @@ export const DATA = {
           type: "GitHub",
           href: "https://github.com/faizm10/HackTheNorth2025",
           icon: <Icons.github className="size-3" />,
+        },
+         {
+          type: "Devpost",
+          icon: <Icons.globe className="h-4 w-4" />,
+          href: "https://devpost.com/software/cognify-cyr5b9",
         },
       ],
       image: "/cognify.png",
