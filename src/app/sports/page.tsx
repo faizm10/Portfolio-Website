@@ -241,6 +241,26 @@ export default async function GridView() {
               </ul>
             </CardContent>
           </Card>
+          <Card>
+            <CardContent className="p-4">
+              <div className="flex justify-between items-start mb-3">
+                <h3 className="font-semibold text-base text-primary">
+                  Fall 2025
+                </h3>
+              </div>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                
+                <li className="flex items-center gap-2">
+                  <Star className="h-4 w-4 text-blue-600" />
+                  <span>Open Fun Soccer 11v11 - Ongoing</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Star className="h-4 w-4 text-blue-600" />
+                  <span>Competitive Soccer 11v11 - Ongoing</span>
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
         </div>
       </div>
 
@@ -279,6 +299,12 @@ export default async function GridView() {
                 <li className="flex items-center gap-2">
                   <Star className="h-4 w-4 text-blue-600" />
                   <span>Competitive Soccer 11v11 - TBD</span>
+                </li>
+              </ul>
+               <ul className="space-y-2 text-sm text-muted-foreground">
+                <li className="flex items-center gap-2">
+                  <Star className="h-4 w-4 text-blue-600" />
+                  <span>Competitive Soccer 6v6 - TBD</span>
                 </li>
               </ul>
             </CardContent>
@@ -339,10 +365,10 @@ export default async function GridView() {
               </div>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">
-                  {/* <Medal className="h-4 w-4 text-stone-500" /> */}
-                  <Star className="h-4 w-4 text-blue-600" />
+                  <Medal className="h-4 w-4 text-stone-500" />
+                  {/* <Star className="h-4 w-4 text-blue-600" /> */}
                   <span>
-                    Stadium Sports League (Summer - Wed/Thurs) - TBD (Ongoing)
+                    Stadium Sports League (Summer - Wed/Thurs) - 3rd Place
                   </span>
                 </li>
                 <li className="flex items-center gap-2">
@@ -359,6 +385,22 @@ export default async function GridView() {
               </ul>
             </CardContent>
           </Card>
+          <CardContent className="p-4">
+              <div className="flex justify-between items-start mb-3">
+                <h3 className="font-semibold text-base text-primary">
+                  Fall 2025
+                </h3>
+              </div>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li className="flex items-center gap-2">
+                  {/* <Medal className="h-4 w-4 text-stone-500" /> */}
+                  <Star className="h-4 w-4 text-blue-600" />
+                  <span>
+                    Stadium Sports League (Summer - Fri) - Ongoing
+                  </span>
+                </li>
+              </ul>
+            </CardContent>
         </div>
       </div>
     </section>
