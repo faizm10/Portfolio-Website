@@ -834,6 +834,15 @@ export const DATA = {
   ],
   blogs: [
     {
+      title: "How I Built My Way Into TD Bank (Starting at Hack the North)",
+      description:
+        "I turned one hackathon weekend into my first real internship. Here's exactly what I built, who I talked to, and how I made it happen—no BS, just the playbook.",
+      author: "Faiz Mustansar",
+      date: "October 2025",
+      readTime: "8 min read",
+      href: "/blog/first-intern",
+    },
+    {
       title: "Building uoguelph.courses: A Student's Journey",
       description:
         "How I built a course search platform that reached 1.5k users and helped students plan their academic journey. From web scraping to user feedback, here's the complete story.",
