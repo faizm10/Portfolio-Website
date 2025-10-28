@@ -236,7 +236,7 @@ export const DATA = {
       degree: "Bachelor of Computing Honours (BCOMP)",
       logoUrl: "/uog.png",
       start: "2023 - ",
-      end: "2026",
+      end: "2027",
     },
   ],
   projects: [
