@@ -639,6 +639,33 @@ export const DATA = {
     },
   ],
   hackathons: [
+    {
+      title: "HackTrent 2025",
+      badges: [],
+      dates: "November 8th - 9th, 2025",
+      location: "Peterborough, Ontario",
+      description:
+        "tbd",
+      image: "/trent.png",
+      mlh: "/trent.png",
+      links: [
+        // {
+        //   title: "Devpost",
+        //   icon: <Icons.globe className="h-4 w-4" />,
+        //   href: "https://devpost.com/software/ecotracker-9y23wb?ref_content=my-projects-tab&ref_feature=my_projects",
+        // },
+        // {
+        //   title: "Github",
+        //   icon: <Icons.github className="h-4 w-4" />,
+        //   href: "https://github.com/faizm10/HackTrent",
+        // },
+        // {
+        //   title: "Site",
+        //   icon: <Icons.globe className="h-4 w-4" />,
+        //   href: "https://ecotrack-beryl.vercel.app",
+        // },
+      ],
+    },
       {
       title: "Hack The Valley 9",
       badges: [],
