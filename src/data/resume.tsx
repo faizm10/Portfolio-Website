@@ -295,9 +295,69 @@ export const DATA = {
       video: "",
     },
     {
+      title: "Code Keeper",
+      href: "https://useoctree.com/",
+      dates: "Nov 2025 - Current",
+      active: true,
+      description: "Automatically maintain your docs and architecture using AI",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "TailwindCSS",
+        "Google Gemini",
+        "Supabase",
+        "Docker",
+        "GitHub API",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://code-keeper.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Github",
+          icon: <Icons.github className="h-4 w-4" />,
+          href: "https://github.com/faizm10/code-keeper",
+        },
+      ],
+      image: "/codekeeper.png",
+      video: "",
+    },
+    {
+      title: "EchoLag",
+      href: "",
+      dates: "HackTrent 2025",
+      active: true,
+      description: "EchoLag is a browser-based coaching lab that simulates real conversations, tracks filler words and pace, and delivers instant feedback so you can sharpen speech skills without judgment.",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "Python",
+        "C++",
+        "ElevenLabs",
+        "Google Gemini",
+        "FastAPI",
+      ],
+      links: [
+        {
+          type: "Devpost",
+          icon: <Icons.globe className="h-4 w-4" />,
+          href: "https://devpost.com/software/echolab?_gl=1*819xfu*_gcl_au*MjEzMTczMTQ2NS4xNzU4MzgzMjkz*_ga*NTEwMzU4NDA3LjE3NDAxMDg4NzU.*_ga_0YHJK3Y10M*czE3NjI3MTYyNDUkbzE2MyRnMSR0MTc2MjcxNzEwOSRqNTYkbDAkaDA.",
+        },
+        {
+          type: "Github",
+          icon: <Icons.github className="h-4 w-4" />,
+          href: "https://github.com/faizm10/HackTrent25",
+        },
+      ],
+      image: "/hacktrent1.png",
+      video: "",
+    },
+    {
       title: "The Dryness Eliminator",
       href: "https://www.textanxietygot.us/",
-      dates: "Hack The Valley 9 - Oct 3rd-5th 2025",
+      dates: "Hack The Valley 9",
       active: true,
       description: "Your AI wingman that keeps conversations alive, prevents dry chats, and helps you maintain meaningful connections with smart suggestions and real-time coaching.",
       technologies: [
@@ -471,7 +531,7 @@ export const DATA = {
     {
       title: "FrontDesk AI",
       href: "",
-      dates: "SpurHacks June 2025",
+      dates: "SpurHacks",
       active: true,
       description:
         "Plug-and-play SaaS platform that enables small and mid-sized businesses to deploy AI-powered voice agents for phone-based customer interactions. No development work is required—just configure, and your virtual agent is live!",
@@ -525,7 +585,7 @@ export const DATA = {
     {
       title: "TenantShield",
       href: "",
-      dates: "HackCanadaFeb 2025",
+      dates: "HackCanada",
       active: true,
       description:
         "Built an AI-powered legal assistant to help renters understand their rights, document disputes, and generate legal documents",
@@ -641,29 +701,24 @@ export const DATA = {
   hackathons: [
     {
       title: "HackTrent 2025",
-      badges: [],
+      badges: ["🥇 1st Place - Typing Competition"],
       dates: "November 8th - 9th, 2025",
       location: "Peterborough, Ontario",
       description:
-        "tbd",
+        "EchoLag is a browser-based coaching lab that simulates real conversations, tracks filler words and pace, and delivers instant feedback so you can sharpen speech skills without judgment.",
       image: "/trent.png",
       mlh: "/trent.png",
       links: [
-        // {
-        //   title: "Devpost",
-        //   icon: <Icons.globe className="h-4 w-4" />,
-        //   href: "https://devpost.com/software/ecotracker-9y23wb?ref_content=my-projects-tab&ref_feature=my_projects",
-        // },
-        // {
-        //   title: "Github",
-        //   icon: <Icons.github className="h-4 w-4" />,
-        //   href: "https://github.com/faizm10/HackTrent",
-        // },
-        // {
-        //   title: "Site",
-        //   icon: <Icons.globe className="h-4 w-4" />,
-        //   href: "https://ecotrack-beryl.vercel.app",
-        // },
+        {
+          title: "Devpost",
+          icon: <Icons.globe className="h-4 w-4" />,
+          href: "https://devpost.com/software/echolab?_gl=1*819xfu*_gcl_au*MjEzMTczMTQ2NS4xNzU4MzgzMjkz*_ga*NTEwMzU4NDA3LjE3NDAxMDg4NzU.*_ga_0YHJK3Y10M*czE3NjI3MTYyNDUkbzE2MyRnMSR0MTc2MjcxNzEwOSRqNTYkbDAkaDA.",
+        },
+        {
+          title: "Github",
+          icon: <Icons.github className="h-4 w-4" />,
+          href: "https://github.com/faizm10/HackTrent25",
+        },
       ],
     },
       {
