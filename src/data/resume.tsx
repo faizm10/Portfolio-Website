@@ -701,7 +701,7 @@ export const DATA = {
   hackathons: [
     {
       title: "HackTrent 2025",
-      badges: ["🥇 1st Place - Typing Competition", "Best Use of Gemini API"],
+      badges: ["🥇 1st Place - Typing Competition", "🥇 Best Use of Gemini API"],
       dates: "November 8th - 9th, 2025",
       location: "Peterborough, Ontario",
       description:
