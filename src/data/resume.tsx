@@ -136,7 +136,7 @@ export const DATA = {
       href: "https://hackcanada.org/",
       badges: [],
       location: "Remote",
-      title: "Frontend Developer",
+      title: "Product Manager - VP of Frontend & Backend Development",
       logoUrl: "./hackcanada.webp",
       start: "Sept 2025",
       end: "- Present",
@@ -701,7 +701,7 @@ export const DATA = {
   hackathons: [
     {
       title: "HackTrent 2025",
-      badges: ["🥇 1st Place - Typing Competition", "🥇 Best Use of Gemini API"],
+      badges: ["🥇 Best Use of Gemini API", "🥇 1st Place - Typing Competition"],
       dates: "November 8th - 9th, 2025",
       location: "Peterborough, Ontario",
       description:
