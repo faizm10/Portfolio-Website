@@ -1,70 +1,70 @@
-import "@/styles/globals.css"
-import { ThemeProvider } from "@/components/providers/theme-provider"
-import { ImageViewer } from "@/components/shells/image-viewer"
-import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
-import { GeistMono } from "geist/font/mono"
-import { GeistSans } from "geist/font/sans"
-import type { Metadata, Viewport } from "next"
+import "@/styles/globals.css";
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { ImageViewer } from "@/components/shells/image-viewer";
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
+import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sujjeee.com"),
+  metadataBase: new URL("https://faizm.com"),
   title: {
     default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`
+    template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: [
-    "suraj gupta",
-    "suraj gupta portfolio",
-    "suraj sujjeee",
-    "suraj github",
-    "sujjeee",
-    "sujjeeee",
-    "sujjeee github",
-    "sujjeee portfolio",
+    "faiz gupta",
+    "faiz gupta portfolio",
+    "faiz faize",
+    "faiz github",
+    "faize",
+    "faizee",
+    "faiz github",
+    "faiz portfolio",
     "software developer",
-    "Full stack developer"
+    "Full stack developer",
   ],
   authors: [
     {
-      name: "Suraj Gupta",
-      url: "https://sujjeee.com"
-    }
+      name: "Faiz Mustansar",
+      url: "https://faizm.vercel.app/",
+    },
   ],
-  creator: "sujjeee",
+  creator: "faiz",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteConfig.url,
     title: siteConfig.name,
     description: siteConfig.description,
-    siteName: siteConfig.name
+    siteName: siteConfig.name,
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@sujjeeee"
+    creator: "@faizm10",
   },
   icons: {
-    icon: "/favicon.ico"
-  }
-}
+    icon: "/favicon.ico",
+  },
+};
 
 export const viewport: Viewport = {
   colorScheme: "dark light",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" }
-  ]
-}
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+};
 
 export default function RootLayout({
-  children
+  children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -88,5 +88,5 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }
