@@ -4,6 +4,13 @@ import { ProjectProps } from "@/components/sections/projects";
 import { WorkProps } from "@/components/sections/work-experience";
 import { HackathonProps } from "@/components/sections/hackathons";
 
+export interface NotificationProps {
+  id: string;
+  message: string;
+  active: boolean;
+  date?: string;
+}
+
 
 export const projects = [
   {
@@ -241,3 +248,12 @@ export const hackathons = [
     featured: true,
   },
 ] as HackathonProps[];
+
+export const notifications: NotificationProps[] = [
+  {
+    id: "new-site",
+    message: "New site look! Check out the updated portfolio",
+    active: true,
+    date: "January 2025",
+  },
+];
