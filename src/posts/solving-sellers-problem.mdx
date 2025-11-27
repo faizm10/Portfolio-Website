@@ -1,0 +1,77 @@
+---
+title: "Solving Sellers Problem"
+description: "Solving Real E-commerce Sellers Problems"
+time: "July 8, 2024"
+---
+
+As developers, some of the most rewarding projects are those that solve real-world challenges and make life easier for others.
+
+This is the story of how I created **PDFScribe** — _a tool that turned a frustrating, time consuming task into a simple, automated solution for e-commerce sellers._
+
+### Sellers Problem
+
+E-commerce sellers on platforms like Amazon, Flipkart, Myntra, or Meesho often face big challenges when handling shipping labels.
+
+Let me show you how a shipping label looks:
+
+<ImageShell imageUrl="https://utfs.io/f/lWdjoQZNCrBm4ssTKwUkTsHeXv5oEkiGU0ZL3Y6tNVIOycrd" />
+
+Now, imagine a seller processing hundreds of orders daily. By the end of the day, they’re left with PDFs containing **100+ shipping labels.**
+
+And then, they have to:
+
+- Manually scanning through hundreds of pages
+- Separating labels by different delivery partners
+- Identifying and grouping exchange orders
+- Finding and bundling multi-order shipments
+- Cropping out tax invoices from each label
+
+This process isn't just time-consuming, it's mind-numbing and error-prone. One mistake could mean a misrouted package or a delayed shipment.
+
+### Solution
+
+To **help sellers** focus on what truly matters - growing their business. **I built PDFScribe**. It's a specialized tool that **automates** the entire shipping label management process.
+
+Here's how PDFScribe works:
+
+<VideoViewer videoSrc="https://utfs.io/f/lWdjoQZNCrBmO0OuJyi6mBlLRiJbIKYn381vPNVU4WFXh0Ex" />
+
+1. **Simple Upload**: <br/>
+   Just drag and drop your shipping label PDF
+
+2. **Automatic Processing**:
+
+   - Automatically crops out tax invoices
+   - Identifies and groups labels by delivery partner
+   - Flags and sorts exchange orders
+   - Bundles multi-order shipments
+
+Note: This tool was **custom-built for the seller** and **is exclusively available to them**, with no public access.
+
+### Tech Stack
+
+PDFScribe is built with a modern tech stack designed to be fast, run in the browser, and, most importantly, be easy for users.
+
+Frontend Framework: [Next.js](https://nextjs.org)<br/>
+Styling: [Tailwind CSS](https://tailwindcss.com)<br/>
+UI Components: [Shadcn](https://ui.shadcn.com)<br/>
+Deployment: [Cloudflare](https://cloudflare.com)<br/>
+Storage: [AWS S3](https://aws.amazon.com/s3)<br/>
+
+**Key Libraries:**
+
+File Upload: [react-dropzone](https://www.npmjs.com/package/react-dropzone)<br/>
+PDF Parsing: [langchain](https://www.npmjs.com/package/langchain)<br/>
+PDF Cropping: [pdfjs-dist](https://www.npmjs.com/package/pdfjs-dist)<br/>
+PDF Grouping: [pdf-lib](https://www.npmjs.com/package/pdf-lib)<br/>
+Zipping Files: [jszip](https://www.npmjs.com/package/jszip)<br/>
+
+### Learnings
+
+> Focus on solving a niche problem that a small group cares deeply about, not a broad one no one feels strongly about. - Sam Altman
+
+PDFScribe isn’t built for everyone; it’s specifically designed for Meesho sellers.
+
+I learned a lot while building this project. At first, I thought it would be easy. But working with PDF files was tricky. The main problem was that processing big PDFs on servers would cost too much money. After lots of research, I found a way to do everything in the web browser instead. This saved money and worked better.
+
+This taught me how important it is to **find good solutions to specific problems**.

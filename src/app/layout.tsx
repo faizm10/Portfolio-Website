@@ -1,75 +1,92 @@
-import Navbar from "@/components/navbar";
-import { ThemeProvider } from "@/components/theme-provider";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { DATA } from "@/data/resume";
-import { cn } from "@/lib/utils";
-import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
-import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
+import "@/styles/globals.css"
+import { ThemeProvider } from "@/components/providers/theme-provider"
+import { ImageViewer } from "@/components/shells/image-viewer"
+import { siteConfig } from "@/config/site"
+import { cn } from "@/lib/utils"
+import { GeistMono } from "geist/font/mono"
+import { GeistSans } from "geist/font/sans"
+import type { Metadata, Viewport } from "next"
 
 export const metadata: Metadata = {
-  metadataBase: new URL(DATA.url),
+  metadataBase: new URL("https://sujjeee.com"),
   title: {
-    default: DATA.name,
-    template: `%s | ${DATA.name}`,
+    default: siteConfig.name,
+    template: `%s - ${siteConfig.name}`
   },
-  description: DATA.description,
+  description: siteConfig.description,
+  keywords: [
+    "suraj gupta",
+    "suraj gupta portfolio",
+    "suraj sujjeee",
+    "suraj github",
+    "sujjeee",
+    "sujjeeee",
+    "sujjeee github",
+    "sujjeee portfolio",
+    "software developer",
+    "Full stack developer"
+  ],
+  authors: [
+    {
+      name: "Suraj Gupta",
+      url: "https://sujjeee.com"
+    }
+  ],
+  creator: "sujjeee",
   openGraph: {
-    title: `${DATA.name}`,
-    description: DATA.description,
-    url: DATA.url,
-    siteName: `${DATA.name}`,
-    locale: "en_US",
     type: "website",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+    locale: "en_US",
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name
   },
   twitter: {
-    title: `${DATA.name}`,
     card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+    creator: "@sujjeeee"
   },
-  verification: {
-    google: "",
-    yandex: "",
-  },
-};
+  icons: {
+    icon: "/favicon.ico"
+  }
+}
+
+export const viewport: Viewport = {
+  colorScheme: "dark light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" }
+  ]
+}
 
 export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+  children
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
-          fontSans.variable
+          "min-h-screen bg-background font-sans antialiased",
+          GeistSans.variable,
+          GeistMono.variable
         )}
       >
-        <Analytics />
-
-        <ThemeProvider attribute="class" defaultTheme="light">
-          <TooltipProvider delayDuration={0}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main className="mx-auto w-full mb-16 max-w-screen-sm py-8">
             {children}
-            <Navbar />
-          </TooltipProvider>
+          </main>
+          <ImageViewer />
         </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }

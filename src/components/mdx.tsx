@@ -1,91 +1,102 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import {
+  ImageCarousel,
+  ImageCarouselProps
+} from "@/components/shells/image-carousel"
+import { cn } from "@/lib/utils"
+import { useMDXComponent } from "@content-collections/mdx/react"
+import React from "react"
+import { ImageShell, ImageShellProps } from "./shells/image-shell"
+import { VideoViewer, VideoViewerProps } from "./shells/video-viewer"
 
-function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
-  let headers = data.headers.map((header, index) => (
-    <th key={index}>{header}</th>
-  ));
-  let rows = data.rows.map((row, index) => (
-    <tr key={index}>
-      {row.map((cell, cellIndex) => (
-        <td key={cellIndex}>{cell}</td>
-      ))}
-    </tr>
-  ));
+const components = {
+  ImageCarousel: ({ imageUrls }: ImageCarouselProps) => {
+    return <ImageCarousel imageUrls={imageUrls} />
+  },
+  ImageShell: ({ imageUrl }: ImageShellProps) => {
+    return <ImageShell imageUrl={imageUrl} />
+  },
+  VideoViewer: ({ videoSrc }: VideoViewerProps) => {
+    return <VideoViewer videoSrc={videoSrc} />
+  },
+  h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h1
+      data-highlight="false"
+      id={props.children?.toString().toLowerCase().replace(/\s+/g, "-")}
+      className={cn(
+        "font-medium  lg:leading-[1.1]  mb-2 text-[15px]",
+        className
+      )}
+      {...props}
+    />
+  ),
+  h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h3
+      data-highlight="false"
+      id={props.children?.toString().toLowerCase().replace(/\s+/g, "-")}
+      className={cn(
+        "mt-9 scroll-m-20 font-medium font-sans lg:leading-[1.1] group text-[15.5px]",
+        className
+      )}
+      {...props}
+    />
+  ),
+  p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
+    <p
+      className={cn(
+        "prose prose-neutral dark:prose-invert text-[15px] leading-7 [&:not(:first-child)]:mt-6  ",
+        className
+      )}
+      {...props}
+    />
+  ),
+  ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
+    <ul
+      className={cn(
+        "prose prose-neutral dark:prose-invert text-[15px] mt-2 ml-2 list-disc",
+        className
+      )}
+      {...props}
+    />
+  ),
+  ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
+    <ol className={cn("mt-2 ml-2 list-decimal", className)} {...props} />
+  ),
+  li: ({ className, ...props }: React.HTMLAttributes<HTMLLIElement>) => {
+    return <li className={cn(" mt-2 ml-2 list-item", className)} {...props} />
+  },
+  a: ({
+    className,
+    ...props
+  }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
+    <a
+      target="_blank"
+      className={cn(
+        "prose prose-neutral dark:prose-invert text-[15px]  border-b border-dashed border-neutral-700 no-underline pb-[1.4px] hover:border-solid",
+        className
+      )}
+      {...props}
+    />
+  ),
+  blockquote: ({
+    className,
+    ...props
+  }: React.HTMLAttributes<HTMLQuoteElement>) => (
+    <blockquote
+      className={cn(
+        "mt-6 border-gray-4 border-l-2 pl-6 text-muted italic",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+export function MDX({ code }: { code: string }) {
+  const Component = useMDXComponent(code)
 
   return (
-    <table>
-      <thead>
-        <tr>{headers}</tr>
-      </thead>
-      <tbody>{rows}</tbody>
-    </table>
-  );
+    <article>
+      <Component components={components} />
+    </article>
+  )
 }
-
-function CustomLink(props: any) {
-  let href = props.href;
-
-  if (href.startsWith("/")) {
-    return (
-      <Link href={href} {...props}>
-        {props.children}
-      </Link>
-    );
-  }
-
-  if (href.startsWith("#")) {
-    return <a {...props} />;
-  }
-
-  return <a target="_blank" rel="noopener noreferrer" {...props} />;
-}
-
-function RoundedImage(props: any) {
-  return <Image alt={props.alt} className="rounded-lg" {...props} />;
-}
-
-// This replaces rehype-slug
-function slugify(str: string) {
-  return str
-    .toString()
-    .toLowerCase()
-    .trim() // Remove whitespace from both ends of a string
-    .replace(/\s+/g, "-") // Replace spaces with -
-    .replace(/&/g, "-and-") // Replace & with 'and'
-    .replace(/[^\w\-]+/g, "") // Remove all non-word characters except for -
-    .replace(/\-\-+/g, "-"); // Replace multiple - with single -
-}
-
-function createHeading(level: number) {
-  const Heading = ({ children }: { children: React.ReactNode }) => {
-    let slug = slugify(children as string);
-    return React.createElement(
-      `h${level}`,
-      { id: slug },
-      [
-        React.createElement("a", {
-          href: `#${slug}`,
-          key: `link-${slug}`,
-          className: "anchor",
-        }),
-      ],
-      children
-    );
-  };
-  Heading.displayName = `Heading${level}`;
-  return Heading;
-}
-
-export const globalComponents = {
-  h1: createHeading(1),
-  h2: createHeading(2),
-  h3: createHeading(3),
-  h4: createHeading(4),
-  h5: createHeading(5),
-  h6: createHeading(6),
-  Image: RoundedImage,
-  a: CustomLink,
-  Table,
-};
