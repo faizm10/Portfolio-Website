@@ -15,16 +15,16 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: [
-    "faiz gupta",
-    "faiz gupta portfolio",
-    "faiz faize",
-    "faiz github",
-    "faize",
-    "faizee",
+    "faiz mustansar",
+    "faiz mustansar portfolio",
+    "faiz mustansar github",
+    "faizm10",
     "faiz github",
     "faiz portfolio",
     "software developer",
-    "Full stack developer",
+    "full stack developer",
+    "computer science",
+    "university of guelph",
   ],
   authors: [
     {

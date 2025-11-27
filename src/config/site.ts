@@ -1,14 +1,14 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Suraj Gupta",
+  name: "Faiz Mustansar",
   description: "Software Developer.",
-  url: "https://sujjeee.com",
-  ogImage: "https://sujjeee.com/opengraph-image.png",
+  url: "https://faizm.vercel.app",
+  ogImage: "https://faizm.vercel.app/opengraph-image.png",
   links: {
-    twitter: "https://x.com/sujjeeee",
-    github: "https://github.com/sujjeee",
-    email: "mailto:sujjeee@outlook.com",
-    discord: "https://discordapp.com/users/1056124751527030794"
+    twitter: "https://x.com/faizm10",
+    github: "https://github.com/faizm10",
+    email: "mailto:faizmustansar10@gmail.com",
+    discord: ""
   }
 }
