@@ -3,89 +3,108 @@ import { WorkProps } from "@/components/sections/work-experience"
 
 export const projects = [
   {
-    title: "threads-clone",
-    description: "threads clone with t3 stack.",
-    href: "https://threadss-clone.vercel.app",
+    title: "uoguelph.courses",
+    description: "course planning platform for 6000+ students.",
+    href: "https://uoguelph.courses",
     status: "maintained"
   },
   {
-    title: "linknode",
-    description: "minimalistic link in bio.",
-    href: "https://linknode.vercel.app",
+    title: "octree",
+    description: "ai latex editor with real-time pdf builds.",
+    href: "https://octree.app",
     status: "maintained"
   },
   {
-    title: "chillguy",
-    description: "meme generator.",
-    href: "https://just-chill-guy.vercel.app",
+    title: "dialzara",
+    description: "ai front desk for small businesses.",
+    href: "https://dialzara.com",
     status: "maintained"
   },
   {
-    title: "artoons",
-    description: "cartoon-style ai illustrations.",
-    href: "https://artoons.vercel.app",
+    title: "sylabbus-sage",
+    description: "ai success guide from your syllabus.",
+    href: "https://syllabussage.vercel.app",
     status: "maintained"
   },
   {
-    title: "mindmap",
-    description: "map your thoughts.",
-    href: "https://map-your-thoughts.vercel.app/",
+    title: "spendsmart",
+    description: "personal finance tracker w currency exchange.",
+    href: "https://spendsmart.vercel.app",
     status: "maintained"
   },
   {
-    title: "svgls",
-    description: "a cli for adding svg icons.",
-    href: "https://github.com/sujjeee/svgls",
+    title: "leetplay",
+    description: "gamified leetcode with xp, levels, streaks.",
+    href: "https://leetplay.vercel.app",
+    status: "maintained"
+  },
+  {
+    title: "brown-beatty-ai",
+    description: "complaint + incident mgmt system.",
+    href: "https://brownbeatty.vercel.app",
+    status: "maintained"
+  },
+  {
+    title: "mindtrack",
+    description: "mental health tracker designed for hci.",
+    href: "https://mindtrack-demo.vercel.app",
     status: "archived"
   },
   {
-    title: "gemai",
-    description: "a cli rag chatbot with gemini.",
-    href: "https://github.com/sujjeee/gemai",
-    status: "archived"
-  },
-  {
-    title: "dubco",
-    description: "a cli for shortening urls.",
-    href: "https://github.com/sujjeee/dubco",
-    status: "archived"
-  },
-  {
-    title: "peepstudio",
-    description: "random avatar generator.",
-    href: "https://peepstudio.vercel.app",
-    status: "archived"
-  },
-  {
-    title: "playboard",
-    description: "collaborative drawing app.",
-    href: "https://playboard.vercel.app",
-    status: "archived"
-  },
-  {
-    title: "securelink",
-    description: "secure link shortener.",
-    href: "https://securelink.vercel.app",
+    title: "ghostwing",
+    description: "ai chat assistant built for hack the north.",
+    href: "https://ghostwing.vercel.app",
     status: "archived"
   }
 ] as ProjectProps[]
 
 export const workExperience = [
   {
-    title: "Tapify",
-    href: "building-saas-from-scratch",
-    buttonText: "Building SaaS from Scratch"
+    title: "software engineer @ td bank",
+    href: "td-bank",
+    buttonText: "platforms & technology",
+    status: "intern",
+    
   },
   {
-    title: "PDFScribe",
-    href: "solving-sellers-problem",
+    title: "frontend lead @ hackcanada",
+    href: "hack-canada",
+    buttonText: "hackcanada 2026",
+    status: "organizer",
+    
+  },
+  {
+    title: "brown & beatty",
+    href: "brown-beatty",
+    buttonText: "modernizing labour disputes with ai",
     status: "contract",
-    buttonText: "Solving Sellers Problem"
+    
   },
   {
-    title: "OnShow",
-    href: "learn-new-things-by-doing",
-    status: "freelancing",
-    buttonText: "Learn New Things by Doing"
+    title: "university of guelph",
+    href: "mcs2000-ta",
+    buttonText: "mcs2000 de",
+    status: "contract full-time",
+    
+  },
+  {
+    title: "university of guelph",
+    href: "lang-fsd",
+    buttonText: "improving student experience",
+    status: "full-stack-developer",
+    
+  },
+  {
+    title: "university of guelph",
+    href: "mcs2020-ta",
+    buttonText: "mcs2020 de",
+    status: "contract full-time",
+    
+  },
+  {
+    title: "university of guelph",
+    href: "ura-lang",
+    buttonText: "researching + building",
+    status: "contract full-time",
   }
 ] as WorkProps[]

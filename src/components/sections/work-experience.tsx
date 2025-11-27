@@ -8,7 +8,7 @@ import type React from "react"
 export interface WorkProps {
   href: string
   title: string
-  status?: "freelancing" | "contract"
+  status: string
   buttonText?: string
 }
 
