@@ -17,11 +17,11 @@ export function ContactMe() {
           </CustomLink>{" "}.
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-          <CustomLink href="https://github.com/faizm10">GitHub</CustomLink>
+          <CustomLink href={siteConfig.links.github}>GitHub</CustomLink>
           <span>•</span>
-          <CustomLink href="https://www.linkedin.com/in/faizmustansar">LinkedIn</CustomLink>
+          <CustomLink href={siteConfig.links.twitter}>Twitter</CustomLink>
           <span>•</span>
-          <CustomLink href="https://faizm.vercel.app/">Site</CustomLink>
+          <CustomLink href={siteConfig.url}>Site</CustomLink>
         </div>
       </div>
     </ShellSection>
