@@ -1,4 +1,5 @@
 import { ShellSection } from "@/components/ui/shell"
+import { siteConfig } from "@/config/site"
 import Link from "next/link"
 
 export function ContactMe() {
@@ -15,6 +16,13 @@ export function ContactMe() {
             Github
           </CustomLink>{" "}.
         </p>
+        <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+          <CustomLink href="https://github.com/faizm10">GitHub</CustomLink>
+          <span>•</span>
+          <CustomLink href="https://www.linkedin.com/in/faizmustansar">LinkedIn</CustomLink>
+          <span>•</span>
+          <CustomLink href="https://faizm.vercel.app/">Site</CustomLink>
+        </div>
       </div>
     </ShellSection>
   )
