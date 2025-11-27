@@ -4,41 +4,6 @@ import { ProjectProps } from "@/components/sections/projects";
 import { WorkProps } from "@/components/sections/work-experience";
 import { HackathonProps } from "@/components/sections/hackathons";
 
-export interface EducationProps {
-  school: string;
-  href: string;
-  degree: string;
-  logoUrl: string;
-  start: string;
-  end: string;
-}
-
-export const education: EducationProps[] = [
-  {
-    school: "University of Waterloo",
-    href: "https://uwaterloo.ca/",
-    degree: "Mathematics, Computer Science",
-    logoUrl: "/uWaterloo.png",
-    start: "Summer 2025 - ",
-    end: "December 2025",
-  },
-  {
-    school: "University of Ottawa",
-    href: "https://www.uottawa.ca/en",
-    degree: "Engineering, Computer Science",
-    logoUrl: "/UOttawa.jpeg",
-    start: "Summer ",
-    end: "2025",
-  },
-  {
-    school: "University of Guelph",
-    href: "https://www.uoguelph.ca/",
-    degree: "Bachelor of Computing Honours (BCOMP)",
-    logoUrl: "/uog.png",
-    start: "2023 - ",
-    end: "2027",
-  },
-];
 
 export const projects = [
   {
@@ -210,25 +175,25 @@ export const workExperience = [
     status: "contract",
   },
   {
-    title: "university of guelph",
-    href: "mcs2000-ta",
+    title: "teaching assistant @ university of guelph",
+    href: "teaching-assistant",
     buttonText: "sept 2025 - dec 2025",
     status: "contract full-time",
   },
   {
-    title: "university of guelph",
+    title: "full-stack developer @ university of guelph",
     href: "lang-fsd",
     buttonText: "may 2025 - aug 2025",
-    status: "full-stack-developer",
+    status: "contract full-time",
   },
   {
-    title: "university of guelph",
-    href: "mcs2020-ta",
+    title: "teaching assistant @ university of guelph",
+    href: "teaching-assistant",
     buttonText: "sept 2024 - apr 2025",
     status: "contract full-time",
   },
   {
-    title: "university of guelph",
+    title: "research assistant @ university of guelph",
     href: "ura-lang",
     buttonText: "may 2024 - aug 2024",
     status: "contract full-time",
