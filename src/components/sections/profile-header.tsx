@@ -47,7 +47,7 @@ export function ProfileHeader({
               <span className="relative top-[4.5px] size-2 rounded-full bg-green-500"></span>
             </div>
             <span className="prose prose-neutral ml-4 dark:prose-invert text-[14px]">
-              available for work
+              seeking for summer 2026 internships
             </span>
           </div>
         )}
