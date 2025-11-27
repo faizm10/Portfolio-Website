@@ -48,7 +48,7 @@ export function WorkExperience() {
                   <div className="flex items-center space-x-2">
                     <span className="text-[15px] leading-4">{work.title}</span>
                     {work.status && (
-                      <div className="inline-flex items-center rounded-full border border-input px-2.5 py-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-xs font-normal text-muted-foreground">
+                      <div className="hidden md:inline-flex items-center rounded-full border border-input px-2.5 py-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-xs font-normal text-muted-foreground">
                         {work.status}
                       </div>
                     )}
@@ -75,7 +75,7 @@ export function WorkExperience() {
               <div className="flex items-center space-x-2">
                 <span className="text-[15px] leading-4">{positions[0].title}</span>
                 {positions[0].status && (
-                  <div className="inline-flex items-center rounded-full border border-input px-2.5 py-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-xs font-normal text-muted-foreground">
+                  <div className="hidden md:inline-flex items-center rounded-full border border-input px-2.5 py-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-xs font-normal text-muted-foreground">
                     {positions[0].status}
                   </div>
                 )}

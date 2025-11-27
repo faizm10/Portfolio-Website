@@ -37,14 +37,14 @@ export function Projects() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
-            className="group relative flex cursor-pointer flex-row items-center justify-between rounded-md duration-300 hover:before:absolute hover:before:-inset-2.5 hover:before:rounded-md hover:before:bg-accent/20 hover:before:content-['']"
+            className="group relative flex cursor-pointer flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0 rounded-md duration-300 hover:before:absolute hover:before:-inset-2.5 hover:before:rounded-md hover:before:bg-accent/20 hover:before:content-['']"
           >
-            <div className="flex flex-col space-y-1 z-10">
-              <div className="flex items-center space-x-2">
+            <div className="flex flex-col space-y-1 z-10 flex-1">
+              <div className="flex items-center space-x-2 flex-wrap">
                 <span className="text-[15px] font-medium leading-4">
                   {project.title}
                 </span>
-                <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-xs font-normal text-muted-foreground">
+                <div className="hidden md:inline-flex items-center rounded-full border px-2.5 py-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-xs font-normal text-muted-foreground">
                   {project.status}
                 </div>
               </div>
@@ -52,7 +52,7 @@ export function Projects() {
                 {project.description}
               </span>
             </div>
-            <div className="transition duration-150 group-hover:rotate-45">
+            <div className="transition duration-150 group-hover:rotate-45 self-end md:self-auto">
               <Icons.link className="size-3.5 whitespace-nowrap text-muted-foreground" />
             </div>
           </motion.a>
