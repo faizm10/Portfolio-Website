@@ -7,22 +7,13 @@ export function ContactMe() {
       <div className="prose prose-zinc dark:prose-invert text-[15px]">
         <p>
           If you're looking to connect for a project, feel free to reach out via{" "}
-          <CustomLink href="mailto:contact@sujjeee.com?subject=Hi%2C%20Suraj!">
+          <CustomLink href="mailto:faizmustansar10@gmail.com?subject=Hi%2C%20Faiz!">
             Email
           </CustomLink>
-          . Or just ping me on{" "}
-          <CustomLink href="https://discordapp.com/users/1056124751527030794">
-            Discord
-          </CustomLink>
           . You can also follow me on{" "}
-          <CustomLink href="https://git.new/sujjeee/?ref=sujjeee.com">
+          <CustomLink href="https://github.com/faizm10">
             Github
-          </CustomLink>{" "}
-          and{" "}
-          <CustomLink href="https://dub.sh/sujjeee/?ref=sujjeee.com">
-            X
-          </CustomLink>{" "}
-          if you find my work interesting.
+          </CustomLink>{" "}.
         </p>
       </div>
     </ShellSection>
