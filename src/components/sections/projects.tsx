@@ -1,25 +1,42 @@
+"use client"
+
 import { Icons } from "@/components/icons"
 import { ShellSection } from "@/components/ui/shell"
 import { projects } from "@/lib/constants"
+import { motion } from "framer-motion"
 import type React from "react"
 
 export interface ProjectProps {
   href: string
   title: string
   description: string
-  status: "wip" | "maintained" | "archived"
+  status: "wip" | "maintained" | "archived" | "hackathon"
+  dates?: string
+  active?: boolean
+  technologies?: string[]
+  links?: Array<{
+    type: string
+    href: string
+    icon: React.ReactNode
+  }>
+  image?: string
+  video?: string
+  featured?: boolean
 }
 
 export function Projects() {
   return (
     <ShellSection index={4} title="Projects">
-      <div className="grid grid-cols-1 gap-6 ">
+      <div className="grid grid-cols-1 gap-6">
         {projects.map((project, index) => (
-          <a
+          <motion.a
             key={index}
             href={project.href}
             target="_blank"
             rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
             className="group relative flex cursor-pointer flex-row items-center justify-between rounded-md duration-300 hover:before:absolute hover:before:-inset-2.5 hover:before:rounded-md hover:before:bg-accent/20 hover:before:content-['']"
           >
             <div className="flex flex-col space-y-1 z-10">
@@ -38,9 +55,20 @@ export function Projects() {
             <div className="transition duration-150 group-hover:rotate-45">
               <Icons.link className="size-3.5 whitespace-nowrap text-muted-foreground" />
             </div>
-          </a>
+          </motion.a>
         ))}
       </div>
+      <motion.a
+        href="https://github.com/faizm10"
+        target="_blank"
+        rel="noopener noreferrer"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4"
+      >
+        <span>View additional projects on GitHub</span>
+        {/* <Icons.github className="size-4" /> */}
+      </motion.a>
     </ShellSection>
   )
 }

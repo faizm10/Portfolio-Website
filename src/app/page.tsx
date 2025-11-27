@@ -1,5 +1,6 @@
 import { AboutMe } from "@/components/sections/about-me"
 import { ContactMe } from "@/components/sections/contact-me"
+import { Hackathons } from "@/components/sections/hackathons"
 import { ProfileHeader } from "@/components/sections/profile-header"
 import { Projects } from "@/components/sections/projects"
 import { WorkExperience } from "@/components/sections/work-experience"
@@ -11,7 +12,8 @@ export default function Home() {
       <AboutMe />
       <WorkExperience />
       <Projects />
+      <Hackathons />
       <ContactMe />
-    </section>
+      </section>
   )
 }

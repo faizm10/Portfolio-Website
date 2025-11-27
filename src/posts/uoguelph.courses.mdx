@@ -1,0 +1,106 @@
+---
+title: "uoguelph.courses"
+description: "story behind uoguelph.courses"
+time: "April 8, 2025"
+---
+
+_Ever spent way too long hunting down the perfect professor for a course, or refreshing Reddit threads for difficulty ratings?_&nbsp; That was me last year—scrolling through 2024 outlines, pestering upper years, and waiting on Discord notifications. Course selection shouldn't feel like blindfolded pinball, but that's exactly how choosing classes at Guelph felt.
+
+Anyway, let me take you behind the scenes of _my journey building uoguelph.courses - from a lightbulb moment in class to a platform used by thousands of students._&nbsp;
+
+### A lightbulb moment in CIS*3750
+
+One afternoon in CIS*3750, I was venting to Harkirat about this mess of links and PDFs. We sketched out the idea on a whiteboard: what if there was one place to **browse** every course, **filter** by term or professor, and read **real student reviews**? I hit up Michael and he was down to help us tackle data scraping. In minutes, we had the core concept—uoguelph.courses was officially born.
+
+### Defining a clear goal
+
+We didn't need a flashy launch—that would only slow us down. Our mission was simple:
+
+> Build a no-nonsense course search that actually helps UofG students plan their semesters.
+
+Key features at launch: **Fast course search** by title or code <br/>
+**Filters** for term, department, and difficulty <br/>
+**Professor profiles** with past teaching history <br/>
+**Student reviews** (guarded by Google-only login) <br/>
+**Clean, responsive UI** in Next.js + Tailwind <br/>
+
+We looked at sites like [UWFlow](https://uwflow.com) and [McGill Courses](https://mcgill.courses) and thought, "Okay, something like this—but built for Guelph."
+
+<ImageCarousel
+  imageUrls={[
+    "/content/uwflow.png",
+    "/content/mcgill.png",
+  ]}
+/>
+
+### From sketch to site
+
+For me, it's not just about contributing - it's about taking full ownership of the project. As a team, we divided the work and each took responsibility for different parts of the application.
+
+I took on the task of building the **entire user-facing web application**. I handled everything from **frontend** to **backend integration**, as well as **UI/UX design** and **performance optimization**. Every issue was something I debugged and fixed on my own.
+
+Here's a glimpse of the process:
+
+1. **Frontend groundwork** <br/>
+   Harkirat and I set up the Next.js pages, crafted layouts with Tailwind, and wired in basic search and filter components.
+
+2. **Data gathering** <br/>
+   Michael built Python scrapers to pull course listings from WebAdvisor and ratings from RateMyProfessors. Suddenly, we had hundreds of courses and professor records ready to display.
+
+3. **UI polish & integration** <br/>
+   I merged course and professor data into unified cards—now you could see who taught CS*3760 in Fall 2023 alongside real student feedback, all in one glance.
+
+4. **Authentication & reviews** <br/>
+   Talha stepped in to design our Supabase schema and add Google-account login. That way, reviews came from actual students, not anonymous bots.
+
+In four weeks, we went from blank repo to a working v1:
+
+- **Search** by code/title <br/>
+- **Filter** by term & department <br/>
+- **Course cards** with offerings, instructors, and average ratings <br/>
+- **Login-gated** review system <br/>
+- **Feedback form** for future ideas <br/>
+
+### Tech Stack
+
+Building **uoguelph.courses from the ground up** as part of a collaborative team was an **incredibly exciting experience**. **Every single line of code was written by us**, enabling us to quickly identify and resolve any bugs or issues that occurred.
+
+I used a **cutting-edge tech stack** and followed industry best practices to keep the code **type-safe** and **maintainable for future updates** and changes.
+
+Frontend Framework: [Next.js](https://nextjs.org) <br/>
+Styling: [Tailwind CSS](https://tailwindcss.com) <br/>
+UI Components: [Shadcn](https://ui.shadcn.com) <br/>
+Database: [Supabase PostgreSQL](https://supabase.com) <br/>
+Authentication: [Supabase Auth](https://supabase.com/docs/guides/auth) <br/>
+Web Scraping: [Python](https://www.python.org) <br/>
+
+### Early reactions
+
+We dropped the link in Discord and Reddit, fully expecting a polite nod and crickets. Instead, students dove in:
+
+> "This saved me hours—thank you!" <br/>
+> "Finally, something that feels built for Guelph."
+
+In the first week alone, the site logged **1.5k unique visitors**, **6k pageviews**, and an estimated **20–25k** total reach across social shares:
+
+<ImageShell imageUrl="/content/launch.png" />
+
+### What's on deck
+
+With the core live and feedback rolling in, we're already planning the next features:
+
+- **GPA calculator** for planning course loads <br/>
+- **Schedule builder** to spot timetable conflicts <br/>
+- **Advanced filters** by difficulty, breadth requirement, and interest tags <br/>
+- **Degree planner** to track progress toward graduation <br/>
+- **Course alerts** for enrollment openings <br/>
+
+### Learnings
+
+> Ideas don't come out fully formed, they only become clearer as you work on them. - Mark Zuckerberg
+
+To be honest, I learned a lot building uoguelph.courses. I gained a deeper **understanding of web scraping** and **data integration**, as well as how to write **clean**, **maintainable**, and **type-safe code** while working in a team.
+
+When we started, we were a bit nervous about handling everything, but over time we realized that no one is perfect from the beginning. You don't need to be perfect to start, you just need a willingness to learn along the way.
+
+uoguelph.courses isn't done—it's only getting started. If you're a Guelph student and haven't tried it yet, give it a spin and let us know what you need next.
