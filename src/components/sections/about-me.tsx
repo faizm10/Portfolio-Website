@@ -23,7 +23,7 @@ export function AboutMe() {
             newsreader.className
           )}
         >
-          Full-Stack Engineer
+          Software Engineer
         </span>{" "}
         focused on building modern, secure, and optimized web apps that follow
         industry standards.
