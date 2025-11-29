@@ -8,6 +8,7 @@ export const siteConfig = {
   links: {
     twitter: "https://x.com/faizm10",
     github: "https://github.com/faizm10",
+    linkedin: "https://linkedin.com/in/faizm10",
     email: "mailto:faizmustansar10@gmail.com",
     discord: ""
   }

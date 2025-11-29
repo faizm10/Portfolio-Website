@@ -11,7 +11,11 @@ export function ContactMe() {
           <CustomLink href="mailto:faizmustansar10@gmail.com?subject=Hi%2C%20Faiz!">
             Email
           </CustomLink>
-          . You can also follow me on{" "}
+          . You can also connect with me on{" "}
+          <CustomLink href={siteConfig.links.linkedin}>
+            LinkedIn
+          </CustomLink>{" "}
+          or follow me on{" "}
           <CustomLink href="https://github.com/faizm10">
             Github
           </CustomLink>{" "}.
@@ -19,7 +23,7 @@ export function ContactMe() {
         <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
           <CustomLink href={siteConfig.links.github}>GitHub</CustomLink>
           <span>•</span>
-          <CustomLink href={siteConfig.links.twitter}>Twitter</CustomLink>
+          <CustomLink href={siteConfig.links.linkedin}>LinkedIn</CustomLink>
           <span>•</span>
           <CustomLink href={siteConfig.url}>Site</CustomLink>
         </div>

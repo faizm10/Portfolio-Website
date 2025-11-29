@@ -82,7 +82,7 @@ export function Hackathons() {
                       className="text-muted-foreground hover:text-foreground transition-colors"
                       aria-label="Live Site"
                     >
-                      <Icons.globe className="size-4" />
+                      <Icons.link className="size-4" />
                     </Link>
                   )}
                 </div>
