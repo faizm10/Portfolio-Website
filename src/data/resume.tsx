@@ -175,7 +175,7 @@ export const DATA = {
       title: "Teaching Assistant",
       logoUrl: "/uog.png",
       start: "Sept 2025 -",
-      end: "Present",
+      end: "Dec 2025",
       description: "MCS2000 DE",
     },
     {
