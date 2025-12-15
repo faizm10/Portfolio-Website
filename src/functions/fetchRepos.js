@@ -1,5 +1,11 @@
 const processData = async (res) => {
+    if (!res.ok) {
+      throw new Error(`GitHub API error: ${res.status} ${res.statusText}`);
+    }
     const datas = await res.json();
+    if (!datas || !datas.items || !Array.isArray(datas.items)) {
+      return [];
+    }
     let repos = datas.items;
     let latestSixRepos = repos.splice(0, 4);
     return latestSixRepos;
@@ -24,7 +30,8 @@ const processData = async (res) => {
         return processData(res);
       }
     } catch (err) {
-      console.log(err);
+      console.error("Error fetching repositories:", err);
+      return [];
     }
   };
   

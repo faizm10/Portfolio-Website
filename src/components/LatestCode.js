@@ -13,10 +13,11 @@ export default function LatestCode() {
       try {
         if (!DATA || !DATA.githubData) {
           console.error("DATA.githubData is undefined or not properly loaded.");
+          setRepos([]);
           return;
         }
-        let token = process.env.GITHUB_AUTH_TOKEN;
-        const repos = await fetchRepos('faizm10', token);
+        let token = process.env.NEXT_PUBLIC_GITHUB_AUTH_TOKEN;
+        const repos = await fetchRepos({ githubUser: DATA.githubData }, token);
         setRepos(repos || []); // Ensure repos defaults to an empty array
       } catch (error) {
         console.error("Error fetching repositories:", error);
