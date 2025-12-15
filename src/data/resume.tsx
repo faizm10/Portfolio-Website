@@ -5,7 +5,7 @@ export const DATA = {
   name: "Faiz Mustansar",
   initials: "FM",
   githubData: "faizm10",
-  url: "https://faizm.vercel.app/",
+  url: "https://faizm.me/",
   location: "Brampton, ON",
   locationLink: "https://www.google.com/maps/place/toronto",
   description:
