@@ -129,7 +129,7 @@ export const DATA = {
       logoUrl: "./tdbank.png",
       start: "Jan 2026",
       end: "- Apr 2026",
-      description: "Incoming Software Engineer | Platforms & Technology 🚀",
+      description: "Credit Platform",
     },
      {
       company: "Hack Canada",
