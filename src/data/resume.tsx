@@ -131,7 +131,7 @@ export const DATA = {
       end: "- Apr 2026",
       description: "Credit Platform",
     },
-     {
+    {
       company: "Hack Canada",
       href: "https://hackcanada.org/",
       badges: [],
@@ -215,6 +215,14 @@ export const DATA = {
   ],
   education: [
     {
+      school: "University of Guelph",
+      href: "https://www.uoguelph.ca/",
+      degree: "Bachelor of Computing Honours (BCOMP)",
+      logoUrl: "/uog.png",
+      start: "2023 - ",
+      end: "2027",
+    },
+    {
       school: "University of Waterloo",
       href: "https://uwaterloo.ca/",
       degree: "Mathematics, Computer Science",
@@ -222,6 +230,7 @@ export const DATA = {
       start: "Summer 2025 - ",
       end: "December 2025",
     },
+
     {
       school: "University of Ottawa",
       href: "https://www.uottawa.ca/en",
@@ -229,14 +238,6 @@ export const DATA = {
       logoUrl: "/UOttawa.jpeg",
       start: "Summer ",
       end: "2025",
-    },
-    {
-      school: "University of Guelph",
-      href: "https://www.uoguelph.ca/",
-      degree: "Bachelor of Computing Honours (BCOMP)",
-      logoUrl: "/uog.png",
-      start: "2023 - ",
-      end: "2027",
     },
   ],
   projects: [
@@ -329,7 +330,8 @@ export const DATA = {
       href: "",
       dates: "HackTrent 2025",
       active: true,
-      description: "EchoLag is a browser-based coaching lab that simulates real conversations, tracks filler words and pace, and delivers instant feedback so you can sharpen speech skills without judgment.",
+      description:
+        "EchoLag is a browser-based coaching lab that simulates real conversations, tracks filler words and pace, and delivers instant feedback so you can sharpen speech skills without judgment.",
       technologies: [
         "Next.js",
         "Typescript",
@@ -359,7 +361,8 @@ export const DATA = {
       href: "https://www.textanxietygot.us/",
       dates: "Hack The Valley 9",
       active: true,
-      description: "Your AI wingman that keeps conversations alive, prevents dry chats, and helps you maintain meaningful connections with smart suggestions and real-time coaching.",
+      description:
+        "Your AI wingman that keeps conversations alive, prevents dry chats, and helps you maintain meaningful connections with smart suggestions and real-time coaching.",
       technologies: [
         "Next.js",
         "Typescript",
@@ -379,7 +382,7 @@ export const DATA = {
           icon: <Icons.github className="h-4 w-4" />,
           href: "https://github.com/faizm10/htv",
         },
-         {
+        {
           type: "Site",
           icon: <Icons.globe className="h-4 w-4" />,
           href: "https://www.textanxietygot.us/",
@@ -402,7 +405,6 @@ export const DATA = {
         "Cohere API",
         "AI Agent",
         "Supabase",
-        
       ],
       links: [
         {
@@ -410,7 +412,7 @@ export const DATA = {
           href: "https://github.com/faizm10/HackTheNorth2025",
           icon: <Icons.github className="size-3" />,
         },
-         {
+        {
           type: "Devpost",
           icon: <Icons.globe className="h-4 w-4" />,
           href: "https://devpost.com/software/cognify-cyr5b9",
@@ -701,7 +703,10 @@ export const DATA = {
   hackathons: [
     {
       title: "HackTrent 2025",
-      badges: ["🥇 Best Use of Gemini API", "🥇 1st Place - Typing Competition"],
+      badges: [
+        "🥇 Best Use of Gemini API",
+        "🥇 1st Place - Typing Competition",
+      ],
       dates: "November 8th - 9th, 2025",
       location: "Peterborough, Ontario",
       description:
@@ -721,7 +726,7 @@ export const DATA = {
         },
       ],
     },
-      {
+    {
       title: "Hack The Valley 9",
       badges: [],
       dates: "Oct 3rd - Oct 5th",
@@ -740,7 +745,7 @@ export const DATA = {
           icon: <Icons.github className="h-4 w-4" />,
           href: "https://github.com/faizm10/htv",
         },
-         {
+        {
           title: "Site",
           icon: <Icons.globe className="h-4 w-4" />,
           href: "https://www.textanxietygot.us/",
