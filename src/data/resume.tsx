@@ -702,6 +702,16 @@ export const DATA = {
   ],
   hackathons: [
     {
+      title: "DeltaHacks 12",
+      badges: [],
+      dates: "Jan 9th - 10th, 2025",
+      location: "Hamilton, Ontario",
+      description: "coming soon!!",
+      image: "/deltahacks.svg",
+      mlh: "/deltahack.svg",
+      links: [],
+    },
+    {
       title: "HackTrent 2025",
       badges: [
         "🥇 Best Use of Gemini API",
