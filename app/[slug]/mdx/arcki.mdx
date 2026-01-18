@@ -1,0 +1,129 @@
+import Image from "next/image";
+import { FiExternalLink } from "react-icons/fi";
+
+<div className='w-full text-center flowboard-page'>
+    <span className='block text-lightBeige/95 italic text-2xl md:text-3xl'>arcki</span>
+    <div className="w-[95vw] relative left-1/2 -ml-[47.5vw] md:w-[105%] md:left-0 md:-ml-[2.5%] md:static">
+        <Image
+            src="/projects/arcki/landingpage.png"
+            alt="arcki-landing"
+            width={1200}
+            height={800}
+            className="object-cover rounded-lg my-0! py-0!"
+            style={{
+                WebkitMaskImage:
+                "radial-gradient(circle, rgba(0,0,0,0.98) 60%, rgba(0,0,0,0.3) 90%)"
+            }}
+            loading="eager"
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1600px"
+            quality={85}
+        />
+    </div>
+
+    <div className='md:w-[90%] w-full mx-auto'>
+        <div className='flex justify-center mb-5 text-base'>
+            <a href="https://www.arcki.tech" target="_blank" rel="noopener noreferrer" className='a flex items-center gap-1 decoration-1 underline-offset-4'>
+                <span>project</span>
+                <FiExternalLink size={16} />
+            </a>
+        </div>
+
+        <div className='flex flex-col text-left'>
+            <span className='text-lightBeige/95 text-xl'>overview</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                arcki is a world building playground: fly around a 3d globe, wipe out anything you don’t like, and drop in your own vision instead.
+                if you can describe it, you can generate it, place it, and see it live on the map.
+            </span>
+        </div>
+
+        <div className="grid grid-cols-2 gap-8 text-left mt-6">
+            <div className='flex flex-col gap-4'>
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>timeline</span>
+                    <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>24 hours, deltahacks 12</span>
+                </div>
+
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>team</span>
+                    <div className='text-lighterBeige flex flex-col gap-1 font-inter items-start text-[1rem]'>
+                        <a href="https://www.linkedin.com/in/austin-jian/" target="_blank" rel="noopener noreferrer" className="a">austin jian</a>
+                        <a href="https://www.linkedin.com/in/faizmustansar/" target="_blank" rel="noopener noreferrer" className="a">faiz m</a>
+                        <a href="https://www.linkedin.com/in/jamessli/" target="_blank" rel="noopener noreferrer" className="a">james li</a>
+                        <a href="https://www.linkedin.com/in/maaz-ghazi/" target="_blank" rel="noopener noreferrer" className="a">maaz ghazi</a>
+                    </div>
+                </div>
+
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>submitted to</span>
+                    <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>deltahacks 12</span>
+                </div>
+            </div>
+
+            <div className='flex flex-col gap-1'>
+                <span className='text-lightBeige/95 text-lg'>tools</span>
+                <div className='flex flex-col gap-1 font-inter font-light text-[1rem]'>
+                    <span>next.js</span>
+                    <span>mapbox</span>
+                    <span>typescript</span>
+                    <span>python</span>
+                    <span>dalle</span>
+                    <span>trellis</span>
+                    <span>redis</span>
+                    <span>postgresql</span>
+                </div>
+            </div>
+        </div>
+
+        <div className='flex flex-col text-left mt-15'>
+            <span className='text-lightBeige/95 text-xl'>inspiration</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                what if you could change the world around you, delete existing buildings and insert anything you imagine.
+                arcki starts with that feeling and turns it into a real, navigable space.
+            </span>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>what it does</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                arcki lets you travel the world on a 3d globe and explore any location.
+                see a building you hate? delete it and replace it with a 3d model of your choice.
+                you can upload your own glb file or generate one by describing what you want and choosing a style.
+                we return a 3d model plus four perspective shots (top, down, front, side) so you can decide what fits.
+                it’s a tool for anyone with a vision, from sustainability tweaks to fully reimagined skylines.
+            </span>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>other features</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                change the weather and time of day.
+                gizmos let you move and rotate models precisely.
+                a library + asset manager keeps your models organized and reusable.
+            </span>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>how we built it</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                the frontend is next.js with mapbox powering the globe and map interactions.
+                the backend is a pipeline: prompt → dalle for four viewpoints → trellis for a 3d model.
+                redis and postgresql cache and store generations so good models don’t get lost.
+            </span>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>architecture</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                the map is the canvas. mapbox handles navigation, tiles, and the globe camera while our layer manages model placement and transforms.
+                user actions like delete, place, move, and rotate update a scene graph stored in the backend.
+                generation runs as a small pipeline: prompt goes to dalle for four views, trellis reconstructs the mesh, then we store the model and its metadata.
+                we cache generation results in redis and persist models in postgresql so the same idea never has to be generated twice.
+            </span>
+        </div>
+
+        <footer className="pt-4 border-t border-white/20 text-sm text-white/70 flex flex-row items-center">
+            <span className="shiny-green-dot inline-block mr-2" />
+            Last updated: 12/20/2025
+        </footer>
+    </div>
+</div>

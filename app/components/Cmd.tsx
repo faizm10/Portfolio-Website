@@ -1,0 +1,299 @@
+"use client";
+import { useEffect, useState } from "react";
+import { Command } from "cmdk";
+import { useRouter } from "next/navigation";
+import * as Dialog from "@radix-ui/react-dialog";
+import { isMobile } from "react-device-detect";
+import { FiGithub } from "react-icons/fi";
+import {
+  IoLogoInstagram,
+  IoSearchOutline,
+  IoHomeOutline,
+} from "react-icons/io5";
+import { FaXTwitter } from "react-icons/fa6";
+import { GoRepo } from "react-icons/go";
+import { PiLinkedinLogo } from "react-icons/pi";
+
+export default function CommandPalette() {
+  const [open, setOpen] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
+  const [isShiftKeyPressed, setisShiftKeyPressed] = useState(false);
+  const router = useRouter();
+
+  // don't render on mobile
+  if (isMobile) {
+    return null;
+  }
+
+  // handle open with global dispatch event
+  const handleOpen = () => {
+    setOpen(true);
+    window.dispatchEvent(new CustomEvent("command-palette-opened"));
+  };
+
+  // set timeout on close for loading animation
+  useEffect(() => {
+    if (open) {
+      setShowDialog(true);
+    } else {
+      const timeout = setTimeout(() => setShowDialog(false), 500);
+      return () => clearTimeout(timeout);
+    }
+  }, [open]);
+
+  // tracks modifier key state when cmd is open
+  useEffect(() => {
+    if (!open) return;
+
+    const handleKeyDown = (e: any) => {
+      if (e.shiftKey) {
+        setisShiftKeyPressed(true);
+      }
+    };
+
+    const handleKeyUp = (e: any) => {
+      if (!e.shiftKey) {
+        setisShiftKeyPressed(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  }, [open]);
+
+  // listen for event to open palette, needs event listener so can open the palette globally
+  useEffect(() => {
+    const handleCustomOpen = () => handleOpen();
+    window.addEventListener("open-command-palette", handleCustomOpen);
+    return () =>
+      window.removeEventListener("open-command-palette", handleCustomOpen);
+  }, []);
+
+  // toggle the menu when ⌘K / crtlK is pressed
+  useEffect(() => {
+    const down = (e: any) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        if (!open) {
+          handleOpen();
+        } else {
+          setOpen(false);
+        }
+      }
+    };
+
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, [open]);
+
+  // handle keyboard shortcuts when cmd is open
+  useEffect(() => {
+    if (!open) return;
+
+    const handleKeyDown = (e: any) => {
+      // only handle shift + number combinations
+      if (!e.shiftKey) return;
+
+      e.preventDefault();
+
+      switch (e.code) {
+        case "Digit0":
+        case "Numpad0":
+          openNextLink(() => router.push("/"));
+          break;
+        case "Digit1":
+        case "Numpad1":
+          openLink(() =>
+            window.open("https://www.linkedin.com/in/faizmustansar/", "_blank"),
+          );
+          break;
+        case "Digit2":
+        case "Numpad2":
+          openLink(() => window.open("https://github.com/faizm10", "_blank"));
+          break;
+        case "Digit3":
+        case "Numpad3":
+          openLink(() =>
+            window.open("https://www.instagram.com/faizm.30/", "_blank"),
+          );
+          break;
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [open, router]);
+
+  // regular links remain open as href target blank
+  const openLink = (command: any) => {
+    setOpen(true);
+    command();
+  };
+
+  // next links close as it redirects to a different page
+  const openNextLink = (command: any) => {
+    setOpen(false);
+    command();
+  };
+
+  const Shortcut: React.FC<{ children: any }> = ({ children }) => (
+    <div className="flex text-xs items-center gap-1 ml-auto text-midBeige3">
+      <kbd
+        className={`px-1.5 py-0.5 rounded bg-stone-800 text-midBeige2/90 ${
+          isShiftKeyPressed ? "opacity-60" : "opacity-100"
+        }`}
+      >
+        shift
+      </kbd>
+      <span>+</span>
+      <kbd className="px-1.5 py-0.5 rounded bg-stone-800 text-midBeige2/90">
+        {children}
+      </kbd>
+    </div>
+  );
+
+  return (
+    <Dialog.Root open={open} onOpenChange={setOpen}>
+      {showDialog && (
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed inset-0 bg-black/70 animate-fade-in z-40" />
+          <Dialog.Content
+            className={`fixed top-[20%] left-1/2 -translate-x-1/2 w-full max-w-125 p-3 z-50 ${
+              open ? "animate-slide-down" : "animate-slide-up"
+            }`}
+          >
+            <Dialog.Title></Dialog.Title>
+            <Command
+              className="w-full rounded-xl border-2 border-darkBeige1/90 bg-darkBeige3/60 shadow-2xl overflow-hidden backdrop-blur-2xl"
+              loop={true}
+              shouldFilter={true}
+              onClick={(e) => {
+                // focus search input element when click anywhere on cmd
+                const input = e.currentTarget.querySelector("input");
+                if (input) {
+                  input.focus();
+                }
+              }}
+            >
+              <div className="px-5 py-6 border-b border-stone-700 flex items-center gap-3">
+                <img src="/jsl.png" alt="jsl" className="w-7 rounded-sm" />
+                <div className="flex-1">
+                  <h2 className="font-medium text-midBeige1">
+                    faizmustansar10@gmail.com
+                  </h2>
+                  <p className="text-xs text-midBeige2/90">
+                    use <kbd className="px-1">esc</kbd> or click outside to
+                    close
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center border-b border-stone-700 px-4 py-4">
+                <IoSearchOutline className="h-4 w-4 text-midBeige2/90" />
+                <Command.Input
+                  placeholder="search for topics ..."
+                  className="flex-1 w-full bg-transparent px-3 text-sm text-lightBeige placeholder:text-midBeige3 focus:outline-none"
+                  autoFocus={true}
+                />
+              </div>
+
+              <Command.List className="max-h-75 overflow-y-auto px-3 py-4">
+                <Command.Empty className="px-5 py-4 text-sm text-midBeige2/90">
+                  no results found.
+                </Command.Empty>
+
+                <Command.Group heading="links" className="px-2 text-lightBeige">
+                  <Command.Item
+                    value="home faiz page"
+                    onSelect={() => {
+                      setTimeout(() => openNextLink(() => router.push("/")), 0);
+                    }}
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-midBeige2/90 rounded hover:bg-darkBeige1/40 cursor-pointer data-[selected=true]:bg-darkBeige1/40"
+                  >
+                    <IoHomeOutline className="h-4 w-4" />
+                    <span className="flex-1">home</span>
+                    <Shortcut>0</Shortcut>
+                  </Command.Item>
+
+                  <Command.Item
+                    value="linkedin profile socials faiz"
+                    onSelect={() =>
+                      openLink(() =>
+                        window.open(
+                          "https://www.linkedin.com/in/faizmustansar/",
+                          "_blank",
+                        ),
+                      )
+                    }
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-midBeige2/90 rounded hover:bg-darkBeige1/40 cursor-pointer data-[selected=true]:bg-darkBeige1/40"
+                  >
+                    <PiLinkedinLogo className="h-4 w-4" />
+                    <span className="flex-1">linkedin</span>
+                    <Shortcut>1</Shortcut>
+                  </Command.Item>
+                  <Command.Item
+                    value="github git profile faiz"
+                    onSelect={() =>
+                      openLink(() =>
+                        window.open("https://github.com/faizm10/", "_blank"),
+                      )
+                    }
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-midBeige2/90 rounded hover:bg-darkBeige1/40 cursor-pointer data-[selected=true]:bg-darkBeige1/40"
+                  >
+                    <FiGithub className="h-4 w-4" />
+                    <span className="flex-1">github</span>
+                    <Shortcut>2</Shortcut>
+                  </Command.Item>
+
+                  <Command.Item
+                    value="ig instagram profile socials faiz"
+                    onSelect={() =>
+                      openLink(() =>
+                        window.open(
+                          "https://www.instagram.com/faizm.30/",
+                          "_blank",
+                        ),
+                      )
+                    }
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-midBeige2/90 rounded hover:bg-darkBeige1/40 cursor-pointer data-[selected=true]:bg-darkBeige1/40"
+                  >
+                    <IoLogoInstagram className="h-4 w-4" />
+                    <span className="flex-1">instagram</span>
+                    <Shortcut>3</Shortcut>
+                  </Command.Item>
+                </Command.Group>
+              </Command.List>
+              <div className="border-t border-stone-700 px-3 py-4">
+                <div className="flex items-center justify-between text-midBeige2/90 text-xs">
+                  <div className="flex items-center gap-2">
+                    <span>use</span>
+                    <kbd className="px-0.5 py-0.5 rounded bg-stone-800 text-midBeige2/90">
+                      ↑
+                    </kbd>
+                    |
+                    <kbd className="px-0.5 py-0.5 rounded bg-stone-800 text-midBeige2/90">
+                      ↓
+                    </kbd>
+                    <span>to toggle</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span>press</span>
+                    <kbd className="px-1.5 py-0.5 rounded bg-stone-800 text-midBeige2/90">
+                      ↵
+                    </kbd>
+                    <span>to open</span>
+                  </div>
+                </div>
+              </div>
+            </Command>
+          </Dialog.Content>
+        </Dialog.Portal>
+      )}
+    </Dialog.Root>
+  );
+}
