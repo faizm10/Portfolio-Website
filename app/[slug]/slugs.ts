@@ -2,7 +2,7 @@ export const SLUGS = [
   "uwreflection",
   "flowboard",
   "uoguelphcourses",
-  "photography101",
+  "photography-101",
   "arcki",
   "octree",
   "echolag",

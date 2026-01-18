@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, type ComponentType, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { MDXProvider } from "@mdx-js/react";
 import "./codeblocks.css";
@@ -11,14 +11,14 @@ import Uoguelphcourses from "./mdx/uoguelphcourses.mdx";
 import UWReflection from "./mdx/uw-reflection.mdx";
 import Photography101 from "./mdx/photography-101.mdx";
 import Arcki from "./mdx/arcki.mdx";
-import Octree from "./mdx/octree.mdx";
 import Echolag from "./mdx/echolag.mdx";
+import Octree from "./mdx/octree.mdx";
 
-const MDX_MAP: Record<string, React.ComponentType> = {
+const MDX_MAP: Record<string, ComponentType> = {
   uwreflection: UWReflection,
   flowboard: Flowboard,
   uoguelphcourses: Uoguelphcourses,
-  photography101: Photography101,
+  "photography-101": Photography101,
   arcki: Arcki,
   octree: Octree,
   echolag: Echolag,
@@ -50,12 +50,12 @@ export default function SlugPageClient({ slug }: { slug: string }) {
   }
 
   const components = {
-    a: ({ href, children }: { href: string; children: React.ReactNode }) => (
+    a: ({ href, children }: { href: string; children: ReactNode }) => (
       <a href={href} target="_blank" rel="noopener noreferrer">
         {children}
       </a>
     ),
-    ScrollButtonTop: ({ children }: { children: React.ReactNode }) => (
+    ScrollButtonTop: ({ children }: { children: ReactNode }) => (
       <button
         onClick={() =>
           bottomRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -65,7 +65,7 @@ export default function SlugPageClient({ slug }: { slug: string }) {
         {children}
       </button>
     ),
-    ScrollButtonBottom: ({ children }: { children: React.ReactNode }) => (
+    ScrollButtonBottom: ({ children }: { children: ReactNode }) => (
       <button
         onClick={() => topRef.current?.scrollIntoView({ behavior: "smooth" })}
         className="bg-white/20 cursor-pointer font-bold hover:bg-white/25 p-2 transition delay-200 duration-300 ease-in-out rounded-2xl my-5"
