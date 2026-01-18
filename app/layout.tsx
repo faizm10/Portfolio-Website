@@ -30,23 +30,23 @@ export const metadata: Metadata = {
     "uog computer science",
   ],
   alternates: {
-    canonical: "https://jame.li",
+    canonical: "https://faizm.me",
   },
-  // openGraph: {
-  //   title: "faiz mustansar",
-  //   description:
-  //     "portfolio of faiz mustansar— computer science at the university of waterloo.",
-  //   url: "https://jame.li",
-  //   siteName: "jame.li",
-  //   images: [{ url: "https://jame.li/banner.png", width: 1200, height: 630 }],
-  //   type: "website",
-  // },
+  openGraph: {
+    title: "faiz mustansar",
+    description:
+      "portfolio of faiz mustansar— computer science at the university of guelph.",
+    url: "https://faizm.me",
+    siteName: "faizm.me",
+    images: [{ url: "https://faizm.me/banner.png", width: 1200, height: 630 }],
+    type: "website",
+  },
   twitter: {
     card: "summary_large_image",
     title: "faiz mustansar",
     description:
-      "portfolio of faiz mustansar— computer science at the university of waterloo.",
-    images: ["https://jame.li/banner.png"],
+      "portfolio of faiz mustansar— computer science at the university of guelph.",
+    images: ["https://faizm.me/banner.png"],
   },
   icons: {
     icon: "/jsl.png",
