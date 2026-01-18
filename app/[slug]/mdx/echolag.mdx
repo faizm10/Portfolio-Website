@@ -1,0 +1,133 @@
+import { FiExternalLink } from "react-icons/fi";
+import Image from "next/image";
+
+<div className='w-full text-center flowboard-page'>
+    <span className='block text-lightBeige/95 italic text-2xl md:text-3xl'>echolag</span>
+<div className="w-[95vw] relative left-1/2 -ml-[47.5vw] md:w-[105%] md:left-0 md:-ml-[2.5%] md:static">
+        <Image
+            src="/projects/echolag/image.png"
+            alt="arcki-landing"
+            width={1200}
+            height={800}
+            className="object-cover rounded-lg my-0! py-0!"
+            style={{
+                WebkitMaskImage:
+                "radial-gradient(circle, rgba(0,0,0,0.98) 60%, rgba(0,0,0,0.3) 90%)"
+            }}
+            loading="eager"
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1600px"
+            quality={85}
+        />
+    </div>
+    <div className='md:w-[90%] w-full mx-auto'>
+        <div className='flex justify-center mb-5 text-base'>
+            <a href="https://devpost.com/software/echolag" target="_blank" rel="noopener noreferrer" className='a flex items-center gap-1 decoration-1 underline-offset-4'>
+                <span>devpost</span>
+                <FiExternalLink size={16} />
+            </a>
+        </div>
+
+        <div className='flex flex-col text-left'>
+            <span className='text-lightBeige/95 text-xl'>overview</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                echolag is a browser based coaching lab for real conversations. it runs immersive scenarios, tracks filler words and pace, and gives instant feedback so you can sharpen how you speak without the pressure of practicing on people.
+            </span>
+        </div>
+
+        <div className="grid grid-cols-2 gap-8 text-left mt-6">
+            <div className='flex flex-col gap-4'>
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>timeline</span>
+                    <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>36 hours, hacktrent 2025</span>
+                </div>
+
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>team</span>
+                    <div className='text-lighterBeige flex flex-col gap-1 font-inter items-start text-[1rem]'>
+                        <span>faiz m</span>
+                        <span>lina abuelezz</span>
+                        <span>hamza elmi</span>
+                    </div>
+                </div>
+
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>submitted to</span>
+                    <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>hacktrent 2025</span>
+                </div>
+
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>award</span>
+                    <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>winner - best use of google gemini api @ hacktrent '25'</span>
+                </div>
+            </div>
+
+            <div className='flex flex-col gap-1'>
+                <span className='text-lightBeige/95 text-lg'>tools</span>
+                <div className='flex flex-col gap-1 font-inter font-light text-[1rem]'>
+                    <span>next.js</span>
+                    <span>react</span>
+                    <span>typescript</span>
+                    <span>tailwind</span>
+                    <span>web speech api</span>
+                    <span>gemini</span>
+                    <span>elevenlabs</span>
+                    <span>canvas</span>
+                </div>
+            </div>
+        </div>
+
+        <div className='flex flex-col text-left mt-15'>
+            <span className='text-lightBeige/95 text-xl'>inspiration</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                we wanted a safe space to practice high pressure conversations. pitching, interviewing, or calming a rushed customer should not require asking friends to sit through awkward role play.
+            </span>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>what it does</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                echolag runs immersive scenarios in the browser like the barista rush. it listens while you speak, highlights filler words live, and submits your take the moment the countdown hits zero so you stay in flow.
+            </span>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>how we built it</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                the frontend is next.js and react with tailwind and a lightweight motion layer for the timer coach and panels.
+                web speech api handles low latency transcription and filler detection.
+                a custom 2d barista canvas keeps the scene alive while the user talks.
+                elevenlabs provides voice responses and gemini scores clarity, pace, and confidence once the timer ends.
+            </span>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>challenges</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                speech recognition behaved differently across chrome and safari, so we added careful timing and fallback handling.
+                keeping the timer, simulator, transcript panel, and audio playback smooth at once took real tuning.
+                the feedback had to motivate without sounding like a grade.
+            </span>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>what we learned</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                pairing web speech api with custom hooks and refs made truly live feedback possible.
+                small timing changes in animation and audio shifted the whole feel of coaching.
+            </span>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>what is next</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                we want scenario switching for interviews and investor pitches, plus a personal dashboard for streaks and filler trends.
+                longer term, practice rooms so friends can compare takes and encourage each other.
+            </span>
+        </div>
+
+        <footer className="pt-4 border-t border-white/20 text-sm text-white/70 flex flex-row items-center">
+            <span className="shiny-green-dot inline-block mr-2" />
+            Last updated: 12/20/2025
+        </footer>
+    </div>
+</div>
