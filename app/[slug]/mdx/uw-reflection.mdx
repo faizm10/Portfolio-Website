@@ -1,10 +1,213 @@
-import Image from "next/image"
+import Image from "next/image";
 
-<section className="bg-black p-1 rounded-2xl shadow-lg max-w-7xl mx-auto space-y-6">
-  <header className="space-y-2">
-    <h1 className="text-xl font-extrabold text-lightBeige">
-      coming soon
-    </h1>
-    
-  </header>
-</section>
+export default function BlogPost() {
+  return (
+    <article className="bg-black p-6 md:p-8 rounded-2xl shadow-lg max-w-3xl mx-auto space-y-8">
+      {/* Header */}
+      <header className="space-y-3">
+        <h1 className="text-2xl md:text-3xl font-extrabold text-lightBeige leading-tight">
+          university of waterloo
+        </h1>
+
+        <div className="flex items-center gap-3 text-sm text-lightBeige/60">
+          <span>Faiz Mustansar</span>
+          <span>·</span>
+          <time dateTime="2026-01-19">Jan 19, 2026</time>
+          <span>·</span>
+          <span>5 min read</span>
+        </div>
+      </header>
+
+      <div className="w-full">
+        <Image
+          src="/notes/uw/goose.png"
+          alt="University of Waterloo"
+          width={1500}
+          height={1000}
+          className="h-72 w-full rounded-xl object-contain md:h-80"
+          sizes="100vw"
+          priority
+        />
+      </div>
+
+      {/* Content */}
+      <section className="prose prose-invert max-w-none prose-p:text-lightBeige/80 prose-headings:text-lightBeige">
+        <p className="text-base leading-relaxed text-lightBeige/80 md:text-lg">
+          you might be wondering how i can take courses at the university of
+          waterloo as a university of guelph student. the short answer is an lop
+          (letter of permission), which lets you take a course elsewhere and
+          receive transfer credit back at your home institution. people usually
+          do this to make up a failed class or to satisfy a prerequisite that
+          was not offered that term at their home university. but for me, i was purely taking it for interest and for fun while transferring a third/fourth year credits which counts towards my degree requirement. 
+        </p>
+
+        <h2>summer 2025</h2>
+        <p>
+        i decided to take <span className='text-lightBeige/95 font-normal'><a href="https://student.cs.uwaterloo.ca/~cs349/1255" target="_blank" className="a">cs349: user interfaces </a></span> for the summer term. i was going to do cs346: application
+        development, but i did not realize it was not offered in summer terms,
+        which was unfortunate because i paid $70 for nothing. this course was pretty structured and used modern languages like react, javascript, preact, tailwind ui, canvas ui and more. comparing this to guelph's cis2170: user interface design, guelph does not really focus on those and more theoretical as i heard it from my peers. the course is not too bad as i learnt a lot about 
+        </p>
+        <p>
+          i attended a bunch of information sessions hosted by employers such as{" "}
+          <span className="text-lightBeige/95 font-normal">
+            <a href="https://www.bloomberg.com" target="_blank" className="a">
+              bloomberg
+            </a>
+          </span>
+          ,{" "}
+          <span className="text-lightBeige/95 font-normal">
+            <a href="https://www.patreon.com" target="_blank" className="a">
+              patreon
+            </a>
+          </span>
+          ,{" "}
+          <span className="text-lightBeige/95 font-normal">
+            <a href="https://www.otpp.com" target="_blank" className="a">
+              ontario teachers' pension plan
+            </a>
+          </span>{" "}
+          and more. i find them pretty helpful as they had interns talking about their experience, recruiters sharing the process as well as exclusive hiring pool for those who attended the event. i ended up getting an oa from patreon but unfortunately was rejected.
+        </p>
+
+        <p>
+          aside from academics, since i am a uw student,{" "}
+          <span className="text-lightBeige/95 font-normal">
+            <a href="https://hackthenorth.com" target="_blank" className="a">
+              hackthenorth
+            </a>
+          </span>{" "}
+          applications opened and i used my uw student id, listed uw as my
+          school, and ended up getting accepted. it was clutch since i was able
+          to secure a job from there. i also joined uw intramurals 11v11, and we
+          made it to the semifinals. we lost, but it was still a great start
+          since we were a team of random people.
+        </p>
+      <Image
+    src="/notes/uw/uw4.png"
+    alt="soccer sunset"
+    width={1200}
+    height={800}
+    className="w-full h-auto object-cover"
+    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1600px"
+    quality={85}
+    loading="eager"
+/>
+        <h2>fall 2025</h2>
+
+        <Image
+    src="/notes/uw/google.png"
+    alt="google in waterloo"
+    width={1200}
+    height={800}
+    className="w-full h-auto object-cover"
+    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1600px"
+    quality={85}
+    loading="eager"
+/>
+    <p>
+      during{" "}
+      <span className="text-lightBeige/95 font-normal">
+        <a
+          href="https://waterlootechweek.ca/"
+          target="_blank"
+          className="a"
+        >
+          waterloo tech week
+        </a>
+      </span>
+      , i attended events like the google networking session, where i met some
+      impressive people and ran into my cs449 ta (he gave me a 96, which was a
+      win). i was a bit nervous going in alone, but once i recognized a few
+      familiar faces from linkedin, i started conversations and the rest felt
+      much easier. at the end of the week, i attended{" "}
+      <span className="text-lightBeige/95 font-normal">
+        <a href="https://hackthenorth.com" target="_blank" className="a">
+          hackthenorth
+        </a>
+      </span>{" "}
+      and lowkey did not really work on the project because i focused on
+      workshops, networking events, and talking to sponsors such as{" "}
+      <span className="text-lightBeige/95 font-normal">
+        <a href="https://ethglobal.com" target="_blank" className="a">
+          ethglobal
+        </a>
+      </span>
+      ,{" "}
+      <span className="text-lightBeige/95 font-normal">
+        <a href="https://www.rbc.com" target="_blank" className="a">
+          rbc
+        </a>
+      </span>
+      ,{" "}
+      <span className="text-lightBeige/95 font-normal">
+        <a href="https://www.td.com" target="_blank" className="a">
+          td bank
+        </a>
+      </span>{" "}
+      (job interview and got accepted),{" "}
+      <span className="text-lightBeige/95 font-normal">
+        <a href="https://www.citadel.com" target="_blank" className="a">
+          citadel
+        </a>
+      </span>
+      ,{" "}
+      <span className="text-lightBeige/95 font-normal">
+        <a href="https://www.ycombinator.com" target="_blank" className="a">
+          yc
+        </a>
+      </span>
+      ,{" "}
+      <span className="text-lightBeige/95 font-normal">
+        <a href="https://www.shopify.com" target="_blank" className="a">
+          shopify
+        </a>
+      </span>{" "}
+      and many many more. i realized that winning the hackathon is not really my
+      thing, and it is more beneficial for me to attend workshops and interact
+      with sponsors since i can make meaningful connections.
+    </p>
+
+    <p>
+      in fall 2025, i ran intramurals again with few people from the summer team. we played 11s and 6s, and did a bit
+      worse this time. in 11s we forfeited twice, which knocked us out, and in
+      6s we lost in the quarterfinals on pens.
+    </p>
+
+   <Image
+    src="/notes/uw/hackthenorth.png"
+    alt="hackthenorth 2025"
+    width={1200}
+    height={800}
+    className="w-full h-auto object-cover"
+    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1600px"
+    quality={85}
+    loading="eager"
+/>
+
+<p>
+  anyway, back to this term. i ended up taking cs346: application development and cs449: human-computer interaction, where i joined
+  teams and started building. cs346 feels like a full stack course, but we are
+  doing it for mobile, using kotlin, java, typescript, supabase, and sql. on the
+  other side, human-computer interaction (hci) is less about shipping code and
+  more about understanding people: framing the problem, building figma
+  prototypes, running user interviews, mapping task flows, and doing usability
+  tests. it also pushes you to think about accessibility, feedback loops, and
+  how small design decisions change user behavior. i finished strong with 92
+  and 96, so i am pretty satisfied with the term. unfortunately this might be
+  my last one for a bit, since i am unsure when i will be graduating and which
+  remaining courses i can take that do not have exams.
+</p>
+        <h2>What I learned</h2>
+        <ul>
+          <li>the right events are better than every event</li>
+          <li>relationships matter more than hackathon rankings</li>
+          <li>hci thinking improves how i build products</li>
+          <li>small teams still go far with clear roles</li>
+          <li>consistency beats intensity in a busy term</li>
+        </ul>
+
+      </section>
+      
+    </article>
+  );
+}
