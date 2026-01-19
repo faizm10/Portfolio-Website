@@ -13,6 +13,12 @@ export const posts: Post[] = [
     pinned: true,
   },
   {
+    slug: "footy",
+    title: "some clips on fifa/soccer",
+    date: "ongoing",
+    pinned: true,
+  },
+  {
     slug: "uwreflection",
     title: "thoughts on uw cs",
     date: "jan 2026",
@@ -24,5 +30,6 @@ export const posts: Post[] = [
     date: "jan 2026",
     pinned: false,
   },
+  
   
 ];

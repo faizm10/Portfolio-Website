@@ -7,4 +7,5 @@ export const SLUGS = [
   "octree",
   "echolag",
   "uogreflection",
+  "footy",
 ] as const;
