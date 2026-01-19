@@ -116,9 +116,9 @@ export default function Home() {
                 {/* side section */}
                 <div className="relative row-span-6 lg:col-span-2 col-span-6 w-auto lg:h-auto md:h-200 h-120 py-3 px-4 bg-midBeige1 m-1 mb-1 rounded-lg overflow-hidden">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.08)_1px,transparent_1px)] bg-size-[10px_10px] opacity-25 pointer-events-none rounded-lg"></div>
-                  <div className="sidediv relative lg:text-xl md:text-2xl text-md h-[95%] flex items-end w-full z-10 whitespace-nowrap">
+                  <div className="sidediv relative lg:text-xl md:text-2xl text-md h-[95%] flex items-end w-full z-10 whitespace-normal lg:whitespace-nowrap">
                     <span className="font-bold absolute top-0 left-0">
-                      <span className="flex items-center justify-center gap-2 text-darkBeige3">
+                      <span className="flex flex-wrap items-center justify-center gap-2 text-darkBeige3">
                         {/* cs @ uoguelph */}
                         swe intern
                         <Image
@@ -134,13 +134,13 @@ export default function Home() {
                     </span>
                     <div className="flex flex-col gap-3 text-darkBeige1 bg-midBeige1/40 z-10 lg:p-2 p-3 w-full items-start text-center relative rounded-xl backdrop-blur-sm">
                       <h1 className="lg:bg-transparent rounded-lg sideh1 pl-6 [-text-indent:1.5rem]">
-                        <span className="flex items-center justify-start gap-2 text-darkBeige3">
+                        <span className="flex flex-wrap items-center justify-start gap-2 text-darkBeige3">
                           previously:
                         </span>
                       </h1>
 
                       <h1 className="sideh1 lg:bg-transparent rounded-lg pl-6 [-text-indent:1.5rem]">
-                        <span className="flex items-center justify-start gap-2 text-darkBeige3">
+                        <span className="flex flex-wrap items-center justify-start gap-2 text-darkBeige3">
                           <span>•</span>
                           full stack developer @
                           <span className="cursor-pointer text-darkBeige2">
@@ -156,7 +156,7 @@ export default function Home() {
                       </h1>
 
                       <h1 className="sideh1 lg:mb-0 mb-5 lg:bg-transparent rounded-lg pl-6 [-text-indent:1.5rem]">
-                        <span className="flex items-center justify-start gap-2 text-darkBeige3">
+                        <span className="flex flex-wrap items-center justify-start gap-2 text-darkBeige3">
                           <span>•</span>
                           teaching assistant @
                           <span className="cursor-pointer text-darkBeige2">
