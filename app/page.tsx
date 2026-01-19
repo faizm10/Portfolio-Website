@@ -148,7 +148,7 @@ faiz mustansar                    </span>
                               mode="dark"
                               className="ml-1 relative"
                             >
-                              university of guelph
+                              uog
                             </LinkSlider>
                           </span>
                         </span>
@@ -164,7 +164,7 @@ faiz mustansar                    </span>
                               mode="dark"
                               className="ml-1 relative"
                             >
-                              university of guelph
+                              uog
                             </LinkSlider>
                           </span>
                           <span>·</span>
