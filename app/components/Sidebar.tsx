@@ -18,7 +18,7 @@ export default function Sidebar() {
             {section.title}
           </h1>
           {section.type === "project" && (
-            <div className="flex flex-col gap-10">
+            <div className="flex flex-col gap-10 max-h-[60vh] lg:max-h-[calc(100vh-240px)] overflow-y-auto pr-2">
               {section.items.map((project: any, index: number) => (
                 <Link
                   key={index}

@@ -84,8 +84,7 @@ export default function Home() {
                 <div className="relative w-full h-full flex lg:justify-between justify-center">
                   <h1>
                     <span className="font-thin md:text-base text-sm">
-                      faiz mustansar
-                    </span>
+faiz mustansar                    </span>
                     {/* <span className="pl-1 font-light">李思远</span> */}
                   </h1>
                   <div className="h-full absolute lg:top-0 right-0 flex items-center gap-1">
