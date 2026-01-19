@@ -310,6 +310,17 @@ faiz mustansar                    </span>
                           attended <span className="font-bold">10+</span>{" "}
                           hackathons, just building and networking cool people
                         </li>
+                        <li>
+                          tech lead for{" "}
+                          <LinkSlider
+                            href="https://hackcanada.org"
+                            mode="dark"
+                            className="relative inline-flex"
+                          >
+                            HackCanada
+                          </LinkSlider>
+                          , built some nice internal tools for hackcanada
+                        </li>
                       </ul>
                     </h1>
                   </div>
