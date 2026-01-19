@@ -6,7 +6,7 @@ interface Post {
 }
 
 export const posts: Post[] = [
-   {
+  {
     slug: "photography-101",
     title: "some photos i took",
     date: "ongoing",
@@ -18,4 +18,11 @@ export const posts: Post[] = [
     date: "jan 2026",
     pinned: false,
   },
+  {
+    slug: "uogreflection",
+    title: "thoughts on uog cs",
+    date: "jan 2026",
+    pinned: false,
+  },
+  
 ];

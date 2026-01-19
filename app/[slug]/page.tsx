@@ -5,6 +5,8 @@ import { SLUGS } from "./slugs";
 const isValidSlug = (value: string): value is (typeof SLUGS)[number] =>
   (SLUGS as readonly string[]).includes(value);
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return SLUGS.map((slug) => ({ slug }));
 }
