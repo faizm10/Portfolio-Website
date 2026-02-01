@@ -15,6 +15,7 @@ import Echolag from "./mdx/echolag.mdx";
 import Octree from "./mdx/octree.mdx";
 import UoGReflection from "./mdx/uogreflection.mdx";
 import Footy from "./mdx/footy.mdx";
+import TdBank from "./mdx/tdbank.mdx";
 const MDX_MAP: Record<string, ComponentType> = {
   uwreflection: UWReflection,
   flowboard: Flowboard,
@@ -25,6 +26,7 @@ const MDX_MAP: Record<string, ComponentType> = {
   echolag: Echolag,
   uogreflection: UoGReflection,
   footy: Footy,
+  tdbank: TdBank,
 };
 
 export default function SlugPageClient({ slug }: { slug: string }) {

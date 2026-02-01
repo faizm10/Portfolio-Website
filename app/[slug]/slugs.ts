@@ -8,4 +8,5 @@ export const SLUGS = [
   "echolag",
   "uogreflection",
   "footy",
+  "tdbank",
 ] as const;

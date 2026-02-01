@@ -1,0 +1,63 @@
+import Image from "next/image";
+import { FiExternalLink } from "react-icons/fi";
+
+<div className='w-full text-center flowboard-page'>
+    <span className='block text-lightBeige/95 italic text-2xl md:text-3xl'>td bank experience</span>
+
+    <div className='md:w-[90%] w-full mx-auto'>
+        <div className='flex justify-center mb-5 text-base'>
+            <a href="https://www.td.com/ca/en/personal-banking/products/credit-cards" target="_blank" rel="noopener noreferrer" className='a flex items-center gap-1 decoration-1 underline-offset-4'>
+                <span>td bank</span>
+                <FiExternalLink size={16} />
+            </a>
+        </div>
+
+        <div className='flex flex-col text-left'>
+            <span className='text-lightBeige/95 text-xl'>overview</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                day in life as a swe intern @ td bank
+            </span>
+        </div>
+
+        <div className="grid grid-cols-2 gap-8 text-left mt-6">
+            <div className='flex flex-col gap-4'>
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>timeline</span>
+                    <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>4 months intern</span>
+                </div>
+
+                <div className='flex flex-col gap-1 mt-4'>
+                    <span className='text-lightBeige/95 text-lg'>role</span>
+                    <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>software engineer</span>
+                </div>
+
+                <div className='flex flex-col gap-1 mt-4'>
+                    <span className='text-lightBeige/95 text-lg'>team</span>
+                    <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>credit platform</span>
+                </div>
+            </div>
+
+            <div className='flex flex-col gap-1'>
+                <span className='text-lightBeige/95 text-lg'>tools</span>
+                <div className='flex flex-col gap-1 font-inter font-light text-[1rem]'>
+                    <span>java</span>
+                    <span>springboot</span>
+                    <span>confluence</span>
+                    <span>jira</span>
+                </div>
+            </div>
+        </div>
+
+        <div className='flex flex-col text-left mt-15'>
+            <span className='text-lightBeige/95 text-xl'>january 2026</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                in progress - stay tuned
+            </span>
+        </div>
+
+        <footer className="pt-4 border-t border-white/20 text-sm text-white/70 flex flex-row items-center">
+            <span className="shiny-green-dot inline-block mr-2" />
+            Last updated: 02/01/2026
+        </footer>
+    </div>
+</div>
