@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import Sidebar from "./components/Sidebar";
+import { PT_Mono } from "next/font/google";
 import CommandPalette from "./components/Cmd";
 import { GoogleAnalytics } from "@next/third-parties/google";
+
+const ptMono = PT_Mono({ weight: "400", subsets: ["latin"], variable: "--font-pt-mono" });
 import "prismjs/themes/prism-twilight.css";
 import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 import "prismjs";
@@ -62,19 +64,14 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={ptMono.variable}>
       <head>
         <link rel="canonical" href="https://faizm.me" />
       </head>
-      <body className="font-playfair bg-black text-darkBeige2">
-        <div className="flex w-full lg:flex-row flex-col min-h-screen">
-          <div className="lg:w-2/3 w-full transition-all duration-300">
-            {children}
-            <CommandPalette />
-          </div>
-          <div className="lg:w-1/3 w-full lg:h-screen h-auto lg:overflow-auto overflow-visible lg:border-l">
-            <Sidebar />
-          </div>
+      <body className={`${ptMono.className} min-h-screen w-full bg-white text-neutral-900 antialiased`}>
+        <div className="min-h-screen w-full">
+          {children}
+          <CommandPalette />
         </div>
         {/* <GoogleAnalytics gaId="G-T54T8RQLW5" /> */}
       </body>

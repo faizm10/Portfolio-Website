@@ -1,380 +1,228 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import LinkSlider from "./components/Link";
 import { useIntroStore } from "./store/zustand";
 import useModifierKey from "./components/ModifierKey";
 import { isMobile } from "react-device-detect";
-import { GrLinkedin } from "react-icons/gr";
-import { FaGithub, FaInstagram, FaXTwitter } from "react-icons/fa6";
-import james from "./assets/jame3.jpg";
-import faiz from "./assets/faiz1.jpg";
-// import uog from "./assets/uog.png";
-import td from "./assets/td.png";
-import uw from "./assets/uw.png";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa6";
 import { posts } from "./posts";
+import { showcaseProjects } from "./projects";
+
+const experiences = [
+  { title: "TD Bank", role: "swe intern", icon: "/exp/td-logo.png" },
+  { title: "HackCanada", role: "frontend tech lead", icon: "/exp/hackcanadaLogo.png" },
+  { title: "University of Guelph", role: "full stack developer", icon: "/exp/uog.png" },
+  { title: "University of Guelph", role: "teaching assistant · 3x terms", icon: "/exp/uog.png" },
+  
+];
+
 export default function Home() {
   const { hasPlayed, setHasPlayed } = useIntroStore();
   const initialHasPlayed =
     typeof window !== "undefined" &&
     Boolean(useIntroStore.getState?.().hasPlayed);
   const [isLoaded, setIsLoaded] = useState<boolean>(initialHasPlayed);
-  const [isMac, setIsMac] = useState(false);
-  const isModifierPressed = useModifierKey(); // for opacity of button
+  const isModifierPressed = useModifierKey();
 
   useEffect(() => {
     if (hasPlayed) {
       setIsLoaded(true);
       return;
     }
-
     setHasPlayed();
-
-    let currentProgress = 10;
+    let progress = 10;
     const interval = setInterval(() => {
-      if (currentProgress < 100) {
-        currentProgress += 20;
-      } else {
+      progress += 20;
+      if (progress >= 100) {
         clearInterval(interval);
         setIsLoaded(true);
       }
     }, 250);
-  }, []);
+  }, [hasPlayed, setHasPlayed]);
 
   useEffect(() => {
-    const isMac =
-      navigator.platform.toLowerCase().includes("mac") ||
-      navigator.userAgent.toLowerCase().includes("mac");
-    setIsMac(isMac);
-
-    const handlePaletteOpened = () => {
-      console.log("Palette opened!");
-    };
-
-    window.addEventListener("command-palette-opened", handlePaletteOpened);
-    return () =>
-      window.removeEventListener("command-palette-opened", handlePaletteOpened);
+    const noop = () => {};
+    window.addEventListener("command-palette-opened", noop);
+    return () => window.removeEventListener("command-palette-opened", noop);
   }, []);
 
-  const openCommandPalette = () => {
-    window.dispatchEvent(new CustomEvent("open-command-palette"));
-  };
+  const isMac =
+    typeof navigator !== "undefined" &&
+    (navigator.platform.toLowerCase().includes("mac") ||
+      navigator.userAgent.toLowerCase().includes("mac"));
 
   return (
     <>
       <div
-        className={`intro-container max-w-screen max-h-screen z-40 transition-opacity duration-800 ${
-          isLoaded ? "opacity-0 pointer-events-none fade-out" : "opacity-100"
+        className={`fixed inset-0 z-40 flex items-center justify-center bg-white transition-opacity duration-800 ${
+          isLoaded ? "pointer-events-none invisible opacity-0" : "visible opacity-100"
         }`}
+        aria-hidden={isLoaded}
       >
-        <div className="wave-effect" />
-        <div className="relative flex justify-center items-center">
-          <h1 className="text-white lg:text-lg md:text-md text-sm crg my-3">
-            product of the environment.
-          </h1>
-        </div>
+        <p className="text-neutral-800 text-sm md:text-base">
+          destined to build
+        </p>
       </div>
 
-      <div className="relative content inset-0 overflow-x-hidden home">
-        <div className="min-w-screen lg:max-h-screen lg:h-screen w-auto text-darkBeige2 font-playfair overflow-x-hidden lg:overflow-y-hidden pb-1 lg:pb-0">
-          <div className="flex lg:flex-row flex-col w-full">
-            {/* side section */}
-            <div className="lg:w-2/3 w-full ml-0 flex flex-col">
-              {/* top section */}
-              <div className="relative flex flex-row bg-midBeige1 rounded-lg text-darkBeige3 mt-2 mx-2 lg:mx-1 m-1 md:p-5 p-3">
-                <div className="relative w-full h-full flex lg:justify-between justify-center">
-                  <h1>
-                    <span className="font-thin md:text-base text-sm">
-faiz mustansar                    </span>
-                    {/* <span className="pl-1 font-light">李思远</span> */}
-                  </h1>
-                  <div className="h-full absolute lg:top-0 right-0 flex items-center gap-1">
-                    {!isMobile && (
-                      <button
-                        onClick={openCommandPalette}
-                        className="px-4 p-2 hidden sm:flex cursor-pointer items-center gap-1 text-xs bg-darkBeige2 text-midBeige1 rounded-lg hover:bg-darkBeige1 hover:text-lightBeige transition delay-200 duration-200 ease-in-out"
-                      >
-                        <kbd
-                          className={`px-1.5 py-1 rounded bg-darkBeige2/10 text-midBeige flex ${
-                            isModifierPressed ? "opacity-40" : "opacity-100"
-                          }`}
-                        >
-                          {isMac ? "⌘" : "ctrl"}
-                        </kbd>
+      <div className="relative min-h-screen w-full overflow-x-hidden overflow-y-visible bg-white">
+        <main className="mx-auto max-w-3xl px-6 py-12 md:py-16">
+          {/* Header: name left, socials right */}
+          <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+              <h1 className="text-2xl font-bold tracking-tight text-neutral-900 md:text-3xl">
+                faiz mustansar
+              </h1>
+              <p className="mt-1 text-sm text-neutral-600">
+                swe intern @{" "}
+                <a
+                  href="https://www.td.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-neutral-900"
+                >
+                  td bank
+                </a>{" "}
+                · seeking fall &apos;26 intern/ft roles
+              </p>
+            </div>
+            <div className="flex items-center gap-4">
+              {!isMobile && (
+                <button
+                  onClick={() =>
+                    window.dispatchEvent(
+                      new CustomEvent("open-command-palette")
+                    )
+                  }
+                  className="rounded border border-neutral-300 bg-white px-2.5 py-1 text-xs text-neutral-600 hover:border-neutral-400"
+                >
+                  <kbd className={isModifierPressed ? "opacity-40" : ""}>
+                    {isMac ? "⌘" : "ctrl"}
+                  </kbd>
+                  +<kbd>k</kbd>
+                </button>
+              )}
+              <a
+                href="https://www.linkedin.com/in/faizmustansar/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-600 hover:text-neutral-900"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedin className="h-5 w-5" />
+              </a>
+              <a
+                href="https://github.com/faizm10"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-600 hover:text-neutral-900"
+                aria-label="GitHub"
+              >
+                <FaGithub className="h-5 w-5" />
+              </a>
+              <a
+                href="https://www.instagram.com/faizm.30/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-600 hover:text-neutral-900"
+                aria-label="Instagram"
+              >
+                <FaInstagram className="h-5 w-5" />
+              </a>
+            </div>
+          </header>
 
-                        <span>+</span>
-                        <kbd className="px-1.5 py-1 rounded bg-darkBeige2/10 text-midBeige">
-                          k
-                        </kbd>
-                      </button>
-                    )}
+          {/* What I've been up to */}
+          <section className="mt-12">
+            <h2 className="text-sm font-medium text-neutral-500 uppercase tracking-wide">
+              what i&apos;ve been up to
+            </h2>
+            <ul className="mt-4 space-y-4">
+              {experiences.map((exp, i) => (
+                <li key={i} className="flex gap-4">
+                  <div className="h-10 w-10 shrink-0 overflow-hidden rounded-lg bg-neutral-200">
+                    {exp.icon ? (
+                      <Image
+                        src={exp.icon}
+                        alt=""
+                        width={40}
+                        height={40}
+                        className="h-10 w-10 object-contain"
+                      />
+                    ) : null}
                   </div>
-                </div>
-              </div>
+                  <div>
+                    <p className="font-semibold text-neutral-900">{exp.title}</p>
+                    <p className="text-sm text-neutral-600">{exp.role}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
 
-              <div className="grid grid-flow-row lg:grid-flow-col grid-rows-2 h-auto lg:h-[91vh] content-section space-y-1 lg:space-y-0 lg:px-0 px-1">
-                {/* side section */}
-                <div className="relative row-span-6 lg:col-span-2 col-span-6 w-auto lg:h-auto md:h-200 h-120 py-3 px-4 bg-midBeige1 m-1 mb-1 rounded-lg overflow-hidden">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.08)_1px,transparent_1px)] bg-size-[10px_10px] opacity-25 pointer-events-none rounded-lg"></div>
-                  <div className="sidediv relative lg:text-xl md:text-2xl text-md h-[95%] flex items-end w-full z-10 whitespace-normal lg:whitespace-nowrap">
-                    <span className="font-bold absolute top-0 left-0">
-                      <span className="flex flex-wrap items-center justify-center gap-2 text-darkBeige3">
-                        {/* cs @ uoguelph */}
-                        swe intern
-                        <Image
-                          src={td}
-                          width={25}
-                          height={25}
-                          alt="uw-logo"
-                          loading="eager"
-                        />
-                        {/* uoguelph */}
-                        td bank
-                      </span>
-                    </span>
-                    <div className="flex flex-col gap-3 text-darkBeige1 bg-midBeige1/40 z-10 lg:p-2 p-3 w-full items-start text-center relative rounded-xl backdrop-blur-sm">
-                      <h1 className="lg:bg-transparent rounded-lg sideh1 pl-6 [-text-indent:1.5rem]">
-                        <span className="flex flex-wrap items-center justify-start gap-2 text-darkBeige3">
-                          previously:
-                        </span>
-                      </h1>
-
-                      <h1 className="sideh1 lg:bg-transparent rounded-lg pl-6 [-text-indent:1.5rem]">
-                        <span className="flex flex-wrap items-center justify-start gap-2 text-darkBeige3">
-                          <span>•</span>
-                          full stack developer @
-                          <span className="cursor-pointer text-darkBeige2">
-                            <LinkSlider
-                              href="https://www.uoguelph.ca/"
-                              mode="dark"
-                              className="ml-1 relative"
-                            >
-                              uog
-                            </LinkSlider>
-                          </span>
-                        </span>
-                      </h1>
-
-                      <h1 className="sideh1 lg:mb-0 mb-5 lg:bg-transparent rounded-lg pl-6 [-text-indent:1.5rem]">
-                        <span className="flex flex-wrap items-center justify-start gap-2 text-darkBeige3">
-                          <span>•</span>
-                          teaching assistant @
-                          <span className="cursor-pointer text-darkBeige2">
-                            <LinkSlider
-                              href="https://www.uoguelph.ca/"
-                              mode="dark"
-                              className="ml-1 relative"
-                            >
-                              uog
-                            </LinkSlider>
-                          </span>
-                          <span>·</span>
-                          <span className="font-bold">3x</span>
-                          <span>terms</span>
-                        </span>
-                      </h1>
-                      {/* <h1 className="sideh1 lg:mb-0 mb-5 lg:bg-transparent rounded-lg pl-6 [-text-indent:1.5rem]">
-                        <span className="flex items-center justify-start gap-2 text-darkBeige3">
-                          <span>•</span>
-                          undergraduate research assistant @
-                          <span className="cursor-pointer text-darkBeige2">
-                            <LinkSlider
-                              href="https://www.uoguelph.ca/"
-                              mode="dark"
-                              className="ml-1 relative"
-                            >
-                              university of guelph
-                            </LinkSlider>
-                          </span>
-                        </span>
-                      </h1> */}
+          {/* Cool projects */}
+          <section className="mt-14">
+            <h2 className="text-sm font-medium text-neutral-500 uppercase tracking-wide">
+              some projects i built
+            </h2>
+            <div className="mt-4 grid grid-cols-1 gap-8 sm:grid-cols-2">
+              {showcaseProjects.map((project) => (
+                <Link
+                  key={project.slug}
+                  href={`/${project.slug}`}
+                  className="group block"
+                >
+                  <div className="overflow-hidden rounded-lg border border-neutral-100 bg-neutral-50 shadow-sm transition-shadow group-hover:shadow-md">
+                    <div className="relative aspect-video w-full bg-neutral-200">
+                      <Image
+                        src={project.banner}
+                        alt={project.name}
+                        fill
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                        className="object-cover"
+                      />
                     </div>
-                  </div>
-                  <Image
-                    src={faiz}
-                    className="absolute w-full lg:h-auto opacity-99 rounded-xl top-10 lg:top-15 right-0 lg:z-5 z-0"
-                    style={{
-                      WebkitMaskImage:
-                        "radial-gradient(circle, rgba(0,0,0.99) 30%, rgba(0,0,0,0.01) 75%)",
-                    }}
-                    alt="jame"
-                    placeholder="blur"
-                    loading="eager"
-                  />
-                </div>
-
-                {/* linkedin and socials section */}
-                <div className="row-span-1 lg:col-span-3 col-span-6 w-auto lg:h-auto h-80 grid grid-cols-3 gap-2 m-1 mb-1">
-                  {/* notes */}
-                  <div className="relative col-span-2 py-3 px-7 rounded-lg bg-darkBeige2 text-lightBeige hover:border-darkBeige1 border-2 border-transparent transition delay-200 duration-150 ease-in flex flex-col">
-                    <span className="italic left-5 top-2 lg:text-base md:text-lg text-sm z-10 mb-3">latest blogs · check it out</span>
-                    <div className="flex-1 flex flex-col justify-center pl-1 z-10">
-                      <ul className="flex flex-col gap-1">
-                        {posts.map((post) => (
-                          <li key={post.slug}>
-                            <Link
-                              href={`/${post.slug}`}
-                              className="italic text-sm lg:text-base text-lightBeige hover:underline"
-                            >
-                              {post.title}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  {/* socials section */}
-                  <div className="relative py-3 px-7 rounded-lg bg-midBeige2 border-2 border-transparent transition delay-200 duration-150 ease-in flex flex-col items-center justify-center lg:gap-4 md:gap-2">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.08)_1px,transparent_1px)] bg-size-[10px_10px] opacity-25 pointer-events-none rounded-lg"></div>
-                    <a
-                      href="https://www.linkedin.com/in/faizmustansar/"
-                      target="_blank"
-                      className="z-10 hover:opacity-50 opacity-70 transition"
-                    >
-                      <GrLinkedin className="lg:w-[1.75vw] lg:h-[1.75vw] md:w-[4vw] md:h-[4vh] w-[6vw] h-[6vh]" />
-                    </a>
-                    <a
-                      href="https://github.com/faizm10"
-                      target="_blank"
-                      className="z-10 hover:opacity-50 opacity-70 transition"
-                    >
-                      <FaGithub className="lg:w-[1.75vw] lg:h-[1.75vw] md:w-[4vw] md:h-[4vh] w-[6vw] h-[6vh]" />
-                    </a>
-                    {/* <a
-                      href="https://x.com/_jamesli"
-                      target="_blank"
-                      className="z-10 hover:opacity-50 opacity-70 transition"
-                    >
-                      <FaXTwitter className="lg:w-[1.75vw] lg:h-[1.75vw] md:w-[4vw] md:h-[4vh] w-[6vw] h-[6vh]" />
-                    </a> */}
-                    <a
-                      href="https://www.instagram.com/faizm.30/"
-                      target="_blank"
-                      className="z-10 hover:opacity-50 opacity-70 transition"
-                    >
-                      <FaInstagram className="lg:w-[1.75vw] lg:h-[1.75vw] md:w-[4vw] md:h-[4vh] w-[6vw] h-[6vh]" />
-                    </a>
-                  </div>
-                </div>
-
-                {/* description section */}
-                <div className="relative lg:col-span-3 col-span-6 row-span-1 w-auto lg:h-auto h-auto lg:py-3 py-5 px-6 bg-midBeige1 m-1 mb-1 rounded-lg lg:text-darkBeige2 text-darkBeige3">
-                  <div className="description relative h-auto w-full flex flex-col z-10 lg:text-sm md:text-lg text-sm">
-                    <span className="italic font-bold p-1">
-                      deterministic by default.
-                    </span>
-                    <h1 className="h1descr break-normal lg:mt-5 mt-8 lg:pb-0 pb-2 p-1">
-                      i'm currently integrating intelligence where it counts.
-                    </h1>
-
-                    <h1 className="h1descr break-normal lg:mt-5 mt-8 pb-2 p-1">
-                      seeking fall '26 internships/full time
-                    </h1>
-
-                    <h1 className="h1descr break-normal lg:mt-5 mt-8 pb-2 p-1">
-                      <div className="flex items-center">recently:</div>
-                      <ul className="descr flex flex-col gap-8 md:gap-4 mt-4">
-                        <li className="flex items-center gap-x-1 flex-wrap">
-                          <span>prev</span>
-                          <Image
-                            src={uw}
-                            width={20}
-                            height={20}
-                            alt="uw-logo"
-                          />
-                          <span>student ·</span>
-                          <span className="font-bold">2x</span>
-                          <span>terms</span>
-                        </li>
-                        <li className="flex items-center gap-x-1 flex-wrap">
-                          built
-                          <LinkSlider
-                            href={`/uoguelph.courses`}
-                            mode="dark"
-                            className="relative flex"
-                            isNextLink
-                          >
-                            uoguelph.courses
-                          </LinkSlider>
-                          {/* <span>@</span>
-                          <Image
-                            src={western}
-                            width={20}
-                            height={20}
-                            alt="western-logo"
-                          /> */}
-                          | reached 500 users with over 25k+ views
-                        </li>
-
-                        <li>
-                          attended <span className="font-bold">10+</span>{" "}
-                          hackathons, just building and networking cool people
-                        </li>
-                        <li>
-                          tech lead for{" "}
-                          <LinkSlider
-                            href="https://hackcanada.org"
-                            mode="dark"
-                            className="relative inline-flex"
-                          >
-                            HackCanada
-                          </LinkSlider>
-                          , built some nice internal tools for hackcanada
-                        </li>
-                      </ul>
-                    </h1>
-                  </div>
-                </div>
-
-                {/* <div className="relative lg:col-span-1 col-span-6 row-span-4 w-auto lg:h-auto lg:py-3 md:py-7 py-6 px-7 m-1 mb-1 rounded-lg bg-darkBeige1 text-midBeige1 hover:border-midBeige3 border-2 border-transparent transition delay-200 duration-150 ease-in">
-                  <a
-                    href="https://github.com/JLi2007"
-                    className="w-full h-full absolute inset-0"
-                    target="_blank"
-                  >
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <FaGithub className="w-auto h-[50%]" />
-                    </div>
-                  </a>
-                </div>
-
-                
-                <div className="lg:col-span-2 col-span-6 row-span-3 w-auto lg:h-auto lg:py-2 md:py-7 py-4 px-5 m-1 rounded-lg bg-midBeige2 bottom-section">
-                  <div className="lastlisten flex items-center justify-center flex-wrap gap-2 text-sm w-full">
-                    <span>i last listened to</span>
-                    <a
-                      href={recent?.external_urls?.spotify || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 z-10 px-2 py-1 rounded-lg shadow-sm ring-1 ring-midBeige3 hover:shadow-lg transition opacity-90 backdrop-blur-lg"
-                    >
-                      <div className="w-7 h-7 relative shrink-0">
-                        {recent?.album?.images?.[0] ? (
-                          <Image
-                            src={recent.album.images[0].url}
-                            alt={recent.name}
-                            fill
-                            sizes="28px"
-                            className="rounded object-cover"
-                          />
-                        ) : (
-                          <div className="w-7 h-7 bg-lightBeige rounded flex items-center justify-center">
-                            <FaSpotify className="text-midBeige2" />
-                          </div>
+                    <div className="p-4">
+                      <div className="flex items-baseline justify-between gap-2">
+                        <span className="font-semibold text-neutral-900">
+                          {project.name}
+                        </span>
+                        {project.year && (
+                          <span className="text-sm text-neutral-500">
+                            {project.year}
+                          </span>
                         )}
                       </div>
-                      <span className="text-xs font-medium truncate max-w-40">
-                        {recent?.name?.toLowerCase()}
-                      </span>
-                    </a>
+                      <p className="mt-1 text-sm leading-relaxed text-neutral-600">
+                        {project.desc}
+                      </p>
+                    </div>
                   </div>
-                </div> */}
-              </div>
+                </Link>
+              ))}
             </div>
-          </div>
-        </div>
+          </section>
+
+          {/* Latest blogs */}
+          <section className="mt-14">
+            <h2 className="text-sm font-medium text-neutral-500 uppercase tracking-wide">
+              latest blogs
+            </h2>
+            <ul className="mt-4 space-y-2">
+              {posts.map((post) => (
+                <li key={post.slug}>
+                  <Link
+                    href={`/${post.slug}`}
+                    className="text-neutral-700 hover:underline"
+                  >
+                    {post.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </main>
       </div>
     </>
   );
