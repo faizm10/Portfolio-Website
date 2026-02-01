@@ -83,20 +83,20 @@ export default function SlugPageClient({ slug }: { slug: string }) {
   };
 
   return (
-    <div className="p-6 lg:max-h-screen min-h-screen lg:overflow-y-scroll overflow-auto overflow-x-hidden">
-      <button
-        onClick={() => router.push("/")}
-        className="text-sm text-lightBeige hover:underline cursor-pointer"
-      >
-        ← back
-      </button>
-      <div className="w-full flex items-center justify-center">
+    <div className="min-h-screen w-full overflow-x-hidden bg-white px-6 py-12">
+      <div className="mx-auto max-w-xl blog-content">
+        <button
+          onClick={() => router.push("/")}
+          className="mb-8 text-sm text-neutral-600 hover:underline"
+        >
+          ← back
+        </button>
         <article
-          className="prose mt-6 text-lighterBeige lg:w-[75%] md:text-sm text-xs"
+          className="prose prose-neutral max-w-none text-left text-neutral-800 prose-headings:font-semibold prose-headings:text-neutral-900 prose-p:text-neutral-700 prose-p:leading-relaxed prose-a:text-neutral-800 prose-a:underline"
           style={{
-            ["--tw-prose-body" as any]: "rgb(var(--color-lighterBeige))",
-            ["--tw-prose-headings" as any]: "rgb(var(--color-lighterBeige))",
-            ["--tw-prose-links" as any]: "rgb(var(--color-lighterBeige))",
+            ["--tw-prose-body" as any]: "rgb(55 65 81)",
+            ["--tw-prose-headings" as any]: "rgb(17 24 39)",
+            ["--tw-prose-links" as any]: "rgb(31 41 55)",
           }}
         >
           <div ref={topRef} />
