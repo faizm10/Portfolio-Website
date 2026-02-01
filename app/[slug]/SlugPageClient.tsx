@@ -16,6 +16,7 @@ import Octree from "./mdx/octree.mdx";
 import UoGReflection from "./mdx/uogreflection.mdx";
 import Footy from "./mdx/footy.mdx";
 import TdBank from "./mdx/tdbank.mdx";
+import Hackathons from "./mdx/hackathons.mdx";
 const MDX_MAP: Record<string, ComponentType> = {
   uwreflection: UWReflection,
   flowboard: Flowboard,
@@ -27,6 +28,7 @@ const MDX_MAP: Record<string, ComponentType> = {
   uogreflection: UoGReflection,
   footy: Footy,
   tdbank: TdBank,
+  hackathons: Hackathons,
 };
 
 export default function SlugPageClient({ slug }: { slug: string }) {
