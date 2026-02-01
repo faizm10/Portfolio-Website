@@ -1,24 +1,24 @@
 "use client";
 
 import { showcaseProjects } from "../projects";
-import { posts } from "../posts";
+// import { posts } from "../posts";
 import LinkSlider from "./Link";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Sidebar() {
   return (
-    <div className="relative max-w-screen h-auto py-3 px-7 m-1 mb-1 rounded-lg text-lightBeige overflow-x-hidden">
+    <div className="relative max-w-screen h-full py-3 px-7 m-1 mb-1 rounded-lg text-lightBeige overflow-x-hidden flex flex-col">
       {[
         { title: "projects", items: showcaseProjects, type: "project" },
-        { title: "notes", items: posts, type: "note" },
+        // { title: "notes", items: posts, type: "note" },
       ].map((section) => (
-        <div key={section.title} className="relative w-full h-full mb-8">
-          <h1 className="italic mb-5 lg:text-base md:text-xl text-sm ">
+        <div key={section.title} className="relative w-full flex-1 flex flex-col min-h-0">
+          <h1 className="italic mb-5 lg:text-base md:text-xl text-sm shrink-0">
             {section.title}
           </h1>
           {section.type === "project" && (
-            <div className="flex flex-col gap-10 max-h-[60vh] lg:max-h-[calc(100vh-240px)] overflow-y-auto pr-2">
+            <div className="flex flex-col gap-10 flex-1 min-h-0 overflow-y-auto pr-2">
               {section.items.map((project: any, index: number) => (
                 <Link
                   key={index}

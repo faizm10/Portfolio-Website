@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import LinkSlider from "./components/Link";
 import { useIntroStore } from "./store/zustand";
 import useModifierKey from "./components/ModifierKey";
@@ -12,6 +13,7 @@ import faiz from "./assets/faiz1.jpg";
 // import uog from "./assets/uog.png";
 import td from "./assets/td.png";
 import uw from "./assets/uw.png";
+import { posts } from "./posts";
 export default function Home() {
   const { hasPlayed, setHasPlayed } = useIntroStore();
   const initialHasPlayed =
@@ -204,23 +206,23 @@ faiz mustansar                    </span>
 
                 {/* linkedin and socials section */}
                 <div className="row-span-1 lg:col-span-3 col-span-6 w-auto lg:h-auto h-80 grid grid-cols-3 gap-2 m-1 mb-1">
-                  {/* linkedin section */}
-                  <div className="relative col-span-2 py-3 px-7 rounded-lg bg-darkBeige2 text-lightBeige hover:border-darkBeige1 border-2 border-transparent transition delay-200 duration-150 ease-in">
-                    <a
-                      href="https://www.linkedin.com/in/faizmustansar/"
-                      target="_blank"
-                      className="absolute inset-0 w-full h-full"
-                    >
-                      <h1 className="absolute italic left-5 top-2 lg:text-base md:text-lg text-sm">
-                        linkedin
-                      </h1>
-                      <div className="absolute lg:bottom-4 lg:left-2 lg:right-0 lg:top-auto right-1 top-0 bottom-auto left-auto z-20">
-                        <GrLinkedin className="lg:w-[4vw] lg:h-[4vh] md:w-[5vw] md:h-[5vh] w-[6vw] h-[6vh]" />
-                      </div>
-                      <h1 className="absolute bottom-5 italic right-5 lg:text-base md:text-lg text-sm">
-                        faizmustansar10@gmail.com
-                      </h1>
-                    </a>
+                  {/* notes */}
+                  <div className="relative col-span-2 py-3 px-7 rounded-lg bg-darkBeige2 text-lightBeige hover:border-darkBeige1 border-2 border-transparent transition delay-200 duration-150 ease-in flex flex-col">
+                    <span className="italic left-5 top-2 lg:text-base md:text-lg text-sm z-10 mb-3">latest blogs · check it out</span>
+                    <div className="flex-1 flex flex-col justify-center pl-1 z-10">
+                      <ul className="flex flex-col gap-1">
+                        {posts.map((post) => (
+                          <li key={post.slug}>
+                            <Link
+                              href={`/${post.slug}`}
+                              className="italic text-sm lg:text-base text-lightBeige hover:underline"
+                            >
+                              {post.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
 
                   {/* socials section */}
