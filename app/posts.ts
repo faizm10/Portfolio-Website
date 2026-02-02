@@ -36,4 +36,10 @@ export const posts: Post[] = [
     date: "ongoing",
     pinned: false,
   },
+  {
+    slug: "soccer-stats",
+    title: "soccer stats & achievements",
+    date: "ongoing",
+    pinned: false,
+  },
 ];

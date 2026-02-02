@@ -1,0 +1,177 @@
+export const periods = [
+  {
+    label: "fall 2025",
+    entries: [
+      { text: "open fun soccer 11v11 - winner", tag: "uog" },
+      { text: "competitive soccer 11v11 - 3rd place", tag: "uog" },
+      { text: "competitive soccer 11v11 - rd of 16", tag: "uw" },
+      { text: "competitive soccer 6v6 - quarter-finals", tag: "uw" },
+    ],
+  },
+  {
+    label: "summer 2025",
+    entries: [
+      { text: "competitive soccer 11v11 - 3rd place", tag: "uw" },
+      { text: "stadium sports league (summer - wed/thurs) - 3rd place", tag: "summer" },
+      { text: "stadium sports league (spring - fridays) - 3rd place", tag: "summer" },
+      { text: "inter-msa tournament (july 6th) - group stage", tag: "summer" },
+    ],
+  },
+  {
+    label: "winter 2025",
+    entries: [
+      { text: "competitive soccer 5v5 - 3rd", tag: "uog" },
+      { text: "open fun soccer 5v5 - 5th", tag: "uog" },
+      { text: "recreational soccer 5v5 - qf", tag: "uog" },
+      { text: "competitive badminton - qf", tag: "uog" },
+    ],
+  },
+  {
+    label: "fall 2024",
+    entries: [
+      { text: "recreational soccer 9v9 - 2nd", tag: "uog" },
+      { text: "competitive soccer 9v9 - 3rd", tag: "uog" },
+      { text: "competitive basketball - qf", tag: "uog" },
+      { text: "competitive ping pong - qf", tag: "uog" },
+      { text: "competitive badminton - rd of 16", tag: "uog" },
+    ],
+  },
+  {
+    label: "summer 2024",
+    entries: [
+      { text: "toronto footy sevens (thurs) - 3rd place", tag: "summer" },
+      { text: "toronto footy sevens (sun) - 3rd place", tag: "summer" },
+    ],
+  },
+  {
+    label: "winter 2024",
+    entries: [
+      { text: "competitive soccer 5v5 - qf", tag: "uog" },
+      { text: "competitive ping pong - qf", tag: "uog" },
+      { text: "competitive basketball 5v5 - rd of 16", tag: "uog" },
+      { text: "competitive soccer 5v5 - rd of 16", tag: "uog" },
+    ],
+  },
+  {
+    label: "summer 2021",
+    entries: [{ text: "house league - winner", tag: "summer" }],
+  },
+  {
+    label: "grade 12",
+    entries: [
+      { text: "varsity badminton team - qf", tag: "hs" },
+      { text: "varsity soccer team", tag: "hs" },
+    ],
+  },
+  {
+    label: "grade 11",
+    entries: [{ text: "varsity soccer team - winner ropssa", tag: "hs" }],
+  },
+  {
+    label: "grade 8",
+    entries: [
+      { text: "cross country team - top 25", tag: "ms" },
+      { text: "varsity soccer team", tag: "ms" },
+      { text: "track and field - 1500m", tag: "ms" },
+    ],
+  },
+  {
+    label: "grade 7",
+    entries: [
+      { text: "cross country team - top 75", tag: "ms" },
+      { text: "varsity soccer team", tag: "ms" },
+      { text: "track and field - 800m", tag: "ms" },
+    ],
+  },
+  {
+    label: "grade 6",
+    entries: [
+      { text: "cross country team - top 125", tag: "ms" },
+      { text: "varsity soccer team", tag: "ms" },
+    ],
+  },
+];
+
+export const totalPeriods = periods.length;
+export const totalEntries = periods.reduce((sum, period) => sum + period.entries.length, 0);
+export const totalTags = [...new Set(periods.flatMap((period) => period.entries.map((entry) => entry.tag)))].length;
+export const podiumFinishes = periods.reduce(
+  (sum, period) =>
+    sum +
+    period.entries.filter(
+      (entry) =>
+        entry.text.includes("winner") || entry.text.includes("1st") || entry.text.includes("2nd") || entry.text.includes("3rd")
+    ).length,
+  0
+);
+
+export const performanceTag = (text) => {
+  if (text.includes("ongoing")) return "live";
+  if (text.includes("tbd")) return "upcoming";
+  if (text.includes("winner") || text.includes("1st") || text.includes("2nd") || text.includes("3rd")) return "podium";
+  if (text.includes("qf") || text.includes("quarter-finals") || text.includes("rd of 16") || text.includes("group stage")) {
+    return "bracket";
+  }
+  return "record";
+};
+
+<section className="relative isolate mx-auto w-full px-1 py-4">
+  <div className="absolute -top-6 left-1/2 -z-10 h-32 w-32 -translate-x-1/2 rounded-full bg-emerald-300/30 blur-3xl" />
+  <div className="rounded-3xl border border-emerald-100 bg-gradient-to-b from-emerald-50/70 via-white to-cyan-50/60 p-5 md:p-6">
+    <p className="mb-2 text-xs font-semibold tracking-[0.22em] text-emerald-700">performance archive</p>
+    <h1 className="m-0 text-3xl font-black leading-tight text-neutral-900 md:text-4xl">soccer stats</h1>
+    <p className="mb-0 mt-3 text-sm text-neutral-600">latest to earliest, with source tags on every league entry.</p>
+
+    <div className="mt-5 grid grid-cols-2 gap-2.5 text-center md:grid-cols-4">
+      <div className="rounded-xl border border-white/60 bg-white/80 p-3">
+        <p className="m-0 text-xs tracking-wide text-neutral-500">periods</p>
+        <p className="m-0 mt-1 text-xl font-bold text-neutral-900">{totalPeriods}</p>
+      </div>
+      <div className="rounded-xl border border-white/60 bg-white/80 p-3">
+        <p className="m-0 text-xs tracking-wide text-neutral-500">entries</p>
+        <p className="m-0 mt-1 text-xl font-bold text-neutral-900">{totalEntries}</p>
+      </div>
+      <div className="rounded-xl border border-white/60 bg-white/80 p-3">
+        <p className="m-0 text-xs tracking-wide text-neutral-500">tags</p>
+        <p className="m-0 mt-1 text-xl font-bold text-neutral-900">{totalTags}</p>
+      </div>
+      <div className="rounded-xl border border-white/60 bg-white/80 p-3">
+        <p className="m-0 text-xs tracking-wide text-neutral-500">podium</p>
+        <p className="m-0 mt-1 text-xl font-bold text-neutral-900">{podiumFinishes}</p>
+      </div>
+    </div>
+  </div>
+
+  <div className="relative mt-8 space-y-6">
+    <div className="absolute left-3 top-2 h-[calc(100%-1rem)] w-px bg-gradient-to-b from-emerald-300 via-cyan-300 to-transparent" />
+    {periods.map((period, index) => (
+      <div key={period.label} className="relative pl-8">
+        <div className="absolute left-0 top-1 flex h-6 w-6 items-center justify-center rounded-full border border-emerald-300 bg-emerald-100 text-xs font-bold text-emerald-700">
+          {index + 1}
+        </div>
+        <h2 className="m-0 text-xl font-bold text-neutral-900">{period.label}</h2>
+        <div className="mt-3 rounded-2xl border border-neutral-200 bg-white/85 p-4 shadow-[0_8px_30px_-22px_rgba(16,185,129,0.8)]">
+          <div className="mb-3">
+            <span className="rounded-full bg-neutral-100 px-2.5 py-1 text-[11px] font-medium tracking-wide text-neutral-600">
+              {period.entries.length} entries
+            </span>
+          </div>
+          <div className="flex flex-col gap-2">
+            {period.entries.map((entry) => (
+              <div key={`${period.label}-${entry.text}`} className="flex flex-wrap items-center gap-2 rounded-lg border border-neutral-100 bg-neutral-50 px-3 py-2">
+                <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
+                <span className="text-sm text-neutral-700">{entry.text}</span>
+                <span className="ml-auto rounded-full border border-emerald-200 bg-emerald-50 px-2 py-[2px] text-[10px] font-semibold tracking-wide text-emerald-700">
+                  {entry.tag}
+                </span>
+                <span className="rounded-full border border-neutral-200 bg-white px-2 py-[2px] text-[10px] font-semibold tracking-wide text-neutral-500">
+                  {performanceTag(entry.text)}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

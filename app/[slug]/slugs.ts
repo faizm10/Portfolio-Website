@@ -10,4 +10,5 @@ export const SLUGS = [
   "footy",
   "tdbank",
   "hackathons",
+  "soccer-stats",
 ] as const;
