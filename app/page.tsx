@@ -6,16 +6,33 @@ import Link from "next/link";
 import { useIntroStore } from "./store/zustand";
 import useModifierKey from "./components/ModifierKey";
 import { isMobile } from "react-device-detect";
-import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa6";
+import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from "react-icons/fa6";
 import { posts } from "./posts";
 import { showcaseProjects } from "./projects";
 
 const experiences = [
-  { title: "TD Bank", role: "swe intern", icon: "/exp/td-logo.png" },
-  { title: "HackCanada", role: "frontend tech lead", icon: "/exp/hackcanadaLogo.png" },
-  { title: "University of Guelph", role: "full stack developer", icon: "/exp/uog.png" },
-  { title: "University of Guelph", role: "teaching assistant · 3x terms", icon: "/exp/uog.png" },
-  
+  { title: "td bank", role: "swe intern", icon: "/exp/td-logo.png" },
+  {
+    title: "hackcanada",
+    role: "frontend tech lead",
+    icon: "/exp/hackcanadaLogo.png",
+  },
+  {
+    title: "octree",
+    role: "co-founder + software engineer",
+    icon: "/exp/octree.svg",
+  },
+
+  {
+    title: "university of guelph",
+    role: "full stack developer",
+    icon: "/exp/uog.png",
+  },
+  {
+    title: "university of guelph",
+    role: "teaching assistant · 3x terms",
+    icon: "/exp/uog.png",
+  },
 ];
 
 export default function Home() {
@@ -57,7 +74,9 @@ export default function Home() {
     <>
       <div
         className={`fixed inset-0 z-40 flex items-center justify-center bg-white transition-opacity duration-800 ${
-          isLoaded ? "pointer-events-none invisible opacity-0" : "visible opacity-100"
+          isLoaded
+            ? "pointer-events-none invisible opacity-0"
+            : "visible opacity-100"
         }`}
         aria-hidden={isLoaded}
       >
@@ -92,7 +111,7 @@ export default function Home() {
                 <button
                   onClick={() =>
                     window.dispatchEvent(
-                      new CustomEvent("open-command-palette")
+                      new CustomEvent("open-command-palette"),
                     )
                   }
                   className="rounded border border-neutral-300 bg-white px-2.5 py-1 text-xs text-neutral-600 hover:border-neutral-400"
@@ -130,6 +149,15 @@ export default function Home() {
               >
                 <FaInstagram className="h-5 w-5" />
               </a>
+              <a
+                href="https://x.com/_faizm"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-600 hover:text-neutral-900"
+                aria-label="Twitter"
+              >
+                <FaTwitter className="h-5 w-5" />
+              </a>
             </div>
           </header>
 
@@ -153,7 +181,9 @@ export default function Home() {
                     ) : null}
                   </div>
                   <div>
-                    <p className="font-semibold text-neutral-900">{exp.title}</p>
+                    <p className="font-semibold text-neutral-900">
+                      {exp.title}
+                    </p>
                     <p className="text-sm text-neutral-600">{exp.role}</p>
                   </div>
                 </li>
