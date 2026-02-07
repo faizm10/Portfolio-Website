@@ -67,9 +67,63 @@ import { FiExternalLink } from "react-icons/fi";
           
         </div>
 
+        <div className='flex flex-col text-left mt-15'>
+            <span className='text-lightBeige/95 text-xl'>first month</span>
+            <span className='text-lighterBeige/80 text-sm block mt-1'>jan 12, 2026</span>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3'>
+                first day was the intern event. met a bunch of cool people like <a href="https://www.linkedin.com/in/victor-nguyen-7a5bb3290/" target="_blank" rel="noopener noreferrer" className="a">victor</a>, <a href="https://www.linkedin.com/in/maurya-panchal/" target="_blank" rel="noopener noreferrer" className="a">maurya</a>, and <a href="https://www.linkedin.com/in/hoyeonjang/" target="_blank" rel="noopener noreferrer" className="a">luke</a>, got set up with the laptop, badges, the whole spiel, and even a headshot. i work out of td terrace on the 14th floor, so the view was a nice bonus while everything got rolling.
+            </div>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-4'>
+                the team was credit origination and funding, so the work lived right where customer intent becomes real money movement. a typical day was tracing flows, spotting where latency hides, and tightening handoffs so approvals feel instant without sacrificing risk controls.
+            </div>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-4'>
+                the core of it: building systems for in-branch employees to process and fund customer applications for credit products like mortgages, credit cards, loans, and lines of credit.
+            </div>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-4'>
+                team setup was a scrum master, a po, 3 devs, and 2 qe’s, so standups were tight and everything moved fast.
+            </div>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-4'>
+                i spent a good chunk of time refactoring legacy code and cleaning up old flows so new changes didn’t feel brittle.
+            </div>
+        </div>
+
+        <div className="w-[95vw] relative left-1/2 -ml-[47.5vw] md:w-[105%] md:left-0 md:-ml-[2.5%] md:static mt-8">
+            <Image
+                src="/projects/tdbank/desk.jpeg"
+                alt="td bank building"
+                width={1200}
+                height={800}
+                className="object-cover rounded-lg my-0! py-0!"
+                style={{
+                    WebkitMaskImage:
+                    "radial-gradient(circle, rgba(0,0,0,0.98) 60%, rgba(0,0,0,0.3) 90%)"
+                }}
+                loading="eager"
+                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1600px"
+                quality={85}
+            />
+        </div>
+
+        <div className="w-[95vw] relative left-1/2 -ml-[47.5vw] md:w-[105%] md:left-0 md:-ml-[2.5%] md:static mt-8">
+            <Image
+                src="/projects/tdbank/sunset.jpeg"
+                alt="td bank office space"
+                width={1200}
+                height={800}
+                className="object-cover rounded-lg my-0! py-0!"
+                style={{
+                    WebkitMaskImage:
+                    "radial-gradient(circle, rgba(0,0,0,0.98) 60%, rgba(0,0,0,0.3) 90%)"
+                }}
+                loading="eager"
+                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1600px"
+                quality={85}
+            />
+        </div>
+
         <footer className="pt-4 border-t border-white/20 text-sm text-white/70 flex flex-row items-center mt-10">
             <span className="shiny-green-dot inline-block mr-2" />
-            Last updated: 02/01/2026
+            Last updated: feb 6th, 2026
         </footer>
     </div>
 </div>
