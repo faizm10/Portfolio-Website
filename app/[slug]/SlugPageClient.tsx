@@ -18,6 +18,10 @@ import Footy from "./mdx/footy.mdx";
 import TdBank from "./mdx/tdbank.mdx";
 import Hackathons from "./mdx/hackathons.mdx";
 import SoccerStats from "./mdx/soccer-stats.mdx";
+import CodeKeeper from "./mdx/code-keeper.mdx";
+import TextAnxiety from "./mdx/text-anxiety.mdx";
+import Htv from "./mdx/htv.mdx";
+import Terrahacks from "./mdx/terrahacks.mdx";
 const MDX_MAP: Record<string, ComponentType> = {
   uwreflection: UWReflection,
   flowboard: Flowboard,
@@ -31,6 +35,10 @@ const MDX_MAP: Record<string, ComponentType> = {
   tdbank: TdBank,
   hackathons: Hackathons,
   "soccer-stats": SoccerStats,
+  "code-keeper": CodeKeeper,
+  "text-anxiety": TextAnxiety,
+  htv: Htv,
+  terrahacks: Terrahacks,
 };
 
 export default function SlugPageClient({ slug }: { slug: string }) {

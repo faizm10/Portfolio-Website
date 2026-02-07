@@ -197,13 +197,13 @@ export default function Home() {
               some projects i built
             </h2>
             <div className="mt-4 grid grid-cols-1 gap-8 sm:grid-cols-2">
-              {showcaseProjects.map((project) => (
+              {showcaseProjects.slice(0, 6).map((project) => (
                 <Link
                   key={project.slug}
                   href={`/${project.slug}`}
-                  className="group block"
+                  className="group block h-full"
                 >
-                  <div className="overflow-hidden rounded-lg border border-neutral-100 bg-neutral-50 shadow-sm transition-shadow group-hover:shadow-md">
+                  <div className="flex h-full flex-col overflow-hidden rounded-lg border border-neutral-100 bg-neutral-50 shadow-sm transition-shadow group-hover:shadow-md">
                     <div className="relative aspect-video w-full bg-neutral-200">
                       <Image
                         src={project.banner}
@@ -213,7 +213,7 @@ export default function Home() {
                         className="object-cover"
                       />
                     </div>
-                    <div className="p-4">
+                    <div className="flex flex-1 flex-col p-4">
                       <div className="flex items-baseline justify-between gap-2">
                         <span className="font-semibold text-neutral-900">
                           {project.name}
@@ -231,6 +231,16 @@ export default function Home() {
                   </div>
                 </Link>
               ))}
+            </div>
+            <div className="mt-4">
+              <a
+                href="https://github.com/faizm10"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-neutral-600 hover:text-neutral-900 hover:underline"
+              >
+                view more on github
+              </a>
             </div>
           </section>
 
