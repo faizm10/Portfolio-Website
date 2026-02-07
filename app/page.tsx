@@ -18,6 +18,11 @@ const experiences = [
     icon: "/exp/hackcanadaLogo.png",
   },
   {
+    title: "brown & beatty ai",
+    role: "software engineer intern",
+    icon: "/exp/bbai.png",
+  },
+  {
     title: "octree",
     role: "co-founder + software engineer",
     icon: "/exp/octree.svg",
