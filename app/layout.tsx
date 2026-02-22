@@ -3,7 +3,11 @@ import { PT_Mono } from "next/font/google";
 import CommandPalette from "./components/Cmd";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
-const ptMono = PT_Mono({ weight: "400", subsets: ["latin"], variable: "--font-pt-mono" });
+const ptMono = PT_Mono({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-pt-mono",
+});
 import "prismjs/themes/prism-twilight.css";
 import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 import "prismjs";
@@ -68,11 +72,41 @@ export default function RootLayout({
       <head>
         <link rel="canonical" href="https://faizm.me" />
       </head>
-      <body className={`${ptMono.className} min-h-screen w-full bg-white text-neutral-900 antialiased`}>
+      <body
+        className={`${ptMono.className} min-h-screen w-full bg-white text-neutral-900 antialiased`}
+      >
         <div className="min-h-screen w-full">
           {children}
           <CommandPalette />
         </div>
+        <footer className="w-full pb-6">
+          <div className="mx-auto flex w-full max-w-3xl items-center gap-2 px-6 text-neutral-700">
+            <a
+              href="https://www.uguelph.network/#faizm.me?nav=prev"
+              aria-label="Previous site"
+            >
+              ←
+            </a>
+            <a
+              href="https://www.uguelph.network/#faizm.me"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Guelph Webring"
+            >
+              <img
+                src="https://www.uguelph.network/icon.black.svg"
+                alt="Guelph Webring"
+                style={{ width: "24px", height: "auto", opacity: 0.8 }}
+              />
+            </a>
+            <a
+              href="https://www.uguelph.network/#faizm.me?nav=next"
+              aria-label="Next site"
+            >
+              →
+            </a>
+          </div>
+        </footer>
         {/* <GoogleAnalytics gaId="G-T54T8RQLW5" /> */}
       </body>
     </html>
