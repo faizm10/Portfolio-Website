@@ -94,7 +94,7 @@ export default function RootLayout({
               aria-label="Guelph Webring"
             >
               <img
-                src="https://www.uguelph.network/icon.black.svg"
+                src="https://www.uguelph.network/webAssets/gryphon.svg"
                 alt="Guelph Webring"
                 style={{ width: "24px", height: "auto", opacity: 0.8 }}
               />
