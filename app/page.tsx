@@ -14,7 +14,7 @@ const experiences = [
   { title: "td bank", role: "swe intern", icon: "/exp/td-logo.png" },
   {
     title: "hackcanada",
-    role: "frontend tech lead",
+    role: "vp of tech",
     icon: "/exp/hackcanadaLogo.png",
   },
   {
@@ -86,7 +86,7 @@ export default function Home() {
         aria-hidden={isLoaded}
       >
         <p className="text-neutral-800 text-sm md:text-base">
-          destined to build
+          grinding...
         </p>
       </div>
 
