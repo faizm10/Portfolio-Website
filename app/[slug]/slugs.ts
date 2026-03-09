@@ -15,4 +15,5 @@ export const SLUGS = [
   "text-anxiety",
   "htv",
   "terrahacks",
+  "hc26",
 ] as const;

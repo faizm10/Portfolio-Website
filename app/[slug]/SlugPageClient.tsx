@@ -21,6 +21,7 @@ import SoccerStats from "./mdx/soccer-stats.mdx";
 import CodeKeeper from "./mdx/code-keeper.mdx";
 import TextAnxiety from "./mdx/text-anxiety.mdx";
 import Htv from "./mdx/htv.mdx";
+import hc26 from "./mdx/hc26.mdx"
 import Terrahacks from "./mdx/terrahacks.mdx";
 const MDX_MAP: Record<string, ComponentType> = {
   uwreflection: UWReflection,
@@ -38,6 +39,7 @@ const MDX_MAP: Record<string, ComponentType> = {
   "code-keeper": CodeKeeper,
   "text-anxiety": TextAnxiety,
   htv: Htv,
+  hc26: hc26,
   terrahacks: Terrahacks,
 };
 

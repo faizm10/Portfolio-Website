@@ -7,6 +7,12 @@ interface Post {
 
 export const posts: Post[] = [
   {
+    slug: "hc26",
+    title: "organized hc26 experience",
+    date: "ongoing",
+    pinned: true,
+  },
+  {
     slug: "tdbank",
     title: "intern experience @ td bank",
     date: "ongoing",
