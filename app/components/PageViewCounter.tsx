@@ -2,30 +2,22 @@
 
 import { useEffect, useState, useCallback } from "react";
 
+const GC_CODE = process.env.NEXT_PUBLIC_GOATCOUNTER_CODE;
+
 export default function PageViewCounter({ slug }: { slug: string }) {
   const [count, setCount] = useState<number | null>(null);
 
   const fetchCount = useCallback(async () => {
+    if (!GC_CODE) return;
     try {
+      const path = encodeURIComponent(`/${slug}`);
       const res = await fetch(
-        `https://us.posthog.com/api/projects/${process.env.NEXT_PUBLIC_POSTHOG_PROJECT_ID}/query/`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_POSTHOG_PERSONAL_KEY}`,
-          },
-          body: JSON.stringify({
-            query: {
-              kind: "HogQLQuery",
-              query: `SELECT count() FROM events WHERE event = '$pageview' AND properties.$pathname = '/${slug}'`,
-            },
-          }),
-        }
+        `https://${GC_CODE}.goatcounter.com/counter/${path}.json`
       );
+      if (!res.ok) return;
       const data = await res.json();
-      const value = data?.results?.[0]?.[0];
-      if (typeof value === "number") setCount(value);
+      const value = parseInt(data.count?.replace(/,/g, "") ?? "", 10);
+      if (!isNaN(value)) setCount(value);
     } catch {}
   }, [slug]);
 

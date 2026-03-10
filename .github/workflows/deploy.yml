@@ -34,9 +34,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          NEXT_PUBLIC_POSTHOG_KEY: ${{ secrets.NEXT_PUBLIC_POSTHOG_KEY }}
-          NEXT_PUBLIC_POSTHOG_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_POSTHOG_PROJECT_ID }}
-          NEXT_PUBLIC_POSTHOG_PERSONAL_KEY: ${{ secrets.NEXT_PUBLIC_POSTHOG_PERSONAL_KEY }}
+          NEXT_PUBLIC_GOATCOUNTER_CODE: ${{ secrets.NEXT_PUBLIC_GOATCOUNTER_CODE }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

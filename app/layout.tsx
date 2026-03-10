@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PT_Mono } from "next/font/google";
+import Script from "next/script";
 import CommandPalette from "./components/Cmd";
-import PostHogProvider from "./components/PostHogProvider";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 const ptMono = PT_Mono({
@@ -76,12 +76,17 @@ export default function RootLayout({
       <body
         className={`${ptMono.className} min-h-screen w-full bg-white text-neutral-900 antialiased`}
       >
-        <PostHogProvider>
-          <div className="min-h-screen w-full">
-            {children}
-            <CommandPalette />
-          </div>
-        </PostHogProvider>
+        <div className="min-h-screen w-full">
+          {children}
+          <CommandPalette />
+        </div>
+        {process.env.NEXT_PUBLIC_GOATCOUNTER_CODE && (
+          <Script
+            data-goatcounter={`https://${process.env.NEXT_PUBLIC_GOATCOUNTER_CODE}.goatcounter.com/count`}
+            src="//gc.zgo.at/count.js"
+            strategy="afterInteractive"
+          />
+        )}
         <footer className="w-full pb-6">
           <div className="mx-auto flex w-full max-w-3xl items-center gap-2 px-6 text-neutral-700">
             <a
