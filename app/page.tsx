@@ -9,6 +9,7 @@ import { isMobile } from "react-device-detect";
 import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from "react-icons/fa6";
 import { posts } from "./posts";
 import { showcaseProjects } from "./projects";
+import PageViewCounter from "./components/PageViewCounter";
 
 const experiences = [
   { title: "td bank", role: "swe intern", icon: "/exp/td-logo.png" },
@@ -256,13 +257,14 @@ export default function Home() {
             </h2>
             <ul className="mt-4 space-y-2">
               {posts.map((post) => (
-                <li key={post.slug}>
+                <li key={post.slug} className="flex items-center justify-between gap-4">
                   <Link
                     href={`/${post.slug}`}
                     className="text-neutral-700 hover:underline"
                   >
                     {post.title}
                   </Link>
+                  <PageViewCounter slug={post.slug} />
                 </li>
               ))}
             </ul>

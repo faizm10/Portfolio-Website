@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PT_Mono } from "next/font/google";
 import CommandPalette from "./components/Cmd";
+import PostHogProvider from "./components/PostHogProvider";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 const ptMono = PT_Mono({
@@ -75,10 +76,12 @@ export default function RootLayout({
       <body
         className={`${ptMono.className} min-h-screen w-full bg-white text-neutral-900 antialiased`}
       >
-        <div className="min-h-screen w-full">
-          {children}
-          <CommandPalette />
-        </div>
+        <PostHogProvider>
+          <div className="min-h-screen w-full">
+            {children}
+            <CommandPalette />
+          </div>
+        </PostHogProvider>
         <footer className="w-full pb-6">
           <div className="mx-auto flex w-full max-w-3xl items-center gap-2 px-6 text-neutral-700">
             <a

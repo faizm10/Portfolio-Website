@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, type ComponentType, type ReactNode } from "react";
+import PageViewCounter from "../components/PageViewCounter";
 import { useRouter } from "next/navigation";
 import { MDXProvider } from "@mdx-js/react";
 import "./codeblocks.css";
@@ -97,12 +98,15 @@ export default function SlugPageClient({ slug }: { slug: string }) {
   return (
     <div className="min-h-screen w-full overflow-x-hidden bg-white px-6 py-12">
       <div className="mx-auto max-w-xl blog-content">
-        <button
-          onClick={() => router.push("/")}
-          className="mb-8 text-sm text-neutral-600 hover:underline"
-        >
-          ← back
-        </button>
+        <div className="mb-8 flex items-center justify-between">
+          <button
+            onClick={() => router.push("/")}
+            className="text-sm text-neutral-600 hover:underline"
+          >
+            ← back
+          </button>
+          <PageViewCounter slug={slug} />
+        </div>
         <article
           className="prose prose-neutral max-w-none text-left text-neutral-800 prose-headings:font-semibold prose-headings:text-neutral-900 prose-p:text-neutral-700 prose-p:leading-relaxed prose-a:text-neutral-800 prose-a:underline"
           style={{
