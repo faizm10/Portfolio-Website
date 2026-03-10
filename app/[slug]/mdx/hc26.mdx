@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 <div className='w-full text-center flowboard-page'>
     <span className='block text-lightBeige/95 italic text-2xl md:text-3xl'>hackcanada 2026</span>
 
@@ -24,7 +26,7 @@
 
                 <div className='flex flex-col gap-1 mt-4'>
                     <span className='text-lightBeige/95 text-lg'>role</span>
-                    <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>vp of technology</span>
+                    <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>vp of tech</span>
                 </div>
 
                 <div className='flex flex-col gap-1 mt-4'>
@@ -36,10 +38,9 @@
             <div className='flex flex-col gap-1'>
                 <span className='text-lightBeige/95 text-lg'>responsibilities</span>
                 <div className='flex flex-col gap-1 font-inter font-light text-[1rem]'>
-                    <span>judging platform</span>
-                    <span>hackcanada.org website</span>
+                    <a href="https://hackcanada-judging.vercel.app/" target="_blank" rel="noopener noreferrer" className="a">judging platform</a>
+                    <a href="https://hackcanada.org/" target="_blank" rel="noopener noreferrer" className="a">hackcanada.org website</a>
                     <span>tech infrastructure</span>
-                    <span>sponsor api workshops</span>
                 </div>
             </div>
         </div>
@@ -48,13 +49,63 @@
             <span className='text-lightBeige/95 text-xl'>how it started</span>
             <span className='text-lighterBeige/80 text-sm block mt-1'>march 2026</span>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3'>
-                i attended hackcanada 2025 as a hacker. built tenantshield with talha, fawaz, and shomaaim. but honestly the highlight was the poker side competition. sat down across from ev wong, the goated linkedin girl herself, and walked away with first. she reportedly never played poker again. no comment.
+                i attended hackcanada 2025 as a hacker. built tenantshield with talha, fawaz, and shomaaim. but honestly the highlight was the poker side competition. sat down across from <a href="https://www.linkedin.com/in/evelynhwong/" target="_blank" rel="noopener noreferrer" className="a">ev wong</a>, the goated linkedin girl herself, and walked away with first. she reportedly never played poker again. no comment.
             </div>
-            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-4'>
-                after that i applied to join the organizing team. got a little interview with the man himself: james cao. came in as a frontend dev, and somewhere along the way he promoted me to tech lead. not sure what i did to deserve it but i wasn't going to argue.
+
+            <div className="w-[95vw] relative left-1/2 -ml-[47.5vw] md:w-[105%] md:left-0 md:-ml-[2.5%] md:static mt-8">
+                <Image
+                    src="/projects/hc26/poker.jpeg"
+                    alt="pocket aces at hackcanada poker"
+                    width={1200}
+                    height={800}
+                    className="object-cover rounded-lg my-0! py-0!"
+                    style={{
+                        WebkitMaskImage:
+                        "radial-gradient(circle, rgba(0,0,0,0.98) 60%, rgba(0,0,0,0.3) 90%)"
+                    }}
+                    loading="eager"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1600px"
+                    quality={85}
+                />
             </div>
+
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-4'>
-                the vp of tech role had two main things at its core: the judging platform and the hackcanada.org website. everything else was in orbit around those. if either broke at 2am, that was mine to fix.
+                after that i applied to join the organizing team. interviewed for the frontend co-lead. got rejected. james still offered me a regular frontend role, so i took it. two months later, out of nowhere, a discord message: "you've been really active on the discord and participating in team socials, frankly that's what i think we need for a tech lead." and that was that. not sure what i did to deserve it but i wasn't going to argue.
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 mt-8">
+                <Image
+                    src="/projects/hc26/linkedin-james.png"
+                    alt="james cao linkedin message"
+                    width={600}
+                    height={400}
+                    className="object-cover rounded-lg my-0! py-0!"
+                    style={{
+                        WebkitMaskImage:
+                        "radial-gradient(circle, rgba(0,0,0,0.98) 60%, rgba(0,0,0,0.3) 90%)"
+                    }}
+                    loading="eager"
+                    quality={85}
+                />
+                <div className="overflow-hidden rounded-lg">
+                    <Image
+                        src="/projects/hc26/discord-james.png"
+                        alt="james discord message promoting to tech lead"
+                        width={600}
+                        height={400}
+                        className="object-cover my-0! py-0! scale-150 origin-center"
+                        style={{
+                            WebkitMaskImage:
+                            "radial-gradient(circle, rgba(0,0,0,0.98) 60%, rgba(0,0,0,0.3) 90%)"
+                        }}
+                        loading="eager"
+                        quality={85}
+                    />
+                </div>
+            </div>
+
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-4'>
+                the vp of tech role had two main things at its core: the <a href="https://hackcanada-judging.vercel.app/" target="_blank" rel="noopener noreferrer" className="a">judging platform</a> and the <a href="https://hackcanada.org/" target="_blank" rel="noopener noreferrer" className="a">hackcanada.org</a> website. everything else was in orbit around those. if either broke at 2am, that was mine to fix.
             </div>
         </div>
 
@@ -68,34 +119,57 @@
                 the judging platform was the bigger lift. it had to ingest hundreds of project submissions, route them to the right judges, track scores, and surface results at the end of 36 hours without a hitch. every decision had downstream consequences. one bad config and judging falls apart.
             </div>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-4'>
-                i also helped run sponsor api workshops, getting hackers up to speed on the tools sponsors brought. less a formal talk, more "here's what's possible, go build something weird with it."
+                i also mentored some hackers throughout the weekend, helping them scope ideas, debug, and figure out what to build next.
             </div>
         </div>
 
         <div className='flex flex-col text-left mt-15'>
             <span className='text-lightBeige/95 text-xl'>the team</span>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3'>
-                i didn't do any of this alone. adelynn, hreem, and oliver were the people i was actually in the trenches with on the tech side. the kind of teammates who just handle things. you don't have to check in, you just trust it's done.
+                i didn't do any of this alone. <a href="https://www.linkedin.com/in/adelynntran810/" target="_blank" rel="noopener noreferrer" className="a">adelynn</a>, <a href="https://www.linkedin.com/in/hreem-pandya-7b74a0275/" target="_blank" rel="noopener noreferrer" className="a">hreem</a>, and <a href="https://www.linkedin.com/in/oliver-huang-931947232/" target="_blank" rel="noopener noreferrer" className="a">oliver</a> were the people i was actually in the trenches with on the tech side. the kind of teammates who just handle things. you don't have to check in, you just trust it's done.
             </div>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-4'>
                 organizing a hackathon is a distributed problem. if one piece slips, everything downstream feels it. having people you trust makes that a lot less stressful.
             </div>
+            <Image
+                src="/projects/hc26/tech-team.png"
+                alt="td bank building"
+                width={1200}
+                height={800}
+                className="object-cover rounded-lg my-0! py-0!"
+                style={{
+                    WebkitMaskImage:
+                    "radial-gradient(circle, rgba(0,0,0,0.98) 60%, rgba(0,0,0,0.3) 90%)"
+                }}
+                loading="eager"
+                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1600px"
+                quality={85}
+            />
         </div>
 
         <div className='flex flex-col text-left mt-15'>
             <span className='text-lightBeige/95 text-xl'>the weekend</span>
             <span className='text-lighterBeige/80 text-sm block mt-1'>march 6–8, 2026</span>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3'>
-                the event ran smoother than i expected and messier than i hoped, which is probably about right for 500+ hackers over 36 hours. there were moments where things broke quietly and you had to notice before anyone else did. that's the job.
+                the event ran smoother than i expected and messier than i hoped, which is probably about right for 700+ hackers over 36 hours. there were moments where things broke quietly and you had to notice before anyone else did. that's the job.
             </div>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-4'>
-                judging hit a snag. a last-minute addition to the setup, something that seemed small at the time, cascaded into a roughly hour-long delay. and then the world found out all at once.
+                in between: mentored some hackers, walked around the venue, talked with the team. also got voluntold into kitchen duties by <a href="https://www.linkedin.com/in/james-cao-890702265/" target="_blank" rel="noopener noreferrer" className="a">james cao</a>. he really did force my hand on that one.
             </div>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-4'>
-                within about 10 minutes: whatsapp messages, discord pings, a phone call, someone yelling in the group chat, someone else physically at my desk asking if it was fixed yet. all simultaneously. i think i was mid-sentence on one thing when a second call came in. it was a lot.
+                judging hit a snag. we got upsurged with submissions, way more than expected, which caused some minor but real issues on the judging platform. a last-minute addition to the setup, something that seemed small at the time, cascaded into a roughly hour-long delay. and then the world found out all at once.
+            </div>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-4'>
+                within about 10 minutes: whatsapp messages, discord pings, phone calls, someone yelling in the group chat, someone else physically at my desk asking if it was fixed yet. all simultaneously. i think i was mid-sentence on one thing when a second call came in. it was a lot.
             </div>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-4'>
                 we got it sorted. but that specific window, everyone needing an answer at the same time with no space to actually fix it, stays with you. you run the post-mortem in your head a few times.
+            </div>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-4'>
+                also got to meet <a href="https://www.linkedin.com/in/jsoncameron/" target="_blank" rel="noopener noreferrer" className="a">jason cameron</a> at the event. the man himself. that was pretty cool.
+            </div>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-4'>
+                later that afternoon, the discord was losing its mind over something completely different. <a href="https://hack-canada-2026.devpost.com/submissions/961421-rizzrank" target="_blank" rel="noopener noreferrer" className="a">rizzrank</a> had made the finals. two rivals, one ai, first to charm a bot into a date wins. the submission made it through. people were not happy. one thing led to another: complaints in the chat, someone started pulling linkedin profiles, witch-hunting for who was behind it. full drama arc. i was just watching it all unfold. honestly a very hackathon moment.
             </div>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-4'>
                 watching hackers build is still the best part. being on the other side this time, making sure the lights stayed on so they could, was a different kind of satisfaction. less adrenaline, more quiet pride.
@@ -105,16 +179,32 @@
         <div className='flex flex-col text-left mt-15'>
             <span className='text-lightBeige/95 text-xl'>what i took away</span>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3'>
-                hacker to organizer is a bigger shift than it looks. as a hacker you optimize for your own 36 hours. as an organizer you're holding the context of every team in the building. that's a different muscle.
+                hacker to organizer is a bigger shift than it looks. as a hacker you optimize for your own 36 hours. as an organizer you're holding the context of every team in the building. that's a different muscle. and honestly? organizer is the most fun role in the building. more than hacking, more than judging, more than volunteering. you get to see everything.
             </div>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-4'>
-                i learned a lot about what makes a hackathon actually feel good. not the prizes or the venue, but the small frictions that get removed. a fast check-in. a judging system that doesn't crash. a hardware table that's stocked. the invisible stuff.
+                i learned a lot about what makes a hackathon actually feel good. not the prizes or the venue, but the small frictions that get removed. a fast check-in. a judging system that doesn't crash (james threatened me a little too much with public execution)
+            </div>
+             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-4'>
+                all behind the scenes of hackcanada26
             </div>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-4'>
-                i'd do it again.
+                i'd do it again. if james does too.
             </div>
         </div>
-
+        <Image
+                src="/projects/hc26/image.png"
+                alt="td bank building"
+                width={1200}
+                height={800}
+                className="object-cover rounded-lg my-0! py-0!"
+                style={{
+                    WebkitMaskImage:
+                    "radial-gradient(circle, rgba(0,0,0,0.98) 60%, rgba(0,0,0,0.3) 90%)"
+                }}
+                loading="eager"
+                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1600px"
+                quality={85}
+            />
         <footer className="pt-4 border-t border-white/20 text-sm text-white/70 flex flex-row items-center mt-15">
             <span className="shiny-green-dot inline-block mr-2" />
             last updated: march 9, 2026
