@@ -74,7 +74,7 @@ export default function RootLayout({
         <link rel="canonical" href="https://faizm.me" />
       </head>
       <body
-        className={`${ptMono.className} min-h-screen w-full bg-white text-neutral-900 antialiased`}
+        className={`${ptMono.className} min-h-screen w-full text-neutral-900 antialiased`}
       >
         <div className="min-h-screen w-full">
           {children}

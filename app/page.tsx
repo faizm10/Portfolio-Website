@@ -91,7 +91,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="relative min-h-screen w-full overflow-x-hidden overflow-y-visible bg-white">
+      <div className="relative min-h-screen w-full overflow-x-hidden overflow-y-visible">
         <main className="mx-auto max-w-3xl px-6 py-12 md:py-16">
           {/* Header: name left, socials right */}
           <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">

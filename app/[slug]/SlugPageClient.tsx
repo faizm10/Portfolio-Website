@@ -96,7 +96,7 @@ export default function SlugPageClient({ slug }: { slug: string }) {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-white px-6 py-12">
+    <div className="min-h-screen w-full overflow-x-hidden px-6 py-12">
       <div className="mx-auto max-w-xl blog-content">
         <div className="mb-8 flex items-center justify-between">
           <button
