@@ -40,26 +40,6 @@ export const showcaseProjects: ProjectType[] = [
       "drop-shadow(0 8px 16px rgba(204, 85, 0, 0.04)) drop-shadow(0 12px 24px rgba(230, 115, 40, 0.04)) drop-shadow(0 16px 32px rgba(255, 140, 0, 0.03)) drop-shadow(0 20px 40px rgba(255, 165, 50, 0.03))",
   },
   {
-    name: "code-keeper",
-    slug: "code-keeper",
-    url: "https://www.code-keeper.vercel.app/",
-    banner: "/projects/banners/codekeeper.png",
-    desc: "ai-powered code documentation and knowledge base",
-    year: "2025",
-    glowColors:
-      "drop-shadow(0 8px 16px rgba(204, 85, 0, 0.04)) drop-shadow(0 12px 24px rgba(230, 115, 40, 0.04)) drop-shadow(0 16px 32px rgba(255, 140, 0, 0.03)) drop-shadow(0 20px 40px rgba(255, 165, 50, 0.03))",
-  },
-  {
-    name: "text anxiety",
-    slug: "text-anxiety",
-    url: "https://www.textanxietygot.us/",
-    banner: "/projects/banners/textanxiety.png",
-    desc: "ai-powered text anxiety relief tool",
-    year: "2025",
-    glowColors:
-      "drop-shadow(0 8px 16px rgba(204, 85, 0, 0.04)) drop-shadow(0 12px 24px rgba(230, 115, 40, 0.04)) drop-shadow(0 16px 32px rgba(255, 140, 0, 0.03)) drop-shadow(0 20px 40px rgba(255, 165, 50, 0.03))",
-  },
-  {
     name: "uog-webring",
     slug: "uog-webring",
     url: "https://github.com/faizm10/uog-webring",
@@ -69,6 +49,36 @@ export const showcaseProjects: ProjectType[] = [
     glowColors:
       "drop-shadow(0 8px 16px rgba(204, 85, 0, 0.04)) drop-shadow(0 12px 24px rgba(230, 115, 40, 0.04)) drop-shadow(0 16px 32px rgba(255, 140, 0, 0.03)) drop-shadow(0 20px 40px rgba(255, 165, 50, 0.03))",
   },
+  {
+    name: "TripLoom",
+    slug: "triploom",
+    url: "https://github.com/faizm10/TripLoom",
+    banner: "/projects/triploom/image.png",
+    desc: "ai-assisted travel planner for flights, transit, and itineraries",
+    year: "2026",
+    glowColors:
+      "drop-shadow(0 8px 16px rgba(32, 87, 143, 0.04)) drop-shadow(0 12px 24px rgba(41, 121, 255, 0.04)) drop-shadow(0 16px 32px rgba(77, 171, 247, 0.03)) drop-shadow(0 20px 40px rgba(129, 212, 250, 0.03))",
+  },
+  // {
+  //   name: "code-keeper",
+  //   slug: "code-keeper",
+  //   url: "https://www.code-keeper.vercel.app/",
+  //   banner: "/projects/banners/codekeeper.png",
+  //   desc: "ai-powered code documentation and knowledge base",
+  //   year: "2025",
+  //   glowColors:
+  //     "drop-shadow(0 8px 16px rgba(204, 85, 0, 0.04)) drop-shadow(0 12px 24px rgba(230, 115, 40, 0.04)) drop-shadow(0 16px 32px rgba(255, 140, 0, 0.03)) drop-shadow(0 20px 40px rgba(255, 165, 50, 0.03))",
+  // },
+  // {
+  //   name: "text anxiety",
+  //   slug: "text-anxiety",
+  //   url: "https://www.textanxietygot.us/",
+  //   banner: "/projects/banners/textanxiety.png",
+  //   desc: "ai-powered text anxiety relief tool",
+  //   year: "2025",
+  //   glowColors:
+  //     "drop-shadow(0 8px 16px rgba(204, 85, 0, 0.04)) drop-shadow(0 12px 24px rgba(230, 115, 40, 0.04)) drop-shadow(0 16px 32px rgba(255, 140, 0, 0.03)) drop-shadow(0 20px 40px rgba(255, 165, 50, 0.03))",
+  // },
   // {
   //   name: "echolag",
   //   slug: "echolag",
@@ -79,14 +89,14 @@ export const showcaseProjects: ProjectType[] = [
   //   glowColors:
   //     "drop-shadow(0 8px 16px rgba(204, 85, 0, 0.04)) drop-shadow(0 12px 24px rgba(230, 115, 40, 0.04)) drop-shadow(0 16px 32px rgba(255, 140, 0, 0.03)) drop-shadow(0 20px 40px rgba(255, 165, 50, 0.03))",
   // },
-  {
-    name: "terrahacks",
-    slug: "terrahacks",
-    url: "https://github.com/faizm10/terrahacks",
-    banner: "/projects/banners/carelens.png",
-    desc: "carelens: ai-powered video health consultation for real-time symptom identification via live video and audio analysis",
-    year: "2025",
-    glowColors:
-      "drop-shadow(0 8px 16px rgba(204, 85, 0, 0.04)) drop-shadow(0 12px 24px rgba(230, 115, 40, 0.04)) drop-shadow(0 16px 32px rgba(255, 140, 0, 0.03)) drop-shadow(0 20px 40px rgba(255, 165, 50, 0.03))",
-  },
+  // {
+  //   name: "terrahacks",
+  //   slug: "terrahacks",
+  //   url: "https://github.com/faizm10/terrahacks",
+  //   banner: "/projects/banners/carelens.png",
+  //   desc: "carelens: ai-powered video health consultation for real-time symptom identification via live video and audio analysis",
+  //   year: "2025",
+  //   glowColors:
+  //     "drop-shadow(0 8px 16px rgba(204, 85, 0, 0.04)) drop-shadow(0 12px 24px rgba(230, 115, 40, 0.04)) drop-shadow(0 16px 32px rgba(255, 140, 0, 0.03)) drop-shadow(0 20px 40px rgba(255, 165, 50, 0.03))",
+  // },
 ];

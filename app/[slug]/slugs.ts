@@ -5,6 +5,7 @@ export const SLUGS = [
   "photography-101",
   "arcki",
   "uog-webring",
+  "triploom",
   "octree",
   "echolag",
   "uogreflection",
