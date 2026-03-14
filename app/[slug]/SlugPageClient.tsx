@@ -12,6 +12,7 @@ import Uoguelphcourses from "./mdx/uoguelphcourses.mdx";
 import UWReflection from "./mdx/uw-reflection.mdx";
 import Photography101 from "./mdx/photography-101.mdx";
 import Arcki from "./mdx/arcki.mdx";
+import UogWebring from "./mdx/uog-webring.mdx";
 import Echolag from "./mdx/echolag.mdx";
 import Octree from "./mdx/octree.mdx";
 import UoGReflection from "./mdx/uogreflection.mdx";
@@ -30,6 +31,7 @@ const MDX_MAP: Record<string, ComponentType> = {
   uoguelphcourses: Uoguelphcourses,
   "photography-101": Photography101,
   arcki: Arcki,
+  "uog-webring": UogWebring,
   octree: Octree,
   echolag: Echolag,
   uogreflection: UoGReflection,

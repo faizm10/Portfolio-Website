@@ -4,6 +4,7 @@ export const SLUGS = [
   "uoguelphcourses",
   "photography-101",
   "arcki",
+  "uog-webring",
   "octree",
   "echolag",
   "uogreflection",

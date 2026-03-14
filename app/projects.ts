@@ -60,15 +60,25 @@ export const showcaseProjects: ProjectType[] = [
       "drop-shadow(0 8px 16px rgba(204, 85, 0, 0.04)) drop-shadow(0 12px 24px rgba(230, 115, 40, 0.04)) drop-shadow(0 16px 32px rgba(255, 140, 0, 0.03)) drop-shadow(0 20px 40px rgba(255, 165, 50, 0.03))",
   },
   {
-    name: "echolag",
-    slug: "echolag",
-    url: "https://devpost.com/software/echolab",
-    banner: "/projects/banners/echolag.png",
-    desc: "browser-based conversations coaching lab",
-    year: "2025",
+    name: "uog-webring",
+    slug: "uog-webring",
+    url: "https://github.com/faizm10/uog-webring",
+    banner: "/projects/webring/image.png",
+    desc: "community webring for university of guelph cs and software engineering students + alumni. 7 stars, 14 forks, 170+ deployments",
+    year: "2026",
     glowColors:
       "drop-shadow(0 8px 16px rgba(204, 85, 0, 0.04)) drop-shadow(0 12px 24px rgba(230, 115, 40, 0.04)) drop-shadow(0 16px 32px rgba(255, 140, 0, 0.03)) drop-shadow(0 20px 40px rgba(255, 165, 50, 0.03))",
   },
+  // {
+  //   name: "echolag",
+  //   slug: "echolag",
+  //   url: "https://devpost.com/software/echolab",
+  //   banner: "/projects/banners/echolag.png",
+  //   desc: "browser-based conversations coaching lab",
+  //   year: "2025",
+  //   glowColors:
+  //     "drop-shadow(0 8px 16px rgba(204, 85, 0, 0.04)) drop-shadow(0 12px 24px rgba(230, 115, 40, 0.04)) drop-shadow(0 16px 32px rgba(255, 140, 0, 0.03)) drop-shadow(0 20px 40px rgba(255, 165, 50, 0.03))",
+  // },
   {
     name: "terrahacks",
     slug: "terrahacks",

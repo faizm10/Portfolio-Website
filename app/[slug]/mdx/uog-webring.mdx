@@ -1,0 +1,84 @@
+import { FiExternalLink } from "react-icons/fi";
+
+<div className='w-full text-center flowboard-page'>
+    <span className='block text-lightBeige/95 italic text-2xl md:text-3xl'>uog-webring</span>
+
+    <div className='md:w-[90%] w-full mx-auto'>
+        <div className='flex justify-center mb-5 text-base'>
+            <a href="https://github.com/faizm10/uog-webring" target="_blank" rel="noopener noreferrer" className='a flex items-center gap-1 decoration-1 underline-offset-4'>
+                <span>repository</span>
+                <FiExternalLink size={16} />
+            </a>
+        </div>
+
+        <div className='flex flex-col text-left'>
+            <span className='text-lightBeige/95 text-xl'>overview</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                uog-webring is a community webring for university of guelph computer science and software engineering students and alumni.
+                it gives people a lightweight way to discover each other&apos;s personal sites and portfolios through a shared directory and navigation widget.
+                the repo currently has 7 stars, 14 forks, and 170+ deployments behind the live site.
+            </span>
+        </div>
+
+        <div className="grid grid-cols-2 gap-8 text-left mt-6">
+            <div className='flex flex-col gap-4'>
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>timeline</span>
+                    <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>2026</span>
+                </div>
+
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>role</span>
+                    <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>creator + maintainer</span>
+                </div>
+
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>live site</span>
+                    <a href="https://www.uguelph.network/" target="_blank" rel="noopener noreferrer" className='a text-lighterBeige font-inter font-extralight text-[1rem]'>
+                        uguelph.network
+                    </a>
+                </div>
+            </div>
+
+            <div className='flex flex-col gap-1'>
+                <span className='text-lightBeige/95 text-lg'>tools</span>
+                <div className='flex flex-col gap-1 font-inter font-light text-[1rem]'>
+                    <span>typescript</span>
+                    <span>javascript</span>
+                    <span>html + css</span>
+                    <span>github actions</span>
+                    <span>vercel</span>
+                </div>
+            </div>
+        </div>
+
+        <div className='flex flex-col text-left mt-15'>
+            <span className='text-lightBeige/95 text-xl'>what it does</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                the project acts as both a directory and a shared navigation system.
+                each member can add the gryphon widget to their site, then visitors can move to the previous or next site in the network without breaking the browsing flow.
+            </span>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>submission flow</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                one of the more useful parts is the automated join flow.
+                instead of forcing everyone to fork and edit json manually, the homepage form can create a pull request that appends a new member entry and auto-merges it when the checks pass.
+            </span>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>why i built it</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                i wanted a small piece of internet infrastructure for the guelph cs community.
+                the result is a simple way for students and alumni to make their work easier to discover while keeping personal sites independent.
+            </span>
+        </div>
+
+        <footer className="pt-4 border-t border-white/20 text-sm text-white/70 flex flex-row items-center">
+            <span className="shiny-green-dot inline-block mr-2" />
+            Last updated: 03/13/2026
+        </footer>
+    </div>
+</div>
