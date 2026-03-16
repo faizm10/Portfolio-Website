@@ -12,6 +12,11 @@ import { showcaseProjects } from "./projects";
 import PageViewCounter from "./components/PageViewCounter";
 
 const experiences = [
+  {
+    title: "tangerine (scotiabank)",
+    role: "incoming swe intern",
+    icon: "/exp/tangerine.jpeg",
+  },
   { title: "td bank", role: "swe intern", icon: "/exp/td-logo.png" },
   {
     title: "hackcanada",
@@ -86,9 +91,7 @@ export default function Home() {
         }`}
         aria-hidden={isLoaded}
       >
-        <p className="text-neutral-800 text-sm md:text-base">
-          grinding...
-        </p>
+        <p className="text-neutral-800 text-sm md:text-base">grinding...</p>
       </div>
 
       <div className="relative min-h-screen w-full overflow-x-hidden overflow-y-visible">
@@ -100,7 +103,15 @@ export default function Home() {
                 faiz mustansar
               </h1>
               <p className="mt-1 text-sm text-neutral-600">
-                swe intern @{" "}
+                incoming swe intern @{" "}
+                <a
+                  href="https://www.tangerine.ca/en/personal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-neutral-900"
+                >
+                  tangerine (scotiabank)
+                </a>{" "} · swe intern @{" "}
                 <a
                   href="https://www.td.com"
                   target="_blank"
@@ -109,7 +120,7 @@ export default function Home() {
                 >
                   td bank
                 </a>{" "}
-                · seeking fall &apos;26 intern/ft roles
+                {/* · seeking fall &apos;26 intern/ft roles */}
               </p>
             </div>
             <div className="flex items-center gap-4">
@@ -257,7 +268,10 @@ export default function Home() {
             </h2>
             <ul className="mt-4 space-y-2">
               {posts.map((post) => (
-                <li key={post.slug} className="flex items-center justify-between gap-4">
+                <li
+                  key={post.slug}
+                  className="flex items-center justify-between gap-4"
+                >
                   <Link
                     href={`/${post.slug}`}
                     className="text-neutral-700 hover:underline"
