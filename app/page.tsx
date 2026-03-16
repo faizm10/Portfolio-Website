@@ -13,9 +13,9 @@ import PageViewCounter from "./components/PageViewCounter";
 
 const experiences = [
   {
-    title: "scotiabank",
+    title: "tangerine (scotiabank)",
     role: "incoming swe intern",
-    icon: "/exp/scotiabank-logo.png",
+    icon: "/exp/tangerine.jpeg",
   },
   { title: "td bank", role: "swe intern", icon: "/exp/td-logo.png" },
   {
@@ -110,7 +110,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="underline hover:text-neutral-900"
                 >
-                  scotiabank
+                  tangerine (scotiabank)
                 </a>{" "} · swe intern @{" "}
                 <a
                   href="https://www.td.com"
