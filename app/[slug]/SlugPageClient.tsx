@@ -16,6 +16,7 @@ import UogWebring from "./mdx/uog-webring.mdx";
 import TripLoom from "./mdx/triploom.mdx";
 import Echolag from "./mdx/echolag.mdx";
 import Octree from "./mdx/octree.mdx";
+import Converge from "./mdx/converge.mdx";
 import UoGReflection from "./mdx/uogreflection.mdx";
 import Footy from "./mdx/footy.mdx";
 import TdBank from "./mdx/tdbank.mdx";
@@ -35,6 +36,7 @@ const MDX_MAP: Record<string, ComponentType> = {
   "uog-webring": UogWebring,
   triploom: TripLoom,
   octree: Octree,
+  converge: Converge,
   echolag: Echolag,
   uogreflection: UoGReflection,
   footy: Footy,

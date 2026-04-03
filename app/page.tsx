@@ -10,6 +10,7 @@ import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from "react-icons/fa6";
 import { posts } from "./posts";
 import { showcaseProjects } from "./projects";
 import PageViewCounter from "./components/PageViewCounter";
+import GitHubContributionsCalendar from "./components/GitHubContributionsCalendar";
 
 const experiences = [
   {
@@ -94,7 +95,7 @@ export default function Home() {
         <p className="text-neutral-800 text-sm md:text-base">grinding...</p>
       </div>
 
-      <div className="relative min-h-screen w-full overflow-x-hidden overflow-y-visible">
+      <div className="relative min-h-screen w-full">
         <main className="mx-auto max-w-3xl px-6 py-12 md:py-16">
           {/* Header: name left, socials right */}
           <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -178,6 +179,8 @@ export default function Home() {
             </div>
           </header>
 
+          <GitHubContributionsCalendar />
+
           {/* What I've been up to */}
           <section className="mt-12">
             <h2 className="text-sm font-medium text-neutral-500 uppercase tracking-wide">
@@ -242,7 +245,7 @@ export default function Home() {
                         )}
                       </div>
                       <p className="mt-1 text-sm leading-relaxed text-neutral-600">
-                        {project.desc}
+                        {project.desc}{project.stat ? `. ${project.stat}` : ""}
                       </p>
                     </div>
                   </div>

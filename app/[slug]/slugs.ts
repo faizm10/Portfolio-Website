@@ -7,6 +7,7 @@ export const SLUGS = [
   "uog-webring",
   "triploom",
   "octree",
+  "converge",
   "echolag",
   "uogreflection",
   "footy",
