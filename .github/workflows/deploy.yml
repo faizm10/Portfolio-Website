@@ -35,6 +35,7 @@ jobs:
         run: npm run build
         env:
           NEXT_PUBLIC_GOATCOUNTER_CODE: ${{ secrets.NEXT_PUBLIC_GOATCOUNTER_CODE }}
+          NEXT_PUBLIC_GITHUB_CONTRIBUTION_TOKEN: ${{ secrets.NEXT_PUBLIC_GITHUB_CONTRIBUTION_TOKEN }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
