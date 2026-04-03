@@ -67,7 +67,7 @@ export const showcaseProjects: ProjectType[] = [
   {
     name: "converge",
     slug: "converge",
-    url: "https://faizm.me/converge",
+    url: "https://challenges-sepia.vercel.app/",
     banner: "/projects/banners/converge.png",
     desc: "coming soon",
     year: "2026",
