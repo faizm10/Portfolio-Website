@@ -7,6 +7,7 @@ import { useIntroStore } from "./store/zustand";
 import useModifierKey from "./components/ModifierKey";
 import { isMobile } from "react-device-detect";
 import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from "react-icons/fa6";
+import { IoImagesOutline } from "react-icons/io5";
 import { posts } from "./posts";
 import { showcaseProjects } from "./projects";
 import PageViewCounter from "./components/PageViewCounter";
@@ -140,6 +141,13 @@ export default function Home() {
                   +<kbd>k</kbd>
                 </button>
               )}
+              <Link
+                href="/photos"
+                className="text-neutral-600 hover:text-neutral-900"
+                aria-label="Photos"
+              >
+                <IoImagesOutline className="h-5 w-5" />
+              </Link>
               <a
                 href="https://www.linkedin.com/in/faizmustansar/"
                 target="_blank"
@@ -179,7 +187,7 @@ export default function Home() {
             </div>
           </header>
 
-          <GitHubContributionsCalendar />
+<GitHubContributionsCalendar />
 
           {/* What I've been up to */}
           <section className="mt-12">

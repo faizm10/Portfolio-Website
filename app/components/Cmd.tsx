@@ -9,6 +9,7 @@ import {
   IoLogoInstagram,
   IoSearchOutline,
   IoHomeOutline,
+  IoImagesOutline,
 } from "react-icons/io5";
 import { FaXTwitter } from "react-icons/fa6";
 import { GoRepo } from "react-icons/go";
@@ -122,6 +123,10 @@ export default function CommandPalette() {
             window.open("https://www.instagram.com/faizm.30/", "_blank"),
           );
           break;
+        case "Digit4":
+        case "Numpad4":
+          openNextLink(() => router.push("/photos"));
+          break;
       }
     };
 
@@ -218,6 +223,18 @@ export default function CommandPalette() {
                     <IoHomeOutline className="h-4 w-4" />
                     <span className="flex-1">home</span>
                     <Shortcut>0</Shortcut>
+                  </Command.Item>
+
+                  <Command.Item
+                    value="photos gallery pictures faiz"
+                    onSelect={() => {
+                      setTimeout(() => openNextLink(() => router.push("/photos")), 0);
+                    }}
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-midBeige2/90 rounded hover:bg-darkBeige1/40 cursor-pointer data-[selected=true]:bg-darkBeige1/40"
+                  >
+                    <IoImagesOutline className="h-4 w-4" />
+                    <span className="flex-1">photos</span>
+                    <Shortcut>4</Shortcut>
                   </Command.Item>
 
                   <Command.Item
