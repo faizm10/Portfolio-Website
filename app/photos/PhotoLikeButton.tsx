@@ -12,6 +12,8 @@ import { FaHeart, FaRegHeart } from "react-icons/fa6";
 const COLLECTION = "photoLikes";
 const POP_MS = 620;
 
+let warnedFirebaseMissing = false;
+
 export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
   const [count, setCount] = useState<number | null>(null);
   const [busy, setBusy] = useState(false);
@@ -68,7 +70,15 @@ export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
       if (busy) return;
       triggerPop();
 
-      if (!enabled) return;
+      if (!enabled) {
+        if (!warnedFirebaseMissing && typeof window !== "undefined") {
+          warnedFirebaseMissing = true;
+          console.warn(
+            "[photo like] Firebase is not in this build (missing NEXT_PUBLIC_FIREBASE_*). No Firestore requests will run. For production, add all six Firebase secrets to GitHub Actions and redeploy.",
+          );
+        }
+        return;
+      }
 
       const db = getDb();
       if (!db) return;
