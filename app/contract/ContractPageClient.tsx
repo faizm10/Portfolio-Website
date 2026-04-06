@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { MDXProvider } from "@mdx-js/react";
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import * as Dialog from "@radix-ui/react-dialog";
 
 import Contract from "./contract.mdx";
@@ -77,6 +78,7 @@ const mdxComponents = {
 };
 
 export default function ContractPageClient() {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -103,6 +105,13 @@ export default function ContractPageClient() {
     const parts = fullName.trim().split(/\s+/).filter(Boolean);
     return parts[0] ?? "";
   }, [fullName]);
+
+  const firstNameSlug = useMemo(() => {
+    return firstName
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "")
+      .slice(0, 80);
+  }, [firstName]);
 
   const canSubmit =
     !submitting &&
@@ -146,9 +155,18 @@ export default function ContractPageClient() {
       try {
         localStorage.setItem(
           "contract:signed",
-          JSON.stringify({ email: cleanedEmail.toLowerCase(), id }),
+          JSON.stringify({
+            email: cleanedEmail.toLowerCase(),
+            id,
+            slug: firstNameSlug,
+          }),
         );
       } catch {}
+
+      if (firstNameSlug) {
+        setOpen(false);
+        router.push(`/contract/${firstNameSlug}`);
+      }
     } catch (e: any) {
       setError(e?.message || "could not sign right now.");
     } finally {
