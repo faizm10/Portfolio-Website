@@ -13,12 +13,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function ContractSlugPage({
-  params,
-}: {
-  params: Promise<{ slug?: string }>;
-}) {
-  const { slug } = await params;
-  return <ContractSlugPageClient slug={slug ?? ""} />;
+// GitHub Pages static export cannot pre-render unknown mentee slugs.
+export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
+  return [];
+}
+
+export default function ContractSlugPage({ params }: { params: any }) {
+  return <ContractSlugPageClient slug={params?.slug ?? ""} />;
 }
 
