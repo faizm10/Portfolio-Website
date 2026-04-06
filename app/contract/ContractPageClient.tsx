@@ -1,11 +1,15 @@
 "use client";
 
+import { useEffect, useMemo, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import { MDXProvider } from "@mdx-js/react";
 import type { ReactNode } from "react";
 import Link from "next/link";
+import * as Dialog from "@radix-ui/react-dialog";
 
 import Contract from "./contract.mdx";
 import { Highlighter } from "@/app/components/ui/highlighter";
+import { getSupabaseBrowserClient } from "@/lib/supabase";
 
 function toneToColor(tone?: string) {
   switch (tone) {
@@ -73,6 +77,85 @@ const mdxComponents = {
 };
 
 export default function ContractPageClient() {
+  const [open, setOpen] = useState(false);
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [signedId, setSignedId] = useState<string | null>(null);
+
+  // Load prior signature status (best effort).
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("contract:signed");
+      if (!raw) return;
+      const parsed = JSON.parse(raw);
+      if (parsed?.id && typeof parsed.id === "string") {
+        setSignedId(parsed.id);
+      }
+      if (parsed?.email && typeof parsed.email === "string") {
+        setEmail(parsed.email);
+      }
+    } catch {}
+  }, []);
+
+  const firstName = useMemo(() => {
+    const parts = fullName.trim().split(/\s+/).filter(Boolean);
+    return parts[0] ?? "";
+  }, [fullName]);
+
+  const canSubmit =
+    !submitting &&
+    !signedId &&
+    fullName.trim().length >= 2 &&
+    email.trim().length >= 3 &&
+    firstName.length >= 1;
+
+  async function onSubmit() {
+    if (!canSubmit) return;
+    setSubmitting(true);
+    setError(null);
+
+    try {
+      const supabase = getSupabaseBrowserClient();
+      if (!supabase) {
+        setError("signing is not available right now.");
+        return;
+      }
+
+      const cleanedFullName = fullName.trim();
+      const cleanedEmail = email.trim();
+      const signatureText = firstName;
+
+      const { data, error: rpcError } = await supabase.rpc(
+        "create_contract_signature",
+        {
+          full_name: cleanedFullName,
+          email: cleanedEmail,
+          signature_text: signatureText,
+        },
+      );
+
+      if (rpcError) {
+        setError(rpcError.message || "could not sign right now.");
+        return;
+      }
+
+      const id = typeof data === "string" ? data : null;
+      setSignedId(id);
+      try {
+        localStorage.setItem(
+          "contract:signed",
+          JSON.stringify({ email: cleanedEmail.toLowerCase(), id }),
+        );
+      } catch {}
+    } catch (e: any) {
+      setError(e?.message || "could not sign right now.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   return (
     <div className="min-h-screen w-full overflow-x-hidden px-6 py-12">
       <div className="mx-auto max-w-xl">
@@ -94,6 +177,140 @@ export default function ContractPageClient() {
             <Contract />
           </MDXProvider>
         </article>
+
+        <div className="mt-10 border-t border-neutral-200 pt-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="text-sm font-medium text-neutral-900">
+                ready to sign?
+              </p>
+              <p className="mt-1 text-sm text-neutral-600">
+                type your name, get a signature, we save it.
+              </p>
+            </div>
+
+            <Dialog.Root open={open} onOpenChange={setOpen}>
+              <Dialog.Trigger asChild>
+                <button
+                  type="button"
+                  className="rounded-md border border-neutral-300 bg-white px-4 py-2 text-sm font-medium text-neutral-900 shadow-sm hover:border-neutral-400"
+                >
+                  sign contract
+                </button>
+              </Dialog.Trigger>
+
+              <Dialog.Portal>
+                <Dialog.Overlay className="fixed inset-0 bg-black/60" />
+                <Dialog.Content className="fixed left-1/2 top-1/2 w-[92vw] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-xl border border-neutral-200 bg-white p-5 shadow-2xl">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <Dialog.Title className="text-base font-semibold text-neutral-900">
+                        sign contract
+                      </Dialog.Title>
+                      <Dialog.Description className="mt-1 text-sm text-neutral-600">
+                        enter your name and email. signature will be generated automatically
+                      </Dialog.Description>
+                    </div>
+                    <Dialog.Close asChild>
+                      <button
+                        type="button"
+                        className="rounded-md px-2 py-1 text-sm text-neutral-500 hover:bg-neutral-100"
+                        aria-label="Close"
+                      >
+                        close
+                      </button>
+                    </Dialog.Close>
+                  </div>
+
+                  <div className="mt-4 space-y-3">
+                    <label className="block">
+                      <span className="text-xs font-medium text-neutral-700">
+                        full name
+                      </span>
+                      <input
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
+                        placeholder="your name"
+                        className="mt-1 w-full rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 outline-none focus:border-neutral-500"
+                      />
+                    </label>
+
+                    <label className="block">
+                      <span className="text-xs font-medium text-neutral-700">
+                        email
+                      </span>
+                      <input
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="you@domain.com"
+                        className="mt-1 w-full rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 outline-none focus:border-neutral-500"
+                      />
+                    </label>
+
+                    <div className="flex min-h-26 items-center justify-center overflow-hidden rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-6">
+                      <AnimatePresence mode="wait">
+                        <motion.span
+                          key={firstName || "_"}
+                          className={`block text-center text-4xl leading-tight md:text-5xl ${
+                            firstName
+                              ? "text-neutral-900"
+                              : "text-neutral-300"
+                          }`}
+                          style={{
+                            fontFamily:
+                              "var(--font-signature), ui-serif, serif",
+                          }}
+                          initial={{
+                            opacity: 0,
+                            scale: 0.82,
+                            rotate: -4,
+                            filter: "blur(8px)",
+                          }}
+                          animate={{
+                            opacity: 1,
+                            scale: 1,
+                            rotate: 0,
+                            filter: "blur(0px)",
+                          }}
+                          exit={{
+                            opacity: 0,
+                            scale: 0.94,
+                            transition: { duration: 0.2 },
+                          }}
+                          transition={{
+                            duration: 0.6,
+                            ease: [0.22, 1, 0.36, 1],
+                          }}
+                        >
+                          {firstName || "…"}
+                        </motion.span>
+                      </AnimatePresence>
+                    </div>
+
+                    {error ? (
+                      <p className="text-sm text-red-600">{error}</p>
+                    ) : null}
+
+                    {signedId ? (
+                      <p className="text-sm text-emerald-700">
+                        signed. thank you.
+                      </p>
+                    ) : null}
+
+                    <button
+                      type="button"
+                      disabled={!canSubmit}
+                      onClick={onSubmit}
+                      className="mt-1 w-full rounded-md bg-neutral-900 px-4 py-2 text-sm font-medium text-white disabled:cursor-not-allowed disabled:opacity-40"
+                    >
+                      {submitting ? "signing..." : "sign"}
+                    </button>
+                  </div>
+                </Dialog.Content>
+              </Dialog.Portal>
+            </Dialog.Root>
+          </div>
+        </div>
       </div>
     </div>
   );

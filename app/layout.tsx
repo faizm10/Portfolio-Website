@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PT_Mono, Geist } from "next/font/google";
+import { PT_Mono, Geist, Pacifico } from "next/font/google";
 import Script from "next/script";
 import { Suspense } from "react";
 import CommandPalette from "./components/Cmd";
@@ -25,6 +25,11 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const pacifico = Pacifico({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-signature",
+});
 
 export const metadataBase = new URL("https://faizm.ca");
 
@@ -74,7 +79,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={cn("font-sans", geist.variable)}>
+    <html
+      lang="en"
+      className={cn("font-sans", geist.variable, pacifico.variable)}
+    >
       <head>
         <link rel="canonical" href="https://faizm.ca" />
       </head>
