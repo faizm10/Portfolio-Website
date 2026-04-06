@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
 import Link from "next/link";
+import PhotoLikeButton from "./PhotoLikeButton";
 
 interface Props {
   photos: string[];
@@ -132,17 +132,24 @@ export default function PhotoGallery({ photos }: Props) {
             </button>
           )}
 
-          {/* Image */}
+          {/* Polaroid frame in lightbox */}
           <div
-            className="relative max-w-[90vw] max-h-[88vh]"
+            className="relative max-h-[90vh] max-w-[min(90vw,420px)]"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src={photos[lightboxIndex]}
-              alt={`photo ${lightboxIndex + 1}`}
-              className="max-w-[90vw] max-h-[88vh] object-contain rounded-lg shadow-2xl"
-              style={{ display: "block" }}
-            />
+            <div className="rounded-sm border border-neutral-200/90 bg-[#f5f3ef] p-3 pb-2 shadow-2xl ring-1 ring-black/5">
+              <div className="max-h-[min(72vh,520px)] overflow-hidden bg-neutral-200 shadow-inner">
+                <img
+                  src={photos[lightboxIndex]}
+                  alt={`photo ${lightboxIndex + 1}`}
+                  className="max-h-[min(72vh,520px)] w-full object-contain"
+                  style={{ display: "block" }}
+                />
+              </div>
+              <div className="flex min-h-[52px] items-center justify-end px-1 pt-3 pb-1">
+                <PhotoLikeButton photoSrc={photos[lightboxIndex]} />
+              </div>
+            </div>
           </div>
 
           {/* Next */}
@@ -173,28 +180,39 @@ function PhotoCard({
   index: number;
   onClick: () => void;
 }) {
+  const tilt = index % 2 === 0 ? "-rotate-[1.5deg]" : "rotate-[1.5deg]";
   return (
-    <button
-      onClick={onClick}
-      className="group relative block w-full overflow-hidden rounded-xl bg-neutral-100 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400"
-      aria-label={`View photo ${index + 1}`}
+    <div
+      className={`group break-inside-avoid mb-4 w-full transition-transform duration-300 hover:z-10 hover:scale-[1.02] hover:rotate-0 ${tilt}`}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={src}
-        alt={`photo ${index + 1}`}
-        className="w-full h-auto block transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-        loading={index < 4 ? "eager" : "lazy"}
-        decoding="async"
-      />
-      {/* Subtle hover overlay */}
-      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-xl" />
-      {/* Expand hint on hover */}
-      <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-        <div className="bg-black/50 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-md">
-          view
+      <div className="rounded-sm border border-neutral-200/90 bg-[#f5f3ef] p-2.5 pb-0 shadow-[0_6px_24px_rgba(0,0,0,0.08),0_2px_6px_rgba(0,0,0,0.04)] ring-1 ring-black/[0.04]">
+        <button
+          type="button"
+          onClick={onClick}
+          className="block w-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f5f3ef]"
+          aria-label={`View photo ${index + 1}`}
+        >
+          <div className="aspect-[4/5] w-full overflow-hidden bg-neutral-200 shadow-[inset_0_1px_2px_rgba(0,0,0,0.06)]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={src}
+              alt={`photo ${index + 1}`}
+              className="h-full w-full object-cover object-center transition-[filter] duration-300 group-hover:brightness-[0.97]"
+              loading={index < 4 ? "eager" : "lazy"}
+              decoding="async"
+            />
+          </div>
+        </button>
+        {/* Polaroid bottom margin — likes in the corner */}
+        <div className="flex min-h-[3.25rem] items-center justify-between gap-2 px-1 pb-2.5 pt-2.5">
+          <span className="pointer-events-none select-none text-[10px] uppercase tracking-wider text-neutral-400 opacity-0 transition-opacity group-hover:opacity-100">
+            view
+          </span>
+          <div className="ml-auto shrink-0">
+            <PhotoLikeButton photoSrc={src} />
+          </div>
         </div>
       </div>
-    </button>
+    </div>
   );
 }

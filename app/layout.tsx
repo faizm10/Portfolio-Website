@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { PT_Mono } from "next/font/google";
 import Script from "next/script";
+import { Suspense } from "react";
 import CommandPalette from "./components/Cmd";
+import GoogleAnalyticsRouteTracker from "./components/GoogleAnalyticsRouteTracker";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 const ptMono = PT_Mono({
@@ -115,7 +117,14 @@ export default function RootLayout({
             </a>
           </div>
         </footer>
-        {/* <GoogleAnalytics gaId="G-T54T8RQLW5" /> */}
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ? (
+          <>
+            <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+            <Suspense fallback={null}>
+              <GoogleAnalyticsRouteTracker />
+            </Suspense>
+          </>
+        ) : null}
       </body>
     </html>
   );
