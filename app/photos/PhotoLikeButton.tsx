@@ -1,18 +1,15 @@
 "use client";
 
 import { useEffect, useState, useCallback, useRef } from "react";
-import { FirebaseError } from "firebase/app";
-import { doc, increment, onSnapshot, setDoc } from "firebase/firestore";
-import { getDb, isFirebaseConfigured } from "@/lib/firebase";
+import { getSupabaseBrowserClient, isSupabaseConfigured } from "@/lib/supabase";
 import { trackPhotoLike } from "@/lib/analytics";
 import { photoLikeDocId } from "@/lib/photoLikeId";
 import { NumberTicker } from "@/app/components/ui/number-ticker";
 import { FaHeart, FaRegHeart } from "react-icons/fa6";
 
-const COLLECTION = "photoLikes";
 const POP_MS = 620;
 
-let warnedFirebaseMissing = false;
+let warnedSupabaseMissing = false;
 
 export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
   const [count, setCount] = useState<number | null>(null);
@@ -21,31 +18,69 @@ export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
   const popTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const countBeforeLikeRef = useRef<number | null>(null);
 
-  const enabled = isFirebaseConfigured();
+  const enabled = isSupabaseConfigured();
 
   useEffect(() => {
     if (!enabled) {
       setCount(0);
       return;
     }
-    const db = getDb();
-    if (!db) {
+    const supabase = getSupabaseBrowserClient();
+    if (!supabase) {
       setCount(0);
       return;
     }
-    const ref = doc(db, COLLECTION, photoLikeDocId(photoSrc));
-    const unsub = onSnapshot(
-      ref,
-      (snap) => {
-        const n = snap.exists() ? (snap.data()?.count as number) ?? 0 : 0;
-        setCount(Number.isFinite(n) ? Math.trunc(n) : 0);
-      },
-      (err) => {
-        console.error("[photo like] Firestore listen failed:", err);
+
+    const photoId = photoLikeDocId(photoSrc);
+    let cancelled = false;
+
+    void (async () => {
+      const { data, error } = await supabase
+        .from("photo_likes")
+        .select("count")
+        .eq("photo_id", photoId)
+        .maybeSingle();
+      if (cancelled) return;
+      if (error) {
+        console.error("[photo like] Supabase read failed:", error.message);
         setCount(0);
-      },
-    );
-    return () => unsub();
+        return;
+      }
+      if (data?.count != null) {
+        const n = Number(data.count);
+        setCount(Number.isFinite(n) ? Math.trunc(n) : 0);
+      } else {
+        setCount(0);
+      }
+    })();
+
+    const channel = supabase
+      .channel(`photo_like:${photoId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "photo_likes",
+          filter: `photo_id=eq.${photoId}`,
+        },
+        (payload) => {
+          const row = payload.new as { count?: number } | null;
+          if (row && typeof row.count === "number") {
+            setCount(Math.trunc(row.count));
+          }
+        },
+      )
+      .subscribe((status) => {
+        if (status === "CHANNEL_ERROR") {
+          console.error("[photo like] Realtime channel error for", photoId);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+      void supabase.removeChannel(channel);
+    };
   }, [photoSrc, enabled]);
 
   useEffect(() => {
@@ -71,17 +106,17 @@ export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
       triggerPop();
 
       if (!enabled) {
-        if (!warnedFirebaseMissing && typeof window !== "undefined") {
-          warnedFirebaseMissing = true;
+        if (!warnedSupabaseMissing && typeof window !== "undefined") {
+          warnedSupabaseMissing = true;
           console.warn(
-            "[photo like] Firebase is not in this build (missing NEXT_PUBLIC_FIREBASE_*). No Firestore requests will run. For production, add all six Firebase secrets to GitHub Actions and redeploy.",
+            "[photo like] Supabase is not in this build (missing NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY). Add them to GitHub Actions secrets and redeploy.",
           );
         }
         return;
       }
 
-      const db = getDb();
-      if (!db) return;
+      const supabase = getSupabaseBrowserClient();
+      if (!supabase) return;
 
       setCount((c) => {
         const cur = c ?? 0;
@@ -91,14 +126,21 @@ export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
 
       setBusy(true);
       try {
-        const ref = doc(db, COLLECTION, photoLikeDocId(photoSrc));
-        await setDoc(ref, { count: increment(1) }, { merge: true });
+        const { data, error } = await supabase.rpc("increment_photo_like", {
+          target_id: photoLikeDocId(photoSrc),
+        });
+        if (error) throw error;
+        if (typeof data === "number") {
+          setCount(Math.trunc(data));
+        } else if (data != null) {
+          const n = Number(data);
+          if (Number.isFinite(n)) setCount(Math.trunc(n));
+        }
         trackPhotoLike(photoSrc);
       } catch (err) {
         setCount(countBeforeLikeRef.current ?? 0);
-        const code = err instanceof FirebaseError ? err.code : "unknown";
         const message = err instanceof Error ? err.message : String(err);
-        console.error("[photo like] Firestore write failed:", code, message);
+        console.error("[photo like] Supabase RPC failed:", message);
       } finally {
         setBusy(false);
       }
