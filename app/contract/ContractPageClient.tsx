@@ -85,6 +85,7 @@ export default function ContractPageClient() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [signedId, setSignedId] = useState<string | null>(null);
+  const [signedSlug, setSignedSlug] = useState<string | null>(null);
 
   // Load prior signature status (best effort).
   useEffect(() => {
@@ -97,6 +98,9 @@ export default function ContractPageClient() {
       }
       if (parsed?.email && typeof parsed.email === "string") {
         setEmail(parsed.email);
+      }
+      if (parsed?.slug && typeof parsed.slug === "string") {
+        setSignedSlug(parsed.slug);
       }
     } catch {}
   }, []);
@@ -310,14 +314,35 @@ export default function ContractPageClient() {
                     ) : null}
 
                     {signedId ? (
-                      <p className="text-sm text-emerald-700">
-                        signed. thank you.
-                      </p>
+                      <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-800">
+                        <span className="font-medium">already signed.</span>{" "}
+                        {signedSlug ? (
+                          <Link
+                            href={`/contract/${signedSlug}`}
+                            className="underline underline-offset-4"
+                            onClick={() => setOpen(false)}
+                          >
+                            view your contract →
+                          </Link>
+                        ) : firstNameSlug ? (
+                          <Link
+                            href={`/contract/${firstNameSlug}`}
+                            className="underline underline-offset-4"
+                            onClick={() => setOpen(false)}
+                          >
+                            view your contract →
+                          </Link>
+                        ) : (
+                          <span className="text-emerald-800/90">
+                            type your first name above to get the link.
+                          </span>
+                        )}
+                      </div>
                     ) : null}
 
                     <button
                       type="button"
-                      disabled={!canSubmit}
+                      disabled={!canSubmit || Boolean(signedId)}
                       onClick={onSubmit}
                       className="mt-1 w-full rounded-md bg-neutral-900 px-4 py-2 text-sm font-medium text-white disabled:cursor-not-allowed disabled:opacity-40"
                     >
