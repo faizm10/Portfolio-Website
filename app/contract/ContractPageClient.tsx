@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { MDXProvider } from "@mdx-js/react";
 import type { ReactNode } from "react";
@@ -84,26 +84,6 @@ export default function ContractPageClient() {
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [signedId, setSignedId] = useState<string | null>(null);
-  const [signedSlug, setSignedSlug] = useState<string | null>(null);
-
-  // Load prior signature status (best effort).
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem("contract:signed");
-      if (!raw) return;
-      const parsed = JSON.parse(raw);
-      if (parsed?.id && typeof parsed.id === "string") {
-        setSignedId(parsed.id);
-      }
-      if (parsed?.email && typeof parsed.email === "string") {
-        setEmail(parsed.email);
-      }
-      if (parsed?.slug && typeof parsed.slug === "string") {
-        setSignedSlug(parsed.slug);
-      }
-    } catch {}
-  }, []);
 
   const firstName = useMemo(() => {
     const parts = fullName.trim().split(/\s+/).filter(Boolean);
@@ -119,10 +99,11 @@ export default function ContractPageClient() {
 
   const canSubmit =
     !submitting &&
-    !signedId &&
     fullName.trim().length >= 2 &&
     email.trim().length >= 3 &&
     firstName.length >= 1;
+
+  const canGoToContract = Boolean(firstNameSlug);
 
   async function onSubmit() {
     if (!canSubmit) return;
@@ -153,19 +134,6 @@ export default function ContractPageClient() {
         setError(rpcError.message || "could not sign right now.");
         return;
       }
-
-      const id = typeof data === "string" ? data : null;
-      setSignedId(id);
-      try {
-        localStorage.setItem(
-          "contract:signed",
-          JSON.stringify({
-            email: cleanedEmail.toLowerCase(),
-            id,
-            slug: firstNameSlug,
-          }),
-        );
-      } catch {}
 
       if (firstNameSlug) {
         setOpen(false);
@@ -207,7 +175,7 @@ export default function ContractPageClient() {
                 ready to sign?
               </p>
               <p className="mt-1 text-sm text-neutral-600">
-                type your name, get a signature, we save it.
+                type your name to open your page, or sign with email to save.
               </p>
             </div>
 
@@ -230,7 +198,7 @@ export default function ContractPageClient() {
                         sign contract
                       </Dialog.Title>
                       <Dialog.Description className="mt-1 text-sm text-neutral-600">
-                        enter your name and email. signature will be generated automatically
+                        enter your name to go to your contract. add email to sign and save.
                       </Dialog.Description>
                     </div>
                     <Dialog.Close asChild>
@@ -313,40 +281,29 @@ export default function ContractPageClient() {
                       <p className="text-sm text-red-600">{error}</p>
                     ) : null}
 
-                    {signedId ? (
-                      <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-800">
-                        <span className="font-medium">already signed.</span>{" "}
-                        {signedSlug ? (
-                          <Link
-                            href={`/contract/${signedSlug}`}
-                            className="underline underline-offset-4"
-                            onClick={() => setOpen(false)}
-                          >
-                            view your contract →
-                          </Link>
-                        ) : firstNameSlug ? (
-                          <Link
-                            href={`/contract/${firstNameSlug}`}
-                            className="underline underline-offset-4"
-                            onClick={() => setOpen(false)}
-                          >
-                            view your contract →
-                          </Link>
-                        ) : (
-                          <span className="text-emerald-800/90">
-                            type your first name above to get the link.
-                          </span>
-                        )}
-                      </div>
-                    ) : null}
+                    <button
+                      type="button"
+                      disabled={!canGoToContract}
+                      onClick={() => {
+                        setOpen(false);
+                        router.push(`/contract/${firstNameSlug}`);
+                      }}
+                      className="w-full rounded-md border border-neutral-300 bg-white px-4 py-2 text-sm font-medium text-neutral-900 shadow-sm hover:border-neutral-400 disabled:cursor-not-allowed disabled:opacity-40"
+                    >
+                      go to my contract
+                    </button>
+
+                    <p className="text-center text-xs text-neutral-500">
+                      first time? add email and sign below.
+                    </p>
 
                     <button
                       type="button"
-                      disabled={!canSubmit || Boolean(signedId)}
+                      disabled={!canSubmit}
                       onClick={onSubmit}
-                      className="mt-1 w-full rounded-md bg-neutral-900 px-4 py-2 text-sm font-medium text-white disabled:cursor-not-allowed disabled:opacity-40"
+                      className="w-full rounded-md bg-neutral-900 px-4 py-2 text-sm font-medium text-white disabled:cursor-not-allowed disabled:opacity-40"
                     >
-                      {submitting ? "signing..." : "sign"}
+                      {submitting ? "signing..." : "sign & save"}
                     </button>
                   </div>
                 </Dialog.Content>
