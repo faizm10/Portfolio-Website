@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 type ContributionDay = {
   date: string;
@@ -78,11 +78,23 @@ function Skeleton() {
   );
 }
 
+type HoverTip = { x: number; y: number; count: number };
+
 export default function GitHubContributionsCalendar() {
   const token = process.env.NEXT_PUBLIC_GITHUB_CONTRIBUTION_TOKEN;
   const [data, setData] = useState<CalendarData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [hover, setHover] = useState<HoverTip | null>(null);
   const year = new Date().getFullYear();
+
+  const showTip = useCallback((el: SVGRectElement, count: number) => {
+    const r = el.getBoundingClientRect();
+    setHover({
+      x: r.left + r.width / 2,
+      y: r.top,
+      count,
+    });
+  }, []);
 
   useEffect(() => {
     if (!token) return;
@@ -113,18 +125,50 @@ export default function GitHubContributionsCalendar() {
   if (loading) return <Skeleton />;
   if (!data) return null;
 
-  // Build month labels — key by week index to avoid duplicate label keys
+  const yearPrefix = `${year}-`;
+
+  /** GitHub pads weeks with prior-year days; keep only columns from first in-year day through last in-year day. */
+  const firstWeekIdx = data.weeks.findIndex((w) =>
+    w.contributionDays.some((d) => d.date.startsWith(yearPrefix)),
+  );
+  const lastWeekIdx = data.weeks.reduce((acc, w, i) => {
+    return w.contributionDays.some((d) => d.date.startsWith(yearPrefix))
+      ? i
+      : acc;
+  }, -1);
+
+  const trimmedWeeks =
+    firstWeekIdx >= 0 && lastWeekIdx >= firstWeekIdx
+      ? data.weeks.slice(firstWeekIdx, lastWeekIdx + 1)
+      : data.weeks;
+
+  // Month labels: first in-year day per week → Jan … Dec only, no Dec/Jan overlap
   const monthLabels: { label: string; x: number; wi: number }[] = [];
-  data.weeks.forEach((week, wi) => {
-    if (!week.contributionDays[0]) return;
-    const m = new Date(week.contributionDays[0].date).getMonth();
-    const label = MONTHS[m];
-    if (!monthLabels.length || monthLabels[monthLabels.length - 1].label !== label) {
-      monthLabels.push({ label, x: wi * STEP, wi });
+  let prevMonth = -1;
+  trimmedWeeks.forEach((week, wi) => {
+    const inYear = week.contributionDays
+      .filter((d) => d.date.startsWith(yearPrefix))
+      .sort((a, b) => a.date.localeCompare(b.date));
+    if (!inYear.length) return;
+    const m = Number(inYear[0].date.slice(5, 7)) - 1;
+    if (m !== prevMonth) {
+      monthLabels.push({ label: MONTHS[m], x: wi * STEP, wi });
+      prevMonth = m;
     }
   });
 
-  const svgWidth = LEFT_OFFSET + data.weeks.length * STEP;
+  const inYearTotal = trimmedWeeks.reduce(
+    (sum, w) =>
+      sum +
+      w.contributionDays.reduce(
+        (s, d) =>
+          s + (d.date.startsWith(yearPrefix) ? d.contributionCount : 0),
+        0,
+      ),
+    0,
+  );
+
+  const svgWidth = LEFT_OFFSET + trimmedWeeks.length * STEP;
   const svgHeight = TOP_OFFSET + 7 * STEP;
 
   return (
@@ -133,14 +177,26 @@ export default function GitHubContributionsCalendar() {
         github activity
       </h2>
       <p className="mt-1 text-xs text-amber-800/80">
-        {data.totalContributions.toLocaleString()} contributions in {year}
+        {inYearTotal.toLocaleString()} contributions in {year}
       </p>
+      {hover !== null && (
+        <div
+          className="pointer-events-none fixed z-200 -translate-x-1/2 -translate-y-full rounded-md bg-neutral-900 px-2.5 py-1.5 text-[11px] font-medium text-white shadow-lg ring-1 ring-white/10"
+          style={{ left: hover.x, top: hover.y - 6 }}
+          role="tooltip"
+        >
+          {hover.count === 1
+            ? "1 contribution"
+            : `${hover.count.toLocaleString()} contributions`}
+        </div>
+      )}
       <div className="mt-3 overflow-x-auto">
         <svg
           width={svgWidth}
           height={svgHeight}
           className="block"
           style={{ fontFamily: "inherit" }}
+          onMouseLeave={() => setHover(null)}
         >
           {/* Month labels — keyed by week index, not label text */}
           {monthLabels.map(({ label, x, wi }) => (
@@ -168,10 +224,13 @@ export default function GitHubContributionsCalendar() {
             </text>
           ))}
 
-          {/* Cells */}
-          {data.weeks.map((week, wi) =>
+          {/* Cells — out-of-year padding in first/last column shows as empty */}
+          {trimmedWeeks.map((week, wi) =>
             Array.from({ length: 7 }).map((_, di) => {
               const day = week.contributionDays.find((d) => d.weekday === di);
+              const inYear =
+                day !== undefined && day.date.startsWith(yearPrefix);
+              const count = inYear ? day.contributionCount : 0;
               return (
                 <rect
                   key={`${wi}-${di}`}
@@ -180,9 +239,15 @@ export default function GitHubContributionsCalendar() {
                   width={CELL}
                   height={CELL}
                   rx={2}
-                  fill={day ? cellColor(day.contributionCount) : "#fde8dc"}
+                  fill={inYear ? cellColor(count) : "#fff5f0"}
+                  className={inYear ? "cursor-default" : "pointer-events-none"}
+                  onMouseEnter={
+                    inYear
+                      ? (e) => showTip(e.currentTarget, count)
+                      : undefined
+                  }
                 >
-                  {day && (
+                  {inYear && day && (
                     <title>
                       {day.date}: {day.contributionCount} contribution
                       {day.contributionCount !== 1 ? "s" : ""}
