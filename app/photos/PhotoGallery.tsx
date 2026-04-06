@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import PhotoLikeButton from "./PhotoLikeButton";
+import TopLikedStrip from "./TopLikedStrip";
 
 interface Props {
   photos: string[];
@@ -78,8 +79,13 @@ export default function PhotoGallery({ photos }: Props) {
             </p>
           </div>
         ) : (
-          /* Masonry grid via CSS columns */
-          <div
+          <>
+            <TopLikedStrip
+              photos={photos}
+              onOpenPhoto={(index) => openLightbox(index)}
+            />
+            {/* Masonry grid via CSS columns */}
+            <div
             style={{
               columns: "2",
               columnGap: "12px",
@@ -95,6 +101,7 @@ export default function PhotoGallery({ photos }: Props) {
               />
             ))}
           </div>
+          </>
         )}
       </main>
 
