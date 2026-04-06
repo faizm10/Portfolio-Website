@@ -5,10 +5,11 @@ service cloud.firestore {
     // Note: hasOnly(['count']) often blocks increment() merges — validate count only.
     match /photoLikes/{photoId} {
       allow read: if true;
-      allow create: if request.resource.data.count is number
+      // increment() is stored as int; use is int (is number can reject in edge cases).
+      allow create: if request.resource.data.count is int
         && request.resource.data.count == 1;
-      allow update: if request.resource.data.count is number
-        && resource.data.count is number
+      allow update: if request.resource.data.count is int
+        && resource.data.count is int
         && request.resource.data.count == resource.data.count + 1;
       allow delete: if false;
     }

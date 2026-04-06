@@ -17,6 +17,7 @@ export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
   const [busy, setBusy] = useState(false);
   const [popping, setPopping] = useState(false);
   const popTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const countBeforeLikeRef = useRef<number | null>(null);
 
   const enabled = isFirebaseConfigured();
 
@@ -34,9 +35,13 @@ export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
     const unsub = onSnapshot(
       ref,
       (snap) => {
-        setCount(snap.exists() ? (snap.data()?.count as number) ?? 0 : 0);
+        const n = snap.exists() ? (snap.data()?.count as number) ?? 0 : 0;
+        setCount(Number.isFinite(n) ? Math.trunc(n) : 0);
       },
-      () => setCount(0),
+      (err) => {
+        console.error("[photo like] Firestore listen failed:", err);
+        setCount(0);
+      },
     );
     return () => unsub();
   }, [photoSrc, enabled]);
@@ -68,12 +73,19 @@ export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
       const db = getDb();
       if (!db) return;
 
+      setCount((c) => {
+        const cur = c ?? 0;
+        countBeforeLikeRef.current = cur;
+        return cur + 1;
+      });
+
       setBusy(true);
       try {
         const ref = doc(db, COLLECTION, photoLikeDocId(photoSrc));
         await setDoc(ref, { count: increment(1) }, { merge: true });
         trackPhotoLike(photoSrc);
       } catch (err) {
+        setCount(countBeforeLikeRef.current ?? 0);
         const code = err instanceof FirebaseError ? err.code : "unknown";
         const message = err instanceof Error ? err.message : String(err);
         console.error("[photo like] Firestore write failed:", code, message);
