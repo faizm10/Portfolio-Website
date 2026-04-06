@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback, useRef, useId } from "react";
 import { getSupabaseBrowserClient, isSupabaseConfigured } from "@/lib/supabase";
 import { trackPhotoLike } from "@/lib/analytics";
 import { photoLikeDocId } from "@/lib/photoLikeId";
@@ -17,6 +17,8 @@ export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
   const [popping, setPopping] = useState(false);
   const popTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const countBeforeLikeRef = useRef<number | null>(null);
+  /** Unique per mount so grid + lightbox can both subscribe without sharing one channel. */
+  const realtimeInstanceId = useId().replace(/:/g, "");
 
   const enabled = isSupabaseConfigured();
 
@@ -55,7 +57,7 @@ export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
     })();
 
     const channel = supabase
-      .channel(`photo_like:${photoId}`)
+      .channel(`photo_like:${photoId}:${realtimeInstanceId}`)
       .on(
         "postgres_changes",
         {
@@ -81,7 +83,7 @@ export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
       cancelled = true;
       void supabase.removeChannel(channel);
     };
-  }, [photoSrc, enabled]);
+  }, [photoSrc, enabled, realtimeInstanceId]);
 
   useEffect(() => {
     return () => {
