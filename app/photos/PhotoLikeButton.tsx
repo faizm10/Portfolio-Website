@@ -22,6 +22,16 @@ function sessionLikedKey(photoId: string) {
   return `${SESSION_STORAGE_PREFIX}${photoId}`;
 }
 
+/** Client-only; use inside event handlers, not during render (hydration-safe). */
+function readSessionLiked(photoId: string): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    return sessionStorage.getItem(sessionLikedKey(photoId)) === "1";
+  } catch {
+    return false;
+  }
+}
+
 let warnedSupabaseMissing = false;
 
 export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
@@ -145,6 +155,10 @@ export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
       e.stopPropagation();
       e.preventDefault();
       if (busy) return;
+      if (likedThisSession || readSessionLiked(photoId)) {
+        return;
+      }
+
       triggerPop();
 
       if (!enabled) {
@@ -196,7 +210,7 @@ export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
         setBusy(false);
       }
     },
-    [photoSrc, photoId, enabled, busy, triggerPop],
+    [photoSrc, photoId, enabled, busy, likedThisSession, triggerPop],
   );
 
   const displayCount = count ?? 0;
@@ -205,9 +219,14 @@ export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
     <button
       type="button"
       onClick={onLike}
-      disabled={busy}
-      className="inline-flex items-center gap-2 rounded-full bg-neutral-900/88 px-3 py-2 text-xs font-medium text-white shadow-md ring-1 ring-white/15 backdrop-blur-sm transition hover:bg-neutral-900 hover:ring-white/25 disabled:opacity-70"
-      aria-label={`Like photo (${displayCount} likes)`}
+      disabled={busy || likedThisSession}
+      data-session-liked={likedThisSession ? "" : undefined}
+      className="inline-flex items-center gap-2 rounded-full bg-neutral-900/88 px-3 py-2 text-xs font-medium text-white shadow-md ring-1 ring-white/15 backdrop-blur-sm transition hover:bg-neutral-900 hover:ring-white/25 disabled:opacity-70 data-[session-liked]:disabled:cursor-default data-[session-liked]:disabled:opacity-100"
+      aria-label={
+        likedThisSession
+          ? `You liked this photo (${displayCount} total likes)`
+          : `Like photo (${displayCount} likes)`
+      }
     >
       <span
         className={`inline-flex ${popping ? "animate-photo-heart-pop" : ""}`}
