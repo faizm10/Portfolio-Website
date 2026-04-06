@@ -23,7 +23,7 @@ import "prismjs/components/prism-yaml";
 import "prismjs/components/prism-bash";
 import "./globals.css";
 
-export const metadataBase = new URL("https://jame.li");
+export const metadataBase = new URL("https://faizm.ca");
 
 export const metadata: Metadata = {
   title: "faiz mustansar",
@@ -39,15 +39,15 @@ export const metadata: Metadata = {
     "uog computer science",
   ],
   alternates: {
-    canonical: "https://faizm.me",
+    canonical: "https://faizm.ca",
   },
   openGraph: {
     title: "faiz mustansar",
     description:
       "portfolio of faiz mustansar— computer science at the university of guelph.",
-    url: "https://faizm.me",
-    siteName: "faizm.me",
-    images: [{ url: "https://faizm.me/banner.png", width: 1200, height: 630 }],
+    url: "https://faizm.ca",
+    siteName: "faizm.ca",
+    images: [{ url: "https://faizm.ca/banner.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     title: "faiz mustansar",
     description:
       "portfolio of faiz mustansar— computer science at the university of guelph.",
-    images: ["https://faizm.me/banner.png"],
+    images: ["https://faizm.ca/banner.png"],
   },
   icons: {
     icon: "/jsl.png",
@@ -73,7 +73,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={ptMono.variable}>
       <head>
-        <link rel="canonical" href="https://faizm.me" />
+        <link rel="canonical" href="https://faizm.ca" />
       </head>
       <body
         className={`${ptMono.className} min-h-screen w-full text-neutral-900 antialiased`}
@@ -92,13 +92,13 @@ export default function RootLayout({
         <footer className="w-full pb-6">
           <div className="mx-auto flex w-full max-w-3xl items-center gap-2 px-6 text-neutral-700">
             <a
-              href="https://www.uguelph.network/#faizm.me?nav=prev"
+              href="https://www.uguelph.network/#faizm.ca?nav=prev"
               aria-label="Previous site"
             >
               ←
             </a>
             <a
-              href="https://www.uguelph.network/#faizm.me"
+              href="https://www.uguelph.network/#faizm.ca"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Guelph Webring"
@@ -110,7 +110,7 @@ export default function RootLayout({
               />
             </a>
             <a
-              href="https://www.uguelph.network/#faizm.me?nav=next"
+              href="https://www.uguelph.network/#faizm.ca?nav=next"
               aria-label="Next site"
             >
               →
