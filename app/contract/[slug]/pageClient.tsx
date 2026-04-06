@@ -42,8 +42,6 @@ export default function ContractSlugPageClient({ slug }: { slug: string }) {
   const [addText, setAddText] = useState("");
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
-  const [localSignerId, setLocalSignerId] = useState<string | null>(null);
-  const [localSignerSlug, setLocalSignerSlug] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -94,16 +92,6 @@ export default function ContractSlugPageClient({ slug }: { slug: string }) {
     };
   }, [cleanSlug]);
 
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem("contract:signed");
-      if (!raw) return;
-      const parsed = JSON.parse(raw);
-      if (typeof parsed?.id === "string") setLocalSignerId(parsed.id);
-      if (typeof parsed?.slug === "string") setLocalSignerSlug(parsed.slug);
-    } catch {}
-  }, []);
-
   const checklist: ChecklistItem[] = useMemo(() => {
     const raw = record?.checklist;
     if (!raw) return [];
@@ -119,14 +107,7 @@ export default function ContractSlugPageClient({ slug }: { slug: string }) {
     return [];
   }, [record]);
 
-  const recordSlug = useMemo(() => {
-    return normalizeSlug(record?.signature_text ?? "");
-  }, [record?.signature_text]);
-
-  const canEdit = Boolean(
-    localSignerId &&
-      (localSignerSlug ? localSignerSlug === cleanSlug : recordSlug === cleanSlug),
-  );
+  const canEdit = true;
 
   async function addItem() {
     if (!canEdit) return;
@@ -147,7 +128,6 @@ export default function ContractSlugPageClient({ slug }: { slug: string }) {
         "append_contract_checklist_item",
         {
           target_slug: cleanSlug,
-          signer_id: localSignerId,
           item_text: text,
         },
       );
@@ -246,9 +226,6 @@ export default function ContractSlugPageClient({ slug }: { slug: string }) {
                   {saveError ? (
                     <p className="mt-2 text-sm text-red-600">{saveError}</p>
                   ) : null}
-                  <p className="mt-2 text-xs text-neutral-500">
-                    only mentor and mentee can add items here.
-                  </p>
                 </div>
               ) : null}
 
