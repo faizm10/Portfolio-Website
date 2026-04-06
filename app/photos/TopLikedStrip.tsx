@@ -140,12 +140,8 @@ export default function TopLikedStrip({
       aria-busy={loading}
     >
       <h2 className="text-sm font-medium uppercase tracking-wide text-neutral-500">
-        top 3
+        community's favorite photos
       </h2>
-      <p className="mt-1 text-xs text-neutral-400">
-        most liked right now
-      </p>
-
       {loading ? (
         <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-5">
           {[0, 1, 2].map((i) => (
