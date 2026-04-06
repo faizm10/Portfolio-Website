@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PT_Mono } from "next/font/google";
+import { PT_Mono, Geist } from "next/font/google";
 import Script from "next/script";
 import { Suspense } from "react";
 import CommandPalette from "./components/Cmd";
@@ -22,6 +22,9 @@ import "prismjs/components/prism-json";
 import "prismjs/components/prism-yaml";
 import "prismjs/components/prism-bash";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadataBase = new URL("https://faizm.ca");
 
@@ -71,7 +74,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={ptMono.variable}>
+    <html lang="en" className={cn("font-sans", geist.variable)}>
       <head>
         <link rel="canonical" href="https://faizm.ca" />
       </head>
