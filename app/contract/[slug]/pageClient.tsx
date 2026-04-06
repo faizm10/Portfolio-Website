@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { getSupabaseBrowserClient } from "@/lib/supabase";
+import { Checkbox } from "@/components/animate-ui/components/radix/checkbox";
 
 type ChecklistItem = {
   id: string;
@@ -42,6 +43,7 @@ export default function ContractSlugPageClient({ slug }: { slug: string }) {
   const [addText, setAddText] = useState("");
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
+  const [togglingId, setTogglingId] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -107,6 +109,11 @@ export default function ContractSlugPageClient({ slug }: { slug: string }) {
     return [];
   }, [record]);
 
+  const completedCount = useMemo(
+    () => checklist.filter((i) => i.done).length,
+    [checklist],
+  );
+
   const canEdit = true;
 
   async function addItem() {
@@ -148,6 +155,40 @@ export default function ContractSlugPageClient({ slug }: { slug: string }) {
     }
   }
 
+  async function toggleItem(itemId: string, checked: boolean) {
+    setTogglingId(itemId);
+    setSaveError(null);
+    try {
+      const supabase = getSupabaseBrowserClient();
+      if (!supabase) {
+        setSaveError("not available right now.");
+        return;
+      }
+
+      const { data, error } = await supabase.rpc(
+        "toggle_contract_checklist_item",
+        {
+          target_slug: cleanSlug,
+          item_id: itemId,
+          done: checked,
+        },
+      );
+
+      if (error) {
+        setSaveError(error.message || "could not update.");
+        return;
+      }
+
+      setRecord((prev) =>
+        prev ? ({ ...prev, checklist: data } as ContractRecord) : prev,
+      );
+    } catch (e: any) {
+      setSaveError(e?.message || "could not update.");
+    } finally {
+      setTogglingId(null);
+    }
+  }
+
   return (
     <div className="min-h-screen w-full overflow-x-hidden px-6 py-12">
       <div className="mx-auto max-w-xl">
@@ -172,8 +213,6 @@ export default function ContractSlugPageClient({ slug }: { slug: string }) {
             <div className="mt-10">
               <div className="h-4 w-24 rounded bg-neutral-200/70" />
               <div className="mt-4 space-y-2">
-                <div className="h-10 rounded-lg border border-neutral-200 bg-neutral-50" />
-                <div className="h-10 rounded-lg border border-neutral-200 bg-neutral-50" />
                 <div className="h-10 rounded-lg border border-neutral-200 bg-neutral-50" />
                 <div className="h-10 rounded-lg border border-neutral-200 bg-neutral-50" />
               </div>
@@ -201,9 +240,16 @@ export default function ContractSlugPageClient({ slug }: { slug: string }) {
             </div>
 
             <section className="mt-10">
-              <h2 className="text-sm font-medium text-neutral-500 uppercase tracking-wide">
-                checklist
-              </h2>
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <h2 className="text-sm font-medium text-neutral-500 uppercase tracking-wide">
+                  checklist
+                </h2>
+                {checklist.length > 0 ? (
+                  <span className="text-xs text-neutral-500">
+                    {completedCount} of {checklist.length} completed
+                  </span>
+                ) : null}
+              </div>
 
               {canEdit ? (
                 <div className="mt-4 rounded-lg border border-neutral-200 bg-white p-3 shadow-sm">
@@ -235,21 +281,39 @@ export default function ContractSlugPageClient({ slug }: { slug: string }) {
                     key={item.id}
                     className="flex items-start gap-3 rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-2"
                   >
-                    <span
-                      aria-hidden
-                      className={`mt-0.5 h-4 w-4 rounded border ${
-                        item.done
-                          ? "border-neutral-900 bg-neutral-900"
-                          : "border-neutral-400 bg-white"
-                      }`}
+                    <Checkbox
+                      checked={item.done}
+                      disabled={togglingId === item.id}
+                      onCheckedChange={(v) => {
+                        const next =
+                          v === true ? true : v === false ? false : item.done;
+                        void toggleItem(item.id, next);
+                      }}
+                      className="mt-0.5 text-neutral-900"
+                      aria-label="Toggle item"
                     />
-                    <span
-                      className={`text-sm ${
-                        item.done ? "text-neutral-500 line-through" : "text-neutral-800"
-                      }`}
-                    >
-                      {item.text}
-                    </span>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span
+                          className={`text-sm ${
+                            item.done
+                              ? "text-neutral-500 line-through"
+                              : "text-neutral-800"
+                          }`}
+                        >
+                          {item.text}
+                        </span>
+                        <span
+                          className={`text-xs font-medium uppercase tracking-wide ${
+                            item.done
+                              ? "text-emerald-700"
+                              : "text-neutral-400"
+                          }`}
+                        >
+                          {item.done ? "completed" : "pending"}
+                        </span>
+                      </div>
+                    </div>
                   </li>
                 ))}
                 {checklist.length === 0 ? (
