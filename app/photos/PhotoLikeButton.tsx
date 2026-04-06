@@ -1,6 +1,13 @@
 "use client";
 
-import { useEffect, useState, useCallback, useRef, useId } from "react";
+import {
+  useEffect,
+  useLayoutEffect,
+  useState,
+  useCallback,
+  useRef,
+  useId,
+} from "react";
 import { getSupabaseBrowserClient, isSupabaseConfigured } from "@/lib/supabase";
 import { trackPhotoLike } from "@/lib/analytics";
 import { photoLikeDocId } from "@/lib/photoLikeId";
@@ -8,6 +15,12 @@ import { NumberTicker } from "@/app/components/ui/number-ticker";
 import { FaHeart, FaRegHeart } from "react-icons/fa6";
 
 const POP_MS = 620;
+const SESSION_STORAGE_PREFIX = "portfolioPhotoLiked:";
+const PHOTO_LIKE_SESSION_EVENT = "portfolio:photo-like-session";
+
+function sessionLikedKey(photoId: string) {
+  return `${SESSION_STORAGE_PREFIX}${photoId}`;
+}
 
 let warnedSupabaseMissing = false;
 
@@ -19,8 +32,36 @@ export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
   const countBeforeLikeRef = useRef<number | null>(null);
   /** Unique per mount so grid + lightbox can both subscribe without sharing one channel. */
   const realtimeInstanceId = useId().replace(/:/g, "");
+  const photoId = photoLikeDocId(photoSrc);
+  const [likedThisSession, setLikedThisSession] = useState(false);
 
   const enabled = isSupabaseConfigured();
+
+  useLayoutEffect(() => {
+    try {
+      if (sessionStorage.getItem(sessionLikedKey(photoId)) === "1") {
+        setLikedThisSession(true);
+      }
+    } catch {
+      /* private mode / quota */
+    }
+  }, [photoId]);
+
+  useEffect(() => {
+    const onSessionLike = (e: Event) => {
+      const d = (e as CustomEvent<{ photoId: string }>).detail;
+      if (d?.photoId === photoId) setLikedThisSession(true);
+    };
+    window.addEventListener(
+      PHOTO_LIKE_SESSION_EVENT,
+      onSessionLike as EventListener,
+    );
+    return () =>
+      window.removeEventListener(
+        PHOTO_LIKE_SESSION_EVENT,
+        onSessionLike as EventListener,
+      );
+  }, [photoId]);
 
   useEffect(() => {
     if (!enabled) {
@@ -33,7 +74,6 @@ export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
       return;
     }
 
-    const photoId = photoLikeDocId(photoSrc);
     let cancelled = false;
 
     void (async () => {
@@ -139,6 +179,15 @@ export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
           if (Number.isFinite(n)) setCount(Math.trunc(n));
         }
         trackPhotoLike(photoSrc);
+        try {
+          sessionStorage.setItem(sessionLikedKey(photoId), "1");
+        } catch {
+          /* ignore */
+        }
+        setLikedThisSession(true);
+        window.dispatchEvent(
+          new CustomEvent(PHOTO_LIKE_SESSION_EVENT, { detail: { photoId } }),
+        );
       } catch (err) {
         setCount(countBeforeLikeRef.current ?? 0);
         const message = err instanceof Error ? err.message : String(err);
@@ -147,7 +196,7 @@ export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
         setBusy(false);
       }
     },
-    [photoSrc, enabled, busy, triggerPop],
+    [photoSrc, photoId, enabled, busy, triggerPop],
   );
 
   const displayCount = count ?? 0;
@@ -164,7 +213,7 @@ export default function PhotoLikeButton({ photoSrc }: { photoSrc: string }) {
         className={`inline-flex ${popping ? "animate-photo-heart-pop" : ""}`}
         aria-hidden
       >
-        {popping ? (
+        {likedThisSession || popping ? (
           <FaHeart className="h-4 w-4 text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.55)]" />
         ) : (
           <FaRegHeart className="h-4 w-4 text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]" />
