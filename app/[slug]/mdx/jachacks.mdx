@@ -1,0 +1,212 @@
+import { FiExternalLink } from "react-icons/fi";
+import Image from "next/image";
+import { MermaidDiagram } from "@/components/MermaidDiagram";
+
+<div className='w-full text-center flowboard-page'>
+    <span className='block text-lightBeige/95 italic text-2xl md:text-3xl'>jachacks 2026</span>
+    <div className="w-[95vw] relative left-1/2 -ml-[47.5vw] md:w-[105%] md:left-0 md:-ml-[2.5%] md:static">
+        <Image
+            src="/projects/foco/hero-page.png"
+            alt="foco: web ui and live map view"
+            width={3016}
+            height={1656}
+            className="object-cover rounded-lg my-0! py-0!"
+            loading="eager"
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1600px"
+            quality={85}
+        />
+    </div>
+    <div className='md:w-[90%] w-full mx-auto'>
+        <div className='flex justify-center flex-wrap gap-x-6 gap-y-2 mb-5 text-base'>
+            <a href="https://devpost.com/software/foco" target="_blank" rel="noopener noreferrer" className='a flex items-center gap-1 decoration-1 underline-offset-4'>
+                <span>devpost</span>
+                <FiExternalLink size={16} />
+            </a>
+            <a href="https://github.com/faizm10/jachacks" target="_blank" rel="noopener noreferrer" className='a flex items-center gap-1 decoration-1 underline-offset-4'>
+                <span>github</span>
+                <FiExternalLink size={16} />
+            </a>
+            <a href="https://wegotpersonofinterest.tech" target="_blank" rel="noopener noreferrer" className='a flex items-center gap-1 decoration-1 underline-offset-4'>
+                <span>live demo</span>
+                <FiExternalLink size={16} />
+            </a>
+        </div>
+
+        <div className='flex flex-col text-left'>
+            <span className='text-lightBeige/95 text-xl'>overview</span>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
+                <p>
+                    back to back weekends in montreal: i was there the week before jachacks on a normal trip, then turned around and came back for the hackathon. same city, totally different reason, twice the mileage on my brain. if that sounds a bit unhinged, it was, lol.
+                </p>
+                <p>
+                    the hack weekend itself was still worth the haul.{' '}
+                    <a href="https://www.linkedin.com/in/wkmxyz/" target="_blank" rel="noopener noreferrer" className="a decoration-1 underline-offset-4">coco wang</a>
+                    {' '}and i shipped <strong className='font-normal text-lightBeige/90'>foco</strong>, a 3d read on how a building moves from ordinary cctv plus a floor plan, and walked away with second place overall at jachacks 2026. after enough hack weekends for the format to feel familiar, this one still felt like a step change in how hard we pushed the idea and how the room responded.
+                </p>
+                <p>
+                    this writeup is the longer version: where the idea came from, what broke at 3am, and what we would tighten if we keep the project alive as open source.
+                </p>
+            </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-8 text-left mt-10">
+            <div className='flex flex-col gap-4'>
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>timeline</span>
+                    <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>24 hours, jachacks 2026</span>
+                </div>
+
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>team</span>
+                    <div className='text-lighterBeige flex flex-col gap-1 font-inter items-start text-[1rem]'>
+                        <span>faiz mustansar</span>
+                        <a href="https://www.linkedin.com/in/wkmxyz/" target="_blank" rel="noopener noreferrer" className="a decoration-1 underline-offset-4 text-lighterBeige font-inter text-[1rem]">coco wang</a>
+                    </div>
+                </div>
+
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>submitted to</span>
+                    <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>jachacks 2026, montreal, quebec</span>
+                </div>
+
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>award</span>
+                    <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>🥈 2nd place, best overall</span>
+                </div>
+            </div>
+
+            <div className='flex flex-col gap-1'>
+                <span className='text-lightBeige/95 text-lg'>tools</span>
+                <div className='flex flex-col gap-1 font-inter font-light text-[1rem] text-lighterBeige'>
+                    <span>next.js</span>
+                    <span>three.js / react three fiber</span>
+                    <span>tailwind</span>
+                    <span>fastapi</span>
+                    <span>ultralytics yolo</span>
+                    <span>opencv</span>
+                    <span>google gemini</span>
+                    <span>supabase storage</span>
+                    <span>vercel</span>
+                    <span>render</span>
+                </div>
+            </div>
+        </div>
+
+        <div className='flex flex-col text-left mt-15'>
+            <span className='text-lightBeige/95 text-xl'>where the idea came from</span>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
+                <p>
+                    i had been rewatching <em>person of interest</em> on netflix. the machine in that story is fiction, but the show keeps asking what you can infer once cameras are everywhere. we were not building predictive violence models. we were curious about a humbler question: if you already have fixed angles and a plan of the space, can you show <em>how</em> the space is used instead of stopping at a binary person detector?
+                </p>
+                <p>
+                    that framing mattered for the pitch. we wanted judges to read it as spatial curiosity, not a surveillance product. the name and demo site leaned into the bit on purpose; the engineering job was still to make the visualization honest about what was pixels, what was geometry, and what was model narration.
+                </p>
+            </div>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>what we built</span>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
+                <p>
+                    <strong className='font-normal text-lightBeige/90'>foco</strong> ingests a clip and a floor plan, runs motion and detection, and paints activity as heat on a live 3d slab. rooms stay clickable so you can tie the volumetric view back to a footprint strip. gemini reads individual frames for a short natural language summary of people and activity. the happy path we wanted for judging was simple: pick footage, watch the map update, click around, read the scene card.
+                </p>
+                <p>
+                    getting that path stable in 24 hours meant accepting rough edges. homography when calibration cooperated, frame differencing when it did not. lots of tiling and stride tuning so yolo plus video io did not melt the laptop or the budget.
+                </p>
+            </div>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>weekend war stories</span>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
+                <p>
+                    hardware and cloud both complained. machines thermal throttled under sustained encode and inference. a late night google cloud experiment for video plumbing briefly looked like a billing horror story until we capped it (think on the order of thirty dollars, lesson learned). the nastiest bug was getting heat to sit believably on a 3d extrusion of the plan without drifting or lying about coverage.
+                </p>
+                <p>
+                    travel had its own plot twist. via was on a{' '}
+                    <a
+                        href="https://service-pages.viarail.ca/kingston-sub-maintenance-apr-2026-passenger-travel-advisory-bulletin-en"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="a decoration-1 underline-offset-4"
+                    >
+                        kingston sub maintenance detour
+                    </a>
+                    {' '}that weekend (metrolinx track work, adjusted toronto to montreal schedules, longer run times through the oshawa stretch, and the usual risk that delays run past whatever the adjusted timetable promises). i booked close to the travel date. the reroutes made the timing i wanted ugly, so i gave up a business class seat and rebooked into economy on an earlier departure, which still cost more than i wanted because last minute fares do not care about your original cabin.
+                </p>
+                <p>
+                    all in it was still on the order of twelve hours round trip and about three hundred dollars to actually be in the room. i would do it again for how the event felt, but i am not pretending it was cheap.
+                </p>
+            </div>
+            <div className="w-[95vw] relative left-1/2 -ml-[47.5vw] md:w-[105%] md:left-0 md:-ml-[2.5%] md:static mt-8">
+                <Image
+                    src="/projects/foco/image.png"
+                    alt="foco: 3d floor map with activity heat"
+                    width={1516}
+                    height={896}
+                    className="object-cover rounded-lg my-0! py-0!"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1600px"
+                    quality={85}
+                    loading="lazy"
+                />
+                <p className="text-lighterBeige/75 font-inter font-extralight text-sm mt-3 text-center px-4 max-w-3xl mx-auto leading-relaxed">
+                    isometric view of the herzberg library stack: heat and cylinders on rooms, vibe callouts (social, locked in, collaborative), and floor labels so the 3d slab matches the real footprint we were fighting to align all weekend.
+                </p>
+            </div>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>judging and the floor</span>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
+                <p>
+                    traffic on the floor turned into the real signal. judges stopped, but so did other teams, organizers, and random visitors who wanted to try the demo. when people linger because they get the joke <em>and</em> the interaction, you stop worrying only about rubric points and start thinking about whether the build has legs past the weekend.
+                </p>
+            </div>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>architecture notes</span>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
+                <p>
+                    the ui lives on next.js with assets in supabase storage. fastapi sits behind a tight cors allowlist for opencv, ultralytics, and gemini. we split static hosting on vercel from a stateless api on render so deploys stayed boring while we iterated. on the client, react three fiber needed defensive patterns: memoized props and stable refs so event handlers did not go stale when the booth wifi and hot reload did their worst.
+                </p>
+                <p className='text-lightBeige/90 text-sm font-normal pt-2'>data flow (high level)</p>
+                <MermaidDiagram
+                    aria-label="foco architecture diagram"
+                    chart={`flowchart TD
+  U[User] --> UI[Next.js UI]
+  UI -->|list| ST[(Supabase bucket)]
+  UI -->|proxy| A[/analyze/]
+  UI -->|direct| F[/floorplan/]
+  A --> GM[Gemini]
+  F --> CV[CV pipeline]
+  CV -.-> CAL[Calib store]
+  UI --> T[Heat + hex on 3D]
+  F --> T
+  A --> T`}
+                />
+            </div>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>what is next</span>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
+                <p>
+                    next step is definitely open sourcing it so anyone who wants to push the idea further can fork and run. the repo and writeup stay linked above if you want to take it to a bigger step than our 24 hour slice.
+                </p>
+                <p>
+                    on the product side i want polish: pipe in a live feed from your phone in real time, tighter per room masks, faster presets, and ui that never blurs what is raw motion versus model output. anything live or heavy would run on your own stack and your own bill, not mine, which feels like the honest way to ship something camera shaped.
+                </p>
+                <p>
+                    credits:{' '}
+                    <a href="https://www.linkedin.com/in/wkmxyz/" target="_blank" rel="noopener noreferrer" className="a decoration-1 underline-offset-4">coco wang</a>
+                </p>
+            </div>
+        </div>
+
+        <footer className="pt-4 mt-10 border-t border-white/20 text-sm text-white/70 flex flex-row items-center">
+            <span className="shiny-green-dot inline-block mr-2" />
+            last updated: 04/06/2026
+        </footer>
+    </div>
+</div>

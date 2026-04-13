@@ -7,7 +7,7 @@ import { useIntroStore } from "./store/zustand";
 import useModifierKey from "./components/ModifierKey";
 import { isMobile } from "react-device-detect";
 import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from "react-icons/fa6";
-import { IoImagesOutline } from "react-icons/io5";
+import { IoDocumentTextOutline, IoImagesOutline } from "react-icons/io5";
 import { posts } from "./posts";
 import { showcaseProjects } from "./projects";
 import PageViewCounter from "./components/PageViewCounter";
@@ -43,7 +43,7 @@ const experiences = [
   },
   {
     title: "university of guelph",
-    role: "teaching assistant · 3x terms",
+    role: "teaching assistant — mcs2000 & mcs2020 (business) · 3x terms",
     icon: "/exp/uog.png",
   },
 ];
@@ -103,10 +103,10 @@ export default function Home() {
       <div className="relative min-h-screen w-full">
         <main className="mx-auto max-w-3xl px-6 py-12 md:py-16">
           <Link
-            href="/photos"
+            href="/jachacks"
             className="mb-6 flex items-center justify-between gap-3 rounded-lg border border-amber-200/90 bg-amber-50/90 px-3.5 py-2.5 text-sm text-amber-950 shadow-sm transition hover:border-amber-300 hover:bg-amber-100/95"
           >
-            <span className="leading-snug">check out my photography</span>
+            <span className="leading-snug">new blog - jachacks2026 2nd place overall</span>
             <span className="shrink-0 text-amber-700/90" aria-hidden>
               →
             </span>
@@ -127,7 +127,8 @@ export default function Home() {
                   className="underline hover:text-neutral-900"
                 >
                   tangerine (scotiabank)
-                </a>{" "} · swe intern @{" "}
+                </a>
+                {/* {" "} · swe intern @{" "}
                 <a
                   href="https://www.td.com"
                   target="_blank"
@@ -135,7 +136,7 @@ export default function Home() {
                   className="underline hover:text-neutral-900"
                 >
                   td bank
-                </a>{" "}
+                </a>{" "} */}
                 {/* · seeking fall &apos;26 intern/ft roles */}
               </p>
             </div>
@@ -161,6 +162,13 @@ export default function Home() {
                 aria-label="Photos"
               >
                 <IoImagesOutline className="h-5 w-5" />
+              </Link>
+              <Link
+                href="/resume"
+                className="text-neutral-600 hover:text-neutral-900"
+                aria-label="View resume"
+              >
+                <IoDocumentTextOutline className="h-5 w-5" />
               </Link>
               <a
                 href="https://www.linkedin.com/in/faizmustansar/"

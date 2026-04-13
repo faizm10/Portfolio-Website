@@ -13,6 +13,12 @@ export const posts: Post[] = [
     pinned: true,
   },
   {
+    slug: "jachacks",
+    title: "foco @ JACHacks 2026 — 2nd overall",
+    date: "apr 2026",
+    pinned: true,
+  },
+  {
     slug: "hc26",
     title: "organized hc26 experience",
     date: "ongoing",

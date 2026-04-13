@@ -6,13 +6,12 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { isMobile } from "react-device-detect";
 import { FiGithub } from "react-icons/fi";
 import {
+  IoDocumentTextOutline,
   IoLogoInstagram,
   IoSearchOutline,
   IoHomeOutline,
   IoImagesOutline,
 } from "react-icons/io5";
-import { FaXTwitter } from "react-icons/fa6";
-import { GoRepo } from "react-icons/go";
 import { PiLinkedinLogo } from "react-icons/pi";
 
 export default function CommandPalette() {
@@ -109,23 +108,27 @@ export default function CommandPalette() {
           break;
         case "Digit1":
         case "Numpad1":
-          openLink(() =>
-            window.open("https://www.linkedin.com/in/faizmustansar/", "_blank"),
-          );
+          openNextLink(() => router.push("/photos"));
           break;
         case "Digit2":
         case "Numpad2":
-          openLink(() => window.open("https://github.com/faizm10", "_blank"));
+          openNextLink(() => router.push("/resume"));
           break;
         case "Digit3":
         case "Numpad3":
           openLink(() =>
-            window.open("https://www.instagram.com/faizm.30/", "_blank"),
+            window.open("https://www.linkedin.com/in/faizmustansar/", "_blank"),
           );
           break;
         case "Digit4":
         case "Numpad4":
-          openNextLink(() => router.push("/photos"));
+          openLink(() => window.open("https://github.com/faizm10", "_blank"));
+          break;
+        case "Digit5":
+        case "Numpad5":
+          openLink(() =>
+            window.open("https://www.instagram.com/faizm.30/", "_blank"),
+          );
           break;
       }
     };
@@ -234,7 +237,19 @@ export default function CommandPalette() {
                   >
                     <IoImagesOutline className="h-4 w-4" />
                     <span className="flex-1">photos</span>
-                    <Shortcut>4</Shortcut>
+                    <Shortcut>1</Shortcut>
+                  </Command.Item>
+
+                  <Command.Item
+                    value="resume cv pdf curriculum vitae faiz"
+                    onSelect={() => {
+                      setTimeout(() => openNextLink(() => router.push("/resume")), 0);
+                    }}
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-midBeige2/90 rounded hover:bg-darkBeige1/40 cursor-pointer data-[selected=true]:bg-darkBeige1/40"
+                  >
+                    <IoDocumentTextOutline className="h-4 w-4" />
+                    <span className="flex-1">resume</span>
+                    <Shortcut>2</Shortcut>
                   </Command.Item>
 
                   <Command.Item
@@ -251,7 +266,7 @@ export default function CommandPalette() {
                   >
                     <PiLinkedinLogo className="h-4 w-4" />
                     <span className="flex-1">linkedin</span>
-                    <Shortcut>1</Shortcut>
+                    <Shortcut>3</Shortcut>
                   </Command.Item>
                   <Command.Item
                     value="github git profile faiz"
@@ -264,7 +279,7 @@ export default function CommandPalette() {
                   >
                     <FiGithub className="h-4 w-4" />
                     <span className="flex-1">github</span>
-                    <Shortcut>2</Shortcut>
+                    <Shortcut>4</Shortcut>
                   </Command.Item>
 
                   <Command.Item
@@ -281,7 +296,7 @@ export default function CommandPalette() {
                   >
                     <IoLogoInstagram className="h-4 w-4" />
                     <span className="flex-1">instagram</span>
-                    <Shortcut>3</Shortcut>
+                    <Shortcut>5</Shortcut>
                   </Command.Item>
                 </Command.Group>
               </Command.List>
