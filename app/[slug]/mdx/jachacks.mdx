@@ -2,7 +2,7 @@ import { FiExternalLink } from "react-icons/fi";
 import Image from "next/image";
 import { MermaidDiagram } from "@/components/MermaidDiagram";
 
-<div className='w-full text-center flowboard-page'>
+<div className='not-prose w-full text-center flowboard-page'>
     <span className='block text-lightBeige/95 italic text-2xl md:text-3xl'>jachacks 2026</span>
     <div className="w-[95vw] relative left-1/2 -ml-[47.5vw] md:w-[105%] md:left-0 md:-ml-[2.5%] md:static">
         <Image
@@ -35,17 +35,16 @@ import { MermaidDiagram } from "@/components/MermaidDiagram";
         <div className='flex flex-col text-left'>
             <span className='text-lightBeige/95 text-xl'>overview</span>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
-                <p>
-                    back to back weekends in montreal: i was there the week before jachacks on a normal trip, then turned around and came back for the hackathon. same city, totally different reason, twice the mileage on my brain. if that sounds a bit unhinged, it was, lol.
-                </p>
-                <p>
-                    the hack weekend itself was still worth the haul.{' '}
+                <div className="leading-relaxed">
+                    i was in montreal the weekend before jachacks for a normal trip, then went back the next weekend for the hackathon.
+                </div>
+                <div className="leading-relaxed">
                     <a href="https://www.linkedin.com/in/wkmxyz/" target="_blank" rel="noopener noreferrer" className="a decoration-1 underline-offset-4">coco wang</a>
-                    {' '}and i shipped <strong className='font-normal text-lightBeige/90'>foco</strong>, a 3d read on how a building moves from ordinary cctv plus a floor plan, and walked away with second place overall at jachacks 2026. after enough hack weekends for the format to feel familiar, this one still felt like a step change in how hard we pushed the idea and how the room responded.
-                </p>
-                <p>
-                    this writeup is the longer version: where the idea came from, what broke at 3am, and what we would tighten if we keep the project alive as open source.
-                </p>
+                    {' '}and i built <strong className='font-normal text-lightBeige/90'>foco</strong>: cctv plus a floor plan turned into a 3d map with motion as heat. we got 2nd place overall at jachacks 2026.
+                </div>
+                <div className="leading-relaxed">
+                    rest of the page is idea, build, what broke, stack, next.
+                </div>
             </div>
         </div>
 
@@ -95,50 +94,34 @@ import { MermaidDiagram } from "@/components/MermaidDiagram";
         <div className='flex flex-col text-left mt-15'>
             <span className='text-lightBeige/95 text-xl'>where the idea came from</span>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
-                <p>
-                    i had been rewatching <em>person of interest</em> on netflix. the machine in that story is fiction, but the show keeps asking what you can infer once cameras are everywhere. we were not building predictive violence models. we were curious about a humbler question: if you already have fixed angles and a plan of the space, can you show <em>how</em> the space is used instead of stopping at a binary person detector?
-                </p>
-                <p>
-                    that framing mattered for the pitch. we wanted judges to read it as spatial curiosity, not a surveillance product. the name and demo site leaned into the bit on purpose; the engineering job was still to make the visualization honest about what was pixels, what was geometry, and what was model narration.
-                </p>
+                <div className="leading-relaxed">
+                    inspo was <em>person of interest</em> on netflix: lots of feeds, but the interesting part is what you can infer about a space, not a sci fi prediction engine. we wanted something closer to “how is this room used” than “is someone there”.
+                </div>
+                <div className="leading-relaxed">
+                    for the pitch we tried to keep it clearly not a surveillance product: label what is pixels, what is geometry, and what the llm is guessing.
+                </div>
             </div>
         </div>
 
         <div className='flex flex-col text-left mt-10'>
             <span className='text-lightBeige/95 text-xl'>what we built</span>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
-                <p>
-                    <strong className='font-normal text-lightBeige/90'>foco</strong> ingests a clip and a floor plan, runs motion and detection, and paints activity as heat on a live 3d slab. rooms stay clickable so you can tie the volumetric view back to a footprint strip. gemini reads individual frames for a short natural language summary of people and activity. the happy path we wanted for judging was simple: pick footage, watch the map update, click around, read the scene card.
-                </p>
-                <p>
-                    getting that path stable in 24 hours meant accepting rough edges. homography when calibration cooperated, frame differencing when it did not. lots of tiling and stride tuning so yolo plus video io did not melt the laptop or the budget.
-                </p>
+                <div className="leading-relaxed">
+                    <strong className='font-normal text-lightBeige/90'>foco</strong> takes a clip + floor plan, runs motion and detection, draws heat on a 3d slab. rooms link to a footprint strip. gemini summarizes single frames (people, activity, short blurb). demo flow: pick clip, watch the map, click rooms, read the card.
+                </div>
+                <div className="leading-relaxed">
+                    24 hours meant rough edges: homography when calibration worked, frame differencing when it did not. tiling and stride so yolo and video io did not cook the laptops.
+                </div>
             </div>
         </div>
 
         <div className='flex flex-col text-left mt-10'>
             <span className='text-lightBeige/95 text-xl'>weekend war stories</span>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
-                <p>
-                    hardware and cloud both complained. machines thermal throttled under sustained encode and inference. a late night google cloud experiment for video plumbing briefly looked like a billing horror story until we capped it (think on the order of thirty dollars, lesson learned). the nastiest bug was getting heat to sit believably on a 3d extrusion of the plan without drifting or lying about coverage.
-                </p>
-                <p>
-                    travel had its own plot twist. via was on a{' '}
-                    <a
-                        href="https://service-pages.viarail.ca/kingston-sub-maintenance-apr-2026-passenger-travel-advisory-bulletin-en"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="a decoration-1 underline-offset-4"
-                    >
-                        kingston sub maintenance detour
-                    </a>
-                    {' '}that weekend (metrolinx track work, adjusted toronto to montreal schedules, longer run times through the oshawa stretch, and the usual risk that delays run past whatever the adjusted timetable promises). i booked close to the travel date. the reroutes made the timing i wanted ugly, so i gave up a business class seat and rebooked into economy on an earlier departure, which still cost more than i wanted because last minute fares do not care about your original cabin.
-                </p>
-                <p>
-                    all in it was still on the order of twelve hours round trip and about three hundred dollars to actually be in the room. i would do it again for how the event felt, but i am not pretending it was cheap.
-                </p>
-            </div>
-            <div className="w-[95vw] relative left-1/2 -ml-[47.5vw] md:w-[105%] md:left-0 md:-ml-[2.5%] md:static mt-8">
+                <div className="leading-relaxed">
+                    laptops throttled on long encode + inference runs. testing video on google cloud spiked to about $30 before we capped it. hardest bug was mapping heat onto the 3d plan without it sliding or lying about coverage.
+                </div>
+                <div className="w-[95vw] relative left-1/2 -ml-[47.5vw] md:w-[105%] md:left-0 md:-ml-[2.5%] md:static mt-8">
                 <Image
                     src="/projects/foco/image.png"
                     alt="foco: 3d floor map with activity heat"
@@ -149,28 +132,44 @@ import { MermaidDiagram } from "@/components/MermaidDiagram";
                     quality={85}
                     loading="lazy"
                 />
-                <p className="text-lighterBeige/75 font-inter font-extralight text-sm mt-3 text-center px-4 max-w-3xl mx-auto leading-relaxed">
-                    isometric view of the herzberg library stack: heat and cylinders on rooms, vibe callouts (social, locked in, collaborative), and floor labels so the 3d slab matches the real footprint we were fighting to align all weekend.
-                </p>
+                <div className="text-lighterBeige/75 font-inter font-extralight text-sm mt-3 text-center px-4 max-w-3xl mx-auto leading-relaxed">
+                    herzberg library stack in 3d: heat on rooms, vibe tags, floor labels lined up to the real plan.
+                </div>
+            </div>
+                <div className="leading-relaxed">
+                    via train ran a{' '}
+                    <a
+                        href="https://service-pages.viarail.ca/kingston-sub-maintenance-apr-2026-passenger-travel-advisory-bulletin-en"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="a decoration-1 underline-offset-4"
+                    >
+                        kingston sub maintenance detour
+                    </a>
+                    {' '}that weekend (metrolinx work, slower toronto to montreal runs). i had to switch up ticket to get home earlier rather than 2 am and it means that i had to drop business for an earlier economy ticket, and paid more than i wanted. roughly 12 hours round trip and ~$300 all in.
+                </div>
             </div>
         </div>
 
         <div className='flex flex-col text-left mt-10'>
             <span className='text-lightBeige/95 text-xl'>judging and the floor</span>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
-                <p>
-                    traffic on the floor turned into the real signal. judges stopped, but so did other teams, organizers, and random visitors who wanted to try the demo. when people linger because they get the joke <em>and</em> the interaction, you stop worrying only about rubric points and start thinking about whether the build has legs past the weekend.
-                </p>
+                <div className="leading-relaxed">
+                    jachacks used a science fair style expo, which was the first time i had done that format. i expected mostly judges rotating through. instead we got a steady line of people at the table: judges, other teams, organizers, and a few guests who were just curious. they actually wanted to hear the pitch and poke at the demo, not only score rubrics.
+                </div>
+                <div className="leading-relaxed">
+                    we counted something like twenty people through over the block, which felt neat for a 24 hour build. honestly a proud moment.
+                </div>
             </div>
         </div>
 
         <div className='flex flex-col text-left mt-10'>
             <span className='text-lightBeige/95 text-xl'>architecture notes</span>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
-                <p>
-                    the ui lives on next.js with assets in supabase storage. fastapi sits behind a tight cors allowlist for opencv, ultralytics, and gemini. we split static hosting on vercel from a stateless api on render so deploys stayed boring while we iterated. on the client, react three fiber needed defensive patterns: memoized props and stable refs so event handlers did not go stale when the booth wifi and hot reload did their worst.
-                </p>
-                <p className='text-lightBeige/90 text-sm font-normal pt-2'>data flow (high level)</p>
+                <div className="leading-relaxed">
+                    next.js ui, clips in supabase. fastapi behind cors for opencv, yolo, gemini. ui on vercel, api on render. r3f: memo + stable refs so handlers did not break under expo wifi and reloads.
+                </div>
+                <div className='text-lightBeige/90 text-sm font-normal pt-2'>data flow (high level)</div>
                 <MermaidDiagram
                     aria-label="foco architecture diagram"
                     chart={`flowchart TD
@@ -191,16 +190,16 @@ import { MermaidDiagram } from "@/components/MermaidDiagram";
         <div className='flex flex-col text-left mt-10'>
             <span className='text-lightBeige/95 text-xl'>what is next</span>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
-                <p>
-                    next step is definitely open sourcing it so anyone who wants to push the idea further can fork and run. the repo and writeup stay linked above if you want to take it to a bigger step than our 24 hour slice.
-                </p>
-                <p>
-                    on the product side i want polish: pipe in a live feed from your phone in real time, tighter per room masks, faster presets, and ui that never blurs what is raw motion versus model output. anything live or heavy would run on your own stack and your own bill, not mine, which feels like the honest way to ship something camera shaped.
-                </p>
-                <p>
+                <div className="leading-relaxed">
+                    plan is to open source it so others can fork. links at the top.
+                </div>
+                <div className="leading-relaxed">
+                    polish: phone live feed, tighter room masks, faster presets, clearer labels for motion vs model text. live runs on your infra and your bill, not mine.
+                </div>
+                <div className="leading-relaxed">
                     credits:{' '}
                     <a href="https://www.linkedin.com/in/wkmxyz/" target="_blank" rel="noopener noreferrer" className="a decoration-1 underline-offset-4">coco wang</a>
-                </p>
+                </div>
             </div>
         </div>
 

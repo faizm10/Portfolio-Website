@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, type ComponentType, type ReactNode } from "react";
+import clsx from "clsx";
 import PageViewCounter from "../components/PageViewCounter";
 import { useRouter } from "next/navigation";
 import { MDXProvider } from "@mdx-js/react";
@@ -77,6 +78,9 @@ export default function SlugPageClient({ slug }: { slug: string }) {
     return null;
   }
 
+  /** full-bleed MDX layouts use their own typography; `prose` here can emit invalid nested `<p>` */
+  const skipArticleProse = slug === "jachacks";
+
   const components = {
     a: ({ href, children }: { href: string; children: ReactNode }) => (
       <a href={href} target="_blank" rel="noopener noreferrer">
@@ -116,12 +120,20 @@ export default function SlugPageClient({ slug }: { slug: string }) {
           <PageViewCounter slug={slug} />
         </div>
         <article
-          className="prose prose-neutral max-w-none text-left text-neutral-800 prose-headings:font-semibold prose-headings:text-neutral-900 prose-p:text-neutral-700 prose-p:leading-relaxed prose-a:text-neutral-800 prose-a:underline"
-          style={{
-            ["--tw-prose-body" as any]: "rgb(55 65 81)",
-            ["--tw-prose-headings" as any]: "rgb(17 24 39)",
-            ["--tw-prose-links" as any]: "rgb(31 41 55)",
-          }}
+          className={clsx(
+            "max-w-none text-left",
+            !skipArticleProse &&
+              "prose prose-neutral text-neutral-800 prose-headings:font-semibold prose-headings:text-neutral-900 prose-p:text-neutral-700 prose-p:leading-relaxed prose-a:text-neutral-800 prose-a:underline",
+          )}
+          style={
+            skipArticleProse
+              ? undefined
+              : {
+                  ["--tw-prose-body" as any]: "rgb(55 65 81)",
+                  ["--tw-prose-headings" as any]: "rgb(17 24 39)",
+                  ["--tw-prose-links" as any]: "rgb(31 41 55)",
+                }
+          }
         >
           <div ref={topRef} />
           <MDXProvider components={components}>
