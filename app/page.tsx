@@ -78,10 +78,14 @@ export default function Home() {
     return () => window.removeEventListener("command-palette-opened", noop);
   }, []);
 
-  const isMac =
-    typeof navigator !== "undefined" &&
-    (navigator.platform.toLowerCase().includes("mac") ||
-      navigator.userAgent.toLowerCase().includes("mac"));
+  // Defer to after mount so SSR + first client paint match (avoids ⌘ vs ctrl hydration mismatch).
+  const [isMac, setIsMac] = useState(false);
+  useEffect(() => {
+    setIsMac(
+      navigator.platform.toLowerCase().includes("mac") ||
+        navigator.userAgent.toLowerCase().includes("mac"),
+    );
+  }, []);
 
   return (
     <>
