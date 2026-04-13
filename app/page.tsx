@@ -106,7 +106,7 @@ export default function Home() {
             href="/jachacks"
             className="mb-6 flex items-center justify-between gap-3 rounded-lg border border-amber-200/90 bg-amber-50/90 px-3.5 py-2.5 text-sm text-amber-950 shadow-sm transition hover:border-amber-300 hover:bg-amber-100/95"
           >
-            <span className="leading-snug">new blog - jachacks2026 2nd place overall</span>
+            <span className="leading-snug">new blog - 2nd place overall @ jachacks '26</span>
             <span className="shrink-0 text-amber-700/90" aria-hidden>
               →
             </span>
