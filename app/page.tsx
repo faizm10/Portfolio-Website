@@ -10,6 +10,7 @@ import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from "react-icons/fa6";
 import { IoDocumentTextOutline, IoImagesOutline } from "react-icons/io5";
 import { posts } from "./posts";
 import { showcaseProjects } from "./projects";
+import { credlyBadges } from "./resume/data";
 import PageViewCounter from "./components/PageViewCounter";
 import GitHubContributionsCalendar from "./components/GitHubContributionsCalendar";
 
@@ -312,6 +313,37 @@ export default function Home() {
                     {post.title}
                   </Link>
                   <PageViewCounter slug={post.slug} />
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* Certifications */}
+          <section className="mt-12">
+            <h2 className="text-sm font-medium text-neutral-500 uppercase tracking-wide">
+              certifications
+            </h2>
+            <ul className="mt-4 flex flex-wrap gap-3">
+              {credlyBadges.map((badge) => (
+                <li key={badge.id}>
+                  <a
+                    href={`https://www.credly.com/badges/${badge.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-2.5 text-sm transition hover:border-neutral-300 hover:shadow-sm"
+                  >
+                    <Image
+                      src={badge.imageUrl}
+                      alt={badge.name}
+                      width={40}
+                      height={40}
+                      className="h-10 w-10 shrink-0 object-contain"
+                    />
+                    <div>
+                      <p className="font-semibold text-neutral-900">{badge.name}</p>
+                      <p className="text-xs text-neutral-500">{badge.issuer} · {badge.issued}</p>
+                    </div>
+                  </a>
                 </li>
               ))}
             </ul>

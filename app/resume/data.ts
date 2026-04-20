@@ -22,6 +22,25 @@ export const scholarships = [
   },
 ] as const;
 
+export const credlyBadges = [
+  {
+    id: "a4abc009-d840-48c5-a332-414a6d4cf61d",
+    name: "TD Google Hackathon Participant",
+    issuer: "Explore Google Cloud",
+    issued: "Apr 2026",
+    imageUrl:
+      "https://images.credly.com/images/a4fc6a2d-be28-4900-9ca4-9adf8f86f569/blob",
+  },
+  {
+    id: "4296915c-4311-4dea-9b30-6f03f756ee59",
+    name: "TD Google Hackathon Pre-Work",
+    issuer: "Explore Google Cloud",
+    issued: "Apr 2026",
+    imageUrl:
+      "https://images.credly.com/images/ad69da3f-fd00-45ef-a1a8-faff463d09ad/blob",
+  },
+] as const;
+
 export const hackathonsSummary = {
   headline: "15+ hackathons (and counting)",
   body: "I treat hackathons as a serious side practice: shipping full-stack and ML demos under time pressure, organizing at scale (VP of Tech @ HackCanada), and mentoring or judging when I am not competing. A running list of events, teammates, and wins is on my site.",
@@ -42,9 +61,9 @@ export const resume = {
   education: [
     {
       school: "University of Guelph",
-      degree: "Bachelor of Computing, Computer Science (co-op)",
+      degree: "Bachelor of Computing, Computer Science (Honours)",
       location: "Guelph, ON",
-      dates: "2022 — present",
+      dates: "2023 — present",
       highlights: [
         "Coursework across systems, algorithms, databases, and software design.",
       ],
@@ -53,7 +72,7 @@ export const resume = {
   experience: [
     {
       company: "Tangerine (Scotiabank)",
-      role: "Incoming Software Developer Intern",
+      role: "Software Developer Intern",
       location: "Toronto, ON",
       dates: "Summer 2026",
       bullets: ["Software Development internship — summer 2026."],
@@ -99,7 +118,7 @@ export const resume = {
       company: "University of Guelph",
       role: "Full Stack Developer",
       location: "Guelph, ON",
-      dates: "2024 — present",
+      dates: "2024",
       bullets: [
         "Shipped internal and public-facing tools for the CS community.",
       ],
@@ -123,7 +142,8 @@ export const resume = {
     {
       name: "Octree",
       url: "https://www.useoctree.com/",
-      detail: "AI-powered LaTeX editor — 250+ GitHub stars, 2k users, 50 forks.",
+      detail:
+        "AI-powered LaTeX editor — 250+ GitHub stars, 2k users, 50 forks.",
     },
     {
       name: "Arcki",
@@ -138,7 +158,8 @@ export const resume = {
     {
       name: "TripLoom",
       url: "https://github.com/faizm10/TripLoom",
-      detail: "AI-assisted travel planner for flights, transit, and itineraries.",
+      detail:
+        "AI-assisted travel planner for flights, transit, and itineraries.",
     },
   ],
   skills: {

@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { hackathonsSummary, resume, scholarships } from "./data";
+import { credlyBadges, hackathonsSummary, resume, scholarships } from "./data";
 
 function ContactLink({
   href,
@@ -176,6 +177,36 @@ export default function ResumeDocument() {
             <dd>{skills.other}</dd>
           </div>
         </dl>
+      </section>
+
+      <section className="mt-10 print:mt-8">
+        <h2 className="text-xs font-semibold uppercase tracking-wider text-neutral-500 print:text-neutral-700">
+          Certifications & badges
+        </h2>
+        <ul className="mt-4 flex flex-wrap gap-4 print:gap-3">
+          {credlyBadges.map((badge) => (
+            <li key={badge.id}>
+              <a
+                href={`https://www.credly.com/badges/${badge.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 rounded-lg border border-neutral-200 bg-neutral-50 p-3 text-sm transition hover:border-neutral-300 hover:shadow-sm print:border-neutral-300 print:bg-white"
+              >
+                <Image
+                  src={badge.imageUrl}
+                  alt={badge.name}
+                  width={48}
+                  height={48}
+                  className="h-12 w-12 shrink-0 object-contain"
+                />
+                <div>
+                  <p className="font-semibold text-neutral-900">{badge.name}</p>
+                  <p className="text-xs text-neutral-500">{badge.issuer} · {badge.issued}</p>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section className="mt-10 print:mt-8">
