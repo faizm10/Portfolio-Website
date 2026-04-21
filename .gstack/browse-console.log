@@ -1,0 +1,8 @@
+[2026-04-20T21:34:11.021Z] [warning] [LaunchDarkly] The waitForInitialization function was called without a timeout specified. In a future version a default timeout will be applied.
+[2026-04-20T21:34:11.150Z] [info] [LaunchDarkly] LaunchDarkly client initialized
+[2026-04-20T21:34:11.150Z] [info] [LaunchDarkly] Opening stream connection to https://clientstream.launchdarkly.com/ping/663bdb8143d6f11011f85017
+[2026-04-20T21:34:50.840Z] [warning] [LaunchDarkly] Error on stream connection: {"isTrusted":true}, will continue retrying after 593 milliseconds.
+[2026-04-20T21:34:50.840Z] [info] [LaunchDarkly] Closing stream connection
+[2026-04-20T21:34:51.997Z] [warning] [LaunchDarkly] The waitForInitialization function was called without a timeout specified. In a future version a default timeout will be applied.
+[2026-04-20T21:34:52.020Z] [info] [LaunchDarkly] LaunchDarkly client initialized
+[2026-04-20T21:34:52.025Z] [info] [LaunchDarkly] Opening stream connection to https://clientstream.launchdarkly.com/ping/663bdb8143d6f11011f85017

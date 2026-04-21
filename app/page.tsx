@@ -86,24 +86,27 @@ export default function Home() {
   return (
     <>
       <div
-        className={`fixed inset-0 z-40 flex items-center justify-center bg-white transition-opacity duration-800 ${
+        className={`fixed inset-0 z-40 flex items-center justify-center bg-[#f5f4ed] transition-opacity duration-800 ${
           isLoaded
             ? "pointer-events-none invisible opacity-0"
             : "visible opacity-100"
         }`}
         aria-hidden={isLoaded}
       >
-        <p className="text-neutral-800 text-sm md:text-base">grinding...</p>
+        <p className="font-[family-name:var(--font-newsreader)] text-[#1B365D] text-sm italic tracking-wide">
+          faiz mustansar
+        </p>
       </div>
 
-      <div className="relative min-h-screen w-full">
+      <div className="relative min-h-screen w-full bg-[#f5f4ed]">
         <main className="mx-auto max-w-3xl px-6 py-12 md:py-16">
+          {/* Photography banner — ink blue */}
           <Link
             href="/photos"
-            className="mb-6 flex items-center justify-between gap-3 rounded-lg border border-amber-200/90 bg-amber-50/90 px-3.5 py-2.5 text-sm text-amber-950 shadow-sm transition hover:border-amber-300 hover:bg-amber-100/95"
+            className="mb-8 flex items-center justify-between gap-3 rounded border border-[#1B365D]/20 bg-[#1B365D]/5 px-3.5 py-2.5 text-sm text-[#1B365D] transition hover:border-[#1B365D]/40 hover:bg-[#1B365D]/10"
           >
             <span className="leading-snug">check out my photography</span>
-            <span className="shrink-0 text-amber-700/90" aria-hidden>
+            <span className="shrink-0 opacity-70" aria-hidden>
               →
             </span>
           </Link>
@@ -111,16 +114,16 @@ export default function Home() {
           {/* Header: name left, socials right */}
           <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <h1 className="text-2xl font-bold tracking-tight text-neutral-900 md:text-3xl">
+              <h1 className="font-[family-name:var(--font-newsreader)] text-3xl font-[500] tracking-tight text-[#201a10] md:text-4xl">
                 faiz mustansar
               </h1>
-              <p className="mt-1 text-sm text-neutral-600">
+              <p className="mt-1.5 text-sm leading-relaxed text-[#5c5646]">
                 incoming swe intern @{" "}
                 <a
                   href="https://www.tangerine.ca/en/personal"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline hover:text-neutral-900"
+                  className="text-[#1B365D] underline underline-offset-2 hover:text-[#0e1f38]"
                 >
                   tangerine (scotiabank)
                 </a>{" "} · swe intern @{" "}
@@ -128,11 +131,10 @@ export default function Home() {
                   href="https://www.td.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline hover:text-neutral-900"
+                  className="text-[#1B365D] underline underline-offset-2 hover:text-[#0e1f38]"
                 >
                   td bank
-                </a>{" "}
-                {/* · seeking fall &apos;26 intern/ft roles */}
+                </a>
               </p>
             </div>
             <div className="flex items-center gap-4">
@@ -143,7 +145,7 @@ export default function Home() {
                       new CustomEvent("open-command-palette"),
                     )
                   }
-                  className="rounded border border-neutral-300 bg-white px-2.5 py-1 text-xs text-neutral-600 hover:border-neutral-400"
+                  className="rounded border border-[#d4cfc0] bg-[#eceae2] px-2.5 py-1 text-xs text-[#5c5646] hover:border-[#b5ad9a]"
                 >
                   <kbd className={isModifierPressed ? "opacity-40" : ""}>
                     {isMac ? "⌘" : "ctrl"}
@@ -153,7 +155,7 @@ export default function Home() {
               )}
               <Link
                 href="/photos"
-                className="text-neutral-600 hover:text-neutral-900"
+                className="text-[#8a8270] hover:text-[#1B365D] transition-colors"
                 aria-label="Photos"
               >
                 <IoImagesOutline className="h-5 w-5" />
@@ -162,7 +164,7 @@ export default function Home() {
                 href="https://www.linkedin.com/in/faizmustansar/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-600 hover:text-neutral-900"
+                className="text-[#8a8270] hover:text-[#1B365D] transition-colors"
                 aria-label="LinkedIn"
               >
                 <FaLinkedin className="h-5 w-5" />
@@ -171,7 +173,7 @@ export default function Home() {
                 href="https://github.com/faizm10"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-600 hover:text-neutral-900"
+                className="text-[#8a8270] hover:text-[#1B365D] transition-colors"
                 aria-label="GitHub"
               >
                 <FaGithub className="h-5 w-5" />
@@ -180,7 +182,7 @@ export default function Home() {
                 href="https://www.instagram.com/faizm.30/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-600 hover:text-neutral-900"
+                className="text-[#8a8270] hover:text-[#1B365D] transition-colors"
                 aria-label="Instagram"
               >
                 <FaInstagram className="h-5 w-5" />
@@ -189,7 +191,7 @@ export default function Home() {
                 href="https://x.com/_faizm"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-600 hover:text-neutral-900"
+                className="text-[#8a8270] hover:text-[#1B365D] transition-colors"
                 aria-label="Twitter"
               >
                 <FaTwitter className="h-5 w-5" />
@@ -201,48 +203,48 @@ export default function Home() {
 
           {/* What I've been up to */}
           <section className="mt-12">
-            <h2 className="text-sm font-medium text-neutral-500 uppercase tracking-wide">
+            <h2 className="text-xs font-medium uppercase tracking-widest text-[#8a8270]">
               what i&apos;ve been up to
             </h2>
-            <ul className="mt-4 space-y-4">
+            <ul className="mt-5 space-y-4">
               {experiences.map((exp, i) => (
-                <li key={i} className="flex gap-4">
-                  <div className="h-10 w-10 shrink-0 overflow-hidden rounded-lg bg-neutral-200">
+                <li key={i} className="flex gap-4 items-center">
+                  <div className="h-9 w-9 shrink-0 overflow-hidden rounded bg-[#e8e4d9] ring-1 ring-[#d4cfc0]">
                     {exp.icon ? (
                       <Image
                         src={exp.icon}
                         alt=""
-                        width={40}
-                        height={40}
-                        className="h-10 w-10 object-contain"
+                        width={36}
+                        height={36}
+                        className="h-9 w-9 object-contain"
                       />
                     ) : null}
                   </div>
                   <div>
-                    <p className="font-semibold text-neutral-900">
+                    <p className="font-medium text-[#201a10] leading-tight">
                       {exp.title}
                     </p>
-                    <p className="text-sm text-neutral-600">{exp.role}</p>
+                    <p className="text-sm text-[#8a8270]">{exp.role}</p>
                   </div>
                 </li>
               ))}
             </ul>
           </section>
 
-          {/* Cool projects */}
+          {/* Projects */}
           <section className="mt-14">
-            <h2 className="text-sm font-medium text-neutral-500 uppercase tracking-wide">
+            <h2 className="text-xs font-medium uppercase tracking-widest text-[#8a8270]">
               some projects i built
             </h2>
-            <div className="mt-4 grid grid-cols-1 gap-8 sm:grid-cols-2">
+            <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
               {showcaseProjects.slice(0, 6).map((project) => (
                 <Link
                   key={project.slug}
                   href={`/${project.slug}`}
                   className="group block h-full"
                 >
-                  <div className="flex h-full flex-col overflow-hidden rounded-lg border border-neutral-100 bg-neutral-50 shadow-sm transition-shadow group-hover:shadow-md">
-                    <div className="relative aspect-video w-full bg-neutral-200">
+                  <div className="flex h-full flex-col overflow-hidden rounded border border-[#d4cfc0] bg-[#f0efe7] transition-shadow group-hover:shadow-[0_2px_12px_rgba(27,54,93,0.08)] group-hover:border-[#b5ad9a]">
+                    <div className="relative aspect-video w-full bg-[#e8e4d9]">
                       <Image
                         src={project.banner}
                         alt={project.name}
@@ -253,16 +255,16 @@ export default function Home() {
                     </div>
                     <div className="flex flex-1 flex-col p-4">
                       <div className="flex items-baseline justify-between gap-2">
-                        <span className="font-semibold text-neutral-900">
+                        <span className="font-[family-name:var(--font-newsreader)] font-[500] text-[#201a10]">
                           {project.name}
                         </span>
                         {project.year && (
-                          <span className="text-sm text-neutral-500">
+                          <span className="text-xs text-[#8a8270]">
                             {project.year}
                           </span>
                         )}
                       </div>
-                      <p className="mt-1 text-sm leading-relaxed text-neutral-600">
+                      <p className="mt-1 text-sm leading-[1.45] text-[#5c5646]">
                         {project.desc}{project.stat ? `. ${project.stat}` : ""}
                       </p>
                     </div>
@@ -275,27 +277,27 @@ export default function Home() {
                 href="https://github.com/faizm10"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-neutral-600 hover:text-neutral-900 hover:underline"
+                className="text-sm text-[#1B365D] hover:underline hover:text-[#0e1f38]"
               >
-                view more on github
+                view more on github →
               </a>
             </div>
           </section>
 
           {/* Latest blogs */}
           <section className="mt-14">
-            <h2 className="text-sm font-medium text-neutral-500 uppercase tracking-wide">
+            <h2 className="text-xs font-medium uppercase tracking-widest text-[#8a8270]">
               latest blogs
             </h2>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-5 divide-y divide-[#d4cfc0]">
               {posts.map((post) => (
                 <li
                   key={post.slug}
-                  className="flex items-center justify-between gap-4"
+                  className="flex items-center justify-between gap-4 py-2.5"
                 >
                   <Link
                     href={`/${post.slug}`}
-                    className="text-neutral-700 hover:underline"
+                    className="text-[#201a10] hover:text-[#1B365D] hover:underline underline-offset-2"
                   >
                     {post.title}
                   </Link>

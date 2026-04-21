@@ -147,16 +147,16 @@ export default function CommandPalette() {
   };
 
   const Shortcut: React.FC<{ children: any }> = ({ children }) => (
-    <div className="flex text-xs items-center gap-1 ml-auto text-midBeige3">
+    <div className="flex text-xs items-center gap-1 ml-auto text-[#8a8270]">
       <kbd
-        className={`px-1.5 py-0.5 rounded bg-stone-800 text-midBeige2/90 ${
+        className={`px-1.5 py-0.5 rounded bg-[#e8e4d9] text-[#5c5646] border border-[#d4cfc0] ${
           isShiftKeyPressed ? "opacity-60" : "opacity-100"
         }`}
       >
         shift
       </kbd>
       <span>+</span>
-      <kbd className="px-1.5 py-0.5 rounded bg-stone-800 text-midBeige2/90">
+      <kbd className="px-1.5 py-0.5 rounded bg-[#e8e4d9] text-[#5c5646] border border-[#d4cfc0]">
         {children}
       </kbd>
     </div>
@@ -166,7 +166,7 @@ export default function CommandPalette() {
     <Dialog.Root open={open} onOpenChange={setOpen}>
       {showDialog && (
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 bg-black/70 animate-fade-in z-40" />
+          <Dialog.Overlay className="fixed inset-0 bg-[#0e1f38]/50 animate-fade-in z-40" />
           <Dialog.Content
             className={`fixed top-[20%] left-1/2 -translate-x-1/2 w-full max-w-125 p-3 z-50 ${
               open ? "animate-slide-down" : "animate-slide-up"
@@ -174,51 +174,50 @@ export default function CommandPalette() {
           >
             <Dialog.Title></Dialog.Title>
             <Command
-              className="w-full rounded-xl border-2 border-darkBeige1/90 bg-darkBeige3/60 shadow-2xl overflow-hidden backdrop-blur-2xl"
+              className="w-full rounded border border-[#d4cfc0] bg-[#f5f4ed] shadow-[0_8px_32px_rgba(27,54,93,0.15)] overflow-hidden"
               loop={true}
               shouldFilter={true}
               onClick={(e) => {
-                // focus search input element when click anywhere on cmd
                 const input = e.currentTarget.querySelector("input");
-                if (input) {
-                  input.focus();
-                }
+                if (input) input.focus();
               }}
             >
-              <div className="px-5 py-6 border-b border-stone-700 flex items-center gap-3">
+              <div className="px-5 py-5 border-b border-[#d4cfc0] flex items-center gap-3">
                 <img src="/jsl.png" alt="jsl" className="w-7 rounded-sm" />
                 <div className="flex-1">
-                  <h2 className="font-medium text-midBeige1">
+                  <h2 className="font-medium text-[#201a10]">
                     faizmustansar10@gmail.com
                   </h2>
-                  <p className="text-xs text-midBeige2/90">
-                    use <kbd className="px-1">esc</kbd> or click outside to
-                    close
+                  <p className="text-xs text-[#8a8270]">
+                    use <kbd className="px-1 rounded bg-[#e8e4d9] border border-[#d4cfc0]">esc</kbd> or click outside to close
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center border-b border-stone-700 px-4 py-4">
-                <IoSearchOutline className="h-4 w-4 text-midBeige2/90" />
+              <div className="flex items-center border-b border-[#d4cfc0] px-4 py-3">
+                <IoSearchOutline className="h-4 w-4 text-[#8a8270]" />
                 <Command.Input
                   placeholder="search for topics ..."
-                  className="flex-1 w-full bg-transparent px-3 text-sm text-lightBeige placeholder:text-midBeige3 focus:outline-none"
+                  className="flex-1 w-full bg-transparent px-3 text-sm text-[#201a10] placeholder:text-[#b5ad9a] focus:outline-none"
                   autoFocus={true}
                 />
               </div>
 
-              <Command.List className="max-h-75 overflow-y-auto px-3 py-4">
-                <Command.Empty className="px-5 py-4 text-sm text-midBeige2/90">
+              <Command.List className="max-h-75 overflow-y-auto px-3 py-3">
+                <Command.Empty className="px-5 py-4 text-sm text-[#8a8270]">
                   no results found.
                 </Command.Empty>
 
-                <Command.Group heading="links" className="px-2 text-lightBeige">
+                <Command.Group
+                  heading="links"
+                  className="px-2 text-xs text-[#8a8270] uppercase tracking-widest mb-1"
+                >
                   <Command.Item
                     value="home faiz page"
                     onSelect={() => {
                       setTimeout(() => openNextLink(() => router.push("/")), 0);
                     }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-midBeige2/90 rounded hover:bg-darkBeige1/40 cursor-pointer data-[selected=true]:bg-darkBeige1/40"
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-[#5c5646] rounded hover:bg-[#e8e4d9] hover:text-[#1B365D] cursor-pointer data-[selected=true]:bg-[#e8e4d9] data-[selected=true]:text-[#1B365D]"
                   >
                     <IoHomeOutline className="h-4 w-4" />
                     <span className="flex-1">home</span>
@@ -230,7 +229,7 @@ export default function CommandPalette() {
                     onSelect={() => {
                       setTimeout(() => openNextLink(() => router.push("/photos")), 0);
                     }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-midBeige2/90 rounded hover:bg-darkBeige1/40 cursor-pointer data-[selected=true]:bg-darkBeige1/40"
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-[#5c5646] rounded hover:bg-[#e8e4d9] hover:text-[#1B365D] cursor-pointer data-[selected=true]:bg-[#e8e4d9] data-[selected=true]:text-[#1B365D]"
                   >
                     <IoImagesOutline className="h-4 w-4" />
                     <span className="flex-1">photos</span>
@@ -241,26 +240,22 @@ export default function CommandPalette() {
                     value="linkedin profile socials faiz"
                     onSelect={() =>
                       openLink(() =>
-                        window.open(
-                          "https://www.linkedin.com/in/faizmustansar/",
-                          "_blank",
-                        ),
+                        window.open("https://www.linkedin.com/in/faizmustansar/", "_blank"),
                       )
                     }
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-midBeige2/90 rounded hover:bg-darkBeige1/40 cursor-pointer data-[selected=true]:bg-darkBeige1/40"
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-[#5c5646] rounded hover:bg-[#e8e4d9] hover:text-[#1B365D] cursor-pointer data-[selected=true]:bg-[#e8e4d9] data-[selected=true]:text-[#1B365D]"
                   >
                     <PiLinkedinLogo className="h-4 w-4" />
                     <span className="flex-1">linkedin</span>
                     <Shortcut>1</Shortcut>
                   </Command.Item>
+
                   <Command.Item
                     value="github git profile faiz"
                     onSelect={() =>
-                      openLink(() =>
-                        window.open("https://github.com/faizm10/", "_blank"),
-                      )
+                      openLink(() => window.open("https://github.com/faizm10/", "_blank"))
                     }
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-midBeige2/90 rounded hover:bg-darkBeige1/40 cursor-pointer data-[selected=true]:bg-darkBeige1/40"
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-[#5c5646] rounded hover:bg-[#e8e4d9] hover:text-[#1B365D] cursor-pointer data-[selected=true]:bg-[#e8e4d9] data-[selected=true]:text-[#1B365D]"
                   >
                     <FiGithub className="h-4 w-4" />
                     <span className="flex-1">github</span>
@@ -271,13 +266,10 @@ export default function CommandPalette() {
                     value="ig instagram profile socials faiz"
                     onSelect={() =>
                       openLink(() =>
-                        window.open(
-                          "https://www.instagram.com/faizm.30/",
-                          "_blank",
-                        ),
+                        window.open("https://www.instagram.com/faizm.30/", "_blank"),
                       )
                     }
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-midBeige2/90 rounded hover:bg-darkBeige1/40 cursor-pointer data-[selected=true]:bg-darkBeige1/40"
+                    className="flex items-center gap-2 px-3 py-2 text-sm text-[#5c5646] rounded hover:bg-[#e8e4d9] hover:text-[#1B365D] cursor-pointer data-[selected=true]:bg-[#e8e4d9] data-[selected=true]:text-[#1B365D]"
                   >
                     <IoLogoInstagram className="h-4 w-4" />
                     <span className="flex-1">instagram</span>
@@ -285,24 +277,19 @@ export default function CommandPalette() {
                   </Command.Item>
                 </Command.Group>
               </Command.List>
-              <div className="border-t border-stone-700 px-3 py-4">
-                <div className="flex items-center justify-between text-midBeige2/90 text-xs">
+
+              <div className="border-t border-[#d4cfc0] px-3 py-3">
+                <div className="flex items-center justify-between text-[#8a8270] text-xs">
                   <div className="flex items-center gap-2">
                     <span>use</span>
-                    <kbd className="px-0.5 py-0.5 rounded bg-stone-800 text-midBeige2/90">
-                      ↑
-                    </kbd>
+                    <kbd className="px-1 py-0.5 rounded bg-[#e8e4d9] border border-[#d4cfc0] text-[#5c5646]">↑</kbd>
                     |
-                    <kbd className="px-0.5 py-0.5 rounded bg-stone-800 text-midBeige2/90">
-                      ↓
-                    </kbd>
+                    <kbd className="px-1 py-0.5 rounded bg-[#e8e4d9] border border-[#d4cfc0] text-[#5c5646]">↓</kbd>
                     <span>to toggle</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span>press</span>
-                    <kbd className="px-1.5 py-0.5 rounded bg-stone-800 text-midBeige2/90">
-                      ↵
-                    </kbd>
+                    <kbd className="px-1.5 py-0.5 rounded bg-[#e8e4d9] border border-[#d4cfc0] text-[#5c5646]">↵</kbd>
                     <span>to open</span>
                   </div>
                 </div>

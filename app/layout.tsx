@@ -1,15 +1,21 @@
 import type { Metadata } from "next";
-import { PT_Mono, Geist, Pacifico } from "next/font/google";
+import { Newsreader, Inter, Pacifico } from "next/font/google";
 import Script from "next/script";
 import { Suspense } from "react";
 import CommandPalette from "./components/Cmd";
 import GoogleAnalyticsRouteTracker from "./components/GoogleAnalyticsRouteTracker";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
-const ptMono = PT_Mono({
-  weight: "400",
+const newsreader = Newsreader({
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
   subsets: ["latin"],
-  variable: "--font-pt-mono",
+  variable: "--font-newsreader",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
 import "prismjs/themes/prism-twilight.css";
 import "prismjs/plugins/line-numbers/prism-line-numbers.css";
@@ -24,7 +30,6 @@ import "prismjs/components/prism-bash";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 const pacifico = Pacifico({
   weight: "400",
   subsets: ["latin"],
@@ -81,13 +86,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("font-sans", geist.variable, pacifico.variable)}
+      className={cn(newsreader.variable, inter.variable, pacifico.variable)}
     >
       <head>
         <link rel="canonical" href="https://faizm.ca" />
       </head>
       <body
-        className={`${ptMono.className} min-h-screen w-full text-neutral-900 antialiased`}
+        className={`${inter.className} min-h-screen w-full text-[#201a10] antialiased`}
       >
         <div className="min-h-screen w-full">
           {children}
@@ -101,7 +106,7 @@ export default function RootLayout({
           />
         )}
         <footer className="w-full pb-6">
-          <div className="mx-auto flex w-full max-w-3xl items-center gap-2 px-6 text-neutral-700">
+          <div className="mx-auto flex w-full max-w-3xl items-center gap-2 px-6 text-[#8a8270]">
             <a
               href="https://www.uguelph.network/#faizm.ca?nav=prev"
               aria-label="Previous site"
