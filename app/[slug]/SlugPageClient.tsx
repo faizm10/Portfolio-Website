@@ -102,25 +102,19 @@ export default function SlugPageClient({ slug }: { slug: string }) {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden px-6 py-12">
+    <div className="min-h-screen w-full overflow-x-hidden px-6 py-12" style={{ backgroundColor: "var(--canvas)" }}>
       <div className="mx-auto max-w-xl blog-content">
         <div className="mb-8 flex items-center justify-between">
           <button
             onClick={() => router.push("/")}
-            className="text-sm text-neutral-600 hover:underline"
+            className="text-sm hover:underline"
+            style={{ color: "var(--ink-2)" }}
           >
             ← back
           </button>
           <PageViewCounter slug={slug} />
         </div>
-        <article
-          className="prose prose-neutral max-w-none text-left text-neutral-800 prose-headings:font-semibold prose-headings:text-neutral-900 prose-p:text-neutral-700 prose-p:leading-relaxed prose-a:text-neutral-800 prose-a:underline"
-          style={{
-            ["--tw-prose-body" as any]: "rgb(55 65 81)",
-            ["--tw-prose-headings" as any]: "rgb(17 24 39)",
-            ["--tw-prose-links" as any]: "rgb(31 41 55)",
-          }}
-        >
+        <article className="prose max-w-none text-left">
           <div ref={topRef} />
           <MDXProvider components={components}>
             <Post />

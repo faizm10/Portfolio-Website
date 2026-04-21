@@ -3,6 +3,7 @@ import { Newsreader, Inter, Pacifico } from "next/font/google";
 import Script from "next/script";
 import { Suspense } from "react";
 import CommandPalette from "./components/Cmd";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 import GoogleAnalyticsRouteTracker from "./components/GoogleAnalyticsRouteTracker";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
@@ -90,6 +91,12 @@ export default function RootLayout({
     >
       <head>
         <link rel="canonical" href="https://faizm.ca" />
+        {/* Prevent theme flash on load */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('portfolio-theme')||'navy';document.documentElement.setAttribute('data-theme',t);}catch(e){}`,
+          }}
+        />
       </head>
       <body
         className={`${inter.className} min-h-screen w-full text-[#201a10] antialiased`}
@@ -97,6 +104,7 @@ export default function RootLayout({
         <div className="min-h-screen w-full">
           {children}
           <CommandPalette />
+          <ThemeSwitcher />
         </div>
         {process.env.NEXT_PUBLIC_GOATCOUNTER_CODE && (
           <Script

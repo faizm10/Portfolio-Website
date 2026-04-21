@@ -146,19 +146,19 @@ export default function CommandPalette() {
     command();
   };
 
+  const kbdStyle = {
+    backgroundColor: "var(--surface-alt)",
+    color: "var(--ink-2)",
+    border: "1px solid var(--border)",
+  };
+
   const Shortcut: React.FC<{ children: any }> = ({ children }) => (
-    <div className="flex text-xs items-center gap-1 ml-auto text-[#8a8270]">
-      <kbd
-        className={`px-1.5 py-0.5 rounded bg-[#e8e4d9] text-[#5c5646] border border-[#d4cfc0] ${
-          isShiftKeyPressed ? "opacity-60" : "opacity-100"
-        }`}
-      >
+    <div className="flex text-xs items-center gap-1 ml-auto" style={{ color: "var(--ink-3)" }}>
+      <kbd className={`px-1.5 py-0.5 rounded ${isShiftKeyPressed ? "opacity-60" : "opacity-100"}`} style={kbdStyle}>
         shift
       </kbd>
       <span>+</span>
-      <kbd className="px-1.5 py-0.5 rounded bg-[#e8e4d9] text-[#5c5646] border border-[#d4cfc0]">
-        {children}
-      </kbd>
+      <kbd className="px-1.5 py-0.5 rounded" style={kbdStyle}>{children}</kbd>
     </div>
   );
 
@@ -166,7 +166,10 @@ export default function CommandPalette() {
     <Dialog.Root open={open} onOpenChange={setOpen}>
       {showDialog && (
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 bg-[#0e1f38]/50 animate-fade-in z-40" />
+          <Dialog.Overlay
+            className="fixed inset-0 animate-fade-in z-40"
+            style={{ backgroundColor: "var(--overlay)" }}
+          />
           <Dialog.Content
             className={`fixed top-[20%] left-1/2 -translate-x-1/2 w-full max-w-125 p-3 z-50 ${
               open ? "animate-slide-down" : "animate-slide-up"
@@ -174,7 +177,12 @@ export default function CommandPalette() {
           >
             <Dialog.Title></Dialog.Title>
             <Command
-              className="w-full rounded border border-[#d4cfc0] bg-[#f5f4ed] shadow-[0_8px_32px_rgba(27,54,93,0.15)] overflow-hidden"
+              className="w-full rounded overflow-hidden"
+              style={{
+                border: "1px solid var(--border)",
+                backgroundColor: "var(--canvas)",
+                boxShadow: "0 8px 32px var(--accent-shadow-lg)",
+              }}
               loop={true}
               shouldFilter={true}
               onClick={(e) => {
@@ -182,114 +190,73 @@ export default function CommandPalette() {
                 if (input) input.focus();
               }}
             >
-              <div className="px-5 py-5 border-b border-[#d4cfc0] flex items-center gap-3">
+              <div className="px-5 py-5 flex items-center gap-3" style={{ borderBottom: "1px solid var(--border)" }}>
                 <img src="/jsl.png" alt="jsl" className="w-7 rounded-sm" />
                 <div className="flex-1">
-                  <h2 className="font-medium text-[#201a10]">
+                  <h2 className="font-medium" style={{ color: "var(--ink)" }}>
                     faizmustansar10@gmail.com
                   </h2>
-                  <p className="text-xs text-[#8a8270]">
-                    use <kbd className="px-1 rounded bg-[#e8e4d9] border border-[#d4cfc0]">esc</kbd> or click outside to close
+                  <p className="text-xs" style={{ color: "var(--ink-3)" }}>
+                    use <kbd className="px-1 rounded" style={kbdStyle}>esc</kbd> or click outside to close
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center border-b border-[#d4cfc0] px-4 py-3">
-                <IoSearchOutline className="h-4 w-4 text-[#8a8270]" />
+              <div className="flex items-center px-4 py-3" style={{ borderBottom: "1px solid var(--border)" }}>
+                <IoSearchOutline className="h-4 w-4" style={{ color: "var(--ink-3)" }} />
                 <Command.Input
                   placeholder="search for topics ..."
-                  className="flex-1 w-full bg-transparent px-3 text-sm text-[#201a10] placeholder:text-[#b5ad9a] focus:outline-none"
+                  className="flex-1 w-full bg-transparent px-3 text-sm focus:outline-none"
+                  style={{ color: "var(--ink)" }}
                   autoFocus={true}
                 />
               </div>
 
               <Command.List className="max-h-75 overflow-y-auto px-3 py-3">
-                <Command.Empty className="px-5 py-4 text-sm text-[#8a8270]">
+                <Command.Empty className="px-5 py-4 text-sm" style={{ color: "var(--ink-3)" }}>
                   no results found.
                 </Command.Empty>
 
-                <Command.Group
-                  heading="links"
-                  className="px-2 text-xs text-[#8a8270] uppercase tracking-widest mb-1"
-                >
-                  <Command.Item
-                    value="home faiz page"
-                    onSelect={() => {
-                      setTimeout(() => openNextLink(() => router.push("/")), 0);
-                    }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-[#5c5646] rounded hover:bg-[#e8e4d9] hover:text-[#1B365D] cursor-pointer data-[selected=true]:bg-[#e8e4d9] data-[selected=true]:text-[#1B365D]"
-                  >
-                    <IoHomeOutline className="h-4 w-4" />
-                    <span className="flex-1">home</span>
-                    <Shortcut>0</Shortcut>
-                  </Command.Item>
-
-                  <Command.Item
-                    value="photos gallery pictures faiz"
-                    onSelect={() => {
-                      setTimeout(() => openNextLink(() => router.push("/photos")), 0);
-                    }}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-[#5c5646] rounded hover:bg-[#e8e4d9] hover:text-[#1B365D] cursor-pointer data-[selected=true]:bg-[#e8e4d9] data-[selected=true]:text-[#1B365D]"
-                  >
-                    <IoImagesOutline className="h-4 w-4" />
-                    <span className="flex-1">photos</span>
-                    <Shortcut>4</Shortcut>
-                  </Command.Item>
-
-                  <Command.Item
-                    value="linkedin profile socials faiz"
-                    onSelect={() =>
-                      openLink(() =>
-                        window.open("https://www.linkedin.com/in/faizmustansar/", "_blank"),
-                      )
-                    }
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-[#5c5646] rounded hover:bg-[#e8e4d9] hover:text-[#1B365D] cursor-pointer data-[selected=true]:bg-[#e8e4d9] data-[selected=true]:text-[#1B365D]"
-                  >
-                    <PiLinkedinLogo className="h-4 w-4" />
-                    <span className="flex-1">linkedin</span>
-                    <Shortcut>1</Shortcut>
-                  </Command.Item>
-
-                  <Command.Item
-                    value="github git profile faiz"
-                    onSelect={() =>
-                      openLink(() => window.open("https://github.com/faizm10/", "_blank"))
-                    }
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-[#5c5646] rounded hover:bg-[#e8e4d9] hover:text-[#1B365D] cursor-pointer data-[selected=true]:bg-[#e8e4d9] data-[selected=true]:text-[#1B365D]"
-                  >
-                    <FiGithub className="h-4 w-4" />
-                    <span className="flex-1">github</span>
-                    <Shortcut>2</Shortcut>
-                  </Command.Item>
-
-                  <Command.Item
-                    value="ig instagram profile socials faiz"
-                    onSelect={() =>
-                      openLink(() =>
-                        window.open("https://www.instagram.com/faizm.30/", "_blank"),
-                      )
-                    }
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-[#5c5646] rounded hover:bg-[#e8e4d9] hover:text-[#1B365D] cursor-pointer data-[selected=true]:bg-[#e8e4d9] data-[selected=true]:text-[#1B365D]"
-                  >
-                    <IoLogoInstagram className="h-4 w-4" />
-                    <span className="flex-1">instagram</span>
-                    <Shortcut>3</Shortcut>
-                  </Command.Item>
+                <Command.Group heading="links" className="px-2 text-xs uppercase tracking-widest mb-1"
+                  style={{ color: "var(--ink-3)" }}>
+                  {[
+                    { value: "home faiz page", label: "home", icon: <IoHomeOutline className="h-4 w-4" />, shortcut: "0",
+                      onSelect: () => setTimeout(() => openNextLink(() => router.push("/")), 0) },
+                    { value: "photos gallery pictures faiz", label: "photos", icon: <IoImagesOutline className="h-4 w-4" />, shortcut: "4",
+                      onSelect: () => setTimeout(() => openNextLink(() => router.push("/photos")), 0) },
+                    { value: "linkedin profile socials faiz", label: "linkedin", icon: <PiLinkedinLogo className="h-4 w-4" />, shortcut: "1",
+                      onSelect: () => openLink(() => window.open("https://www.linkedin.com/in/faizmustansar/", "_blank")) },
+                    { value: "github git profile faiz", label: "github", icon: <FiGithub className="h-4 w-4" />, shortcut: "2",
+                      onSelect: () => openLink(() => window.open("https://github.com/faizm10/", "_blank")) },
+                    { value: "ig instagram profile socials faiz", label: "instagram", icon: <IoLogoInstagram className="h-4 w-4" />, shortcut: "3",
+                      onSelect: () => openLink(() => window.open("https://www.instagram.com/faizm.30/", "_blank")) },
+                  ].map(item => (
+                    <Command.Item
+                      key={item.value}
+                      value={item.value}
+                      onSelect={item.onSelect}
+                      className="flex items-center gap-2 px-3 py-2 text-sm rounded cursor-pointer cmd-item"
+                      style={{ color: "var(--ink-2)" }}
+                    >
+                      {item.icon}
+                      <span className="flex-1">{item.label}</span>
+                      <Shortcut>{item.shortcut}</Shortcut>
+                    </Command.Item>
+                  ))}
                 </Command.Group>
               </Command.List>
 
-              <div className="border-t border-[#d4cfc0] px-3 py-3">
-                <div className="flex items-center justify-between text-[#8a8270] text-xs">
+              <div className="px-3 py-3" style={{ borderTop: "1px solid var(--border)" }}>
+                <div className="flex items-center justify-between text-xs" style={{ color: "var(--ink-3)" }}>
                   <div className="flex items-center gap-2">
                     <span>use</span>
-                    <kbd className="px-1 py-0.5 rounded bg-[#e8e4d9] border border-[#d4cfc0] text-[#5c5646]">↑</kbd>
-                    |
-                    <kbd className="px-1 py-0.5 rounded bg-[#e8e4d9] border border-[#d4cfc0] text-[#5c5646]">↓</kbd>
+                    <kbd className="px-1 py-0.5 rounded" style={kbdStyle}>↑</kbd>|
+                    <kbd className="px-1 py-0.5 rounded" style={kbdStyle}>↓</kbd>
                     <span>to toggle</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span>press</span>
-                    <kbd className="px-1.5 py-0.5 rounded bg-[#e8e4d9] border border-[#d4cfc0] text-[#5c5646]">↵</kbd>
+                    <kbd className="px-1.5 py-0.5 rounded" style={kbdStyle}>↵</kbd>
                     <span>to open</span>
                   </div>
                 </div>

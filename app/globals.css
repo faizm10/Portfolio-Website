@@ -114,6 +114,8 @@
   }
 }
 
+/* ── Theme tokens moved to end of file (must come after shadcn :root to win cascade) ── */
+
 * {
   text-underline-offset: 2px;
 }
@@ -129,7 +131,8 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  background-color: #f5f4ed;
+  background-color: var(--canvas);
+  color: var(--ink);
 }
 
 @layer base {
@@ -139,16 +142,16 @@ body {
   }
 
   ::-webkit-scrollbar-track {
-    background: #e8e4d9;
+    background: var(--surface-alt);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #b5ad9a;
+    background: var(--border-2);
     border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #8a8270;
+    background: var(--ink-3);
   }
   * {
     @apply border-border outline-ring/50;
@@ -247,41 +250,103 @@ body {
   max-width: 100% !important;
 }
 
-/* Blog/slug pages: dark text on white to match homepage (Inter, readable contrast) */
-.blog-content [class*="text-lightBeige"],
-.blog-content [class*="text-lighterBeige"] {
-  color: rgb(38 38 38) !important;
+/* Command palette item hover/active states */
+.cmd-item:hover,
+.cmd-item[data-selected="true"] {
+  background-color: var(--surface-alt) !important;
+  color: var(--accent) !important;
 }
 
+/* ── Blog/slug pages: fully theme-aware ──────────────────────── */
+
+/* Override Tailwind Typography prose variables */
+.blog-content .prose,
+.blog-content article {
+  --tw-prose-body:          var(--ink-2);
+  --tw-prose-headings:      var(--ink);
+  --tw-prose-lead:          var(--ink-2);
+  --tw-prose-links:         var(--accent);
+  --tw-prose-bold:          var(--ink);
+  --tw-prose-counters:      var(--ink-3);
+  --tw-prose-bullets:       var(--ink-3);
+  --tw-prose-hr:            var(--border);
+  --tw-prose-quotes:        var(--ink);
+  --tw-prose-quote-borders: var(--accent);
+  --tw-prose-captions:      var(--ink-3);
+  --tw-prose-code:          var(--ink);
+  --tw-prose-pre-bg:        var(--surface-alt);
+  color: var(--ink-2);
+}
+
+/* Force prose element colors — beats the typography plugin defaults */
+.blog-content h1,
+.blog-content h2,
+.blog-content h3,
+.blog-content h4,
+.blog-content h5,
+.blog-content h6 {
+  color: var(--ink) !important;
+}
+
+.blog-content p,
+.blog-content li,
+.blog-content blockquote,
+.blog-content td,
+.blog-content th {
+  color: var(--ink-2) !important;
+}
+
+.blog-content strong,
+.blog-content b {
+  color: var(--ink) !important;
+}
+
+.blog-content em,
+.blog-content i {
+  color: var(--ink-2) !important;
+}
+
+.blog-content a,
+.blog-content a:not([class]) {
+  color: var(--accent) !important;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.blog-content a:hover {
+  color: var(--accent-hover) !important;
+}
+
+.blog-content hr {
+  border-color: var(--border) !important;
+}
+
+.blog-content blockquote {
+  border-left-color: var(--accent) !important;
+}
+
+/* Rewrite old beige/white class overrides to use theme vars */
+.blog-content [class*="text-lightBeige"],
+.blog-content [class*="text-lighterBeige"],
 .blog-content .text-lightBeige\/95,
 .blog-content .text-lightBeige\/80,
 .blog-content .text-lightBeige\/70,
 .blog-content .text-lightBeige\/60 {
-  color: rgb(38 38 38) !important;
+  color: var(--ink) !important;
 }
 
 .blog-content .text-lighterBeige\/80 {
-  color: rgb(64 64 64) !important;
+  color: var(--ink-2) !important;
 }
 
 .blog-content .border-white\/20 {
-  border-color: rgb(229 229 229);
+  border-color: var(--border) !important;
 }
 
 .blog-content .text-white\/70 {
-  color: rgb(115 115 115);
+  color: var(--ink-3) !important;
 }
-
-.blog-content .a,
-.blog-content a:not([class]) {
-  color: rgb(37 99 235);
-  text-decoration: underline;
-}
-
-.blog-content .a:hover,
-.blog-content a:hover {
-  color: rgb(29 78 216);
-}
+/* ─────────────────────────────────────────────────────────────── */
 
 @media (min-width: 768px) and (max-height: 775px){
   .description{
@@ -499,3 +564,47 @@ body {
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
+
+/* ── Theme tokens (MUST be last — overrides shadcn :root cascade) ── */
+:root,
+[data-theme="parchment"] {
+  --canvas:               #f5f4ed;
+  --surface:              #f0efe7;
+  --surface-alt:          #e8e4d9;
+  --ink:                  #201a10;
+  --ink-2:                #5c5646;
+  --ink-3:                #8a8270;
+  --border:               #d4cfc0;
+  --border-2:             #b5ad9a;
+  --accent:               #1B365D;
+  --accent-hover:         #0e1f38;
+  --accent-bg:            rgba(27,54,93,0.08);
+  --accent-bg-hover:      rgba(27,54,93,0.14);
+  --accent-border:        rgba(27,54,93,0.28);
+  --accent-border-hover:  rgba(27,54,93,0.50);
+  --accent-shadow:        rgba(27,54,93,0.08);
+  --accent-shadow-lg:     rgba(27,54,93,0.15);
+  --overlay:              rgba(14,31,56,0.50);
+}
+
+[data-theme="navy"] {
+  --canvas:               #0d1b2e;
+  --surface:              #142436;
+  --surface-alt:          #1c3048;
+  --ink:                  #ffffff;
+  --ink-2:                #c8d9ec;
+  --ink-3:                #7a9ab8;
+  --border:               #1e3a5c;
+  --border-2:             #2a4d6e;
+  --accent:               #60a5fa;
+  --accent-hover:         #93c5fd;
+  --accent-bg:            rgba(96,165,250,0.10);
+  --accent-bg-hover:      rgba(96,165,250,0.18);
+  --accent-border:        rgba(96,165,250,0.30);
+  --accent-border-hover:  rgba(96,165,250,0.55);
+  --accent-shadow:        rgba(96,165,250,0.12);
+  --accent-shadow-lg:     rgba(96,165,250,0.22);
+  --overlay:              rgba(0,0,0,0.70);
+}
+
+/* ─────────────────────────────────────────────────────────────── */
