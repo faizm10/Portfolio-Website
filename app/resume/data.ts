@@ -51,7 +51,7 @@ export const hackathonsSummary = {
 export const resume = {
   name: "Faiz Mustansar",
   headline:
-    "Incoming software engineering intern @ Tangerine (Scotiabank) · Software engineering intern @ TD Bank — University of Guelph, Computer Science (co-op)",
+    "Incoming software engineering intern @ Tangerine (Scotiabank) · Software engineering intern @ TD Bank — University of Guelph, Computer Science (Honours)",
   contact: {
     email: "faizmustansar10@gmail.com",
     site: "https://faizm.ca",
