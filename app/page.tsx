@@ -310,7 +310,7 @@ export default function Home() {
 
           {/* Certifications */}
           <section className="mt-12">
-            <h2 className="text-sm font-medium text-neutral-500 uppercase tracking-wide">
+            <h2 className="text-xs font-medium uppercase tracking-widest" style={{ color: "var(--ink-3)" }}>
               certifications
             </h2>
             <ul className="mt-4 flex flex-wrap gap-3">
@@ -320,7 +320,16 @@ export default function Home() {
                     href={`https://www.credly.com/badges/${badge.id}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-2.5 text-sm transition hover:border-neutral-300 hover:shadow-sm"
+                    className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition"
+                    style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)" }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLElement).style.borderColor = "var(--border-2)";
+                      (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 10px var(--accent-shadow)";
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLElement).style.borderColor = "var(--border)";
+                      (e.currentTarget as HTMLElement).style.boxShadow = "none";
+                    }}
                   >
                     <Image
                       src={badge.imageUrl}
@@ -330,8 +339,8 @@ export default function Home() {
                       className="h-10 w-10 shrink-0 object-contain"
                     />
                     <div>
-                      <p className="font-semibold text-neutral-900">{badge.name}</p>
-                      <p className="text-xs text-neutral-500">{badge.issuer} · {badge.issued}</p>
+                      <p className="font-medium" style={{ color: "var(--ink)" }}>{badge.name}</p>
+                      <p className="text-xs" style={{ color: "var(--ink-3)" }}>{badge.issuer} · {badge.issued}</p>
                     </div>
                   </a>
                 </li>
