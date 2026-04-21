@@ -88,6 +88,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={cn(newsreader.variable, inter.variable, pacifico.variable)}
+      suppressHydrationWarning
     >
       <head>
         <link rel="canonical" href="https://faizm.ca" />
@@ -100,6 +101,7 @@ export default function RootLayout({
       </head>
       <body
         className={`${inter.className} min-h-screen w-full text-[#201a10] antialiased`}
+        suppressHydrationWarning
       >
         <div className="min-h-screen w-full">
           {children}
