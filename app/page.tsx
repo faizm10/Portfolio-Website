@@ -149,7 +149,17 @@ export default function Home() {
                   className="underline underline-offset-2"
                   style={{ color: "var(--accent)" }}
                 >
-                  tangerine (scotiabank)
+                  tangerine (scotiabank) 
+                </a>
+                 {" "}• view my {" "}
+                <a
+                  href="https://www.faizm.ca/resume"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2"
+                  style={{ color: "var(--accent)" }}
+                >
+                  resume
                 </a>
               </p>
             </div>
