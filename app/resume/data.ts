@@ -105,15 +105,15 @@ export const resume = {
         "Built and shipped product features on a small engineering team.",
       ],
     },
-    {
-      company: "Octree",
-      role: "Co-founder & Software Engineer",
-      location: "",
-      dates: "2025",
-      bullets: [
-        "Open-source AI LaTeX editor (Next.js, Supabase, Stripe, Vercel AI SDK) — growth, community, and shipping.",
-      ],
-    },
+    // {
+    //   company: "Octree",
+    //   role: "Co-founder & Software Engineer",
+    //   location: "",
+    //   dates: "2025",
+    //   bullets: [
+    //     "Open-source AI LaTeX editor (Next.js, Supabase, Stripe, Vercel AI SDK) — growth, community, and shipping.",
+    //   ],
+    // },
     {
       company: "University of Guelph",
       role: "Full Stack Developer",
@@ -160,6 +160,12 @@ export const resume = {
       url: "https://github.com/faizm10/TripLoom",
       detail:
         "AI-assisted travel planner for flights, transit, and itineraries.",
+    },
+    {
+      name: "Foco",
+      url: "https://github.com/faizm10/jachacks26",
+      detail:
+        "2nd place at JAC Hacks 2026",
     },
   ],
   skills: {

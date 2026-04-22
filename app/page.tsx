@@ -103,7 +103,7 @@ export default function Home() {
           className="text-sm italic tracking-wide font-[family-name:var(--font-newsreader)]"
           style={{ color: "var(--accent)" }}
         >
-          faiz mustansar
+          building and shipping
         </p>
       </div>
 
