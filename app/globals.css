@@ -262,6 +262,7 @@ body {
 /* Override Tailwind Typography prose variables */
 .blog-content .prose,
 .blog-content article {
+  font-family: var(--font-newsreader), Georgia, serif;
   --tw-prose-body:          var(--ink-2);
   --tw-prose-headings:      var(--ink);
   --tw-prose-lead:          var(--ink-2);
@@ -294,6 +295,7 @@ body {
 .blog-content td,
 .blog-content th {
   color: var(--ink-2) !important;
+  font-weight: 450;
 }
 
 .blog-content strong,
