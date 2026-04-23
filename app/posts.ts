@@ -7,6 +7,18 @@ interface Post {
 
 export const posts: Post[] = [
   {
+    slug: "hackathons",
+    title: "all hackathons i've participated in",
+    date: "ongoing",
+    pinned: true,
+  },
+  // {
+  //   slug: "jachacks",
+  //   title: "foco @ JACHacks 2026 — 2nd overall",
+  //   date: "apr 2026",
+  //   pinned: true,
+  // },
+  {
     slug: "hc26",
     title: "organized hc26 experience",
     date: "ongoing",
@@ -34,12 +46,6 @@ export const posts: Post[] = [
     slug: "uogreflection",
     title: "thoughts on uog cs",
     date: "jan 2026",
-    pinned: false,
-  },
-  {
-    slug: "hackathons",
-    title: "hackathons i've participated in",
-    date: "ongoing",
     pinned: false,
   },
   {

@@ -1,0 +1,236 @@
+import { FiExternalLink } from "react-icons/fi";
+import Image from "next/image";
+import { MermaidDiagram } from "@/components/MermaidDiagram";
+
+<div className='not-prose w-full text-center flowboard-page'>
+    <span className='block text-lightBeige/95 italic text-2xl md:text-3xl'>jachacks 2026</span>
+    <div className="w-[95vw] relative left-1/2 -ml-[47.5vw] md:w-[105%] md:left-0 md:-ml-[2.5%] md:static">
+        <Image
+            src="/projects/foco/hero-page.png"
+            alt="foco: web ui and live map view"
+            width={3016}
+            height={1656}
+            className="object-cover rounded-lg my-0! py-0!"
+            loading="eager"
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1600px"
+            quality={85}
+        />
+    </div>
+    <div className='md:w-[90%] w-full mx-auto'>
+        <div className='flex justify-center flex-wrap gap-x-6 gap-y-2 mb-5 text-base'>
+            <a href="https://devpost.com/software/foco" target="_blank" rel="noopener noreferrer" className='a flex items-center gap-1 decoration-1 underline-offset-4'>
+                <span>devpost</span>
+                <FiExternalLink size={16} />
+            </a>
+            <a href="https://github.com/faizm10/jachacks" target="_blank" rel="noopener noreferrer" className='a flex items-center gap-1 decoration-1 underline-offset-4'>
+                <span>github</span>
+                <FiExternalLink size={16} />
+            </a>
+            <a href="https://wegotpersonofinterest.tech" target="_blank" rel="noopener noreferrer" className='a flex items-center gap-1 decoration-1 underline-offset-4'>
+                <span>live demo</span>
+                <FiExternalLink size={16} />
+            </a>
+        </div>
+
+        <div className='flex flex-col text-left'>
+            <span className='text-lightBeige/95 text-xl'>overview</span>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
+                <div className='leading-relaxed'>
+                    i was in montreal the weekend before jachacks for a normal trip, then went back the next weekend for the hackathon.
+                </div>
+                <div className='leading-relaxed'>
+                    <a href="https://www.linkedin.com/in/wkmxyz/" target="_blank" rel="noopener noreferrer" className="a decoration-1 underline-offset-4">coco wang</a>
+                    {' '}and i built <strong className='font-normal text-lightBeige/90'>foco</strong>: cctv plus a floor plan turned into a 3d map with motion as heat. we got 2nd place overall at jachacks 2026.
+                </div>
+                <div className='leading-relaxed'>
+                    rest of the page is idea, build, what broke, stack, next.
+                </div>
+            </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-8 text-left mt-10">
+            <div className='flex flex-col gap-4'>
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>timeline</span>
+                    <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>24 hours, jachacks 2026</span>
+                </div>
+
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>team</span>
+                    <div className='text-lighterBeige flex flex-col gap-1 font-inter items-start text-[1rem]'>
+                        <span>faiz mustansar</span>
+                        <a href="https://www.linkedin.com/in/wkmxyz/" target="_blank" rel="noopener noreferrer" className="a decoration-1 underline-offset-4 text-lighterBeige font-inter text-[1rem]">coco wang</a>
+                    </div>
+                </div>
+
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>submitted to</span>
+                    <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>jachacks 2026, montreal, quebec</span>
+                </div>
+
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>award</span>
+                    <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>🥈 2nd place, best overall</span>
+                </div>
+            </div>
+
+            <div className='flex flex-col gap-1'>
+                <span className='text-lightBeige/95 text-lg'>tools</span>
+                <div className='flex flex-col gap-1 font-inter font-light text-[1rem] text-lighterBeige'>
+                    <span>next.js</span>
+                    <span>three.js / react three fiber</span>
+                    <span>tailwind</span>
+                    <span>fastapi</span>
+                    <span>ultralytics yolo</span>
+                    <span>opencv</span>
+                    <span>google gemini</span>
+                    <span>supabase storage</span>
+                    <span>vercel</span>
+                    <span>render</span>
+                </div>
+            </div>
+        </div>
+
+        <div className='flex flex-col text-left mt-15'>
+            <span className='text-lightBeige/95 text-xl'>where the idea came from</span>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
+                <div className="leading-relaxed">
+                    we did not jump straight to foco. the first thing we threw around was a silly site about touching grass, just something fun and pointless. we thought it was funny but we scrapped it pretty fast once we started thinking about what we actually wanted to build.
+                </div>
+                <div className="leading-relaxed">
+                    the real inspo was <em>person of interest</em> on netflix: lots of feeds, but the interesting part is what you can infer about a space, not a sci fi prediction engine. we wanted something closer to {'"how is this room used"'} than {'"is someone there"'}.
+                </div>
+                <div className="leading-relaxed">
+                    for the pitch we tried to keep it clearly not a surveillance product: label what is pixels, what is geometry, and what the llm is guessing.
+                </div>
+            </div>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>what we built</span>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
+                <div className='leading-relaxed'>
+                    <strong className='font-normal text-lightBeige/90'>foco</strong> takes a clip + floor plan, runs motion and detection, draws heat on a 3d slab. rooms link to a footprint strip. gemini summarizes single frames (people, activity, short blurb). demo flow: pick clip, watch the map, click rooms, read the card.
+                </div>
+                <div className='leading-relaxed'>
+                    24 hours meant rough edges: homography when calibration worked, frame differencing when it did not. tiling and stride so yolo and video io did not cook the laptops.
+                </div>
+            </div>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>weekend war stories</span>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
+                <div className='leading-relaxed'>
+                    both our laptops were running hot the whole time. we had heavy backend work going constantly in the background, and on top of that the ui was hitting the backend with calls nonstop during testing. it got to the point where everything started slowing down noticeably. after the demo, our google cloud bill had jumped to somewhere between $30 and $40, and the reason it spiked that hard is that we were running two instances at the same time, so double the compute, double the cost. the hardest bug was getting the heat to sit correctly on the 3d floor plan. it kept drifting or covering areas that had no actual activity.
+                </div>
+                <div className="w-[95vw] relative left-1/2 -ml-[47.5vw] md:w-[105%] md:left-0 md:-ml-[2.5%] md:static mt-8">
+                <Image
+                    src="/projects/foco/image.png"
+                    alt="foco: 3d floor map with activity heat"
+                    width={1516}
+                    height={896}
+                    className="object-cover rounded-lg my-0! py-0!"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1600px"
+                    quality={85}
+                    loading="lazy"
+                />
+                <div className="text-lighterBeige/75 font-inter font-extralight text-sm mt-3 text-center px-4 max-w-3xl mx-auto leading-relaxed">
+                    herzberg library stack in 3d: heat on rooms, vibe tags, floor labels lined up to the real plan.
+                </div>
+            </div>
+                <div className='leading-relaxed'>
+                    via train ran a{' '}
+                    <a
+                        href="https://service-pages.viarail.ca/kingston-sub-maintenance-apr-2026-passenger-travel-advisory-bulletin-en"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="a decoration-1 underline-offset-4"
+                    >
+                        kingston sub maintenance detour
+                    </a>
+                    {' '}that weekend (metrolinx work, slower toronto to montreal runs). i had to switch up ticket to get home earlier rather than 2 am and it means that i had to drop business for an earlier economy ticket, and paid more than i wanted. roughly 12 hours round trip and ~$300 all in.
+                </div>
+            </div>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>judging and the floor</span>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
+                <div className='leading-relaxed'>
+                    jachacks used a science fair style expo, which was the first time i had done that format. i expected mostly judges rotating through. instead we got a steady line of people at the table: judges, other teams, organizers, and a few guests who were just curious. they actually wanted to hear the pitch and poke at the demo, not only score rubrics.
+                </div>
+                <div className='leading-relaxed'>
+                    we counted something like twenty people through over the block, which felt neat for a 24 hour build. honestly a proud moment.
+                </div>
+                <div className="grid grid-cols-2 gap-3 mt-6">
+                    <Image
+                        src="/projects/foco/IMG_8672.JPG"
+                        alt="foco demo at jachacks expo"
+                        width={1200}
+                        height={900}
+                        className="object-cover rounded-lg my-0! py-0! w-full aspect-[4/3]"
+                        sizes="(max-width: 768px) 33vw, 300px"
+                        quality={80}
+                        loading="lazy"
+                    />
+                    <Image
+                        src="/projects/foco/IMG_8696.JPG"
+                        alt="foco demo at jachacks expo"
+                        width={1200}
+                        height={900}
+                        className="object-cover rounded-lg my-0! py-0! w-full aspect-[4/3]"
+                        sizes="(max-width: 768px) 33vw, 300px"
+                        quality={80}
+                        loading="lazy"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>architecture notes</span>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
+                <div className='leading-relaxed'>
+                    next.js ui, clips in supabase. fastapi behind cors for opencv, yolo, gemini. ui on vercel, api on render. r3f: memo + stable refs so handlers did not break under expo wifi and reloads.
+                </div>
+                <div className='text-lightBeige/90 text-sm font-normal pt-2'>data flow (high level)</div>
+                <MermaidDiagram
+                    aria-label="foco architecture diagram"
+                    chart={`flowchart TD
+  U[User] --> UI[Next.js UI]
+  UI -->|list| ST[(Supabase bucket)]
+  UI -->|proxy| A[/analyze/]
+  UI -->|direct| F[/floorplan/]
+  A --> GM[Gemini]
+  F --> CV[CV pipeline]
+  CV -.-> CAL[Calib store]
+  UI --> T[Heat + hex on 3D]
+  F --> T
+  A --> T`}
+                />
+            </div>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>what is next</span>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
+                <div className='leading-relaxed'>
+                    plan is to open source it so others can fork. links at the top.
+                </div>
+                <div className='leading-relaxed'>
+                    polish: phone live feed, tighter room masks, faster presets, clearer labels for motion vs model text. live runs on your infra and your bill, not mine.
+                </div>
+                <div className='leading-relaxed'>
+                    credits:{' '}
+                    <a href="https://www.linkedin.com/in/wkmxyz/" target="_blank" rel="noopener noreferrer" className="a decoration-1 underline-offset-4">coco wang</a>
+                </div>
+            </div>
+        </div>
+
+        <footer className="pt-4 mt-10 border-t border-white/20 text-sm text-white/70 flex flex-row items-center">
+            <span className="shiny-green-dot inline-block mr-2" />
+            last updated: 04/06/2026
+        </footer>
+    </div>
+</div>

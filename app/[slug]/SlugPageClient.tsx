@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, type ComponentType, type ReactNode } from "react";
+import clsx from "clsx";
 import PageViewCounter from "../components/PageViewCounter";
 import { useRouter } from "next/navigation";
 import { MDXProvider } from "@mdx-js/react";
@@ -25,6 +26,7 @@ import SoccerStats from "./mdx/soccer-stats.mdx";
 import CodeKeeper from "./mdx/code-keeper.mdx";
 import TextAnxiety from "./mdx/text-anxiety.mdx";
 import Htv from "./mdx/htv.mdx";
+import Jachacks from "./mdx/jachacks.mdx";
 import hc26 from "./mdx/hc26.mdx"
 import Terrahacks from "./mdx/terrahacks.mdx";
 const MDX_MAP: Record<string, ComponentType> = {
@@ -46,6 +48,7 @@ const MDX_MAP: Record<string, ComponentType> = {
   "code-keeper": CodeKeeper,
   "text-anxiety": TextAnxiety,
   htv: Htv,
+  jachacks: Jachacks,
   hc26: hc26,
   terrahacks: Terrahacks,
 };
@@ -75,6 +78,9 @@ export default function SlugPageClient({ slug }: { slug: string }) {
     return null;
   }
 
+  /** full-bleed MDX layouts use their own typography; `prose` here can emit invalid nested `<p>` */
+  const skipArticleProse = slug === "jachacks";
+
   const components = {
     a: ({ href, children }: { href: string; children: ReactNode }) => (
       <a href={href} target="_blank" rel="noopener noreferrer">
@@ -102,24 +108,23 @@ export default function SlugPageClient({ slug }: { slug: string }) {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden px-6 py-12">
+    <div className="min-h-screen w-full overflow-x-hidden px-6 py-12" style={{ backgroundColor: "var(--canvas)" }}>
       <div className="mx-auto max-w-xl blog-content">
         <div className="mb-8 flex items-center justify-between">
           <button
             onClick={() => router.push("/")}
-            className="text-sm text-neutral-600 hover:underline"
+            className="text-sm hover:underline"
+            style={{ color: "var(--ink-2)" }}
           >
             ← back
           </button>
           <PageViewCounter slug={slug} />
         </div>
         <article
-          className="prose prose-neutral max-w-none text-left text-neutral-800 prose-headings:font-semibold prose-headings:text-neutral-900 prose-p:text-neutral-700 prose-p:leading-relaxed prose-a:text-neutral-800 prose-a:underline"
-          style={{
-            ["--tw-prose-body" as any]: "rgb(55 65 81)",
-            ["--tw-prose-headings" as any]: "rgb(17 24 39)",
-            ["--tw-prose-links" as any]: "rgb(31 41 55)",
-          }}
+          className={clsx(
+            "max-w-none text-left",
+            !skipArticleProse && "prose"
+          )}
         >
           <div ref={topRef} />
           <MDXProvider components={components}>
