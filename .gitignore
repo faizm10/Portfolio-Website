@@ -25,6 +25,7 @@
 *.pem
 public/**/*.mp4
 !public/notes/footy/*.mp4
+!public/projects/foco/timelapse.mp4
 
 # debug
 npm-debug.log*
