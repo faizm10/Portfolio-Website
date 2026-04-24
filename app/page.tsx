@@ -17,7 +17,7 @@ import GitHubContributionsCalendar from "./components/GitHubContributionsCalenda
 const experiences = [
   {
     title: "tangerine (scotiabank)",
-    role: "incoming swe intern",
+    role: "swe intern",
     icon: "/exp/tangerine.jpeg",
   },
   { title: "td bank", role: "swe intern", icon: "/exp/td-logo.png" },
@@ -141,7 +141,7 @@ export default function Home() {
                 faiz mustansar
               </h1>
               <p className="mt-1.5 text-sm leading-relaxed" style={{ color: "var(--ink-2)" }}>
-                incoming swe intern @{" "}
+                swe intern @{" "}
                 <a
                   href="https://www.tangerine.ca/en/personal"
                   target="_blank"
