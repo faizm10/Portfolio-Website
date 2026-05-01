@@ -20,6 +20,11 @@ const experiences = [
     role: "swe intern",
     icon: "/exp/tangerine.jpeg",
   },
+  {
+    title: "university of guelph",
+    role: "teaching assistant — spmt1120 (sports)",
+    icon: "/exp/uog.png",
+  },
   { title: "td bank", role: "swe intern", icon: "/exp/td-logo.png" },
   {
     title: "hackcanada",
