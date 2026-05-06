@@ -2,8 +2,6 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import PhotoLikeButton from "./PhotoLikeButton";
-import TopLikedStrip from "./TopLikedStrip";
 
 interface Props {
   photos: string[];
@@ -80,10 +78,6 @@ export default function PhotoGallery({ photos }: Props) {
           </div>
         ) : (
           <>
-            <TopLikedStrip
-              photos={photos}
-              onOpenPhoto={(index) => openLightbox(index)}
-            />
             {/* Masonry grid via CSS columns */}
             <div
             style={{
@@ -144,7 +138,7 @@ export default function PhotoGallery({ photos }: Props) {
             className="relative max-h-[90vh] max-w-[min(90vw,420px)]"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="rounded-sm border border-neutral-200/90 bg-[#f5f3ef] p-3 pb-2 shadow-2xl ring-1 ring-black/5">
+            <div className="rounded-sm border border-neutral-200/90 bg-[#f5f3ef] p-3 pb-3 shadow-2xl ring-1 ring-black/5">
               <div className="max-h-[min(72vh,520px)] overflow-hidden bg-neutral-200 shadow-inner">
                 <img
                   src={photos[lightboxIndex]}
@@ -152,9 +146,6 @@ export default function PhotoGallery({ photos }: Props) {
                   className="max-h-[min(72vh,520px)] w-full object-contain"
                   style={{ display: "block" }}
                 />
-              </div>
-              <div className="flex min-h-[52px] items-center justify-end px-1 pt-3 pb-1">
-                <PhotoLikeButton photoSrc={photos[lightboxIndex]} />
               </div>
             </div>
           </div>
@@ -210,15 +201,7 @@ function PhotoCard({
             />
           </div>
         </button>
-        {/* Polaroid bottom margin — likes in the corner */}
-        <div className="flex min-h-[3.25rem] items-center justify-between gap-2 px-1 pb-2.5 pt-2.5">
-          <span className="pointer-events-none select-none text-[10px] uppercase tracking-wider text-neutral-400 opacity-0 transition-opacity group-hover:opacity-100">
-            view
-          </span>
-          <div className="ml-auto shrink-0">
-            <PhotoLikeButton photoSrc={src} />
-          </div>
-        </div>
+        <div className="h-3 px-1 pb-2.5 pt-1" aria-hidden />
       </div>
     </div>
   );

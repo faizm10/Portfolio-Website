@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Command } from "cmdk";
 import { useRouter } from "next/navigation";
 import * as Dialog from "@radix-ui/react-dialog";
@@ -20,19 +20,14 @@ export default function CommandPalette() {
   const [isShiftKeyPressed, setisShiftKeyPressed] = useState(false);
   const router = useRouter();
 
-  // don't render on mobile
-  if (isMobile) {
-    return null;
-  }
-
-  // handle open with global dispatch event
-  const handleOpen = () => {
+  const handleOpen = useCallback(() => {
     setOpen(true);
     window.dispatchEvent(new CustomEvent("command-palette-opened"));
-  };
+  }, []);
 
   // set timeout on close for loading animation
   useEffect(() => {
+    if (isMobile) return;
     if (open) {
       setShowDialog(true);
     } else {
@@ -43,7 +38,7 @@ export default function CommandPalette() {
 
   // tracks modifier key state when cmd is open
   useEffect(() => {
-    if (!open) return;
+    if (isMobile || !open) return;
 
     const handleKeyDown = (e: any) => {
       if (e.shiftKey) {
@@ -68,14 +63,16 @@ export default function CommandPalette() {
 
   // listen for event to open palette, needs event listener so can open the palette globally
   useEffect(() => {
+    if (isMobile) return;
     const handleCustomOpen = () => handleOpen();
     window.addEventListener("open-command-palette", handleCustomOpen);
     return () =>
       window.removeEventListener("open-command-palette", handleCustomOpen);
-  }, []);
+  }, [handleOpen]);
 
   // toggle the menu when ⌘K / crtlK is pressed
   useEffect(() => {
+    if (isMobile) return;
     const down = (e: any) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
@@ -89,11 +86,11 @@ export default function CommandPalette() {
 
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
-  }, [open]);
+  }, [open, handleOpen]);
 
   // handle keyboard shortcuts when cmd is open
   useEffect(() => {
-    if (!open) return;
+    if (isMobile || !open) return;
 
     const handleKeyDown = (e: any) => {
       // only handle shift + number combinations
@@ -154,6 +151,10 @@ export default function CommandPalette() {
     color: "var(--ink-2)",
     border: "1px solid var(--border)",
   };
+
+  if (isMobile) {
+    return null;
+  }
 
   const Shortcut: React.FC<{ children: any }> = ({ children }) => (
     <div className="flex text-xs items-center gap-1 ml-auto" style={{ color: "var(--ink-3)" }}>
