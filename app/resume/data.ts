@@ -171,7 +171,8 @@ export const resume = {
   skills: {
     languages: "TypeScript, JavaScript, Python, Java, Kotlin, SQL",
     frameworks: "Next.js, React, Node.js, Spring Boot, Tailwind CSS",
-    infra: "PostgreSQL, Redis, Supabase, Vercel, Docker, Git",
+    infra:
+      "PostgreSQL, Redis, Supabase, Vercel, Fly.io, Docker, Kubernetes, Google Cloud Platform, Jenkins, SonarQube, Git",
     other: "REST APIs, real-time UIs, LLM integrations, payments (Stripe)",
   },
 } as const;
