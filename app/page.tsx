@@ -145,28 +145,70 @@ export default function Home() {
               >
                 faiz mustansar
               </h1>
-              <p className="mt-1.5 text-sm leading-relaxed" style={{ color: "var(--ink-2)" }}>
-                swe intern @{" "}
-                <a
-                  href="https://www.tangerine.ca/en/personal"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline underline-offset-2"
-                  style={{ color: "var(--accent)" }}
+              <div className="mt-1.5 space-y-1">
+                <p className="text-sm leading-relaxed" style={{ color: "var(--ink-2)" }}>
+                  swe intern @{" "}
+                  <a
+                    href="https://www.tangerine.ca/en/personal"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-2"
+                    style={{ color: "var(--accent)" }}
+                  >
+                    tangerine (scotiabank)
+                  </a>
+                  {" "}• view my{" "}
+                  <a
+                    href="https://www.faizm.ca/resume"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-2"
+                    style={{ color: "var(--accent)" }}
+                  >
+                    resume
+                  </a>
+                </p>
+                <p
+                  className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm leading-relaxed"
+                  style={{ color: "var(--ink-2)" }}
                 >
-                  tangerine (scotiabank) 
-                </a>
-                 {" "}• view my {" "}
-                <a
-                  href="https://www.faizm.ca/resume"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline underline-offset-2"
-                  style={{ color: "var(--accent)" }}
-                >
-                  resume
-                </a>
-              </p>
+                  <span>full-time student @</span>
+                  <a
+                    href="https://www.uoguelph.ca/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 underline underline-offset-2"
+                    style={{ color: "var(--accent)" }}
+                  >
+                    <Image
+                      src="/exp/uog.png"
+                      alt=""
+                      width={20}
+                      height={20}
+                      className="h-5 w-5 shrink-0 rounded-full object-contain"
+                    />
+                    guelph
+                  </a>
+                  <span aria-hidden style={{ color: "var(--ink-3)" }}>
+                    |
+                  </span>
+                  <span>3x terms @</span>
+                  <Link
+                    href="/uwreflection"
+                    className="inline-flex items-center gap-1 underline underline-offset-2"
+                    style={{ color: "var(--accent)" }}
+                  >
+                    <Image
+                      src="/uw.png"
+                      alt=""
+                      width={20}
+                      height={20}
+                      className="h-5 w-5 shrink-0 rounded-full object-contain"
+                    />
+                    waterloo
+                  </Link>
+                </p>
+              </div>
             </div>
             <div className="flex items-center gap-4">
               {!isMobile && (
@@ -244,6 +286,7 @@ export default function Home() {
               ))}
             </ul>
           </section>
+
 
           {/* Projects */}
           <section className="mt-14">
