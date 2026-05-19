@@ -1,7 +1,7 @@
 'use client';
 
 import mermaid from 'mermaid';
-import { useEffect, useId, useRef } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 
 type MermaidDiagramProps = {
   chart: string;
@@ -10,10 +10,47 @@ type MermaidDiagramProps = {
   'aria-label'?: string;
 };
 
+function getThemeVars(isDark: boolean) {
+  return isDark
+    ? {
+        background: 'transparent',
+        mainBkg: '#1c3048',
+        secondBkg: '#142436',
+        lineColor: '#7a9ab8',
+        primaryTextColor: '#ffffff',
+        secondaryTextColor: '#c8d9ec',
+        primaryBorderColor: '#2a4d6e',
+        clusterBkg: 'transparent',
+        edgeLabelBackground: '#142436',
+      }
+    : {
+        background: 'transparent',
+        mainBkg: '#e8e4d9',
+        secondBkg: '#f0efe7',
+        lineColor: '#8a8270',
+        primaryTextColor: '#201a10',
+        secondaryTextColor: '#5c5646',
+        primaryBorderColor: '#d4cfc0',
+        clusterBkg: 'transparent',
+        edgeLabelBackground: '#f0efe7',
+      };
+}
+
 export function MermaidDiagram({ chart, className, 'aria-label': ariaLabel }: MermaidDiagramProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const reactId = useId().replace(/:/g, '');
   const runIdRef = useRef(0);
+  const [isDark, setIsDark] = useState(false);
+
+  // sync with data-theme attribute and watch for changes
+  useEffect(() => {
+    const read = () =>
+      setIsDark(document.documentElement.getAttribute('data-theme') === 'navy');
+    read();
+    const obs = new MutationObserver(read);
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => obs.disconnect();
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -24,20 +61,10 @@ export function MermaidDiagram({ chart, className, 'aria-label': ariaLabel }: Me
 
     mermaid.initialize({
       startOnLoad: false,
-      theme: 'neutral',
+      theme: 'base',
       securityLevel: 'loose',
       fontFamily: 'ui-sans-serif, system-ui, sans-serif',
-      themeVariables: {
-        background: 'transparent',
-        mainBkg: '#f4f4f5',
-        secondBkg: '#e4e4e7',
-        lineColor: '#52525b',
-        primaryTextColor: '#18181b',
-        secondaryTextColor: '#3f3f46',
-        primaryBorderColor: '#a1a1aa',
-        clusterBkg: 'transparent',
-        edgeLabelBackground: '#fafafa',
-      },
+      themeVariables: getThemeVars(isDark),
       flowchart: {
         useMaxWidth: true,
         htmlLabels: false,
@@ -58,7 +85,7 @@ export function MermaidDiagram({ chart, className, 'aria-label': ariaLabel }: Me
       cancelled = true;
       container.innerHTML = '';
     };
-  }, [chart, reactId]);
+  }, [chart, reactId, isDark]);
 
   return (
     <div

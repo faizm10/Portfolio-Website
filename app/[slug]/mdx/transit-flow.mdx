@@ -1,0 +1,245 @@
+import Image from "next/image";
+import { FiExternalLink } from "react-icons/fi";
+import { MermaidDiagram } from "@/components/MermaidDiagram";
+
+<div className='w-full text-center flowboard-page'>
+    <span className='block text-lightBeige/95 italic text-2xl md:text-3xl'>transitflow</span>
+    <div className="w-[95vw] relative left-1/2 -ml-[47.5vw] md:w-[105%] md:left-0 md:-ml-[2.5%] md:static">
+        <Image
+            src="/projects/banners/transit-flow.png"
+            alt="transitflow"
+            width={1200}
+            height={675}
+            className="object-cover rounded-lg my-0! py-0!"
+            style={{
+                WebkitMaskImage:
+                "radial-gradient(circle, rgba(0,0,0,0.98) 60%, rgba(0,0,0,0.3) 90%)"
+            }}
+            loading="eager"
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1600px"
+            quality={85}
+        />
+    </div>
+
+    <div className='md:w-[90%] w-full mx-auto'>
+        <div className='flex justify-center mb-5 text-base'>
+            <a href="https://transit-flow-two.vercel.app" target="_blank" rel="noopener noreferrer" className='a flex items-center gap-1 decoration-1 underline-offset-4'>
+                <span>project</span>
+                <FiExternalLink size={16} />
+            </a>
+        </div>
+
+        <div className='flex flex-col text-left'>
+            <span className='text-lightBeige/95 text-xl'>overview</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                transitflow is a <span className='text-lightBeige/95 font-normal'>browser-based GO Transit network design simulator</span>. explore all 44 real GO train and bus routes on a live map, draw your own custom lines, run time-of-day simulations with real GTFS trip data, and share your network designs with a public community feed.
+            </span>
+        </div>
+
+        <div className="grid grid-cols-2 gap-8 text-left mt-6">
+            <div className='flex flex-col gap-4'>
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>timeline</span>
+                    <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>ongoing, 2025</span>
+                </div>
+
+                <div className='flex flex-col gap-1'>
+                    <span className='text-lightBeige/95 text-lg'>what i built</span>
+                    <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>full-stack solo project — data pipeline, map engine, simulation, community feed, AI agent, auth, and CI</span>
+                </div>
+            </div>
+
+            <div className='flex flex-col gap-1'>
+                <span className='text-lightBeige/95 text-lg'>tools</span>
+                <div className='flex flex-col gap-1 font-inter font-light text-[1rem]'>
+                    <span>next.js 16 (app router)</span>
+                    <span>mapbox gl js</span>
+                    <span>neon postgresql + drizzle</span>
+                    <span>auth.js (github + google)</span>
+                    <span>anthropic claude</span>
+                    <span>tailwind css v4</span>
+                    <span>framer motion</span>
+                    <span>python (data pipeline)</span>
+                    <span>vercel (fluid compute)</span>
+                </div>
+            </div>
+        </div>
+
+        <div className='flex flex-col text-left mt-15'>
+            <span className='text-lightBeige/95 text-xl'>background</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                i use GO Transit a lot. the regional rail network covers the entire greater toronto and hamilton area, but the schedules are infrequent and coverage is thin in many areas. i kept thinking about <span className='text-lightBeige/95 font-normal italic'>what if i could just draw a new line?</span>
+
+                every transit planning tool i found was either locked behind enterprise software or required GIS expertise to operate. i wanted something that felt more like a map game — drop stops, draw routes, watch them move.
+
+                transitflow started as a personal experiment to visualize GO's GTFS data. it grew into a full simulator after i realized how much i enjoyed watching the ~900 daily trips animate across the GTHA in real time.
+            </span>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>modes</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                transitflow has six distinct modes, all living in a single map page.
+
+                <div className='mt-4 flex flex-col gap-5'>
+                    <div>
+                        <span className='text-lightBeige/95 font-normal'>explore</span>
+                        <span className='block'>browse all 44 GO Transit routes — trains and buses — with real stop geometry loaded from pre-computed GTFS data. click any route to inspect its stops, variants, and service pattern.</span>
+                    </div>
+                    <div>
+                        <span className='text-lightBeige/95 font-normal'>design</span>
+                        <span className='block'>draw custom bus or train routes using mapbox-gl-draw. place stops by clicking, set frequency or fixed departure times, and drop new stations anywhere in the GTHA. AI suggestions are available through the claude-powered route agent.</span>
+                    </div>
+                    <div>
+                        <span className='text-lightBeige/95 font-normal'>schedules</span>
+                        <span className='block'>inspect departure times for every real GO line, or view and edit your own custom route's timetable. the AI schedule optimizer can suggest timing improvements based on your route geometry.</span>
+                    </div>
+                    <div>
+                        <span className='text-lightBeige/95 font-normal'>simulate</span>
+                        <span className='block'>run a time-of-day simulation and watch ~900 trips animate across the map in real time. scrub forward and backward through the day to see when the network is busy.</span>
+                    </div>
+                    <div>
+                        <span className='text-lightBeige/95 font-normal'>community</span>
+                        <span className='block'>share your network designs publicly and load routes created by other users. the feed uses optimistic UI — posts and deletes appear instantly before the database confirms.</span>
+                    </div>
+                    <div>
+                        <span className='text-lightBeige/95 font-normal'>service updates</span>
+                        <span className='block'>live GO Transit service alerts scraped server-side with a 5-minute cache. no client requests to gotransit.com — the server handles scraping and exposes a clean JSON endpoint.</span>
+                    </div>
+                </div>
+            </span>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>data pipeline</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                all GTFS data is <span className='text-lightBeige/95 font-normal'>pre-computed at build time</span>. raw GO Transit feeds live under <span className="route-background text-[0.9rem]">server/data/gotransit/</span> and three python scripts derive everything the app needs:
+
+                <span className="route-background text-[0.9rem]">scripts/build_subroutes.py</span>
+                stop data per route variant — which stops belong to which pattern, in order.
+
+                <span className="route-background text-[0.9rem]">scripts/build_gtfs_derived.py</span>
+                route line geometries as GeoJSON, consumed directly by mapbox layers.
+
+                <span className="route-background text-[0.9rem]">scripts/build_simulation_artifacts.py</span>
+                trip animation data for ~900 real daily trips, broken into per-trip JSON files that the simulation engine streams at runtime.
+
+                the output lands in <span className="route-background text-[0.9rem]">client/public/gotransit/derived/</span> and is served as static assets. <span className='text-lightBeige/95 font-thin italic'>no heavy processing at request time — the server just serves files</span>.
+
+                this was a deliberate choice. GTFS data for a regional network is large but relatively stable. re-deriving it on every request would be wasteful, and pre-computing means the map loads fast on cold starts with zero database queries for the base layer.
+            </span>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>system map</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem] mb-3'>
+                here's how everything connects — from the raw gtfs feeds all the way to your browser.
+            </span>
+            <MermaidDiagram
+                aria-label="transitflow system architecture"
+                chart={`
+flowchart TD
+    raw["raw gtfs feeds"] --> pipeline["python pipeline\n3 build scripts"]
+    pipeline --> files["static files\npublic/gotransit/derived"]
+
+    files --> sim["/api/simulation\ntrip animation"]
+    files --> gtfs["/api/gotransit\nstops · lines · heatmap"]
+
+    sim --> map["map page\nexplore · design · simulate · schedules"]
+    gtfs --> map
+
+    map --> ai["/api/route-agent\n/api/schedule-optimizer\nclaude sonnet"]
+
+    user["you"] --> map
+    user --> community["/community\nshared routes"]
+    user --> updates["/service-updates\ngo transit alerts"]
+
+    community --> db[("neon postgresql")]
+    updates --> scraper["server scraper\n5-min cache\ngotransit.com"]
+                `}
+            />
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>map page architecture</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                the main map lives at <span className="route-background text-[0.9rem]">/map/page.tsx</span> and is the most complex file in the codebase — 2400+ lines managing mapbox layers, draw mode, route builder, simulation state, and GTFS overlays simultaneously.
+
+                all six modes share a single mapbox instance. switching modes mutates which layers are visible and which event listeners are active, rather than mounting and unmounting separate map components. this avoids the expensive mapbox initialization cost on every mode change.
+
+                state coordination across modes uses a combination of <span className='text-lightBeige/95 font-normal'>react state, custom browser events, and localStorage</span>. localStorage persists the active design between page reloads, so users don't lose work if they navigate away.
+
+                <span className='text-lightBeige/95 text-lg mt-5'>simulation engine</span>
+                the simulation runs entirely client-side. the <span className="route-background text-[0.9rem]">/api/simulation</span> route serves the pre-built trip artifacts, and the browser interpolates vehicle positions between waypoints using a requestAnimationFrame loop keyed to a virtual clock.
+
+                scrubbing the time-of-day slider doesn't re-fetch data — it updates the virtual clock and the animation loop repositions all active trips on the next frame. at peak hours, this means rendering hundreds of moving points simultaneously without any server round-trips.
+
+                <span className='text-lightBeige/95 text-lg mt-5'>route drawing</span>
+                the design mode uses <span className='text-lightBeige/95 font-normal'>@mapbox/mapbox-gl-draw</span> for placing stops and drawing line geometry. when a user finishes drawing, the route builder computes a timetable scaffold based on the line's geometry and the selected frequency or departure schedule.
+
+                custom stops (new stations) are stored in component state and layered onto the map as a separate source, distinct from the GO Transit base layer. this lets users add stops anywhere without modifying the pre-computed GTFS data.
+            </span>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>AI features</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                transitflow has two claude-powered endpoints, both using <span className='text-lightBeige/95 font-normal'>claude-sonnet-4-6</span>.
+
+                <span className='text-lightBeige/95 text-lg mt-4'>route agent</span>
+                <span className="route-background text-[0.9rem]">/api/route-agent</span> takes the user's current route geometry and stop list and returns suggestions — where to add stops, which real GO corridors to connect to, how to name the line. the agent has access to the variants index so it can reason about existing GO coverage.
+
+                <span className='text-lightBeige/95 text-lg mt-4'>schedule optimizer</span>
+                <span className="route-background text-[0.9rem]">/api/schedule-optimizer</span> takes a custom route's timetable and suggests timing improvements. it looks at the route length, the requested frequency, and the distribution of departure times to recommend a more even headway or better peak service alignment.
+
+                both endpoints stream responses so the UI can show suggestions incrementally rather than waiting for the full completion.
+            </span>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>community feed</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                the community page lets users share their network designs publicly. route data is serialized to JSON and stored in <span className='text-lightBeige/95 font-normal'>neon PostgreSQL</span> via drizzle ORM. the feed uses infinite scroll and loads in pages of posts.
+
+                posts and deletes use <span className='text-lightBeige/95 font-normal'>optimistic UI</span> — the feed updates immediately on the client, and the database confirms asynchronously. if the server rejects the action, the UI rolls back. this makes the feed feel instant even under high latency.
+
+                auth is handled by auth.js with github and google OAuth. the owner dashboard uses a dual-identity check — github login OR a specific google email — so i can access analytics without exposing the dashboard to other authenticated users.
+            </span>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>api routes</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                <span className="route-background text-[0.9rem]">/api/gotransit/*</span>
+                GTFS data endpoints — stops per variant, variant index, line geometry, coverage heatmap. these serve the pre-computed static files with appropriate caching headers.
+
+                <span className="route-background text-[0.9rem]">/api/service-updates</span>
+                scrapes gotransit.com server-side on a 5-minute cache. the client never touches the transit authority's site directly.
+
+                <span className="route-background text-[0.9rem]">/api/community/posts</span>
+                CRUD for shared route designs. create, read, and delete with auth middleware guarding writes.
+
+                <span className="route-background text-[0.9rem]">/api/bug-report</span>
+                creates a github issue via a server-side PAT. users can file bug reports without a github account — the form POSTs a description and the server opens the issue on their behalf.
+            </span>
+        </div>
+
+        <div className='flex flex-col text-left mt-10'>
+            <span className='text-lightBeige/95 text-xl'>infrastructure</span>
+            <span className='text-lighterBeige font-inter font-extralight text-[1rem]'>
+                the app is hosted on <span className='text-lightBeige/95 font-normal'>vercel with fluid compute</span>, which handles the serverless API routes without cold start penalty. neon postgres provides a serverless-compatible database connection that doesn't exhaust connection pools under serverless concurrency.
+
+                <span className='text-lightBeige/95 text-lg mt-4'>CI</span>
+                github actions runs lint, build, and playwright e2e tests on every push to main. a second workflow runs hourly to pull google analytics 4 stats and commit them to the readme — live view and user counts update automatically without any manual work.
+
+                <span className='text-lightBeige/95 text-lg mt-4'>analytics</span>
+                google analytics 4 is wired up for page views and mode switches. the owner dashboard surfaces these alongside community post counts and route shares.
+            </span>
+        </div>
+
+        <footer className="pt-4 border-t border-white/20 text-sm text-white/70 flex flex-row items-center">
+            <span className="shiny-green-dot inline-block mr-2" />
+            Last updated: 05/19/2026
+        </footer>
+    </div>  
+</div>

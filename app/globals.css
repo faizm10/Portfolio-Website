@@ -348,6 +348,23 @@ body {
 .blog-content .text-white\/70 {
   color: var(--ink-3) !important;
 }
+
+/* route-background and .a link class are hardcoded to near-white in codeblocks.css
+   — override them here so they work on both the parchment and navy themes */
+.blog-content .route-background {
+  background-color: var(--surface-alt) !important;
+  color: var(--ink) !important;
+}
+
+.blog-content .a,
+.blog-content .a:link,
+.blog-content .a:visited {
+  color: var(--accent) !important;
+}
+
+.blog-content .a:hover {
+  color: var(--accent-hover) !important;
+}
 /* ─────────────────────────────────────────────────────────────── */
 
 @media (min-width: 768px) and (max-height: 775px){
