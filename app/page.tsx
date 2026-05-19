@@ -115,7 +115,7 @@ export default function Home() {
       <div className="relative min-h-screen w-full" style={{ backgroundColor: "var(--canvas)" }}>
         <main className="mx-auto max-w-3xl px-6 py-12 md:py-16">
           {/* Jachacks banner */}
-          <Link
+          {/* <Link
             href="/jachacks"
             className="mb-8 flex items-center justify-between gap-3 rounded px-3.5 py-2.5 text-sm transition"
             style={{
@@ -134,7 +134,7 @@ export default function Home() {
           >
             <span className="leading-snug">new blog — 2nd place overall @ jachacks &apos;26</span>
             <span className="shrink-0 opacity-70" aria-hidden>→</span>
-          </Link>
+          </Link> */}
 
           {/* Header */}
           <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
