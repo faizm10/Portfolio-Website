@@ -48,10 +48,10 @@ export const posts: Post[] = [
     date: "jan 2026",
     pinned: false,
   },
-  {
-    slug: "soccer-stats",
-    title: "soccer stats & achievements",
-    date: "ongoing",
-    pinned: false,
-  },
+  // {
+  //   slug: "soccer-stats",
+  //   title: "soccer stats & achievements",
+  //   date: "ongoing",
+  //   pinned: false,
+  // },
 ];
