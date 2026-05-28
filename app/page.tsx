@@ -11,7 +11,6 @@ import { IoDocumentTextOutline, IoImagesOutline } from "react-icons/io5";
 import { posts } from "./posts";
 import { showcaseProjects } from "./projects";
 import { credlyBadges } from "./resume/data";
-import PageViewCounter from "./components/PageViewCounter";
 import GitHubContributionsCalendar from "./components/GitHubContributionsCalendar";
 
 const experiences = [
@@ -360,7 +359,6 @@ export default function Home() {
                   >
                     {post.title}
                   </Link>
-                  <PageViewCounter slug={post.slug} />
                 </li>
               ))}
             </ul>

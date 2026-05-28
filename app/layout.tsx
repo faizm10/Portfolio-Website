@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import { Newsreader, Inter, Pacifico } from "next/font/google";
-import Script from "next/script";
-import { Suspense } from "react";
 import CommandPalette from "./components/Cmd";
 import ThemeSwitcher from "./components/ThemeSwitcher";
-import GoogleAnalyticsRouteTracker from "./components/GoogleAnalyticsRouteTracker";
-import { GoogleAnalytics } from "@next/third-parties/google";
 
 const newsreader = Newsreader({
   weight: ["400", "500"],
@@ -108,13 +104,6 @@ export default function RootLayout({
           <CommandPalette />
           <ThemeSwitcher />
         </div>
-        {process.env.NEXT_PUBLIC_GOATCOUNTER_CODE && (
-          <Script
-            data-goatcounter={`https://${process.env.NEXT_PUBLIC_GOATCOUNTER_CODE}.goatcounter.com/count`}
-            src="//gc.zgo.at/count.js"
-            strategy="afterInteractive"
-          />
-        )}
         <footer className="w-full pb-6">
           <div className="mx-auto flex w-full max-w-3xl items-center gap-2 px-6 text-[#8a8270]">
             <a
@@ -143,14 +132,6 @@ export default function RootLayout({
             </a>
           </div>
         </footer>
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ? (
-          <>
-            <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
-            <Suspense fallback={null}>
-              <GoogleAnalyticsRouteTracker />
-            </Suspense>
-          </>
-        ) : null}
       </body>
     </html>
   );

@@ -2,7 +2,6 @@
 
 import { useRef, useEffect, type ComponentType, type ReactNode } from "react";
 import clsx from "clsx";
-import PageViewCounter from "../components/PageViewCounter";
 import { useRouter } from "next/navigation";
 import { MDXProvider } from "@mdx-js/react";
 import "./codeblocks.css";
@@ -112,7 +111,7 @@ export default function SlugPageClient({ slug }: { slug: string }) {
   return (
     <div className="min-h-screen w-full overflow-x-hidden px-6 py-12" style={{ backgroundColor: "var(--canvas)" }}>
       <div className="mx-auto max-w-xl blog-content">
-        <div className="mb-8 flex items-center justify-between">
+        <div className="mb-8">
           <button
             onClick={() => router.push("/")}
             className="text-sm hover:underline"
@@ -120,7 +119,6 @@ export default function SlugPageClient({ slug }: { slug: string }) {
           >
             ← back
           </button>
-          <PageViewCounter slug={slug} />
         </div>
         <article
           className={clsx(
