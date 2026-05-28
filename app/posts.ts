@@ -27,15 +27,15 @@ export const posts: Post[] = [
   {
     slug: "tdbank",
     title: "intern experience @ td bank",
-    date: "ongoing",
+    date: "jan - apr 2026",
     pinned: true,
   },
-  {
-    slug: "footy",
-    title: "some clips on fifa/soccer",
-    date: "ongoing",
-    pinned: true,
-  },
+  // {
+  //   slug: "footy",
+  //   title: "some clips on fifa/soccer",
+  //   date: "ongoing",
+  //   pinned: true,
+  // },
   {
     slug: "uwreflection",
     title: "thoughts on uw cs",
