@@ -13,7 +13,7 @@ import { showcaseProjects } from "./projects";
 import { credlyBadges } from "./resume/data";
 import GitHubContributionsCalendar from "./components/GitHubContributionsCalendar";
 
-function SchoolOrgLink({
+function InlineOrgLink({
   href,
   icon,
   label,
@@ -25,18 +25,18 @@ function SchoolOrgLink({
   external?: boolean;
 }) {
   const linkClass =
-    "inline-flex items-center gap-1.5 align-middle transition-opacity hover:opacity-80";
+    "underline underline-offset-2 decoration-[var(--ink-3)] transition-opacity hover:opacity-75";
   const content = (
     <>
       <Image
         src={icon}
         alt=""
-        width={28}
-        height={28}
-        className="size-7 shrink-0 object-contain"
+        width={20}
+        height={20}
+        className="mr-0.5 inline-block size-5 align-text-bottom object-contain"
         aria-hidden
       />
-      <span className="underline underline-offset-2">{label}</span>
+      {label}
     </>
   );
 
@@ -47,26 +47,21 @@ function SchoolOrgLink({
         target="_blank"
         rel="noopener noreferrer"
         className={linkClass}
-        style={{ color: "var(--accent)" }}
       >
         {content}
       </a>
     );
   }
 
-  return (
-    <Link href={href} className={linkClass} style={{ color: "var(--accent)" }}>
-      {content}
-    </Link>
-  );
+  return <Link href={href} className={linkClass}>{content}</Link>;
 }
 
 const experiences = [
-  // {
-  //   title: "shopify",
-  //   role: "swe intern",
-  //   icon: "/exp/images.jpeg",
-  // },
+  {
+    title: "shopify",
+    role: "swe intern",
+    icon: "/exp/shopify-logo.png",
+  },
   {
     title: "tangerine",
     role: "swe intern",
@@ -161,58 +156,15 @@ export default function Home() {
       <div className="relative min-h-screen w-full" style={{ backgroundColor: "var(--canvas)" }}>
         <main className="mx-auto max-w-3xl px-6 py-12 md:py-16">
          {/* header */}
-          <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-            <div>
+          <header>
+            <div className="flex items-center justify-between gap-4">
               <h1
                 className="font-[family-name:var(--font-newsreader)] text-3xl font-[500] tracking-tight md:text-4xl"
                 style={{ color: "var(--ink)" }}
               >
                 faiz mustansar
               </h1>
-              <ul className="mt-2 space-y-1.5 text-sm leading-snug" style={{ color: "var(--ink-2)" }}>
-                <li className="flex items-center gap-2">
-                  <span className="w-3 shrink-0 text-center" style={{ color: "var(--ink-3)" }} aria-hidden>
-                    •
-                  </span>
-                  <span className="min-w-0">
-                    swe intern @{" "}
-                    <a
-                      href="https://www.tangerine.ca/en/personal"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline underline-offset-2"
-                      style={{ color: "var(--accent)" }}
-                    >
-                      tangerine
-                    </a>
-                  </span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-3 shrink-0 text-center" style={{ color: "var(--ink-3)" }} aria-hidden>
-                    •
-                  </span>
-                  <span className="inline-flex min-w-0 flex-wrap items-center gap-x-1 gap-y-0.5">
-                    <span>full-time student @</span>
-                    <SchoolOrgLink
-                      href="https://www.uoguelph.ca/"
-                      icon="/exp/uog.png"
-                      label="guelph"
-                      external
-                    />
-                  </span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-3 shrink-0 text-center" style={{ color: "var(--ink-3)" }} aria-hidden>
-                    •
-                  </span>
-                  <span className="inline-flex min-w-0 flex-wrap items-center gap-x-1 gap-y-0.5">
-                    <span>3x terms @</span>
-                    <SchoolOrgLink href="/uwreflection" icon="/uw.png" label="waterloo" />
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <div className="flex items-center gap-4">
+              <div className="flex shrink-0 items-center gap-4">
               {!isMobile && (
                 <button
                   onClick={() =>
@@ -275,7 +227,61 @@ export default function Home() {
                   </a>
                 ),
               )}
+              </div>
             </div>
+
+            <ul
+              className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed marker:text-[var(--ink-3)]"
+              style={{ color: "var(--ink-2)" }}
+            >
+              <li>
+                <span className="inline md:whitespace-nowrap">
+                  i study cs @
+                  <InlineOrgLink
+                    href="https://www.uoguelph.ca/"
+                    icon="/exp/uog.png"
+                    label="university of guelph"
+                    external
+                  />
+                  , 3x terms @{" "}
+                  <InlineOrgLink
+                    href="/uwreflection"
+                    icon="/uw.png"
+                    label="university of waterloo"
+                  />
+                </span>
+              </li>
+              <li>
+                incoming swe intern @{" "}
+                <InlineOrgLink
+                  href="https://www.shopify.com/ca"
+                  icon="/exp/shopify-logo.png"
+                  label="shopify"
+                  external
+                />
+                <ul className="mt-1.5 list-[circle] space-y-1.5 pl-5 marker:text-[var(--ink-3)]">
+                  <li>
+                    swe intern @{" "}
+                    <InlineOrgLink
+                      href="https://www.tangerine.ca/en/personal"
+                      icon="/exp/tangerine.jpeg"
+                      label="tangerine"
+                      external
+                    />
+                    
+                  </li>
+                  <li>
+                    swe intern @{" "}
+                    <InlineOrgLink
+                      href="https://www.td.com/ca/en/personal-banking"
+                      icon="/exp/td-logo.jpeg"
+                      label="td bank"
+                      external
+                    />
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </header>
 
           <GitHubContributionsCalendar />
