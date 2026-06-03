@@ -32,13 +32,15 @@ const QUERY = `query($u:String!,$from:DateTime!,$to:DateTime!){
   }
 }`;
 
-/** Tangerine-style contribution ramp (light peach → deep orange). */
+/** Shopify-style contribution ramp (empty → #95BF47 → #5E8E3E). */
+const SHOPIFY_EMPTY = "#eef4e4";
+
 function cellColor(n: number): string {
-  if (n === 0) return "#fff5f0";
-  if (n <= 3) return "#fcd9c4";
-  if (n <= 6) return "#ffb088";
-  if (n <= 9) return "#ff7a45";
-  return "#ea580c";
+  if (n === 0) return SHOPIFY_EMPTY;
+  if (n <= 3) return "#d4e4b8";
+  if (n <= 6) return "#b5d47a";
+  if (n <= 9) return "#95bf47";
+  return "#5e8e3e";
 }
 
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -68,7 +70,7 @@ function Skeleton() {
                 width={CELL}
                 height={CELL}
                 rx={2}
-                fill="#fff5f0"
+                fill={SHOPIFY_EMPTY}
               />
             ))
           )}
@@ -176,7 +178,7 @@ export default function GitHubContributionsCalendar() {
       <h2 className="text-sm font-medium text-neutral-500 uppercase tracking-wide">
         github activity
       </h2>
-      <p className="mt-1 text-xs text-amber-800/80">
+      <p className="mt-1 text-xs text-[#5e8e3e]/80">
         {inYearTotal.toLocaleString()} contributions in {year}
       </p>
       {hover !== null && (
@@ -205,7 +207,7 @@ export default function GitHubContributionsCalendar() {
               x={LEFT_OFFSET + x}
               y={10}
               fontSize={9}
-              fill="#b45309"
+              fill="#5e8e3e"
             >
               {label}
             </text>
@@ -218,7 +220,7 @@ export default function GitHubContributionsCalendar() {
               x={0}
               y={TOP_OFFSET + row * STEP + CELL - 1}
               fontSize={9}
-              fill="#b45309"
+              fill="#5e8e3e"
             >
               {label}
             </text>
@@ -239,7 +241,7 @@ export default function GitHubContributionsCalendar() {
                   width={CELL}
                   height={CELL}
                   rx={2}
-                  fill={inYear ? cellColor(count) : "#fff5f0"}
+                  fill={inYear ? cellColor(count) : SHOPIFY_EMPTY}
                   className={inYear ? "cursor-default" : "pointer-events-none"}
                   onMouseEnter={
                     inYear
