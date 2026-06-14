@@ -1,9 +1,53 @@
+export const hackathonEntries = [
+    { role: "judge" },
+    { role: "hacker" },
+    { role: "hacker", awards: 1 },
+    { role: "organizer" },
+    { role: "hacker" },
+    { role: "hacker" },
+    { role: "hacker", awards: 2 },
+    { role: "hacker" },
+    { role: "hacker" },
+    { role: "judge" },
+    { role: "hacker" },
+    { role: "mentor" },
+    { role: "mentor" },
+    { role: "hacker" },
+    { role: "hacker", awards: 1 },
+    { role: "hacker" },
+    { role: "volunteer" },
+    { role: "hacker", awards: 1 },
+];
+
+export const totalHackathons = hackathonEntries.length;
+export const judgeMentorCount =
+    hackathonEntries.filter((entry) => entry.role === "judge" || entry.role === "mentor").length;
+export const awardCount = hackathonEntries.reduce((sum, entry) => sum + (entry.awards ?? 0), 0);
+
 <div className='w-full text-center flowboard-page'>
     <span className='block text-lightBeige/95 italic text-2xl md:text-3xl'>hackathons</span>
-    <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-2 mb-8'>
+    <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-2'>
         a running list of hackathons i've attended—projects, notable teammates, and wins.
     </div>
+
+    <div className='md:w-[90%] w-full mx-auto mt-4 mb-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-sm text-lighterBeige/80 font-inter font-extralight'>
+        <span><span className='text-lightBeige/95 font-medium'>{totalHackathons}</span> hackathons</span>
+        <span className='text-white/20 hidden sm:inline'>·</span>
+        <span><span className='text-lightBeige/95 font-medium'>{judgeMentorCount}</span> judge / mentor</span>
+        <span className='text-white/20 hidden sm:inline'>·</span>
+        <span><span className='text-lightBeige/95 font-medium'>{awardCount}</span> awards</span>
+    </div>
+
     <div className='md:w-[90%] w-full mx-auto space-y-10'>
+        {/* jamhacks 10 */}
+        <section className='flex flex-col text-left border-b border-white/20 pb-8'>
+            <span className='text-lightBeige/95 text-xl font-medium'>jamhacks 10</span>
+            <span className='text-lighterBeige/80 text-sm'>june 12–14, 2026 · waterloo, ontario</span>
+            <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-2'>judge @ canada&apos;s largest high school hackathon, university of waterloo.</div>
+            <div className='mt-2 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm'>
+                <a href="https://www.jamhacks.ca/" target="_blank" rel="noopener noreferrer" className='a'>jamhacks site</a>
+            </div>
+        </section>
         {/* mpc hacks 2026 */}
          <section className='flex flex-col text-left border-b border-white/20 pb-8'>
             <span className='text-lightBeige/95 text-xl font-medium'>mpchacks 2026</span>
