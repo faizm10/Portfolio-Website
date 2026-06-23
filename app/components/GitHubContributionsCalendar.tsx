@@ -32,15 +32,14 @@ const QUERY = `query($u:String!,$from:DateTime!,$to:DateTime!){
   }
 }`;
 
-/** Shopify-style contribution ramp (empty → #95BF47 → #5E8E3E). */
-const SHOPIFY_EMPTY = "#eef4e4";
+const CELL_EMPTY = "#ebedf0";
 
 function cellColor(n: number): string {
-  if (n === 0) return SHOPIFY_EMPTY;
-  if (n <= 3) return "#d4e4b8";
-  if (n <= 6) return "#b5d47a";
-  if (n <= 9) return "#95bf47";
-  return "#5e8e3e";
+  if (n === 0) return CELL_EMPTY;
+  if (n <= 3) return "#9be9a8";
+  if (n <= 6) return "#40c463";
+  if (n <= 9) return "#30a14e";
+  return "#216e39";
 }
 
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -70,7 +69,7 @@ function Skeleton() {
                 width={CELL}
                 height={CELL}
                 rx={2}
-                fill={SHOPIFY_EMPTY}
+                fill={CELL_EMPTY}
               />
             ))
           )}
@@ -241,7 +240,7 @@ export default function GitHubContributionsCalendar() {
                   width={CELL}
                   height={CELL}
                   rx={2}
-                  fill={inYear ? cellColor(count) : SHOPIFY_EMPTY}
+                  fill={inYear ? cellColor(count) : CELL_EMPTY}
                   className={inYear ? "cursor-default" : "pointer-events-none"}
                   onMouseEnter={
                     inYear

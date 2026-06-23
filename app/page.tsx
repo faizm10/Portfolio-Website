@@ -58,11 +58,6 @@ function InlineOrgLink({
 
 const experiences = [
   {
-    title: "shopify",
-    role: "swe intern",
-    icon: "/exp/shopify-logo.png",
-  },
-  {
     title: "tangerine",
     role: "swe intern",
     icon: "/exp/tangerine.jpeg",
@@ -252,34 +247,22 @@ export default function Home() {
                 </span>
               </li>
               <li>
-                incoming swe intern @{" "}
+                swe intern @{" "}
                 <InlineOrgLink
-                  href="https://www.shopify.com/ca"
-                  icon="/exp/shopify-logo.png"
-                  label="shopify"
+                  href="https://www.tangerine.ca/en/personal"
+                  icon="/exp/tangerine.jpeg"
+                  label="tangerine"
                   external
                 />
-                <ul className="mt-1.5 list-[circle] space-y-1.5 pl-5 marker:text-[var(--ink-3)]">
-                  <li>
-                    swe intern @{" "}
-                    <InlineOrgLink
-                      href="https://www.tangerine.ca/en/personal"
-                      icon="/exp/tangerine.jpeg"
-                      label="tangerine"
-                      external
-                    />
-                    
-                  </li>
-                  <li>
-                    swe intern @{" "}
-                    <InlineOrgLink
-                      href="https://www.td.com/ca/en/personal-banking"
-                      icon="/exp/td-logo.jpeg"
-                      label="td bank"
-                      external
-                    />
-                  </li>
-                </ul>
+              </li>
+              <li>
+                swe intern @{" "}
+                <InlineOrgLink
+                  href="https://www.td.com/ca/en/personal-banking"
+                  icon="/exp/td-logo.jpeg"
+                  label="td bank"
+                  external
+                />
               </li>
             </ul>
           </header>
