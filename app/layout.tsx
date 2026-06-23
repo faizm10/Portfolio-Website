@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Newsreader, Inter, Pacifico } from "next/font/google";
 import CommandPalette from "./components/Cmd";
-import ThemeSwitcher from "./components/ThemeSwitcher";
 
 const newsreader = Newsreader({
   weight: ["400", "500"],
@@ -88,10 +87,10 @@ export default function RootLayout({
     >
       <head>
         <link rel="canonical" href="https://faizm.ca" />
-        {/* Prevent theme flash on load */}
+        {/* Keep the site on the parchment theme and clear legacy theme choices. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem('portfolio-theme')||'navy';document.documentElement.setAttribute('data-theme',t);}catch(e){}`,
+            __html: `document.documentElement.setAttribute('data-theme','parchment');try{localStorage.removeItem('portfolio-theme');}catch(e){}`,
           }}
         />
       </head>
@@ -102,7 +101,6 @@ export default function RootLayout({
         <div className="min-h-screen w-full">
           {children}
           <CommandPalette />
-          <ThemeSwitcher />
         </div>
         <footer className="w-full pb-6">
           <div className="mx-auto flex w-full max-w-3xl items-center gap-2 px-6 text-[#8a8270]">
