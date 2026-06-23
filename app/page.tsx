@@ -13,44 +13,82 @@ import { showcaseProjects } from "./projects";
 import { credlyBadges } from "./resume/data";
 import GitHubContributionsCalendar from "./components/GitHubContributionsCalendar";
 
+function InlineOrgLink({
+  href,
+  icon,
+  label,
+  external = false,
+}: {
+  href: string;
+  icon: string;
+  label: string;
+  external?: boolean;
+}) {
+  const linkClass =
+    "underline underline-offset-2 decoration-[var(--ink-3)] transition-opacity hover:opacity-75";
+  const content = (
+    <>
+      <Image
+        src={icon}
+        alt=""
+        width={20}
+        height={20}
+        className="mr-0.5 inline-block size-5 align-text-bottom object-contain"
+        aria-hidden
+      />
+      {label}
+    </>
+  );
+
+  if (external) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={linkClass}
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return <Link href={href} className={linkClass}>{content}</Link>;
+}
+
 const experiences = [
   {
-    title: "tangerine (scotiabank)",
+    title: "tangerine",
     role: "swe intern",
     icon: "/exp/tangerine.jpeg",
   },
-  {
-    title: "university of guelph",
-    role: "teaching assistant — spmt1120 (sports)",
-    icon: "/exp/uog.png",
-  },
-  { title: "td bank", role: "swe intern", icon: "/exp/td-logo.png" },
-  {
-    title: "hackcanada",
-    role: "vp of tech",
-    icon: "/exp/hackcanadaLogo.png",
-  },
-  {
-    title: "brown & beatty ai",
-    role: "software engineer intern",
-    icon: "/exp/bbai.png",
-  },
-  {
-    title: "octree",
-    role: "co-founder + software engineer",
-    icon: "/exp/octree.svg",
-  },
-
-  {
-    title: "university of guelph",
-    role: "full stack developer",
-    icon: "/exp/uog.png",
-  },
-  {
-    title: "university of guelph",
-    role: "teaching assistant — mcs2000 & mcs2020 (business) · 3x terms",
-    icon: "/exp/uog.png",
-  },
+  // {
+  //   title: "university of guelph",
+  //   role: "teaching assistant — spmt1120 (sports)",
+  //   icon: "/exp/uog.png",
+  // },
+  { title: "td bank", role: "swe intern", icon: "/exp/td-logo.jpeg" },
+  // {
+  //   title: "hackcanada",
+  //   role: "vp of tech",
+  //   icon: "/exp/hackcanadaLogo.png",
+  // },
+  // {
+  //   title: "brown & beatty ai",
+  //   role: "software engineer intern",
+  //   icon: "/exp/bbai.png",
+  // },
+  
+  // {
+  //   title: "university of guelph",
+  //   role: "full stack developer",
+  //   icon: "/exp/uog.png",
+  // },
+  // {
+  //   title: "university of guelph",
+  //   role: "teaching assistant — mcs2000 & mcs2020 (business) · 3x terms",
+  //   icon: "/exp/uog.png",
+  // },
 ];
 
 export default function Home() {
@@ -83,7 +121,6 @@ export default function Home() {
     return () => window.removeEventListener("command-palette-opened", noop);
   }, []);
 
-  // Defer to after mount so SSR + first client paint match (avoids ⌘ vs ctrl hydration mismatch).
   const [isMac, setIsMac] = useState(false);
   useEffect(() => {
     setIsMac(
@@ -113,103 +150,16 @@ export default function Home() {
 
       <div className="relative min-h-screen w-full" style={{ backgroundColor: "var(--canvas)" }}>
         <main className="mx-auto max-w-3xl px-6 py-12 md:py-16">
-          {/* Jachacks banner */}
-          {/* <Link
-            href="/jachacks"
-            className="mb-8 flex items-center justify-between gap-3 rounded px-3.5 py-2.5 text-sm transition"
-            style={{
-              border: "1px solid var(--accent-border)",
-              backgroundColor: "var(--accent-bg)",
-              color: "var(--accent)",
-            }}
-            onMouseEnter={e => {
-              (e.currentTarget as HTMLElement).style.borderColor = "var(--accent-border-hover)";
-              (e.currentTarget as HTMLElement).style.backgroundColor = "var(--accent-bg-hover)";
-            }}
-            onMouseLeave={e => {
-              (e.currentTarget as HTMLElement).style.borderColor = "var(--accent-border)";
-              (e.currentTarget as HTMLElement).style.backgroundColor = "var(--accent-bg)";
-            }}
-          >
-            <span className="leading-snug">new blog — 2nd place overall @ jachacks &apos;26</span>
-            <span className="shrink-0 opacity-70" aria-hidden>→</span>
-          </Link> */}
-
-          {/* Header */}
-          <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-            <div>
+         {/* header */}
+          <header>
+            <div className="flex items-center justify-between gap-4">
               <h1
                 className="font-[family-name:var(--font-newsreader)] text-3xl font-[500] tracking-tight md:text-4xl"
                 style={{ color: "var(--ink)" }}
               >
                 faiz mustansar
               </h1>
-              <div className="mt-1.5 space-y-1">
-                <p className="text-sm leading-relaxed" style={{ color: "var(--ink-2)" }}>
-                  swe intern @{" "}
-                  <a
-                    href="https://www.tangerine.ca/en/personal"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline underline-offset-2"
-                    style={{ color: "var(--accent)" }}
-                  >
-                    tangerine (scotiabank)
-                  </a>
-                  {" "}• view my{" "}
-                  <a
-                    href="https://www.faizm.ca/resume"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline underline-offset-2"
-                    style={{ color: "var(--accent)" }}
-                  >
-                    resume
-                  </a>
-                </p>
-                <p
-                  className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm leading-relaxed"
-                  style={{ color: "var(--ink-2)" }}
-                >
-                  <span>full-time student @</span>
-                  <a
-                    href="https://www.uoguelph.ca/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 underline underline-offset-2"
-                    style={{ color: "var(--accent)" }}
-                  >
-                    <Image
-                      src="/exp/uog.png"
-                      alt=""
-                      width={20}
-                      height={20}
-                      className="h-5 w-5 shrink-0 rounded-full object-contain"
-                    />
-                    guelph
-                  </a>
-                  <span aria-hidden style={{ color: "var(--ink-3)" }}>
-                    |
-                  </span>
-                  <span>3x terms @</span>
-                  <Link
-                    href="/uwreflection"
-                    className="inline-flex items-center gap-1 underline underline-offset-2"
-                    style={{ color: "var(--accent)" }}
-                  >
-                    <Image
-                      src="/uw.png"
-                      alt=""
-                      width={20}
-                      height={20}
-                      className="h-5 w-5 shrink-0 rounded-full object-contain"
-                    />
-                    waterloo
-                  </Link>
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
+              <div className="flex shrink-0 items-center gap-4">
               {!isMobile && (
                 <button
                   onClick={() =>
@@ -237,24 +187,84 @@ export default function Home() {
                 { href: "https://x.com/_faizm", label: "Twitter", Icon: FaTwitter },
               ].map(({ href, label, Icon, isLink }) =>
                 isLink ? (
-                  <Link key={label} href={href} aria-label={label}
-                    className="transition-colors" style={{ color: "var(--ink-3)" }}
-                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "var(--accent)"}
-                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "var(--ink-3)"}
+                  <Link
+                    key={label}
+                    href={href}
+                    aria-label={label}
+                    className="transition-colors"
+                    style={{ color: "var(--ink-3)" }}
+                    onMouseEnter={(e) =>
+                      ((e.currentTarget as HTMLElement).style.color = "var(--accent)")
+                    }
+                    onMouseLeave={(e) =>
+                      ((e.currentTarget as HTMLElement).style.color = "var(--ink-3)")
+                    }
                   >
                     <Icon className="h-5 w-5" />
                   </Link>
                 ) : (
-                  <a key={label} href={href} target="_blank" rel="noopener noreferrer"
-                    aria-label={label} className="transition-colors" style={{ color: "var(--ink-3)" }}
-                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "var(--accent)"}
-                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "var(--ink-3)"}
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="transition-colors"
+                    style={{ color: "var(--ink-3)" }}
+                    onMouseEnter={(e) =>
+                      ((e.currentTarget as HTMLElement).style.color = "var(--accent)")
+                    }
+                    onMouseLeave={(e) =>
+                      ((e.currentTarget as HTMLElement).style.color = "var(--ink-3)")
+                    }
                   >
                     <Icon className="h-5 w-5" />
                   </a>
-                )
+                ),
               )}
+              </div>
             </div>
+
+            <ul
+              className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed marker:text-[var(--ink-3)]"
+              style={{ color: "var(--ink-2)" }}
+            >
+              <li>
+                <span className="inline md:whitespace-nowrap">
+                  i study cs @
+                  <InlineOrgLink
+                    href="https://www.uoguelph.ca/"
+                    icon="/exp/uog.png"
+                    label="university of guelph"
+                    external
+                  />
+                  , 3x terms @{" "}
+                  <InlineOrgLink
+                    href="/uwreflection"
+                    icon="/uw.png"
+                    label="university of waterloo"
+                  />
+                </span>
+              </li>
+              <li>
+                swe intern @{" "}
+                <InlineOrgLink
+                  href="https://www.tangerine.ca/en/personal"
+                  icon="/exp/tangerine.jpeg"
+                  label="tangerine"
+                  external
+                />
+              </li>
+              <li>
+                swe intern @{" "}
+                <InlineOrgLink
+                  href="https://www.td.com/ca/en/personal-banking"
+                  icon="/exp/td-logo.jpeg"
+                  label="td bank"
+                  external
+                />
+              </li>
+            </ul>
           </header>
 
           <GitHubContributionsCalendar />
@@ -268,12 +278,16 @@ export default function Home() {
               {experiences.map((exp, i) => (
                 <li key={i} className="flex gap-4 items-center">
                   <div
-                    className="h-9 w-9 shrink-0 overflow-hidden rounded ring-1 ring-[var(--border)]"
+                    className="h-12 w-12 shrink-0 overflow-hidden rounded ring-1 ring-[var(--border)]"
                     style={{ backgroundColor: "var(--surface-alt)" }}
                   >
                     {exp.icon && (
-                      <Image src={exp.icon} alt="" width={36} height={36}
-                        className="h-9 w-9 object-contain"
+                      <Image
+                        src={exp.icon}
+                        alt=""
+                        width={48}
+                        height={48}
+                        className="h-12 w-12 object-contain"
                       />
                     )}
                   </div>
@@ -365,7 +379,7 @@ export default function Home() {
           </section>
 
           {/* Certifications */}
-          <section className="mt-12">
+          {/* <section className="mt-12">
             <h2 className="text-xs font-medium uppercase tracking-widest" style={{ color: "var(--ink-3)" }}>
               certifications
             </h2>
@@ -402,7 +416,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-          </section>
+          </section> */}
         </main>
       </div>
     </>
