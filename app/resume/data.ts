@@ -137,7 +137,7 @@ export const resume = {
     {
       name: "uoguelph.courses",
       url: "https://uoguelph.courses",
-      detail: "Course search & reviews for U of G — 1000+ users, 25k+ views.",
+      detail: "Course search & reviews for U of G — 1000+ users, 75k+ views.",
     },
     {
       name: "Octree",
@@ -149,6 +149,12 @@ export const resume = {
       name: "Arcki",
       url: "https://www.arcki.tech/",
       detail: "3D world editor on a globe — 1k+ users, 50k+ views, 50+ stars.",
+    },
+    {
+      name: "TransitFlow",
+      url: "https://transit-flow-two.vercel.app",
+      detail:
+        "Custom GO Transit route designer & live simulation — 300+ users.",
     },
     {
       name: "UoG webring",
