@@ -18,27 +18,46 @@ function InlineOrgLink({
   icon,
   label,
   external = false,
+  showIcon = true,
+  iconOnly = false,
 }: {
   href: string;
-  icon: string;
+  icon?: string;
   label: string;
   external?: boolean;
+  showIcon?: boolean;
+  iconOnly?: boolean;
 }) {
-  const linkClass =
-    "underline underline-offset-2 decoration-[var(--ink-3)] transition-opacity hover:opacity-75";
-  const content = (
+  const linkClass = iconOnly
+    ? "mx-0.5 inline-flex align-text-bottom rounded ring-1 ring-[var(--border)] transition-opacity hover:opacity-75"
+    : "underline underline-offset-2 decoration-[var(--ink-3)] transition-opacity hover:opacity-75";
+
+  const content = iconOnly && icon ? (
+    <Image
+      src={icon}
+      alt=""
+      width={20}
+      height={20}
+      className="size-5 object-contain"
+      aria-hidden
+    />
+  ) : (
     <>
-      <Image
-        src={icon}
-        alt=""
-        width={20}
-        height={20}
-        className="mr-0.5 inline-block size-5 align-text-bottom object-contain"
-        aria-hidden
-      />
+      {showIcon && icon && (
+        <Image
+          src={icon}
+          alt=""
+          width={20}
+          height={20}
+          className="mr-0.5 inline-block size-5 align-text-bottom object-contain"
+          aria-hidden
+        />
+      )}
       {label}
     </>
   );
+
+  const aria = iconOnly ? { "aria-label": label } : {};
 
   if (external) {
     return (
@@ -47,13 +66,18 @@ function InlineOrgLink({
         target="_blank"
         rel="noopener noreferrer"
         className={linkClass}
+        {...aria}
       >
         {content}
       </a>
     );
   }
 
-  return <Link href={href} className={linkClass}>{content}</Link>;
+  return (
+    <Link href={href} className={linkClass} {...aria}>
+      {content}
+    </Link>
+  );
 }
 
 const experiences = [
@@ -73,11 +97,11 @@ const experiences = [
   //   role: "vp of tech",
   //   icon: "/exp/hackcanadaLogo.png",
   // },
-  // {
-  //   title: "brown & beatty ai",
-  //   role: "software engineer intern",
-  //   icon: "/exp/bbai.png",
-  // },
+  {
+    title: "sertus",
+    role: "swe intern",
+    icon: "/exp/sertus.jpeg",
+  },
   
   // {
   //   title: "university of guelph",
@@ -247,22 +271,32 @@ export default function Home() {
                 </span>
               </li>
               <li>
-                swe intern @{" "}
-                <InlineOrgLink
-                  href="https://www.tangerine.ca/en/personal"
-                  icon="/exp/tangerine.jpeg"
-                  label="tangerine"
-                  external
-                />
-              </li>
-              <li>
-                swe intern @{" "}
-                <InlineOrgLink
-                  href="https://www.td.com/ca/en/personal-banking"
-                  icon="/exp/td-logo.jpeg"
-                  label="td bank"
-                  external
-                />
+                <span className="inline-flex flex-wrap items-center gap-x-1 gap-y-1">
+                  <span>currently swe intern @</span>
+                  <InlineOrgLink
+                    href="https://www.tangerine.ca/en/personal"
+                    icon="/exp/tangerine.jpeg"
+                    label="tangerine"
+                    external
+                    iconOnly
+                  />
+                  <span style={{ color: "var(--ink-3)" }}>· prev</span>
+                  <InlineOrgLink
+                    href="https://www.td.com/ca/en/personal-banking"
+                    icon="/exp/td-logo.jpeg"
+                    label="td bank"
+                    external
+                    iconOnly
+                  />
+                  <span style={{ color: "var(--ink-3)" }}>&</span>
+                  <InlineOrgLink
+                    href="https://www.sertus.app/"
+                    icon="/exp/sertus.jpeg"
+                    label="sertus"
+                    external
+                    iconOnly
+                  />
+                </span>
               </li>
             </ul>
           </header>
