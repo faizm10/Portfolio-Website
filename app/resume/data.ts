@@ -42,7 +42,7 @@ export const credlyBadges = [
 ] as const;
 
 export const hackathonsSummary = {
-  headline: "15+ hackathons (and counting)",
+  headline: "20+ hackathons (and counting)",
   body: "I treat hackathons as a serious side practice: shipping full-stack and ML demos under time pressure, organizing at scale (VP of Tech @ HackCanada), and mentoring or judging when I am not competing. A running list of events, teammates, and wins is on my site.",
   linkHref: "/hackathons",
   linkLabel: "See all hackathons →",
