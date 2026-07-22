@@ -85,13 +85,19 @@ const experiences = [
     title: "tangerine",
     role: "swe intern",
     icon: "/exp/tangerine.jpeg",
+    href: "https://www.tangerine.ca/en/personal",
   },
   // {
   //   title: "university of guelph",
   //   role: "teaching assistant — spmt1120 (sports)",
   //   icon: "/exp/uog.png",
   // },
-  { title: "td bank", role: "swe intern", icon: "/exp/td-logo.jpeg" },
+  {
+    title: "td bank",
+    role: "swe intern",
+    icon: "/exp/td-logo.jpeg",
+    href: "https://www.td.com/ca/en/personal-banking",
+  },
   // {
   //   title: "hackcanada",
   //   role: "vp of tech",
@@ -101,6 +107,7 @@ const experiences = [
     title: "sertus",
     role: "swe intern",
     icon: "/exp/sertus.jpeg",
+    href: "https://www.sertus.app/",
   },
   
   // {
@@ -310,25 +317,32 @@ export default function Home() {
             </h2>
             <ul className="mt-5 space-y-4">
               {experiences.map((exp, i) => (
-                <li key={i} className="flex gap-4 items-center">
-                  <div
-                    className="h-12 w-12 shrink-0 overflow-hidden rounded ring-1 ring-[var(--border)]"
-                    style={{ backgroundColor: "var(--surface-alt)" }}
+                <li key={i}>
+                  <a
+                    href={exp.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex gap-4 items-center group"
                   >
-                    {exp.icon && (
-                      <Image
-                        src={exp.icon}
-                        alt=""
-                        width={48}
-                        height={48}
-                        className="h-12 w-12 object-contain"
-                      />
-                    )}
-                  </div>
-                  <div>
-                    <p className="font-medium leading-tight" style={{ color: "var(--ink)" }}>{exp.title}</p>
-                    <p className="text-sm" style={{ color: "var(--ink-3)" }}>{exp.role}</p>
-                  </div>
+                    <div
+                      className="h-12 w-12 shrink-0 overflow-hidden rounded ring-1 ring-[var(--border)]"
+                      style={{ backgroundColor: "var(--surface-alt)" }}
+                    >
+                      {exp.icon && (
+                        <Image
+                          src={exp.icon}
+                          alt=""
+                          width={48}
+                          height={48}
+                          className="h-12 w-12 object-contain"
+                        />
+                      )}
+                    </div>
+                    <div>
+                      <p className="font-medium leading-tight group-hover:underline underline-offset-2" style={{ color: "var(--ink)" }}>{exp.title}</p>
+                      <p className="text-sm" style={{ color: "var(--ink-3)" }}>{exp.role}</p>
+                    </div>
+                  </a>
                 </li>
               ))}
             </ul>
