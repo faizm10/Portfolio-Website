@@ -74,7 +74,7 @@ export default function ResumeDocument() {
         </p>
         <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1.5 text-sm print:text-xs" style={{ color: "var(--ink-3)" }}>
           <li><ContactLink href={`mailto:${contact.email}`}>{contact.email}</ContactLink></li>
-          <li><ContactLink href={contact.site}>faizm.ca</ContactLink></li>
+          <li><ContactLink href={contact.site}>{contact.siteLabel}</ContactLink></li>
           <li><ContactLink href={contact.linkedin}>linkedin</ContactLink></li>
           <li><ContactLink href={contact.github}>github</ContactLink></li>
         </ul>
@@ -180,7 +180,7 @@ export default function ResumeDocument() {
           </Link>
         </p>
         <p className="mt-2 hidden text-xs print:block" style={{ color: "var(--ink-3)" }}>
-          Full list (print): faizm.ca{hackathonsSummary.linkHref}
+          Full list (print): {contact.siteLabel}{hackathonsSummary.linkHref}
         </p>
       </section>
 
