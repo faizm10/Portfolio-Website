@@ -27,12 +27,14 @@ export const site = {
       label: "university of guelph",
       href: "https://www.uoguelph.ca/",
       icon: "/exp/uog.png",
+      preview: "/previews/uoguelph.jpeg",
       external: true,
     },
     waterloo: {
       label: "university of waterloo",
       href: "/uwreflection",
       icon: "/uw.png",
+      preview: null,
       external: false,
     },
   },
@@ -59,9 +61,23 @@ export const site = {
     contract: "contract · faiz mustansar",
     notFoundDescription: "this page does not exist on faizm.ca",
   },
+  /** Homepage copy (austin-style minimal bio). */
+  homepage: {
+    location: "toronto",
+    interests:
+      "interested in full-stack and product engineering, shipping consumer apps, and building in public",
+    contactLead: "reach out to my socials or",
+  },
 } as const;
 
 export type SocialKey = keyof typeof site.socials;
+
+/** Text socials shown at the bottom of the homepage. */
+export const homepageSocials = [
+  { key: "x" as const, label: "twitter", href: site.socials.x },
+  { key: "github" as const, label: "github", href: site.socials.github },
+  { key: "linkedin" as const, label: "linkedin", href: site.socials.linkedin },
+];
 
 /** Header nav: internal pages + socials (icons mapped in the component). */
 export const headerNav = [
