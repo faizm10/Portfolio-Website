@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import ResumeDocument from "./ResumeDocument";
 import ResumeHeader from "./ResumeHeader";
+import { site } from "@/app/data/site";
+import { hackathonsCountLabel } from "@/app/data/hackathons";
 
 export const metadata: Metadata = {
-  title: "resume · faiz mustansar",
-  description:
-    "Recruiter-friendly profile for Faiz Mustansar — internships (Tangerine, TD), HackCanada, Guelph CS, scholarships, and 20+ hackathons. Download the official PDF resume.",
+  title: site.pageTitles.resume,
+  description: `Recruiter-friendly profile for ${site.nameFormal} — internships (Tangerine, TD), HackCanada, Guelph CS, scholarships, and ${hackathonsCountLabel} hackathons. Download the official PDF resume.`,
 };
 
 export default function ResumePage() {
