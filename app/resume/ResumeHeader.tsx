@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { RESUME_PDF_PATH } from "./data";
+import { site } from "@/app/data/site";
 
 export default function ResumeHeader() {
   return (
@@ -38,7 +39,7 @@ export default function ResumeHeader() {
         </div>
         <a
           href={RESUME_PDF_PATH}
-          download="faiz-mustansar-resume-2026.pdf"
+          download={site.resumePdfDownloadName}
           className="shrink-0 rounded px-3.5 py-2 text-xs font-medium transition active:scale-[0.98] print:hidden"
           style={{ backgroundColor: "var(--accent)", color: "var(--canvas)" }}
           onMouseEnter={(e) =>
