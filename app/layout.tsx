@@ -78,23 +78,17 @@ export default function RootLayout({
     >
       <head>
         <link rel="canonical" href={site.url} />
-        {/* Keep the site on the parchment theme and clear legacy theme choices. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `document.documentElement.setAttribute('data-theme','parchment');try{localStorage.removeItem('portfolio-theme');}catch(e){}`,
-          }}
-        />
       </head>
       <body
-        className={`${inter.className} min-h-screen w-full text-[#201a10] antialiased`}
+        className={`${inter.className} min-h-screen w-full bg-white text-neutral-900 antialiased`}
         suppressHydrationWarning
       >
-        <div className="min-h-screen w-full">
+        <div className="min-h-screen w-full bg-white">
           {children}
           <CommandPalette />
         </div>
-        <footer className="w-full pb-6">
-          <div className="mx-auto flex w-full max-w-3xl items-center gap-2 px-6 text-[#8a8270]">
+        <footer className="w-full bg-white pb-6">
+          <div className="mx-auto flex w-full max-w-3xl items-center gap-2 px-6 text-neutral-400">
             <a href={webringUrl("prev")} aria-label="Previous site">
               ←
             </a>
