@@ -5,6 +5,8 @@ export type Org = {
   title: string;
   href: string;
   icon: string;
+  /** Cached page screenshot for hover previews */
+  preview: string;
 };
 
 export const orgs = {
@@ -12,16 +14,19 @@ export const orgs = {
     title: "tangerine",
     href: "https://www.tangerine.ca/en/personal",
     icon: "/exp/tangerine.jpeg",
+    preview: "/previews/tangerine.jpeg",
   },
   td: {
     title: "td bank",
     href: "https://www.td.com/ca/en/personal-banking",
     icon: "/exp/td-logo.jpeg",
+    preview: "/previews/td.jpeg",
   },
   sertus: {
     title: "sertus",
     href: "https://www.sertus.app/",
     icon: "/exp/sertus.jpeg",
+    preview: "/previews/sertus.jpeg",
   },
 } as const satisfies Record<string, Org>;
 
