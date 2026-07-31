@@ -1,6 +1,14 @@
 /**
- * Web resume copy — edit here to stay in sync with `public/resume/newResume2026.pdf`.
+ * Web resume copy — edit experience/education/skills here.
+ * Contact, projects list, and hackathon summary come from `app/data/`.
  */
+import { site, siteHostname } from "@/app/data/site";
+import { resumeProjects } from "@/app/data/projects";
+import { hackathonsSummary } from "@/app/data/hackathons";
+
+export { hackathonsSummary };
+export { credlyBadges } from "./badges";
+
 export const RESUME_PDF_PATH = "/resume/newResume2026.pdf";
 
 export const scholarships = [
@@ -22,41 +30,16 @@ export const scholarships = [
   },
 ] as const;
 
-export const credlyBadges = [
-  {
-    id: "a4abc009-d840-48c5-a332-414a6d4cf61d",
-    name: "TD Google Hackathon Participant",
-    issuer: "Explore Google Cloud",
-    issued: "Apr 2026",
-    imageUrl:
-      "https://images.credly.com/images/a4fc6a2d-be28-4900-9ca4-9adf8f86f569/blob",
-  },
-  {
-    id: "4296915c-4311-4dea-9b30-6f03f756ee59",
-    name: "TD Google Hackathon Pre-Work",
-    issuer: "Explore Google Cloud",
-    issued: "Apr 2026",
-    imageUrl:
-      "https://images.credly.com/images/ad69da3f-fd00-45ef-a1a8-faff463d09ad/blob",
-  },
-] as const;
-
-export const hackathonsSummary = {
-  headline: "20+ hackathons (and counting)",
-  body: "I treat hackathons as a serious side practice: shipping full-stack and ML demos under time pressure, organizing at scale (VP of Tech @ HackCanada), and mentoring or judging when I am not competing. A running list of events, teammates, and wins is on my site.",
-  linkHref: "/hackathons",
-  linkLabel: "See all hackathons →",
-} as const;
-
 export const resume = {
-  name: "Faiz Mustansar",
+  name: site.nameFormal,
   headline:
     "software developer intern @ tangerine (scotiabank) · prev. swe intern @ TD Bank",
   contact: {
-    email: "faizmustansar10@gmail.com",
-    site: "https://faizm.ca",
-    linkedin: "https://www.linkedin.com/in/faizmustansar/",
-    github: "https://github.com/faizm10",
+    email: site.email,
+    site: site.url,
+    siteLabel: siteHostname(),
+    linkedin: site.socials.linkedin,
+    github: site.socials.github,
   },
   education: [
     {
@@ -133,47 +116,7 @@ export const resume = {
       ],
     },
   ],
-  projects: [
-    {
-      name: "uoguelph.courses",
-      url: "https://uoguelph.courses",
-      detail: "Course search & reviews for U of G — 1000+ users, 75k+ views.",
-    },
-    {
-      name: "Octree",
-      url: "https://www.useoctree.com/",
-      detail:
-        "AI-powered LaTeX editor — 250+ GitHub stars, 2k users, 50 forks.",
-    },
-    {
-      name: "Arcki",
-      url: "https://www.arcki.tech/",
-      detail: "3D world editor on a globe — 1k+ users, 50k+ views, 50+ stars.",
-    },
-    {
-      name: "TransitFlow",
-      url: "https://transit-flow-two.vercel.app",
-      detail:
-        "Custom GO Transit route designer & live simulation — 300+ users.",
-    },
-    {
-      name: "UoG webring",
-      url: "https://github.com/faizm10/uog-webring",
-      detail: "Community webring for U of G CS & SWE students.",
-    },
-    {
-      name: "TripLoom",
-      url: "https://github.com/faizm10/TripLoom",
-      detail:
-        "AI-assisted travel planner for flights, transit, and itineraries.",
-    },
-    {
-      name: "Foco",
-      url: "https://github.com/faizm10/jachacks26",
-      detail:
-        "2nd place at JAC Hacks 2026",
-    },
-  ],
+  projects: resumeProjects(),
   skills: {
     languages: "TypeScript, JavaScript, Python, Java, Kotlin, SQL",
     frameworks: "Next.js, React, Node.js, Spring Boot, Tailwind CSS",
@@ -181,4 +124,4 @@ export const resume = {
       "PostgreSQL, Redis, Supabase, Vercel, Fly.io, Docker, Kubernetes, Google Cloud Platform, Jenkins, SonarQube, Git",
     other: "REST APIs, real-time UIs, LLM integrations, payments (Stripe)",
   },
-} as const;
+};
