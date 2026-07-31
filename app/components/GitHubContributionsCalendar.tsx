@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import { site } from "@/app/data/site";
 
 type ContributionDay = {
   date: string;
@@ -13,7 +14,7 @@ type CalendarData = {
   weeks: { contributionDays: ContributionDay[] }[];
 };
 
-const USERNAME = "faizm10";
+const USERNAME = site.githubUsername;
 const CELL = 10;
 const GAP = 3;
 const STEP = CELL + GAP;
