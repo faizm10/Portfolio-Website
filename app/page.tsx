@@ -80,14 +80,7 @@ export default function Home() {
   const work = bioInternships.current;
 
   return (
-    <div
-      className="relative min-h-screen w-full"
-      style={{
-        backgroundColor: "var(--canvas)",
-        backgroundImage:
-          "radial-gradient(ellipse 80% 50% at 0% 0%, rgba(27,54,93,0.04), transparent 55%), radial-gradient(ellipse 60% 40% at 100% 100%, rgba(32,26,16,0.03), transparent 50%)",
-      }}
-    >
+    <div className="relative min-h-screen w-full bg-white">
       <div className="pointer-events-none absolute h-0 w-0 overflow-hidden opacity-0" aria-hidden>
         {[school.preview, work.preview].filter(Boolean).map((src) => (
           <img key={src!} src={src!} alt="" width={1} height={1} />
