@@ -13,6 +13,16 @@ import {
   IoImagesOutline,
 } from "react-icons/io5";
 import { PiLinkedinLogo } from "react-icons/pi";
+import { commandNav, site } from "@/app/data/site";
+
+const commandIcons = {
+  home: IoHomeOutline,
+  photos: IoImagesOutline,
+  resume: IoDocumentTextOutline,
+  linkedin: PiLinkedinLogo,
+  github: FiGithub,
+  instagram: IoLogoInstagram,
+} as const;
 
 export default function CommandPalette() {
   const [open, setOpen] = useState(false);
@@ -113,19 +123,15 @@ export default function CommandPalette() {
           break;
         case "Digit3":
         case "Numpad3":
-          openLink(() =>
-            window.open("https://www.linkedin.com/in/faizmustansar/", "_blank"),
-          );
+          openLink(() => window.open(site.socials.linkedin, "_blank"));
           break;
         case "Digit4":
         case "Numpad4":
-          openLink(() => window.open("https://github.com/faizm10", "_blank"));
+          openLink(() => window.open(site.socials.github, "_blank"));
           break;
         case "Digit5":
         case "Numpad5":
-          openLink(() =>
-            window.open("https://www.instagram.com/faizm.30/", "_blank"),
-          );
+          openLink(() => window.open(site.socials.instagram, "_blank"));
           break;
       }
     };
@@ -195,10 +201,10 @@ export default function CommandPalette() {
               }}
             >
               <div className="px-5 py-5 flex items-center gap-3" style={{ borderBottom: "1px solid var(--border)" }}>
-                <img src="/jsl.png" alt="jsl" className="w-7 rounded-sm" />
+                <img src={site.brandIcon} alt="jsl" className="w-7 rounded-sm" />
                 <div className="flex-1">
                   <h2 className="font-medium" style={{ color: "var(--ink)" }}>
-                    faizmustansar10@gmail.com
+                    {site.email}
                   </h2>
                   <p className="text-xs" style={{ color: "var(--ink-3)" }}>
                     use <kbd className="px-1 rounded" style={kbdStyle}>esc</kbd> or click outside to close
@@ -223,32 +229,28 @@ export default function CommandPalette() {
 
                 <Command.Group heading="links" className="px-2 text-xs uppercase tracking-widest mb-1"
                   style={{ color: "var(--ink-3)" }}>
-                  {[
-                    { value: "home faiz page", label: "home", icon: <IoHomeOutline className="h-4 w-4" />, shortcut: "0",
-                      onSelect: () => setTimeout(() => openNextLink(() => router.push("/")), 0) },
-                    { value: "photos gallery pictures faiz", label: "photos", icon: <IoImagesOutline className="h-4 w-4" />, shortcut: "1",
-                      onSelect: () => setTimeout(() => openNextLink(() => router.push("/photos")), 0) },
-                    { value: "resume cv pdf curriculum vitae faiz", label: "resume", icon: <IoDocumentTextOutline className="h-4 w-4" />, shortcut: "2",
-                      onSelect: () => setTimeout(() => openNextLink(() => router.push("/resume")), 0) },
-                    { value: "linkedin profile socials faiz", label: "linkedin", icon: <PiLinkedinLogo className="h-4 w-4" />, shortcut: "3",
-                      onSelect: () => openLink(() => window.open("https://www.linkedin.com/in/faizmustansar/", "_blank")) },
-                    { value: "github git profile faiz", label: "github", icon: <FiGithub className="h-4 w-4" />, shortcut: "4",
-                      onSelect: () => openLink(() => window.open("https://github.com/faizm10/", "_blank")) },
-                    { value: "ig instagram profile socials faiz", label: "instagram", icon: <IoLogoInstagram className="h-4 w-4" />, shortcut: "5",
-                      onSelect: () => openLink(() => window.open("https://www.instagram.com/faizm.30/", "_blank")) },
-                  ].map(item => (
+                  {commandNav.map((item) => {
+                    const Icon = commandIcons[item.key];
+                    return (
                     <Command.Item
-                      key={item.value}
-                      value={item.value}
-                      onSelect={item.onSelect}
+                      key={item.key}
+                      value={item.searchValue}
+                      onSelect={() => {
+                        if (item.external) {
+                          openLink(() => window.open(item.href, "_blank"));
+                        } else {
+                          setTimeout(() => openNextLink(() => router.push(item.href)), 0);
+                        }
+                      }}
                       className="flex items-center gap-2 px-3 py-2 text-sm rounded cursor-pointer cmd-item"
                       style={{ color: "var(--ink-2)" }}
                     >
-                      {item.icon}
+                      <Icon className="h-4 w-4" />
                       <span className="flex-1">{item.label}</span>
                       <Shortcut>{item.shortcut}</Shortcut>
                     </Command.Item>
-                  ))}
+                    );
+                  })}
                 </Command.Group>
               </Command.List>
 
