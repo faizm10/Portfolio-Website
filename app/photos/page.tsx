@@ -1,6 +1,7 @@
 import { readdir } from "fs/promises";
 import { join } from "path";
 import PhotoGallery from "./PhotoGallery";
+import { site } from "@/app/data/site";
 
 const IMAGE_EXTENSIONS = new Set([
   ".jpg",
@@ -29,8 +30,8 @@ async function getPhotos(): Promise<string[]> {
 }
 
 export const metadata = {
-  title: "photos · faiz mustansar",
-  description: "a collection of photos by faiz mustansar",
+  title: site.pageTitles.photos,
+  description: site.pageTitles.photosDescription,
 };
 
 export default async function PhotosPage() {
