@@ -20,14 +20,14 @@ function ProjectCard({ project, index }: { project: ProjectType; index: number }
       className="group block"
     >
       <div
-        className="overflow-hidden rounded-xl ring-1 transition duration-300 group-hover:-translate-y-0.5"
+        className="overflow-hidden rounded-xl p-3 ring-1 transition duration-300 group-hover:-translate-y-0.5 sm:p-3.5"
         style={{
-          backgroundColor: "var(--surface)",
+          backgroundColor: "var(--surface-alt)",
           borderColor: "var(--border)",
           boxShadow: "0 8px 24px var(--accent-shadow)",
         }}
       >
-        <div className="relative aspect-[16/10] w-full overflow-hidden">
+        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg">
           <Image
             src={project.banner}
             alt=""
