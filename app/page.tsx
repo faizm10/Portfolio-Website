@@ -10,6 +10,7 @@ import ProjectsGrid from "./components/ProjectsGrid";
 import ExperienceList from "./components/ExperienceList";
 import GitHubContributionsCalendar from "./components/GitHubContributionsCalendar";
 import TravelMap from "./components/TravelMap";
+import SketchBackground from "./components/SketchBackground";
 
 function OrgInline({
   href,
@@ -84,6 +85,7 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen w-full bg-white">
+      <SketchBackground />
       <div className="pointer-events-none absolute h-0 w-0 overflow-hidden opacity-0" aria-hidden>
         {[
           ...new Set(
