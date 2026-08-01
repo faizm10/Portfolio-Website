@@ -55,9 +55,6 @@ export const site = {
       "portfolio of faiz mustansar— computer science at the university of guelph.",
   },
   pageTitles: {
-    photos: "photos · faiz mustansar",
-    photosDescription: "a collection of photos by faiz mustansar",
-    resume: "resume · faiz mustansar",
     contract: "contract · faiz mustansar",
     notFoundDescription: "this page does not exist on faizm.ca",
   },
@@ -91,8 +88,6 @@ export const homepageSocials = [
 
 /** Header nav: internal pages + socials (icons mapped in the component). */
 export const headerNav = [
-  { key: "photos", href: "/photos", label: "Photos", external: false },
-  { key: "resume", href: "/resume", label: "Resume", external: false },
   {
     key: "linkedin",
     href: site.socials.linkedin,
@@ -125,26 +120,10 @@ export const commandNav = [
     searchValue: "home faiz page",
   },
   {
-    key: "photos",
-    href: "/photos",
-    label: "photos",
-    shortcut: "1",
-    external: false,
-    searchValue: "photos gallery pictures faiz",
-  },
-  {
-    key: "resume",
-    href: "/resume",
-    label: "resume",
-    shortcut: "2",
-    external: false,
-    searchValue: "resume cv pdf curriculum vitae faiz",
-  },
-  {
     key: "linkedin",
     href: site.socials.linkedin,
     label: "linkedin",
-    shortcut: "3",
+    shortcut: "1",
     external: true,
     searchValue: "linkedin profile socials faiz",
   },
@@ -152,7 +131,7 @@ export const commandNav = [
     key: "github",
     href: site.socials.github,
     label: "github",
-    shortcut: "4",
+    shortcut: "2",
     external: true,
     searchValue: "github git profile faiz",
   },
@@ -160,7 +139,7 @@ export const commandNav = [
     key: "instagram",
     href: site.socials.instagram,
     label: "instagram",
-    shortcut: "5",
+    shortcut: "3",
     external: true,
     searchValue: "ig instagram profile socials faiz",
   },
