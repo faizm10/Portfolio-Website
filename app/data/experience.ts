@@ -43,10 +43,17 @@ export type HomepageExperience = {
   blurb: string;
   icon: string;
   href: string;
+  /** Banner image revealed on hover (right side) */
   preview: string;
+  logoBackgroundColor: string;
+  /** Banner width in px */
+  bannerWidth?: number;
+  /** Vertical offset of the banner crop (px, often negative) */
+  bgOffsetY?: number;
+  logoScale?: number;
 };
 
-/** Minimal experience rows on the homepage. */
+/** Minimal experience cards on the homepage. */
 export const homepageExperiences: HomepageExperience[] = [
   {
     title: orgs.tangerine.title,
@@ -56,6 +63,10 @@ export const homepageExperiences: HomepageExperience[] = [
     icon: orgs.tangerine.icon,
     href: orgs.tangerine.href,
     preview: orgs.tangerine.preview,
+    logoBackgroundColor: "#FF6A00",
+    bannerWidth: 320,
+    bgOffsetY: -20,
+    logoScale: 100,
   },
   {
     title: orgs.td.title,
@@ -65,24 +76,36 @@ export const homepageExperiences: HomepageExperience[] = [
     icon: orgs.td.icon,
     href: orgs.td.href,
     preview: orgs.td.preview,
+    logoBackgroundColor: "#34A853",
+    bannerWidth: 340,
+    bgOffsetY: -40,
+    logoScale: 100,
   },
   {
     title: orgs.sertus.title,
     role: "swe intern",
     dates: "2025",
-    blurb: "shipped product features on a small engineering team",
+    blurb: "shipped product features",
     icon: orgs.sertus.icon,
     href: orgs.sertus.href,
     preview: orgs.sertus.preview,
+    logoBackgroundColor: "#E8F1FF",
+    bannerWidth: 300,
+    bgOffsetY: -30,
+    logoScale: 100,
   },
   {
     title: orgs.hackcanada.title,
     role: "vp of tech",
-    dates: "2025 — 2026",
-    blurb: "judging platform, site, ctf and infra for canada's largest student hackathon",
+    dates: "2025 to 2026",
+    blurb: "canada's largest student hackathon",
     icon: orgs.hackcanada.icon,
     href: orgs.hackcanada.href,
     preview: orgs.hackcanada.preview,
+    logoBackgroundColor: "#1A1410",
+    bannerWidth: 360,
+    bgOffsetY: -50,
+    logoScale: 90,
   },
 ];
 
