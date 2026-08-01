@@ -3,7 +3,10 @@ export type ProjectType = {
   /** Display name on resume (defaults to `name`) */
   resumeName?: string;
   slug: string;
+  /** Live site / demo */
   url: string;
+  /** Public GitHub repo (omit if private / none) */
+  github?: string;
   banner: string;
   desc: string;
   tags?: string[];
@@ -34,6 +37,7 @@ export const showcaseProjects: ProjectType[] = [
     resumeName: "Octree",
     slug: "octree",
     url: "https://www.useoctree.com/",
+    github: "https://github.com/octree-labs/octree",
     banner: "/projects/banners/octree.png",
     desc: "open-source ai-powered latex editor",
     tags: ["Full Stack", "AI"],
@@ -49,6 +53,7 @@ export const showcaseProjects: ProjectType[] = [
     resumeName: "Arcki",
     slug: "arcki",
     url: "https://www.arcki.tech/",
+    github: "https://github.com/faizm10/Arcki",
     banner: "/projects/banners/arcki.png",
     desc: "architect the world the way you imagine it",
     tags: ["3D", "WebGL"],
@@ -63,6 +68,7 @@ export const showcaseProjects: ProjectType[] = [
     resumeName: "TransitFlow",
     slug: "transit-flow",
     url: "https://transit-flow-two.vercel.app",
+    github: "https://github.com/faizm10/transit-flow",
     banner: "/projects/banners/transit-flow.png",
     desc: "design custom go transit routes and watch them simulate live",
     tags: ["Maps", "Simulation"],
