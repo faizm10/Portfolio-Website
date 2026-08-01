@@ -104,12 +104,20 @@ function ExperienceCard({
             />
           </div>
 
-          <span
-            className="truncate text-[15px] font-semibold lowercase tracking-tight sm:text-base"
-            style={{ color: "var(--ink)" }}
-          >
-            {exp.title}
-          </span>
+          <div className="flex min-w-0 flex-col">
+            <span
+              className="truncate text-[15px] font-semibold lowercase tracking-tight sm:text-base"
+              style={{ color: "var(--ink)" }}
+            >
+              {exp.title}
+            </span>
+            <span
+              className="mt-0.5 truncate text-[13px] lowercase sm:text-sm"
+              style={{ color: "var(--ink-2)" }}
+            >
+              {exp.blurb}
+            </span>
+          </div>
         </div>
       </a>
     </motion.li>
