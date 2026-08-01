@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { homepageSocials, site } from "@/app/data/site";
 import { bioInternships, homepageExperiences } from "@/app/data/experience";
+import { showcaseProjects } from "@/app/data/projects";
 import ProjectsGrid from "./components/ProjectsGrid";
 import ExperienceList from "./components/ExperienceList";
 import GitHubContributionsCalendar from "./components/GitHubContributionsCalendar";
@@ -81,7 +82,10 @@ const fadeUp = {
 
 export default function Home() {
   const school = site.schools.guelph;
+  const waterloo = site.schools.waterloo;
   const work = bioInternships.current;
+  const prevWork = bioInternships.previous[0]; // td bank
+  const topProject = showcaseProjects[0];
 
   return (
     <div className="relative min-h-screen w-full bg-white">
@@ -130,12 +134,27 @@ export default function Home() {
               preview={school.preview}
               external={school.external}
             />
+            , and spent three terms at{" "}
+            <OrgInline
+              href={waterloo.href}
+              icon={waterloo.icon}
+              label={waterloo.label}
+              preview={waterloo.preview}
+              external={waterloo.external}
+            />
             . i&apos;m currently based in {site.homepage.location}, where i work at{" "}
             <OrgInline
               href={work.href}
               icon={work.icon}
               label={work.title}
               preview={work.preview}
+            />
+            , previously at{" "}
+            <OrgInline
+              href={prevWork.href}
+              icon={prevWork.icon}
+              label={prevWork.title}
+              preview={prevWork.preview}
             />
             .
           </motion.p>
@@ -159,6 +178,29 @@ export default function Home() {
             className="mt-5 text-[15px] leading-7 lowercase md:text-base md:leading-8"
             style={{ color: "var(--ink-2)" }}
           >
+            i built{" "}
+            <a
+              href={topProject.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+              style={{ color: "var(--ink)" }}
+            >
+              {topProject.name}
+            </a>
+            {" "}
+            — course search &amp; reviews for u of g, now at 1000+ users and 75k+
+            views
+          </motion.p>
+
+          <motion.p
+            custom={4}
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            className="mt-5 text-[15px] leading-7 lowercase md:text-base md:leading-8"
+            style={{ color: "var(--ink-2)" }}
+          >
             {site.homepage.contactLead}{" "}
             <a
               href={`mailto:${site.email}`}
@@ -171,7 +213,7 @@ export default function Home() {
           </motion.p>
 
           <motion.nav
-            custom={4}
+            custom={5}
             variants={fadeUp}
             initial="hidden"
             animate="show"
@@ -216,7 +258,7 @@ export default function Home() {
         </div>
 
         <motion.div
-          custom={5}
+          custom={6}
           variants={fadeUp}
           initial="hidden"
           animate="show"
