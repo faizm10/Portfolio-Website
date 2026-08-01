@@ -197,7 +197,7 @@ export default function Home() {
             </LinkPreview>
             , course search &amp; reviews for u of g, now at{" "}
             <strong style={{ color: "var(--ink)", fontWeight: 600 }}>
-              1000+
+              5k+
             </strong>{" "}
             users and{" "}
             <strong style={{ color: "var(--ink)", fontWeight: 600 }}>
