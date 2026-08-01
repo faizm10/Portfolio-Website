@@ -31,16 +31,16 @@ function OrgInline({
       <Image
         src={icon}
         alt=""
-        width={16}
-        height={16}
-        className="relative top-[2px] size-4 rounded-sm object-contain"
+        width={20}
+        height={20}
+        className="relative top-[2px] size-5 rounded-sm object-contain"
         aria-hidden
       />
       <span>{label}</span>
     </span>
   );
 
-  if (!external || !preview) {
+  if (!preview) {
     return external ? (
       <a
         href={href}
@@ -85,7 +85,8 @@ export default function Home() {
   const waterloo = site.schools.waterloo;
   const work = bioInternships.current;
   const prevWork = bioInternships.previous[0]; // td bank
-  const topProject = showcaseProjects[0];
+  const topProject = showcaseProjects.find((p) => p.slug === "uoguelphcourses")!;
+  const transitProject = showcaseProjects.find((p) => p.slug === "transit-flow")!;
 
   return (
     <div className="relative min-h-screen w-full bg-white">
@@ -95,6 +96,7 @@ export default function Home() {
           ...new Set(
             [
               school.preview,
+              waterloo.preview,
               work.preview,
               ...homepageExperiences.map((e) => e.preview),
               ...homepageSocials.map((s) => s.preview),
@@ -179,18 +181,42 @@ export default function Home() {
             style={{ color: "var(--ink-2)" }}
           >
             i built{" "}
-            <a
-              href={topProject.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
-              style={{ color: "var(--ink)" }}
+            <LinkPreview
+              url={topProject.url}
+              className="inline font-normal underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+              width={240}
+              height={150}
+              isStatic
+              imageSrc={topProject.banner}
             >
-              {topProject.name}
-            </a>
-            {" "}
-            — course search &amp; reviews for u of g, now at 1000+ users and 75k+
-            views
+              <span style={{ color: "var(--ink)" }}>{topProject.name}</span>
+            </LinkPreview>
+            , course search &amp; reviews for u of g, now at{" "}
+            <strong style={{ color: "var(--ink)", fontWeight: 600 }}>
+              1000+
+            </strong>{" "}
+            users and{" "}
+            <strong style={{ color: "var(--ink)", fontWeight: 600 }}>
+              75k+
+            </strong>{" "}
+            views. i also built{" "}
+            <LinkPreview
+              url={transitProject.url}
+              className="inline font-normal underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+              width={240}
+              height={150}
+              isStatic
+              imageSrc={transitProject.banner}
+            >
+              <span style={{ color: "var(--ink)" }}>
+                {transitProject.name}
+              </span>
+            </LinkPreview>{" "}
+            , a transit planning tool, now at{" "}
+            <strong style={{ color: "var(--ink)", fontWeight: 600 }}>
+              300+
+            </strong>{" "}
+            users
           </motion.p>
 
           <motion.p
