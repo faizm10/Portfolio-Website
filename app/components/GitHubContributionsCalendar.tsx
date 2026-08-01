@@ -24,17 +24,6 @@ const LEFT_OFFSET = 28;
 const TOP_OFFSET = 20;
 const SKELETON_WEEKS = 52;
 
-const QUERY = `query($u:String!,$from:DateTime!,$to:DateTime!){
-  user(login:$u){
-    contributionsCollection(from:$from,to:$to){
-      contributionCalendar{
-        totalContributions
-        weeks{contributionDays{contributionCount date weekday}}
-      }
-    }
-  }
-}`;
-
 const CELL_EMPTY = "#ebedf0";
 
 function cellColor(n: number): string {
@@ -91,11 +80,11 @@ function Skeleton() {
 type HoverTip = { x: number; y: number; count: number };
 
 export default function GitHubContributionsCalendar() {
-  const token = process.env.NEXT_PUBLIC_GITHUB_CONTRIBUTION_TOKEN;
   const [data, setData] = useState<CalendarData | null>(null);
+  const [year, setYear] = useState(new Date().getFullYear());
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [hover, setHover] = useState<HoverTip | null>(null);
-  const year = new Date().getFullYear();
 
   const showTip = useCallback((el: SVGRectElement, count: number) => {
     const r = el.getBoundingClientRect();
@@ -107,36 +96,58 @@ export default function GitHubContributionsCalendar() {
   }, []);
 
   useEffect(() => {
-    if (!token) {
-      setLoading(false);
-      return;
-    }
-    fetch("https://api.github.com/graphql", {
-      method: "POST",
-      headers: {
-        Authorization: `bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: QUERY,
-        variables: {
-          u: USERNAME,
-          from: `${year}-01-01T00:00:00Z`,
-          to: `${year}-12-31T23:59:59Z`,
-        },
-      }),
-    })
-      .then((r) => r.json())
-      .then((j) => {
-        setData(j.data.user.contributionsCollection.contributionCalendar);
+    let cancelled = false;
+    fetch("/api/github-contributions")
+      .then(async (r) => {
+        if (!r.ok) throw new Error(`status ${r.status}`);
+        return r.json();
+      })
+      .then((j: { year: number; calendar: CalendarData }) => {
+        if (cancelled) return;
+        setYear(j.year);
+        setData(j.calendar);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
-  }, [token, year]);
+      .catch(() => {
+        if (cancelled) return;
+        setError(true);
+        setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
-  if (!token) return null;
   if (loading) return <Skeleton />;
-  if (!data) return null;
+
+  if (error || !data) {
+    return (
+      <section className="w-full" aria-labelledby="github-heading">
+        <h2
+          id="github-heading"
+          className="mb-2 text-center text-xs font-medium uppercase tracking-[0.2em]"
+          style={{ color: "var(--ink-3)" }}
+        >
+          github
+        </h2>
+        <p
+          className="mx-auto mt-6 max-w-3xl text-center text-[13px] lowercase"
+          style={{ color: "var(--ink-3)" }}
+        >
+          couldn&apos;t load activity —{" "}
+          <a
+            href={site.socials.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-[3px] decoration-[var(--ink-3)]"
+            style={{ color: "var(--ink)" }}
+          >
+            view on github →
+          </a>
+        </p>
+      </section>
+    );
+  }
 
   const yearPrefix = `${year}-`;
 
