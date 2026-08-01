@@ -215,6 +215,25 @@ export default function Home() {
           </motion.nav>
         </div>
 
+        <motion.div
+          custom={5}
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          className="mx-auto mt-14 max-w-xl md:mt-16"
+        >
+          <Image
+            src="/mount-fuji.png"
+            alt="pixel art of mount fuji at sunset with a pagoda and cherry blossoms"
+            width={1024}
+            height={682}
+            className="h-auto w-full"
+            style={{ imageRendering: "pixelated" }}
+            sizes="(max-width: 576px) 100vw, 576px"
+            priority={false}
+          />
+        </motion.div>
+
         <div className="mt-20 md:mt-28">
           <ExperienceList />
         </div>
