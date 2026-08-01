@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import { motion } from "motion/react";
 import { site } from "@/app/data/site";
 
 type ContributionDay = {
@@ -15,11 +16,12 @@ type CalendarData = {
 };
 
 const USERNAME = site.githubUsername;
-const CELL = 10;
+/** Larger cells so the activity graph is easier to read */
+const CELL = 12;
 const GAP = 3;
 const STEP = CELL + GAP;
-const LEFT_OFFSET = 26;
-const TOP_OFFSET = 18;
+const LEFT_OFFSET = 28;
+const TOP_OFFSET = 20;
 const SKELETON_WEEKS = 52;
 
 const QUERY = `query($u:String!,$from:DateTime!,$to:DateTime!){
@@ -54,27 +56,33 @@ function Skeleton() {
   const svgWidth = LEFT_OFFSET + SKELETON_WEEKS * STEP;
   const svgHeight = TOP_OFFSET + 7 * STEP;
   return (
-    <section className="mt-12">
-      <h2 className="text-sm font-medium text-neutral-500 uppercase tracking-wide">
-        github activity
+    <section className="w-full" aria-labelledby="github-heading">
+      <h2
+        id="github-heading"
+        className="mb-2 text-center text-xs font-medium uppercase tracking-[0.2em]"
+        style={{ color: "var(--ink-3)" }}
+      >
+        github
       </h2>
-      <div className="mt-1 h-3 w-32 rounded bg-neutral-100" />
-      <div className="mt-3 overflow-x-auto">
-        <svg width={svgWidth} height={svgHeight} className="block">
-          {Array.from({ length: SKELETON_WEEKS }).map((_, wi) =>
-            Array.from({ length: 7 }).map((_, di) => (
-              <rect
-                key={`sk-${wi}-${di}`}
-                x={LEFT_OFFSET + wi * STEP}
-                y={TOP_OFFSET + di * STEP}
-                width={CELL}
-                height={CELL}
-                rx={2}
-                fill={CELL_EMPTY}
-              />
-            ))
-          )}
-        </svg>
+      <div className="mx-auto mt-6 max-w-3xl">
+        <div className="h-3 w-40 rounded bg-neutral-100" />
+        <div className="mt-4 overflow-x-auto">
+          <svg width={svgWidth} height={svgHeight} className="block min-w-full">
+            {Array.from({ length: SKELETON_WEEKS }).map((_, wi) =>
+              Array.from({ length: 7 }).map((_, di) => (
+                <rect
+                  key={`sk-${wi}-${di}`}
+                  x={LEFT_OFFSET + wi * STEP}
+                  y={TOP_OFFSET + di * STEP}
+                  width={CELL}
+                  height={CELL}
+                  rx={2}
+                  fill={CELL_EMPTY}
+                />
+              ))
+            )}
+          </svg>
+        </div>
       </div>
     </section>
   );
@@ -99,7 +107,10 @@ export default function GitHubContributionsCalendar() {
   }, []);
 
   useEffect(() => {
-    if (!token) return;
+    if (!token) {
+      setLoading(false);
+      return;
+    }
     fetch("https://api.github.com/graphql", {
       method: "POST",
       headers: {
@@ -129,7 +140,6 @@ export default function GitHubContributionsCalendar() {
 
   const yearPrefix = `${year}-`;
 
-  /** GitHub pads weeks with prior-year days; keep only columns from first in-year day through last in-year day. */
   const firstWeekIdx = data.weeks.findIndex((w) =>
     w.contributionDays.some((d) => d.date.startsWith(yearPrefix)),
   );
@@ -144,7 +154,6 @@ export default function GitHubContributionsCalendar() {
       ? data.weeks.slice(firstWeekIdx, lastWeekIdx + 1)
       : data.weeks;
 
-  // Month labels: first in-year day per week → Jan … Dec only, no Dec/Jan overlap
   const monthLabels: { label: string; x: number; wi: number }[] = [];
   let prevMonth = -1;
   trimmedWeeks.forEach((week, wi) => {
@@ -174,93 +183,127 @@ export default function GitHubContributionsCalendar() {
   const svgHeight = TOP_OFFSET + 7 * STEP;
 
   return (
-    <section className="mt-12" aria-label="GitHub contribution calendar">
-      <h2 className="text-sm font-medium text-neutral-500 uppercase tracking-wide">
-        github activity
+    <motion.section
+      className="w-full"
+      aria-labelledby="github-heading"
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <h2
+        id="github-heading"
+        className="mb-2 text-center text-xs font-medium uppercase tracking-[0.2em]"
+        style={{ color: "var(--ink-3)" }}
+      >
+        github
       </h2>
-      <p className="mt-1 text-xs text-[#5e8e3e]/80">
-        {inYearTotal.toLocaleString()} contributions in {year}
-      </p>
-      {hover !== null && (
-        <div
-          className="pointer-events-none fixed z-200 -translate-x-1/2 -translate-y-full rounded-md bg-neutral-900 px-2.5 py-1.5 text-[11px] font-medium text-white shadow-lg ring-1 ring-white/10"
-          style={{ left: hover.x, top: hover.y - 6 }}
-          role="tooltip"
-        >
-          {hover.count === 1
-            ? "1 contribution"
-            : `${hover.count.toLocaleString()} contributions`}
+
+      <div className="mx-auto mt-6 max-w-3xl">
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <p className="text-[13px] lowercase" style={{ color: "var(--ink-2)" }}>
+            {inYearTotal.toLocaleString()} contributions in {year}
+          </p>
+          <a
+            href={site.socials.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[13px] lowercase underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+            style={{ color: "var(--ink)" }}
+          >
+            @{USERNAME} →
+          </a>
         </div>
-      )}
-      <div className="mt-3 overflow-x-auto">
-        <svg
-          width={svgWidth}
-          height={svgHeight}
-          className="block"
-          style={{ fontFamily: "inherit" }}
-          onMouseLeave={() => setHover(null)}
+
+        {hover !== null && (
+          <div
+            className="pointer-events-none fixed z-200 -translate-x-1/2 -translate-y-full rounded-md bg-neutral-900 px-2.5 py-1.5 text-[11px] font-medium text-white shadow-lg ring-1 ring-white/10"
+            style={{ left: hover.x, top: hover.y - 6 }}
+            role="tooltip"
+          >
+            {hover.count === 1
+              ? "1 contribution"
+              : `${hover.count.toLocaleString()} contributions`}
+          </div>
+        )}
+
+        <div
+          className="mt-4 overflow-x-auto rounded-xl p-3 ring-1 sm:p-4"
+          style={{
+            backgroundColor: "var(--surface-alt)",
+            borderColor: "var(--border)",
+            boxShadow: "0 8px 24px var(--accent-shadow)",
+          }}
         >
-          {/* Month labels — keyed by week index, not label text */}
-          {monthLabels.map(({ label, x, wi }) => (
-            <text
-              key={wi}
-              x={LEFT_OFFSET + x}
-              y={10}
-              fontSize={9}
-              fill="#5e8e3e"
+          <div className="overflow-hidden rounded-lg bg-white p-2 sm:p-3">
+            <svg
+              width={svgWidth}
+              height={svgHeight}
+              className="mx-auto block max-w-none"
+              viewBox={`0 0 ${svgWidth} ${svgHeight}`}
+              style={{ fontFamily: "inherit", width: "100%", height: "auto" }}
+              onMouseLeave={() => setHover(null)}
             >
-              {label}
-            </text>
-          ))}
-
-          {/* Day labels */}
-          {DAY_LABELS.map(({ label, row }) => (
-            <text
-              key={label}
-              x={0}
-              y={TOP_OFFSET + row * STEP + CELL - 1}
-              fontSize={9}
-              fill="#5e8e3e"
-            >
-              {label}
-            </text>
-          ))}
-
-          {/* Cells — out-of-year padding in first/last column shows as empty */}
-          {trimmedWeeks.map((week, wi) =>
-            Array.from({ length: 7 }).map((_, di) => {
-              const day = week.contributionDays.find((d) => d.weekday === di);
-              const inYear =
-                day !== undefined && day.date.startsWith(yearPrefix);
-              const count = inYear ? day.contributionCount : 0;
-              return (
-                <rect
-                  key={`${wi}-${di}`}
-                  x={LEFT_OFFSET + wi * STEP}
-                  y={TOP_OFFSET + di * STEP}
-                  width={CELL}
-                  height={CELL}
-                  rx={2}
-                  fill={inYear ? cellColor(count) : CELL_EMPTY}
-                  className={inYear ? "cursor-default" : "pointer-events-none"}
-                  onMouseEnter={
-                    inYear
-                      ? (e) => showTip(e.currentTarget, count)
-                      : undefined
-                  }
+              {monthLabels.map(({ label, x, wi }) => (
+                <text
+                  key={wi}
+                  x={LEFT_OFFSET + x}
+                  y={12}
+                  fontSize={10}
+                  fill="#737373"
                 >
-                  {inYear && day && (
-                    <title>
-                      {day.date}: {day.contributionCount} contribution
-                      {day.contributionCount !== 1 ? "s" : ""}
-                    </title>
-                  )}
-                </rect>
-              );
-            })
-          )}
-        </svg>
+                  {label}
+                </text>
+              ))}
+
+              {DAY_LABELS.map(({ label, row }) => (
+                <text
+                  key={label}
+                  x={0}
+                  y={TOP_OFFSET + row * STEP + CELL - 1}
+                  fontSize={10}
+                  fill="#737373"
+                >
+                  {label}
+                </text>
+              ))}
+
+              {trimmedWeeks.map((week, wi) =>
+                Array.from({ length: 7 }).map((_, di) => {
+                  const day = week.contributionDays.find((d) => d.weekday === di);
+                  const inYear =
+                    day !== undefined && day.date.startsWith(yearPrefix);
+                  const count = inYear ? day.contributionCount : 0;
+                  return (
+                    <rect
+                      key={`${wi}-${di}`}
+                      x={LEFT_OFFSET + wi * STEP}
+                      y={TOP_OFFSET + di * STEP}
+                      width={CELL}
+                      height={CELL}
+                      rx={2}
+                      fill={inYear ? cellColor(count) : CELL_EMPTY}
+                      className={inYear ? "cursor-default" : "pointer-events-none"}
+                      onMouseEnter={
+                        inYear
+                          ? (e) => showTip(e.currentTarget, count)
+                          : undefined
+                      }
+                    >
+                      {inYear && day && (
+                        <title>
+                          {day.date}: {day.contributionCount} contribution
+                          {day.contributionCount !== 1 ? "s" : ""}
+                        </title>
+                      )}
+                    </rect>
+                  );
+                })
+              )}
+            </svg>
+          </div>
+        </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
