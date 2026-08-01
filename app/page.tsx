@@ -9,7 +9,7 @@ import { bioInternships, homepageExperiences } from "@/app/data/experience";
 import ProjectsGrid from "./components/ProjectsGrid";
 import ExperienceList from "./components/ExperienceList";
 import GitHubContributionsCalendar from "./components/GitHubContributionsCalendar";
-import BuildingHighlights from "./components/BuildingHighlights";
+import TravelMap from "./components/TravelMap";
 
 function OrgInline({
   href,
@@ -86,15 +86,17 @@ export default function Home() {
     <div className="relative min-h-screen w-full bg-white">
       <div className="pointer-events-none absolute h-0 w-0 overflow-hidden opacity-0" aria-hidden>
         {[
-          school.preview,
-          work.preview,
-          ...homepageExperiences.map((e) => e.preview),
-          ...homepageSocials.map((s) => s.preview),
-        ]
-          .filter(Boolean)
-          .map((src) => (
-            <img key={src!} src={src!} alt="" width={1} height={1} />
-          ))}
+          ...new Set(
+            [
+              school.preview,
+              work.preview,
+              ...homepageExperiences.map((e) => e.preview),
+              ...homepageSocials.map((s) => s.preview),
+            ].filter(Boolean) as string[],
+          ),
+        ].map((src) => (
+          <img key={src} src={src} alt="" width={1} height={1} />
+        ))}
       </div>
 
       <main className="mx-auto w-full max-w-5xl px-6 pb-24 pt-20 md:px-8 md:pt-24">
@@ -209,14 +211,14 @@ export default function Home() {
               );
             })}
           </motion.nav>
-
-          <div className="mt-12 md:mt-14">
-            <BuildingHighlights />
-          </div>
         </div>
 
         <div className="mt-20 md:mt-28">
           <ExperienceList />
+        </div>
+
+        <div className="mt-20 md:mt-28">
+          <TravelMap />
         </div>
 
         <div className="mt-20 md:mt-28">
