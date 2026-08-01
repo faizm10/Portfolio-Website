@@ -12,6 +12,8 @@ import ExperienceList from "./components/ExperienceList";
 import GitHubContributionsCalendar from "./components/GitHubContributionsCalendar";
 import TravelMap from "./components/TravelMap";
 import SketchBackground from "./components/SketchBackground";
+import { Gradients } from "./components/Gradients";
+import HeroBanner from "./components/HeroBanner";
 
 function OrgInline({
   href,
@@ -90,7 +92,9 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen w-full bg-white">
+      <Gradients />
       <SketchBackground />
+      <HeroBanner />
       <div className="pointer-events-none absolute h-0 w-0 overflow-hidden opacity-0" aria-hidden>
         {[
           ...new Set(
@@ -107,7 +111,7 @@ export default function Home() {
         ))}
       </div>
 
-      <main className="mx-auto w-full max-w-5xl px-6 pb-24 pt-20 md:px-8 md:pt-24">
+      <main className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-24 pt-10 md:px-8 md:pt-12">
         <div className="mx-auto max-w-xl">
           <motion.h1
             custom={0}
