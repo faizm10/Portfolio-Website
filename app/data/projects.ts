@@ -107,3 +107,38 @@ export function resumeProjects() {
     ...resumeOnlyProjects,
   ];
 }
+
+/**
+ * Minimal “what i've been building” highlights.
+ * `emphasis` is the bold + underlined phrase in each line.
+ */
+export const buildingHighlights = {
+  heading: "what i've been building:",
+  items: [
+    {
+      emphasis: "uoguelph.courses",
+      before: "built ",
+      after: " (1000+ users, 75k+ views)",
+      href: "https://uoguelph.courses",
+    },
+    {
+      emphasis: "octree",
+      before: "shipped ",
+      after: ", an open-source ai latex editor (250+ stars, 2k users)",
+      href: "https://www.useoctree.com/",
+    },
+    {
+      emphasis: "arcki",
+      before: "created ",
+      after: ", a 3d world editor on a globe (1k+ users, 50k+ views, 50+ stars)",
+      href: "https://www.arcki.tech/",
+    },
+    {
+      emphasis: "transitflow",
+      before: "built ",
+      after: " for live go transit route simulation (300+ users)",
+      href: "https://transit-flow-two.vercel.app",
+    },
+  ],
+} as const;
+
