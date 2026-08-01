@@ -32,10 +32,10 @@ export const site = {
     },
     waterloo: {
       label: "university of waterloo",
-      href: "/uwreflection",
+      href: "https://uwaterloo.ca/",
       icon: "/uw.png",
       preview: "/previews/waterloo.jpeg",
-      external: false,
+      external: true,
     },
   },
   metadata: {
