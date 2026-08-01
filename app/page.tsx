@@ -5,8 +5,11 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { homepageSocials, site } from "@/app/data/site";
-import { bioInternships } from "@/app/data/experience";
+import { bioInternships, homepageExperiences } from "@/app/data/experience";
 import ProjectsGrid from "./components/ProjectsGrid";
+import ExperienceList from "./components/ExperienceList";
+import GitHubContributionsCalendar from "./components/GitHubContributionsCalendar";
+import BuildingHighlights from "./components/BuildingHighlights";
 
 function OrgInline({
   href,
@@ -82,9 +85,16 @@ export default function Home() {
   return (
     <div className="relative min-h-screen w-full bg-white">
       <div className="pointer-events-none absolute h-0 w-0 overflow-hidden opacity-0" aria-hidden>
-        {[school.preview, work.preview].filter(Boolean).map((src) => (
-          <img key={src!} src={src!} alt="" width={1} height={1} />
-        ))}
+        {[
+          school.preview,
+          work.preview,
+          ...homepageExperiences.map((e) => e.preview),
+          ...homepageSocials.map((s) => s.preview),
+        ]
+          .filter(Boolean)
+          .map((src) => (
+            <img key={src!} src={src!} alt="" width={1} height={1} />
+          ))}
       </div>
 
       <main className="mx-auto w-full max-w-5xl px-6 pb-24 pt-20 md:px-8 md:pt-24">
@@ -164,19 +174,53 @@ export default function Home() {
             className="mt-10 flex flex-wrap gap-x-5 gap-y-2 text-[15px] lowercase"
             aria-label="social links"
           >
-            {homepageSocials.map((item) => (
-              <a
-                key={item.key}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
-                style={{ color: "var(--ink)" }}
-              >
-                {item.label}
-              </a>
-            ))}
+            {homepageSocials.map((item) => {
+              const linkClass =
+                "underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70";
+              const linkStyle = { color: "var(--ink)" };
+
+              if (item.preview) {
+                return (
+                  <LinkPreview
+                    key={item.key}
+                    url={item.href}
+                    className={`inline font-normal ${linkClass}`}
+                    width={item.key === "github" ? 320 : 240}
+                    height={item.key === "github" ? 200 : 150}
+                    isStatic
+                    imageSrc={item.preview}
+                  >
+                    <span style={linkStyle}>{item.label}</span>
+                  </LinkPreview>
+                );
+              }
+
+              return (
+                <a
+                  key={item.key}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkClass}
+                  style={linkStyle}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </motion.nav>
+
+          <div className="mt-12 md:mt-14">
+            <BuildingHighlights />
+          </div>
+        </div>
+
+        <div className="mt-20 md:mt-28">
+          <ExperienceList />
+        </div>
+
+        <div className="mt-20 md:mt-28">
+          <GitHubContributionsCalendar />
         </div>
 
         <div className="mt-20 md:mt-28">
