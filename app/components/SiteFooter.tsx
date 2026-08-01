@@ -1,21 +1,10 @@
-import Link from "next/link";
 import { homepageSocials, site, webringUrl } from "@/app/data/site";
-
-const footerLinks = [
-  { href: "/photos", label: "photos", external: false },
-  { href: "/resume", label: "resume", external: false },
-  ...homepageSocials.map((s) => ({
-    href: s.href,
-    label: s.label,
-    external: true,
-  })),
-] as const;
 
 const linkClass =
   "underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70";
 
 /**
- * Minimal site footer: nav · socials · by me (+ webring).
+ * Minimal site footer: socials · by me (+ webring).
  */
 export default function SiteFooter() {
   return (
@@ -29,32 +18,22 @@ export default function SiteFooter() {
           style={{ color: "var(--ink-2)" }}
           aria-label="footer"
         >
-          {footerLinks.map((link, i) => (
-            <span key={link.href} className="inline-flex items-center gap-x-3">
+          {homepageSocials.map((item, i) => (
+            <span key={item.key} className="inline-flex items-center gap-x-3">
               {i > 0 && (
                 <span aria-hidden style={{ color: "var(--ink-3)" }}>
                   ·
                 </span>
               )}
-              {link.external ? (
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={linkClass}
-                  style={{ color: "var(--ink)" }}
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link
-                  href={link.href}
-                  className={linkClass}
-                  style={{ color: "var(--ink)" }}
-                >
-                  {link.label}
-                </Link>
-              )}
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkClass}
+                style={{ color: "var(--ink)" }}
+              >
+                {item.label}
+              </a>
             </span>
           ))}
         </nav>
