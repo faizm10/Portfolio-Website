@@ -6,19 +6,15 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { isMobile } from "react-device-detect";
 import { FiGithub } from "react-icons/fi";
 import {
-  IoDocumentTextOutline,
   IoLogoInstagram,
   IoSearchOutline,
   IoHomeOutline,
-  IoImagesOutline,
 } from "react-icons/io5";
 import { PiLinkedinLogo } from "react-icons/pi";
 import { commandNav, site } from "@/app/data/site";
 
 const commandIcons = {
   home: IoHomeOutline,
-  photos: IoImagesOutline,
-  resume: IoDocumentTextOutline,
   linkedin: PiLinkedinLogo,
   github: FiGithub,
   instagram: IoLogoInstagram,
@@ -115,22 +111,14 @@ export default function CommandPalette() {
           break;
         case "Digit1":
         case "Numpad1":
-          openNextLink(() => router.push("/photos"));
+          openLink(() => window.open(site.socials.linkedin, "_blank"));
           break;
         case "Digit2":
         case "Numpad2":
-          openNextLink(() => router.push("/resume"));
+          openLink(() => window.open(site.socials.github, "_blank"));
           break;
         case "Digit3":
         case "Numpad3":
-          openLink(() => window.open(site.socials.linkedin, "_blank"));
-          break;
-        case "Digit4":
-        case "Numpad4":
-          openLink(() => window.open(site.socials.github, "_blank"));
-          break;
-        case "Digit5":
-        case "Numpad5":
           openLink(() => window.open(site.socials.instagram, "_blank"));
           break;
       }
