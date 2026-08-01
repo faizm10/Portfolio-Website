@@ -34,7 +34,7 @@ export const site = {
       label: "university of waterloo",
       href: "/uwreflection",
       icon: "/uw.png",
-      preview: null,
+      preview: "/previews/waterloo.jpeg",
       external: false,
     },
   },
