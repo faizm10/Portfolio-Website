@@ -33,9 +33,9 @@ function OrgInline({
       <Image
         src={icon}
         alt=""
-        width={20}
-        height={20}
-        className="relative top-[2px] size-5 rounded-sm object-contain"
+        width={24}
+        height={24}
+        className="relative top-[2px] size-6 rounded-sm object-contain"
         aria-hidden
       />
       <span>{label}</span>
