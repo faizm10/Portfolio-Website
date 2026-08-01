@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Newsreader, Inter, Pacifico } from "next/font/google";
 import CommandPalette from "./components/Cmd";
-import { site, siteHostname, webringUrl } from "@/app/data/site";
+import SiteFooter from "./components/SiteFooter";
+import { site, siteHostname } from "@/app/data/site";
 
 const newsreader = Newsreader({
   weight: ["400", "500"],
@@ -87,28 +88,7 @@ export default function RootLayout({
           {children}
           <CommandPalette />
         </div>
-        <footer className="w-full bg-white pb-6">
-          <div className="mx-auto flex w-full max-w-3xl items-center gap-2 px-6 text-neutral-400">
-            <a href={webringUrl("prev")} aria-label="Previous site">
-              ←
-            </a>
-            <a
-              href={webringUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Guelph Webring"
-            >
-              <img
-                src={site.webring.gryphonSvg}
-                alt="Guelph Webring"
-                style={{ width: "24px", height: "auto", opacity: 0.8 }}
-              />
-            </a>
-            <a href={webringUrl("next")} aria-label="Next site">
-              →
-            </a>
-          </div>
-        </footer>
+        <SiteFooter />
       </body>
     </html>
   );
