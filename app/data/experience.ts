@@ -28,57 +28,62 @@ export const orgs = {
     icon: "/exp/sertus.jpeg",
     preview: "/previews/sertus.jpeg",
   },
+  hackcanada: {
+    title: "hackcanada",
+    href: "https://hackcanada.org/",
+    icon: "/exp/hackcanadaLogo.png",
+    preview: "/previews/hackcanada.jpeg",
+  },
 } as const satisfies Record<string, Org>;
 
-/** “what i've been up to” cards on the homepage. */
-export const homepageExperiences: {
+export type HomepageExperience = {
   title: string;
   role: string;
+  dates: string;
+  blurb: string;
   icon: string;
   href: string;
-}[] = [
+  preview: string;
+};
+
+/** Minimal experience rows on the homepage. */
+export const homepageExperiences: HomepageExperience[] = [
   {
     title: orgs.tangerine.title,
     role: "swe intern",
+    dates: "summer 2026",
+    blurb: "building microservices",
     icon: orgs.tangerine.icon,
     href: orgs.tangerine.href,
+    preview: orgs.tangerine.preview,
   },
-  // {
-  //   title: "university of guelph",
-  //   role: "teaching assistant — spmt1120 (sports)",
-  //   icon: "/exp/uog.png",
-  //   href: "https://www.uoguelph.ca/",
-  // },
   {
     title: orgs.td.title,
     role: "swe intern",
+    dates: "2026",
+    blurb: "credit platform & funding",
     icon: orgs.td.icon,
     href: orgs.td.href,
+    preview: orgs.td.preview,
   },
-  // {
-  //   title: "hackcanada",
-  //   role: "vp of tech",
-  //   icon: "/exp/hackcanadaLogo.png",
-  //   href: "https://hackcanada.org/",
-  // },
   {
     title: orgs.sertus.title,
     role: "swe intern",
+    dates: "2025",
+    blurb: "shipped product features on a small engineering team",
     icon: orgs.sertus.icon,
     href: orgs.sertus.href,
+    preview: orgs.sertus.preview,
   },
-  // {
-  //   title: "university of guelph",
-  //   role: "full stack developer",
-  //   icon: "/exp/uog.png",
-  //   href: "https://www.uoguelph.ca/",
-  // },
-  // {
-  //   title: "university of guelph",
-  //   role: "teaching assistant — mcs2000 & mcs2020 (business) · 3x terms",
-  //   icon: "/exp/uog.png",
-  //   href: "https://www.uoguelph.ca/",
-  // },
+  {
+    title: orgs.hackcanada.title,
+    role: "vp of tech",
+    dates: "2025 — 2026",
+    blurb: "judging platform, site, ctf and infra for canada's largest student hackathon",
+    icon: orgs.hackcanada.icon,
+    href: orgs.hackcanada.href,
+    preview: orgs.hackcanada.preview,
+  },
 ];
 
 /** Bio line: currently @ X · prev Y & Z */
