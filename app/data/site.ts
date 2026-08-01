@@ -74,9 +74,19 @@ export type SocialKey = keyof typeof site.socials;
 
 /** Text socials shown at the bottom of the homepage. */
 export const homepageSocials = [
-  { key: "x" as const, label: "twitter", href: site.socials.x },
-  { key: "github" as const, label: "github", href: site.socials.github },
-  { key: "linkedin" as const, label: "linkedin", href: site.socials.linkedin },
+  { key: "x" as const, label: "twitter", href: site.socials.x, preview: null as string | null },
+  {
+    key: "github" as const,
+    label: "github",
+    href: site.socials.github,
+    preview: "/previews/github.jpeg",
+  },
+  {
+    key: "linkedin" as const,
+    label: "linkedin",
+    href: site.socials.linkedin,
+    preview: null as string | null,
+  },
 ];
 
 /** Header nav: internal pages + socials (icons mapped in the component). */
