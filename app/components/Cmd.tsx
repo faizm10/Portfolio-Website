@@ -9,12 +9,14 @@ import {
   IoLogoInstagram,
   IoSearchOutline,
   IoHomeOutline,
+  IoBookOutline,
 } from "react-icons/io5";
 import { PiLinkedinLogo } from "react-icons/pi";
 import { commandNav, site } from "@/app/data/site";
 
 const commandIcons = {
   home: IoHomeOutline,
+  blog: IoBookOutline,
   linkedin: PiLinkedinLogo,
   github: FiGithub,
   instagram: IoLogoInstagram,
@@ -111,14 +113,18 @@ export default function CommandPalette() {
           break;
         case "Digit1":
         case "Numpad1":
-          openLink(() => window.open(site.socials.linkedin, "_blank"));
+          openNextLink(() => router.push("/blog"));
           break;
         case "Digit2":
         case "Numpad2":
-          openLink(() => window.open(site.socials.github, "_blank"));
+          openLink(() => window.open(site.socials.linkedin, "_blank"));
           break;
         case "Digit3":
         case "Numpad3":
+          openLink(() => window.open(site.socials.github, "_blank"));
+          break;
+        case "Digit4":
+        case "Numpad4":
           openLink(() => window.open(site.socials.instagram, "_blank"));
           break;
       }
