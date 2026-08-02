@@ -9,10 +9,10 @@ import { bioInternships, homepageExperiences } from "@/app/data/experience";
 import { showcaseProjects } from "@/app/data/projects";
 import ProjectsGrid from "./components/ProjectsGrid";
 import ExperienceList from "./components/ExperienceList";
-import GitHubContributionsCalendar from "./components/GitHubContributionsCalendar";
 import SketchBackground from "./components/SketchBackground";
 import { Gradients } from "./components/Gradients";
 import HeroBanner from "./components/HeroBanner";
+import GitHubContributionsPreview from "./components/GitHubContributionsPreview";
 
 function OrgInline({
   href,
@@ -112,19 +112,89 @@ export default function Home() {
 
       <main className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-24 pt-10 md:px-8 md:pt-12">
         <div id="about" className="mx-auto max-w-xl scroll-mt-24">
-          <motion.h1
-            custom={0}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="text-2xl font-semibold tracking-tight lowercase md:text-[1.75rem]"
-            style={{ color: "var(--ink)" }}
-          >
-            {site.name}
-          </motion.h1>
+          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
+            <motion.h1
+              custom={0}
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              className="text-2xl font-semibold tracking-tight lowercase md:text-[1.75rem]"
+              style={{ color: "var(--ink)" }}
+            >
+              {site.name}
+            </motion.h1>
+
+            <motion.nav
+              custom={1}
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              className="ml-auto flex flex-wrap justify-end gap-x-5 gap-y-2 text-[15px] lowercase"
+              aria-label="social links"
+            >
+              <Link
+                href="/blog"
+                className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+                style={{ color: "var(--ink)" }}
+              >
+                blog
+              </Link>
+              {homepageSocials.map((item) => {
+                const linkClass =
+                  "underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70";
+                const linkStyle = { color: "var(--ink)" };
+
+                if (item.key === "github") {
+                  return (
+                    <LinkPreview
+                      key={item.key}
+                      url={item.href}
+                      className={`inline font-normal ${linkClass}`}
+                      width={520}
+                      height={138}
+                      isStatic
+                      imageSrc={item.preview ?? "/previews/github.jpeg"}
+                      previewContent={<GitHubContributionsPreview />}
+                    >
+                      <span style={linkStyle}>{item.label}</span>
+                    </LinkPreview>
+                  );
+                }
+
+                if (item.preview) {
+                  return (
+                    <LinkPreview
+                      key={item.key}
+                      url={item.href}
+                      className={`inline font-normal ${linkClass}`}
+                      width={240}
+                      height={150}
+                      isStatic
+                      imageSrc={item.preview}
+                    >
+                      <span style={linkStyle}>{item.label}</span>
+                    </LinkPreview>
+                  );
+                }
+
+                return (
+                  <a
+                    key={item.key}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={linkClass}
+                    style={linkStyle}
+                  >
+                    {item.label}
+                  </a>
+                );
+              })}
+            </motion.nav>
+          </div>
 
           <motion.p
-            custom={1}
+            custom={2}
             variants={fadeUp}
             initial="hidden"
             animate="show"
@@ -165,7 +235,7 @@ export default function Home() {
           </motion.p>
 
           <motion.p
-            custom={2}
+            custom={3}
             variants={fadeUp}
             initial="hidden"
             animate="show"
@@ -177,7 +247,7 @@ export default function Home() {
 
 
           <motion.p
-            custom={3}
+            custom={4}
             variants={fadeUp}
             initial="hidden"
             animate="show"
@@ -224,7 +294,7 @@ export default function Home() {
           </motion.p>
 
           <motion.p
-            custom={4}
+            custom={5}
             variants={fadeUp}
             initial="hidden"
             animate="show"
@@ -270,75 +340,6 @@ export default function Home() {
             users
           </motion.p>
 
-          <motion.p
-            custom={5}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="mt-5 text-[15px] leading-7 lowercase md:text-base md:leading-8"
-            style={{ color: "var(--ink-2)" }}
-          >
-            {site.homepage.contactLead}{" "}
-            <a
-              href={`mailto:${site.email}`}
-              className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
-              style={{ color: "var(--ink)" }}
-            >
-              {site.email}
-            </a>{" "}
-            for all inquiries
-          </motion.p>
-
-          <motion.nav
-            custom={6}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="mt-10 flex flex-wrap gap-x-5 gap-y-2 text-[15px] lowercase"
-            aria-label="social links"
-          >
-            <Link
-              href="/blog"
-              className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
-              style={{ color: "var(--ink)" }}
-            >
-              blog
-            </Link>
-            {homepageSocials.map((item) => {
-              const linkClass =
-                "underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70";
-              const linkStyle = { color: "var(--ink)" };
-
-              if (item.preview) {
-                return (
-                  <LinkPreview
-                    key={item.key}
-                    url={item.href}
-                    className={`inline font-normal ${linkClass}`}
-                    width={item.key === "github" ? 320 : 240}
-                    height={item.key === "github" ? 200 : 150}
-                    isStatic
-                    imageSrc={item.preview}
-                  >
-                    <span style={linkStyle}>{item.label}</span>
-                  </LinkPreview>
-                );
-              }
-
-              return (
-                <a
-                  key={item.key}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={linkClass}
-                  style={linkStyle}
-                >
-                  {item.label}
-                </a>
-              );
-            })}
-          </motion.nav>
         </div>
 
         {/* <motion.div
@@ -362,11 +363,6 @@ export default function Home() {
 
         <div className="mt-20 md:mt-28">
           <ExperienceList />
-        </div>
-
-
-        <div className="mt-20 md:mt-28">
-          <GitHubContributionsCalendar />
         </div>
 
         <div className="mt-20 md:mt-28">

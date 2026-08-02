@@ -63,7 +63,7 @@ export const site = {
     location: "toronto",
     interests:
       "interested in full-stack and product engineering, shipping consumer apps, and building in public",
-    hobbiesLead: "outside of code, i also care a lot about",
+    hobbiesLead: "beyond software, my interests include",
     contactLead: "reach out to my socials or",
   },
 } as const;

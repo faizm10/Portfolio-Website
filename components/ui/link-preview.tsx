@@ -20,6 +20,7 @@ type LinkPreviewProps = {
   height?: number;
   quality?: number;
   layout?: string;
+  previewContent?: React.ReactNode;
 } & (
   | { isStatic: true; imageSrc: string }
   | { isStatic?: false; imageSrc?: never }
@@ -33,6 +34,7 @@ export const LinkPreview = ({
   height = 125,
   quality = 50,
   layout = "fixed",
+  previewContent,
   isStatic = false,
   imageSrc = "",
 }: LinkPreviewProps) => {
@@ -76,7 +78,7 @@ export const LinkPreview = ({
 
   return (
     <>
-      {isMounted ? (
+      {isMounted && !previewContent ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={src}
@@ -137,15 +139,17 @@ export const LinkPreview = ({
                 <a
                   href={url}
                   className="block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-neutral-200 dark:hover:border-neutral-800"
-                  style={{ fontSize: 0 }}
+                  style={{ width, height, fontSize: 0 }}
                 >
-                  <img
-                    src={isStatic ? imageSrc : src}
-                    width={width}
-                    height={height}
-                    className="rounded-lg"
-                    alt="preview image"
-                  />
+                  {previewContent ?? (
+                    <img
+                      src={isStatic ? imageSrc : src}
+                      width={width}
+                      height={height}
+                      className="rounded-lg"
+                      alt="preview image"
+                    />
+                  )}
                 </a>
               </motion.div>
             )}

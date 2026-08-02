@@ -34,6 +34,12 @@ export const orgs = {
     icon: "/exp/hackcanadaLogo.png",
     preview: "/previews/hackcanada.jpeg",
   },
+  guelph: {
+    title: "university of guelph",
+    href: "https://www.uoguelph.ca/",
+    icon: "/exp/uog.png",
+    preview: "/previews/uoguelph.jpeg",
+  },
 } as const satisfies Record<string, Org>;
 
 export type HomepageExperience = {
@@ -92,6 +98,19 @@ export const homepageExperiences: HomepageExperience[] = [
     logoBackgroundColor: "#E8F1FF",
     bannerWidth: 300,
     bgOffsetY: -30,
+    logoScale: 100,
+  },
+  {
+    title: orgs.guelph.title,
+    role: "teaching assistant",
+    dates: "2025",
+    blurb: "mcs2020, mcs2000, and spmt1020",
+    icon: orgs.guelph.icon,
+    href: orgs.guelph.href,
+    preview: orgs.guelph.preview,
+    logoBackgroundColor: "#FFFFFF",
+    bannerWidth: 320,
+    bgOffsetY: -35,
     logoScale: 100,
   },
   {
