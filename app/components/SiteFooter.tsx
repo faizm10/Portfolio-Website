@@ -1,10 +1,11 @@
+import Link from "next/link";
 import { homepageSocials, site, webringUrl } from "@/app/data/site";
 
 const linkClass =
   "underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70";
 
 /**
- * Minimal site footer: socials · by me (+ webring).
+ * Minimal site footer: blog · socials · by me (+ webring).
  */
 export default function SiteFooter() {
   return (
@@ -18,13 +19,14 @@ export default function SiteFooter() {
           style={{ color: "var(--ink-2)" }}
           aria-label="footer"
         >
-          {homepageSocials.map((item, i) => (
+          <Link href="/blog" className={linkClass} style={{ color: "var(--ink)" }}>
+            blog
+          </Link>
+          {homepageSocials.map((item) => (
             <span key={item.key} className="inline-flex items-center gap-x-3">
-              {i > 0 && (
-                <span aria-hidden style={{ color: "var(--ink-3)" }}>
-                  ·
-                </span>
-              )}
+              <span aria-hidden style={{ color: "var(--ink-3)" }}>
+                ·
+              </span>
               <a
                 href={item.href}
                 target="_blank"
