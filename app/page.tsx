@@ -4,13 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { LinkPreview } from "@/components/ui/link-preview";
-import { homepageSocials, site } from "@/app/data/site";
+import { homepageHobbies, homepageSocials, site } from "@/app/data/site";
 import { bioInternships, homepageExperiences } from "@/app/data/experience";
 import { showcaseProjects } from "@/app/data/projects";
 import ProjectsGrid from "./components/ProjectsGrid";
 import ExperienceList from "./components/ExperienceList";
 import GitHubContributionsCalendar from "./components/GitHubContributionsCalendar";
-import TravelMap from "./components/TravelMap";
 import SketchBackground from "./components/SketchBackground";
 import { Gradients } from "./components/Gradients";
 import HeroBanner from "./components/HeroBanner";
@@ -112,7 +111,7 @@ export default function Home() {
       </div>
 
       <main className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-24 pt-10 md:px-8 md:pt-12">
-        <div className="mx-auto max-w-xl">
+        <div id="about" className="mx-auto max-w-xl scroll-mt-24">
           <motion.h1
             custom={0}
             variants={fadeUp}
@@ -176,8 +175,56 @@ export default function Home() {
             {site.homepage.interests}
           </motion.p>
 
+
           <motion.p
             custom={3}
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            className="mt-5 text-[15px] leading-7 lowercase md:text-base md:leading-8"
+            style={{ color: "var(--ink-2)" }}
+          >
+            {site.homepage.hobbiesLead}{" "}
+            {homepageHobbies.map((hobby, i) => {
+              const linkClass =
+                "underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70";
+              const linkStyle = { color: "var(--ink)" };
+              const sep =
+                i === homepageHobbies.length - 1
+                  ? ""
+                  : i === homepageHobbies.length - 2
+                    ? ", and "
+                    : ", ";
+
+              return (
+                <span key={hobby.key}>
+                  {hobby.external ? (
+                    <a
+                      href={hobby.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={linkClass}
+                      style={linkStyle}
+                    >
+                      {hobby.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={hobby.href}
+                      className={linkClass}
+                      style={linkStyle}
+                    >
+                      {hobby.label}
+                    </Link>
+                  )}
+                  {sep}
+                </span>
+              );
+            })}
+          </motion.p>
+
+          <motion.p
+            custom={4}
             variants={fadeUp}
             initial="hidden"
             animate="show"
@@ -224,7 +271,7 @@ export default function Home() {
           </motion.p>
 
           <motion.p
-            custom={4}
+            custom={5}
             variants={fadeUp}
             initial="hidden"
             animate="show"
@@ -243,13 +290,20 @@ export default function Home() {
           </motion.p>
 
           <motion.nav
-            custom={5}
+            custom={6}
             variants={fadeUp}
             initial="hidden"
             animate="show"
             className="mt-10 flex flex-wrap gap-x-5 gap-y-2 text-[15px] lowercase"
             aria-label="social links"
           >
+            <Link
+              href="/blog"
+              className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+              style={{ color: "var(--ink)" }}
+            >
+              blog
+            </Link>
             {homepageSocials.map((item) => {
               const linkClass =
                 "underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70";
@@ -287,8 +341,8 @@ export default function Home() {
           </motion.nav>
         </div>
 
-        <motion.div
-          custom={6}
+        {/* <motion.div
+          custom={7}
           variants={fadeUp}
           initial="hidden"
           animate="show"
@@ -304,15 +358,12 @@ export default function Home() {
             sizes="(max-width: 576px) 100vw, 576px"
             priority={false}
           />
-        </motion.div>
+        </motion.div> */}
 
         <div className="mt-20 md:mt-28">
           <ExperienceList />
         </div>
 
-        <div className="mt-20 md:mt-28">
-          <TravelMap />
-        </div>
 
         <div className="mt-20 md:mt-28">
           <GitHubContributionsCalendar />
