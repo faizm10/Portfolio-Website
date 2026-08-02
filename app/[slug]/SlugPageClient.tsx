@@ -4,13 +4,13 @@ import { useRef, useEffect, type ComponentType, type ReactNode } from "react";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
 import { MDXProvider } from "@mdx-js/react";
+import { posts } from "@/app/posts";
 import "./codeblocks.css";
 // projects
 import Flowboard from "./mdx/flowboard.mdx";
 import Uoguelphcourses from "./mdx/uoguelphcourses.mdx";
 // notes
 import UWReflection from "./mdx/uw-reflection.mdx";
-import Photography101 from "./mdx/photography-101.mdx";
 import Arcki from "./mdx/arcki.mdx";
 import TransitFlow from "./mdx/transit-flow.mdx";
 import UogWebring from "./mdx/uog-webring.mdx";
@@ -20,7 +20,6 @@ import Octree from "./mdx/octree.mdx";
 import Converge from "./mdx/converge.mdx";
 import UoGReflection from "./mdx/uogreflection.mdx";
 import Footy from "./mdx/footy.mdx";
-import TdBank from "./mdx/tdbank.mdx";
 import Hackathons from "./mdx/hackathons.mdx";
 import SoccerStats from "./mdx/soccer-stats.mdx";
 import CodeKeeper from "./mdx/code-keeper.mdx";
@@ -33,7 +32,6 @@ const MDX_MAP: Record<string, ComponentType> = {
   uwreflection: UWReflection,
   flowboard: Flowboard,
   uoguelphcourses: Uoguelphcourses,
-  "photography-101": Photography101,
   arcki: Arcki,
   "transit-flow": TransitFlow,
   "uog-webring": UogWebring,
@@ -43,7 +41,6 @@ const MDX_MAP: Record<string, ComponentType> = {
   echolag: Echolag,
   uogreflection: UoGReflection,
   footy: Footy,
-  tdbank: TdBank,
   hackathons: Hackathons,
   "soccer-stats": SoccerStats,
   "code-keeper": CodeKeeper,
@@ -60,6 +57,7 @@ export default function SlugPageClient({ slug }: { slug: string }) {
   const topRef = useRef<HTMLDivElement>(null);
 
   const Post = MDX_MAP[slug];
+  const isBlogPost = posts.some((p) => p.slug === slug);
 
   useEffect(() => {
     (async () => {
@@ -113,11 +111,11 @@ export default function SlugPageClient({ slug }: { slug: string }) {
       <div className="mx-auto max-w-xl blog-content">
         <div className="mb-8">
           <button
-            onClick={() => router.push("/")}
+            onClick={() => router.push(isBlogPost ? "/blog" : "/")}
             className="text-sm hover:underline"
             style={{ color: "var(--ink-2)" }}
           >
-            ← back
+            {isBlogPost ? "← blog" : "← back"}
           </button>
         </div>
         <article
