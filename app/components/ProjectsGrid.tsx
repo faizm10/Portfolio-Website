@@ -122,7 +122,11 @@ function ProjectCard({ project, index }: { project: ProjectType; index: number }
 
 export default function ProjectsGrid() {
   return (
-    <section className="w-full" aria-labelledby="projects-heading">
+    <section
+      id="projects"
+      className="w-full scroll-mt-24"
+      aria-labelledby="projects-heading"
+    >
       <h2
         id="projects-heading"
         className="mb-8 text-center text-xs font-medium uppercase tracking-[0.2em]"
