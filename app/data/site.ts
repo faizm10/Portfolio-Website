@@ -63,9 +63,32 @@ export const site = {
     location: "toronto",
     interests:
       "interested in full-stack and product engineering, shipping consumer apps, and building in public",
+    hobbiesLead: "outside of code, i also care a lot about",
     contactLead: "reach out to my socials or",
   },
 } as const;
+
+/** Underlined hobby links in the bio. */
+export const homepageHobbies = [
+  {
+    key: "photography" as const,
+    label: "photography",
+    href: "https://photography.faizm.ca",
+    external: true,
+  },
+  {
+    key: "travel" as const,
+    label: "travel",
+    href: site.socials.instagram,
+    external: true,
+  },
+  {
+    key: "soccer" as const,
+    label: "soccer",
+    href: "/soccer-stats",
+    external: false,
+  },
+] as const;
 
 export type SocialKey = keyof typeof site.socials;
 
@@ -86,28 +109,8 @@ export const homepageSocials = [
   },
 ];
 
-/** Header nav: internal pages + socials (icons mapped in the component). */
-export const headerNav = [
-  {
-    key: "linkedin",
-    href: site.socials.linkedin,
-    label: "LinkedIn",
-    external: true,
-  },
-  {
-    key: "github",
-    href: site.socials.github,
-    label: "GitHub",
-    external: true,
-  },
-  {
-    key: "instagram",
-    href: site.socials.instagram,
-    label: "Instagram",
-    external: true,
-  },
-  { key: "x", href: site.socials.x, label: "Twitter", external: true },
-] as const;
+/** Header/footer socials (legacy alias). */
+export const headerNav = homepageSocials;
 
 /** Command palette + keyboard shortcuts (icons mapped in Cmd.tsx). */
 export const commandNav = [
@@ -120,10 +123,18 @@ export const commandNav = [
     searchValue: "home faiz page",
   },
   {
+    key: "blog",
+    href: "/blog",
+    label: "blog",
+    shortcut: "1",
+    external: false,
+    searchValue: "blog notes writing posts",
+  },
+  {
     key: "linkedin",
     href: site.socials.linkedin,
     label: "linkedin",
-    shortcut: "1",
+    shortcut: "2",
     external: true,
     searchValue: "linkedin profile socials faiz",
   },
@@ -131,7 +142,7 @@ export const commandNav = [
     key: "github",
     href: site.socials.github,
     label: "github",
-    shortcut: "2",
+    shortcut: "3",
     external: true,
     searchValue: "github git profile faiz",
   },
@@ -139,7 +150,7 @@ export const commandNav = [
     key: "instagram",
     href: site.socials.instagram,
     label: "instagram",
-    shortcut: "3",
+    shortcut: "4",
     external: true,
     searchValue: "ig instagram profile socials faiz",
   },
