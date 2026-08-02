@@ -25,17 +25,11 @@ export const posts: Post[] = [
     pinned: true,
   },
   {
-    slug: "tdbank",
-    title: "intern experience @ td bank",
-    date: "jan - apr 2026",
+    slug: "footy",
+    title: "some clips on fifa/soccer",
+    date: "ongoing",
     pinned: true,
   },
-  // {
-  //   slug: "footy",
-  //   title: "some clips on fifa/soccer",
-  //   date: "ongoing",
-  //   pinned: true,
-  // },
   {
     slug: "uwreflection",
     title: "thoughts on uw cs",
@@ -48,11 +42,11 @@ export const posts: Post[] = [
     date: "jan 2026",
     pinned: false,
   },
-  // {
-  //   slug: "soccer-stats",
-  //   title: "soccer stats & achievements",
-  //   date: "ongoing",
-  //   pinned: false,
-  // },
+  {
+    slug: "soccer-stats",
+    title: "soccer stats & achievements",
+    date: "ongoing",
+    pinned: false,
+  },
 ];
 
