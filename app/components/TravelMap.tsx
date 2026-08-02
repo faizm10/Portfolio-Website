@@ -5,7 +5,11 @@ import { travelDestinations, travelDots, travelOrigin } from "@/app/data/travel"
 
 export default function TravelMap() {
   return (
-    <section className="w-full" aria-labelledby="travel-heading">
+    <section
+      id="places"
+      className="w-full scroll-mt-24"
+      aria-labelledby="travel-heading"
+    >
       <h2
         id="travel-heading"
         className="mb-2 text-center text-xs font-medium uppercase tracking-[0.2em]"
