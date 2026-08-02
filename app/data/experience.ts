@@ -71,7 +71,7 @@ export const homepageExperiences: HomepageExperience[] = [
   {
     title: orgs.td.title,
     role: "swe intern",
-    dates: "2026",
+    dates: "winter2026",
     blurb: "credit origination and funding",
     icon: orgs.td.icon,
     href: orgs.td.href,
