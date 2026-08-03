@@ -364,9 +364,6 @@ export default function Home() {
           >
             {site.homepage.hobbiesLead}{" "}
             {homepageHobbies.map((hobby, i) => {
-              const linkClass =
-                "underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70";
-              const linkStyle = { color: "var(--ink)" };
               const sep =
                 i === homepageHobbies.length - 1
                   ? ""
@@ -376,25 +373,13 @@ export default function Home() {
 
               return (
                 <span key={hobby.key}>
-                  {hobby.external ? (
-                    <a
-                      href={hobby.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={linkClass}
-                      style={linkStyle}
-                    >
-                      {hobby.label}
-                    </a>
-                  ) : (
-                    <Link
-                      href={hobby.href}
-                      className={linkClass}
-                      style={linkStyle}
-                    >
-                      {hobby.label}
-                    </Link>
-                  )}
+                  <span
+                    className="underline underline-offset-[3px] decoration-[var(--ink-3)]"
+                    style={{ color: "var(--ink)" }}
+                    title="coming soon"
+                  >
+                    {hobby.label}
+                  </span>
                   {sep}
                 </span>
               );
