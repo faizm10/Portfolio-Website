@@ -31,7 +31,15 @@ function ProjectLinkIcon({
   );
 }
 
-function ProjectCard({ project, index }: { project: ProjectType; index: number }) {
+function ProjectCard({
+  project,
+  index,
+  centerOnDesktop = false,
+}: {
+  project: ProjectType;
+  index: number;
+  centerOnDesktop?: boolean;
+}) {
   const title = project.resumeName ?? project.name;
 
   return (
@@ -40,7 +48,7 @@ function ProjectCard({ project, index }: { project: ProjectType; index: number }
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ delay: 0.06 * index, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-      className="group"
+      className={`group ${centerOnDesktop ? "sm:col-span-2 sm:mx-auto sm:w-[calc((100%_-_2rem)/2)]" : ""}`}
     >
       <a
         href={project.url}
@@ -121,6 +129,8 @@ function ProjectCard({ project, index }: { project: ProjectType; index: number }
 }
 
 export default function ProjectsGrid() {
+  const hasOddProjectCount = showcaseProjects.length % 2 === 1;
+
   return (
     <section
       id="projects"
@@ -136,7 +146,12 @@ export default function ProjectsGrid() {
       </h2>
       <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2">
         {showcaseProjects.map((project, i) => (
-          <ProjectCard key={project.slug} project={project} index={i} />
+          <ProjectCard
+            key={project.slug}
+            project={project}
+            index={i}
+            centerOnDesktop={hasOddProjectCount && i === showcaseProjects.length - 1}
+          />
         ))}
       </div>
     </section>

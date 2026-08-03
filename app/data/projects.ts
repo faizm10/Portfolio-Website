@@ -79,6 +79,21 @@ export const showcaseProjects: ProjectType[] = [
     glowColors:
       "drop-shadow(0 8px 16px rgba(0, 122, 51, 0.06)) drop-shadow(0 12px 24px rgba(0, 150, 64, 0.05)) drop-shadow(0 16px 32px rgba(0, 180, 80, 0.04)) drop-shadow(0 20px 40px rgba(0, 210, 100, 0.03))",
   },
+  {
+    name: "pitchpulse",
+    resumeName: "PitchPulse",
+    slug: "pitchpulse",
+    url: "https://www.pitchpulse.ca/",
+    banner: "/previews/pitchpulse.png",
+    desc: "ai-powered world cup 2026 companion",
+    tags: ["AI", "Maps"],
+    stat: "300+ users in 72 hours",
+    resumeDetail:
+      "AI-powered World Cup 2026 platform — 300+ users within 72 hours.",
+    year: "2026",
+    glowColors:
+      "drop-shadow(0 8px 16px rgba(220, 38, 38, 0.05)) drop-shadow(0 12px 24px rgba(15, 23, 42, 0.04)) drop-shadow(0 16px 32px rgba(37, 99, 235, 0.035)) drop-shadow(0 20px 40px rgba(220, 38, 38, 0.025))",
+  },
 ];
 
 /** Extra resume-only projects (not on homepage showcase). */
@@ -113,4 +128,3 @@ export function resumeProjects() {
     ...resumeOnlyProjects,
   ];
 }
-
