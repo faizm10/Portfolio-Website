@@ -68,26 +68,11 @@ export const site = {
   },
 } as const;
 
-/** Underlined hobby links in the bio. */
+/** Hobby labels in the bio (pages coming soon — not linked yet). */
 export const homepageHobbies = [
-  {
-    key: "photography" as const,
-    label: "photography",
-    href: "https://photography.faizm.ca",
-    external: true,
-  },
-  {
-    key: "travel" as const,
-    label: "travel",
-    href: site.socials.instagram,
-    external: true,
-  },
-  {
-    key: "soccer" as const,
-    label: "soccer",
-    href: "/soccer-stats",
-    external: false,
-  },
+  { key: "photography" as const, label: "photography" },
+  { key: "travel" as const, label: "travel" },
+  { key: "soccer" as const, label: "soccer" },
 ] as const;
 
 export type SocialKey = keyof typeof site.socials;
