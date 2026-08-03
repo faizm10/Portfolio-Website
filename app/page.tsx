@@ -339,7 +339,7 @@ export default function Home() {
                   ,
                   an ai-powered platform for world cup 2026:{" "}
                   <Metric>300+</Metric>{" "}
-                  users <Metric>within days</Metric>
+                  users <Metric>within 72 hours</Metric>
                 </span>
               </li>
               <li>
