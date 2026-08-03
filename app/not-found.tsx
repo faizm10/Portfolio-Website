@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { site } from "@/app/data/site";
 
 export const metadata: Metadata = {
   title: "not found",
-  description: "this page does not exist on faizm.ca",
+  description: site.pageTitles.notFoundDescription,
 };
 
 export default function NotFound() {

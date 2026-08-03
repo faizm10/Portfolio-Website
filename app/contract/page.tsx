@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import ContractPageClient from "./ContractPageClient";
+import { site } from "@/app/data/site";
 
 export const metadata: Metadata = {
-  title: "contract · faiz mustansar",
+  title: site.pageTitles.contract,
   description: "contract (unlisted)",
   robots: {
     index: false,

@@ -1,6 +1,6 @@
 "use client";
 
-import { showcaseProjects } from "../projects";
+import { showcaseProjects } from "@/app/data/projects";
 // import { posts } from "../posts";
 import LinkSlider from "./Link";
 import Link from "next/link";

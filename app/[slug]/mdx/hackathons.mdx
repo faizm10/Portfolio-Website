@@ -1,31 +1,14 @@
-export const hackathonEntries = [
-    { role: "hacker" },
-    { role: "hacker" },
-    { role: "hacker" },
-    { role: "judge" },
-    { role: "hacker" },
-    { role: "hacker", awards: 1 },
-    { role: "organizer" },
-    { role: "hacker" },
-    { role: "hacker" },
-    { role: "hacker", awards: 2 },
-    { role: "hacker" },
-    { role: "hacker" },
-    { role: "judge" },
-    { role: "hacker" },
-    { role: "mentor" },
-    { role: "mentor" },
-    { role: "hacker" },
-    { role: "hacker", awards: 1 },
-    { role: "hacker" },
-    { role: "volunteer" },
-    { role: "hacker", awards: 1 },
-];
+import {
+    totalHackathons,
+    judgeMentorCount,
+    awardCount,
+} from "@/app/data/hackathons";
 
-export const totalHackathons = hackathonEntries.length;
-export const judgeMentorCount =
-    hackathonEntries.filter((entry) => entry.role === "judge" || entry.role === "mentor").length;
-export const awardCount = hackathonEntries.reduce((sum, entry) => sum + (entry.awards ?? 0), 0);
+export {
+    totalHackathons,
+    judgeMentorCount,
+    awardCount,
+};
 
 <div className='w-full text-center flowboard-page'>
     <span className='block text-lightBeige/95 italic text-2xl md:text-3xl'>hackathons</span>

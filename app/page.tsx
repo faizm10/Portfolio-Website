@@ -1,472 +1,435 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useIntroStore } from "./store/zustand";
-import useModifierKey from "./components/ModifierKey";
-import { isMobile } from "react-device-detect";
-import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from "react-icons/fa6";
-import { IoDocumentTextOutline, IoImagesOutline } from "react-icons/io5";
-import { posts } from "./posts";
-import { showcaseProjects } from "./projects";
-import { credlyBadges } from "./resume/data";
-import GitHubContributionsCalendar from "./components/GitHubContributionsCalendar";
+import { motion } from "motion/react";
+import { LinkPreview } from "@/components/ui/link-preview";
+import { homepageHobbies, homepageSocials, site } from "@/app/data/site";
+import { bioInternships, homepageExperiences } from "@/app/data/experience";
+import { showcaseProjects, type ProjectType } from "@/app/data/projects";
+import ProjectsGrid from "./components/ProjectsGrid";
+import ExperienceList from "./components/ExperienceList";
+import SketchBackground from "./components/SketchBackground";
+import { Gradients } from "./components/Gradients";
+import HeroBanner from "./components/HeroBanner";
+import GitHubContributionsPreview from "./components/GitHubContributionsPreview";
 
-function InlineOrgLink({
+function OrgInline({
   href,
   icon,
   label,
-  external = false,
-  showIcon = true,
-  iconOnly = false,
+  preview,
+  external = true,
 }: {
   href: string;
-  icon?: string;
+  icon: string;
   label: string;
+  preview?: string | null;
   external?: boolean;
-  showIcon?: boolean;
-  iconOnly?: boolean;
 }) {
-  const linkClass = iconOnly
-    ? "mx-0.5 inline-flex align-text-bottom rounded ring-1 ring-[var(--border)] transition-opacity hover:opacity-75"
-    : "underline underline-offset-2 decoration-[var(--ink-3)] transition-opacity hover:opacity-75";
-
-  const content = iconOnly && icon ? (
-    <Image
-      src={icon}
-      alt=""
-      width={20}
-      height={20}
-      className="size-5 object-contain"
-      aria-hidden
-    />
-  ) : (
-    <>
-      {showIcon && icon && (
-        <Image
-          src={icon}
-          alt=""
-          width={20}
-          height={20}
-          className="mr-0.5 inline-block size-5 align-text-bottom object-contain"
-          aria-hidden
-        />
-      )}
-      {label}
-    </>
+  const content = (
+    <span className="inline-flex items-baseline gap-1.5 underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70">
+      <Image
+        src={icon}
+        alt=""
+        width={24}
+        height={24}
+        className="relative top-[2px] size-6 rounded-sm object-contain"
+        aria-hidden
+      />
+      <span>{label}</span>
+    </span>
   );
 
-  const aria = iconOnly ? { "aria-label": label } : {};
-
-  if (external) {
-    return (
+  if (!preview) {
+    return external ? (
       <a
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className={linkClass}
-        {...aria}
+        className="inline text-[inherit]"
       >
         {content}
       </a>
+    ) : (
+      <Link href={href} className="inline text-[inherit]">
+        {content}
+      </Link>
     );
   }
 
   return (
-    <Link href={href} className={linkClass} {...aria}>
+    <LinkPreview
+      url={href}
+      className="inline text-[inherit] font-normal"
+      width={240}
+      height={150}
+      isStatic
+      imageSrc={preview}
+    >
       {content}
-    </Link>
+    </LinkPreview>
   );
 }
 
-const experiences = [
-  {
-    title: "tangerine",
-    role: "swe intern",
-    icon: "/exp/tangerine.jpeg",
-    href: "https://www.tangerine.ca/en/personal",
-  },
-  // {
-  //   title: "university of guelph",
-  //   role: "teaching assistant — spmt1120 (sports)",
-  //   icon: "/exp/uog.png",
-  // },
-  {
-    title: "td bank",
-    role: "swe intern",
-    icon: "/exp/td-logo.jpeg",
-    href: "https://www.td.com/ca/en/personal-banking",
-  },
-  // {
-  //   title: "hackcanada",
-  //   role: "vp of tech",
-  //   icon: "/exp/hackcanadaLogo.png",
-  // },
-  {
-    title: "sertus",
-    role: "swe intern",
-    icon: "/exp/sertus.jpeg",
-    href: "https://www.sertus.app/",
-  },
-  
-  // {
-  //   title: "university of guelph",
-  //   role: "full stack developer",
-  //   icon: "/exp/uog.png",
-  // },
-  // {
-  //   title: "university of guelph",
-  //   role: "teaching assistant — mcs2000 & mcs2020 (business) · 3x terms",
-  //   icon: "/exp/uog.png",
-  // },
-];
+function ProjectInline({ project }: { project: ProjectType }) {
+  return (
+    <LinkPreview
+      url={project.url}
+      className="inline font-normal underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+      width={240}
+      height={150}
+      isStatic
+      imageSrc={project.banner}
+    >
+      <span style={{ color: "var(--ink)" }}>{project.name}</span>
+    </LinkPreview>
+  );
+}
+
+function ExternalProjectInline({
+  href,
+  label,
+  imageSrc,
+}: {
+  href: string;
+  label: string;
+  imageSrc: string;
+}) {
+  return (
+    <LinkPreview
+      url={href}
+      className="inline font-normal underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+      width={360}
+      height={180}
+      isStatic
+      imageSrc={imageSrc}
+    >
+      <span style={{ color: "var(--ink)" }}>{label}</span>
+    </LinkPreview>
+  );
+}
+
+function Metric({ children }: { children: React.ReactNode }) {
+  return (
+    <strong className="font-extrabold" style={{ color: "var(--ink)" }}>
+      {children}
+    </strong>
+  );
+}
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 8 },
+  show: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.08 * i, duration: 0.45, ease: [0.22, 1, 0.36, 1] as const },
+  }),
+};
 
 export default function Home() {
-  const { hasPlayed, setHasPlayed } = useIntroStore();
-  const initialHasPlayed =
-    typeof window !== "undefined" &&
-    Boolean(useIntroStore.getState?.().hasPlayed);
-  const [isLoaded, setIsLoaded] = useState<boolean>(initialHasPlayed);
-  const isModifierPressed = useModifierKey();
-
-  useEffect(() => {
-    if (hasPlayed) {
-      setIsLoaded(true);
-      return;
-    }
-    setHasPlayed();
-    let progress = 10;
-    const interval = setInterval(() => {
-      progress += 20;
-      if (progress >= 100) {
-        clearInterval(interval);
-        setIsLoaded(true);
-      }
-    }, 250);
-  }, [hasPlayed, setHasPlayed]);
-
-  useEffect(() => {
-    const noop = () => {};
-    window.addEventListener("command-palette-opened", noop);
-    return () => window.removeEventListener("command-palette-opened", noop);
-  }, []);
-
-  const [isMac, setIsMac] = useState(false);
-  useEffect(() => {
-    setIsMac(
-      navigator.platform.toLowerCase().includes("mac") ||
-        navigator.userAgent.toLowerCase().includes("mac"),
-    );
-  }, []);
+  const school = site.schools.guelph;
+  const waterloo = site.schools.waterloo;
+  const work = bioInternships.current;
+  const prevWork = bioInternships.previous[0]; // td bank
+  const topProject = showcaseProjects.find((p) => p.slug === "uoguelphcourses")!;
+  const octreeProject = showcaseProjects.find((p) => p.slug === "octree")!;
+  const transitProject = showcaseProjects.find((p) => p.slug === "transit-flow")!;
 
   return (
-    <>
-      <div
-        className={`fixed inset-0 z-40 flex items-center justify-center transition-opacity duration-800 ${
-          isLoaded
-            ? "pointer-events-none invisible opacity-0"
-            : "visible opacity-100"
-        }`}
-        style={{ backgroundColor: "var(--canvas)" }}
-        aria-hidden={isLoaded}
-      >
-        <p
-          className="text-sm italic tracking-wide font-[family-name:var(--font-newsreader)]"
-          style={{ color: "var(--accent)" }}
-        >
-          building and shipping
-        </p>
+    <div className="relative min-h-screen w-full bg-white">
+      <Gradients />
+      <SketchBackground />
+      <HeroBanner />
+      <div className="pointer-events-none absolute h-0 w-0 overflow-hidden opacity-0" aria-hidden>
+        {[
+          ...new Set(
+            [
+              school.preview,
+              waterloo.preview,
+              work.preview,
+              ...homepageExperiences.map((e) => e.preview),
+              ...homepageSocials.map((s) => s.preview),
+            ].filter(Boolean) as string[],
+          ),
+        ].map((src) => (
+          <img key={src} src={src} alt="" width={1} height={1} />
+        ))}
       </div>
 
-      <div className="relative min-h-screen w-full" style={{ backgroundColor: "var(--canvas)" }}>
-        <main className="mx-auto max-w-3xl px-6 py-12 md:py-16">
-         {/* header */}
-          <header>
-            <div className="flex items-center justify-between gap-4">
-              <h1
-                className="font-[family-name:var(--font-newsreader)] text-3xl font-[500] tracking-tight md:text-4xl"
+      <main className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-24 pt-10 md:px-8 md:pt-12">
+        <div id="about" className="mx-auto max-w-xl scroll-mt-24">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
+            <motion.h1
+              custom={0}
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              className="text-2xl font-semibold tracking-tight lowercase md:text-[1.75rem]"
+              style={{ color: "var(--ink)" }}
+            >
+              {site.name}
+            </motion.h1>
+
+            <motion.nav
+              custom={1}
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              className="ml-auto flex flex-wrap justify-end gap-x-5 gap-y-2 text-[15px] lowercase"
+              aria-label="social links"
+            >
+              <Link
+                href="/blog"
+                className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
                 style={{ color: "var(--ink)" }}
               >
-                faiz mustansar
-              </h1>
-              <div className="flex shrink-0 items-center gap-4">
-              {!isMobile && (
-                <button
-                  onClick={() =>
-                    window.dispatchEvent(new CustomEvent("open-command-palette"))
-                  }
-                  className="rounded px-2.5 py-1 text-xs transition"
-                  style={{
-                    border: "1px solid var(--border)",
-                    backgroundColor: "var(--surface-alt)",
-                    color: "var(--ink-2)",
-                  }}
-                >
-                  <kbd className={isModifierPressed ? "opacity-40" : ""}>
-                    {isMac ? "⌘" : "ctrl"}
-                  </kbd>
-                  +<kbd>k</kbd>
-                </button>
-              )}
-              {[
-                { href: "/photos", label: "Photos", Icon: IoImagesOutline, isLink: true },
-                { href: "/resume", label: "Resume", Icon: IoDocumentTextOutline, isLink: true },
-                { href: "https://www.linkedin.com/in/faizmustansar/", label: "LinkedIn", Icon: FaLinkedin },
-                { href: "https://github.com/faizm10", label: "GitHub", Icon: FaGithub },
-                { href: "https://www.instagram.com/faizm.30/", label: "Instagram", Icon: FaInstagram },
-                { href: "https://x.com/_faizm", label: "Twitter", Icon: FaTwitter },
-              ].map(({ href, label, Icon, isLink }) =>
-                isLink ? (
-                  <Link
-                    key={label}
-                    href={href}
-                    aria-label={label}
-                    className="transition-colors"
-                    style={{ color: "var(--ink-3)" }}
-                    onMouseEnter={(e) =>
-                      ((e.currentTarget as HTMLElement).style.color = "var(--accent)")
-                    }
-                    onMouseLeave={(e) =>
-                      ((e.currentTarget as HTMLElement).style.color = "var(--ink-3)")
-                    }
-                  >
-                    <Icon className="h-5 w-5" />
-                  </Link>
-                ) : (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className="transition-colors"
-                    style={{ color: "var(--ink-3)" }}
-                    onMouseEnter={(e) =>
-                      ((e.currentTarget as HTMLElement).style.color = "var(--accent)")
-                    }
-                    onMouseLeave={(e) =>
-                      ((e.currentTarget as HTMLElement).style.color = "var(--ink-3)")
-                    }
-                  >
-                    <Icon className="h-5 w-5" />
-                  </a>
-                ),
-              )}
-              </div>
-            </div>
+                blog
+              </Link>
+              {homepageSocials.map((item) => {
+                const linkClass =
+                  "underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70";
+                const linkStyle = { color: "var(--ink)" };
 
-            <ul
-              className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed marker:text-[var(--ink-3)]"
-              style={{ color: "var(--ink-2)" }}
-            >
-              <li>
-                <span className="inline md:whitespace-nowrap">
-                  i study cs @
-                  <InlineOrgLink
-                    href="https://www.uoguelph.ca/"
-                    icon="/exp/uog.png"
-                    label="university of guelph"
-                    external
-                  />
-                  , 3x terms @{" "}
-                  <InlineOrgLink
-                    href="/uwreflection"
-                    icon="/uw.png"
-                    label="university of waterloo"
-                  />
-                </span>
-              </li>
-              <li>
-                <span className="inline-flex flex-wrap items-center gap-x-1 gap-y-1">
-                  <span>currently swe intern @</span>
-                  <InlineOrgLink
-                    href="https://www.tangerine.ca/en/personal"
-                    icon="/exp/tangerine.jpeg"
-                    label="tangerine"
-                    external
-                    iconOnly
-                  />
-                  <span style={{ color: "var(--ink-3)" }}>· prev</span>
-                  <InlineOrgLink
-                    href="https://www.td.com/ca/en/personal-banking"
-                    icon="/exp/td-logo.jpeg"
-                    label="td bank"
-                    external
-                    iconOnly
-                  />
-                  <span style={{ color: "var(--ink-3)" }}>&</span>
-                  <InlineOrgLink
-                    href="https://www.sertus.app/"
-                    icon="/exp/sertus.jpeg"
-                    label="sertus"
-                    external
-                    iconOnly
-                  />
-                </span>
-              </li>
-            </ul>
-          </header>
-
-          <GitHubContributionsCalendar />
-
-          {/* Experience */}
-          <section className="mt-12">
-            <h2 className="text-xs font-medium uppercase tracking-widest" style={{ color: "var(--ink-3)" }}>
-              what i&apos;ve been up to
-            </h2>
-            <ul className="mt-5 space-y-4">
-              {experiences.map((exp, i) => (
-                <li key={i}>
-                  <a
-                    href={exp.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex gap-4 items-center group"
-                  >
-                    <div
-                      className="h-12 w-12 shrink-0 overflow-hidden rounded ring-1 ring-[var(--border)]"
-                      style={{ backgroundColor: "var(--surface-alt)" }}
+                if (item.key === "github") {
+                  return (
+                    <LinkPreview
+                      key={item.key}
+                      url={item.href}
+                      className={`inline font-normal ${linkClass}`}
+                      width={520}
+                      height={138}
+                      isStatic
+                      imageSrc={item.preview ?? "/previews/github.jpeg"}
+                      previewContent={<GitHubContributionsPreview />}
                     >
-                      {exp.icon && (
-                        <Image
-                          src={exp.icon}
-                          alt=""
-                          width={48}
-                          height={48}
-                          className="h-12 w-12 object-contain"
-                        />
-                      )}
-                    </div>
-                    <div>
-                      <p className="font-medium leading-tight group-hover:underline underline-offset-2" style={{ color: "var(--ink)" }}>{exp.title}</p>
-                      <p className="text-sm" style={{ color: "var(--ink-3)" }}>{exp.role}</p>
-                    </div>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
+                      <span style={linkStyle}>{item.label}</span>
+                    </LinkPreview>
+                  );
+                }
 
+                if (item.preview) {
+                  return (
+                    <LinkPreview
+                      key={item.key}
+                      url={item.href}
+                      className={`inline font-normal ${linkClass}`}
+                      width={240}
+                      height={150}
+                      isStatic
+                      imageSrc={item.preview}
+                    >
+                      <span style={linkStyle}>{item.label}</span>
+                    </LinkPreview>
+                  );
+                }
 
-          {/* Projects */}
-          <section className="mt-14">
-            <h2 className="text-xs font-medium uppercase tracking-widest" style={{ color: "var(--ink-3)" }}>
-              some projects i built
-            </h2>
-            <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
-              {showcaseProjects.slice(0, 6).map((project) => (
-                <Link key={project.slug} href={`/${project.slug}`} className="group block h-full">
-                  <div
-                    className="flex h-full flex-col overflow-hidden rounded transition-all"
-                    style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)" }}
-                    onMouseEnter={e => {
-                      const el = e.currentTarget as HTMLElement;
-                      el.style.borderColor = "var(--border-2)";
-                      el.style.boxShadow = "0 2px 12px var(--accent-shadow)";
-                    }}
-                    onMouseLeave={e => {
-                      const el = e.currentTarget as HTMLElement;
-                      el.style.borderColor = "var(--border)";
-                      el.style.boxShadow = "none";
-                    }}
-                  >
-                    <div className="relative aspect-video w-full" style={{ backgroundColor: "var(--surface-alt)" }}>
-                      <Image src={project.banner} alt={project.name} fill
-                        sizes="(max-width: 640px) 100vw, 50vw" className="object-cover"
-                      />
-                    </div>
-                    <div className="flex flex-1 flex-col p-4">
-                      <div className="flex items-baseline justify-between gap-2">
-                        <span className="font-[family-name:var(--font-newsreader)] font-[500]"
-                          style={{ color: "var(--ink)" }}>
-                          {project.name}
-                        </span>
-                        {project.year && (
-                          <span className="text-xs" style={{ color: "var(--ink-3)" }}>{project.year}</span>
-                        )}
-                      </div>
-                      <p className="mt-1 text-sm leading-[1.45]" style={{ color: "var(--ink-2)" }}>
-                        {project.desc}{project.stat ? `. ${project.stat}` : ""}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-            <div className="mt-4">
-              <a href="https://github.com/faizm10" target="_blank" rel="noopener noreferrer"
-                className="text-sm hover:underline" style={{ color: "var(--accent)" }}>
-                view more on github →
-              </a>
-            </div>
-          </section>
-
-          {/* Blogs */}
-          <section className="mt-14">
-            <h2 className="text-xs font-medium uppercase tracking-widest" style={{ color: "var(--ink-3)" }}>
-              latest blogs
-            </h2>
-            <ul className="mt-5" style={{ borderTop: "1px solid var(--border)" }}>
-              {posts.map((post) => (
-                <li
-                  key={post.slug}
-                  className="flex items-center justify-between gap-4 py-2.5"
-                  style={{ borderBottom: "1px solid var(--border)" }}
-                >
-                  <Link href={`/${post.slug}`} className="hover:underline underline-offset-2 transition-colors"
-                    style={{ color: "var(--ink)" }}
-                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "var(--accent)"}
-                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "var(--ink)"}
-                  >
-                    {post.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          {/* Certifications */}
-          {/* <section className="mt-12">
-            <h2 className="text-xs font-medium uppercase tracking-widest" style={{ color: "var(--ink-3)" }}>
-              certifications
-            </h2>
-            <ul className="mt-4 flex flex-wrap gap-3">
-              {credlyBadges.map((badge) => (
-                <li key={badge.id}>
+                return (
                   <a
-                    href={`https://www.credly.com/badges/${badge.id}`}
+                    key={item.key}
+                    href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition"
-                    style={{ border: "1px solid var(--border)", backgroundColor: "var(--surface)" }}
-                    onMouseEnter={e => {
-                      (e.currentTarget as HTMLElement).style.borderColor = "var(--border-2)";
-                      (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 10px var(--accent-shadow)";
-                    }}
-                    onMouseLeave={e => {
-                      (e.currentTarget as HTMLElement).style.borderColor = "var(--border)";
-                      (e.currentTarget as HTMLElement).style.boxShadow = "none";
-                    }}
+                    className={linkClass}
+                    style={linkStyle}
                   >
-                    <Image
-                      src={badge.imageUrl}
-                      alt={badge.name}
-                      width={40}
-                      height={40}
-                      className="h-10 w-10 shrink-0 object-contain"
-                    />
-                    <div>
-                      <p className="font-medium" style={{ color: "var(--ink)" }}>{badge.name}</p>
-                      <p className="text-xs" style={{ color: "var(--ink-3)" }}>{badge.issuer} · {badge.issued}</p>
-                    </div>
+                    {item.label}
                   </a>
-                </li>
-              ))}
+                );
+              })}
+            </motion.nav>
+          </div>
+
+          <motion.p
+            custom={2}
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            className="mt-8 text-[15px] leading-7 lowercase md:text-base md:leading-8"
+            style={{ color: "var(--ink-2)" }}
+          >
+            i study computer science at{" "}
+            <OrgInline
+              href={school.href}
+              icon={school.icon}
+              label={school.label}
+              preview={school.preview}
+              external={school.external}
+            />
+            , and spent three terms at{" "}
+            <OrgInline
+              href={waterloo.href}
+              icon={waterloo.icon}
+              label={waterloo.label}
+              preview={waterloo.preview}
+              external={waterloo.external}
+            />
+            . i&apos;m currently based in {site.homepage.location}, where i work at{" "}
+            <OrgInline
+              href={work.href}
+              icon={work.icon}
+              label={work.title}
+              preview={work.preview}
+            />
+            , previously at{" "}
+            <OrgInline
+              href={prevWork.href}
+              icon={prevWork.icon}
+              label={prevWork.title}
+              preview={prevWork.preview}
+            />
+            .
+          </motion.p>
+
+          <motion.p
+            custom={3}
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            className="mt-5 text-[15px] leading-7 lowercase md:text-base md:leading-8"
+            style={{ color: "var(--ink-2)" }}
+          >
+            {site.homepage.interests}
+          </motion.p>
+
+
+          <motion.div
+            custom={4}
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            className="mt-6 text-[15px] leading-7 lowercase md:text-base md:leading-7"
+            style={{ color: "var(--ink-2)" }}
+          >
+            <p className="build-list-title">
+              what i&apos;ve been building:
+            </p>
+            <ul className="build-list">
+              <li>
+                <span className="build-arrow">↳</span>
+                <span>
+                  shipped <ProjectInline project={topProject} />, course search
+                  and reviews for the university of guelph:{" "}
+                  <Metric>5k+</Metric>{" "}
+                  students,{" "}
+                  <Metric>75k+</Metric>{" "}
+                  views
+                </span>
+              </li>
+              <li>
+                <span className="build-arrow">↳</span>
+                <span>
+                  contributed to <ProjectInline project={octreeProject} />, an
+                  open-source ai-powered latex editor:{" "}
+                  <Metric>2k+</Metric>{" "}
+                  users,{" "}
+                  <Metric>250+</Metric>{" "}
+                  github stars, <Metric>50+</Metric> forks
+                </span>
+              </li>
+              <li>
+                <span className="build-arrow">↳</span>
+                <span>
+                  built{" "}
+                  <ExternalProjectInline
+                    href="https://www.pitchpulse.ca/"
+                    label="pitchpulse"
+                    imageSrc="/previews/pitchpulse.png"
+                  />
+                  ,
+                  an ai-powered platform for world cup 2026:{" "}
+                  <Metric>300+</Metric>{" "}
+                  users <Metric>within 72 hours</Metric>
+                </span>
+              </li>
+              <li>
+                <span className="build-arrow">↳</span>
+                <span>
+                  built <ProjectInline project={transitProject} />, a transit
+                  planning tool:{" "}
+                  <Metric>300+</Metric>{" "}
+                  users
+                </span>
+              </li>
             </ul>
-          </section> */}
-        </main>
-      </div>
-    </>
+          </motion.div>
+
+          <motion.p
+            custom={5}
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            className="mt-5 text-[15px] leading-7 lowercase md:text-base md:leading-8"
+            style={{ color: "var(--ink-2)" }}
+          >
+            {site.homepage.hobbiesLead}{" "}
+            {homepageHobbies.map((hobby, i) => {
+              const linkClass =
+                "underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70";
+              const linkStyle = { color: "var(--ink)" };
+              const sep =
+                i === homepageHobbies.length - 1
+                  ? ""
+                  : i === homepageHobbies.length - 2
+                    ? ", and "
+                    : ", ";
+
+              return (
+                <span key={hobby.key}>
+                  {hobby.external ? (
+                    <a
+                      href={hobby.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={linkClass}
+                      style={linkStyle}
+                    >
+                      {hobby.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={hobby.href}
+                      className={linkClass}
+                      style={linkStyle}
+                    >
+                      {hobby.label}
+                    </Link>
+                  )}
+                  {sep}
+                </span>
+              );
+            })}
+          </motion.p>
+
+        </div>
+
+        {/* <motion.div
+          custom={7}
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          className="mx-auto mt-14 max-w-xl md:mt-16"
+        >
+          <Image
+            src="/mount-fuji.png"
+            alt="pixel art of mount fuji at sunset with a pagoda and cherry blossoms"
+            width={1024}
+            height={682}
+            className="h-auto w-full"
+            style={{ imageRendering: "pixelated" }}
+            sizes="(max-width: 576px) 100vw, 576px"
+            priority={false}
+          />
+        </motion.div> */}
+
+        <div className="mt-20 md:mt-28">
+          <ExperienceList />
+        </div>
+
+        <div className="mt-20 md:mt-28">
+          <ProjectsGrid />
+        </div>
+      </main>
+    </div>
   );
 }

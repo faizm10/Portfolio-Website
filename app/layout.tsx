@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Newsreader, Inter, Pacifico } from "next/font/google";
 import CommandPalette from "./components/Cmd";
+import SiteFooter from "./components/SiteFooter";
+import { site, siteHostname } from "@/app/data/site";
 
 const newsreader = Newsreader({
   weight: ["400", "500"],
@@ -32,42 +34,32 @@ const pacifico = Pacifico({
   variable: "--font-signature",
 });
 
-export const metadataBase = new URL("https://faizm.ca");
+const ogImageUrl = `${site.url}${site.ogImage}`;
 
 export const metadata: Metadata = {
-  title: "faiz mustansar",
-  description:
-    "faiz mustansar — computer science at the university of guelph. full-stack and software engineer. always building something new",
-  keywords: [
-    "faiz mustansar",
-    "faiz mustansar uog",
-    "faiz mustansar uog cs",
-    "faiz mustansar university of guelph",
-    "faiz mustansarportfolio",
-    "uog cs portfolio",
-    "uog computer science",
-  ],
+  metadataBase: new URL(site.url),
+  title: site.metadata.title,
+  description: site.metadata.description,
+  keywords: [...site.metadata.keywords],
   alternates: {
-    canonical: "https://faizm.ca",
+    canonical: site.url,
   },
   openGraph: {
-    title: "faiz mustansar",
-    description:
-      "portfolio of faiz mustansar— computer science at the university of guelph.",
-    url: "https://faizm.ca",
-    siteName: "faizm.ca",
-    images: [{ url: "https://faizm.ca/banner.png", width: 1200, height: 630 }],
+    title: site.metadata.title,
+    description: site.metadata.ogDescription,
+    url: site.url,
+    siteName: siteHostname(),
+    images: [{ url: ogImageUrl, width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "faiz mustansar",
-    description:
-      "portfolio of faiz mustansar— computer science at the university of guelph.",
-    images: ["https://faizm.ca/banner.png"],
+    title: site.metadata.title,
+    description: site.metadata.ogDescription,
+    images: [ogImageUrl],
   },
   icons: {
-    icon: "/jsl.png",
+    icon: site.brandIcon,
     shortcut: "/favicon.ico",
   },
   robots: {
@@ -86,50 +78,17 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link rel="canonical" href="https://faizm.ca" />
-        {/* Keep the site on the parchment theme and clear legacy theme choices. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `document.documentElement.setAttribute('data-theme','parchment');try{localStorage.removeItem('portfolio-theme');}catch(e){}`,
-          }}
-        />
+        <link rel="canonical" href={site.url} />
       </head>
       <body
-        className={`${inter.className} min-h-screen w-full text-[#201a10] antialiased`}
+        className={`${inter.className} min-h-screen w-full bg-white text-neutral-900 antialiased`}
         suppressHydrationWarning
       >
-        <div className="min-h-screen w-full">
+        <div className="min-h-screen w-full bg-white">
           {children}
           <CommandPalette />
         </div>
-        <footer className="w-full pb-6">
-          <div className="mx-auto flex w-full max-w-3xl items-center gap-2 px-6 text-[#8a8270]">
-            <a
-              href="https://www.uguelph.network/#faizm.ca?nav=prev"
-              aria-label="Previous site"
-            >
-              ←
-            </a>
-            <a
-              href="https://www.uguelph.network/#faizm.ca"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Guelph Webring"
-            >
-              <img
-                src="https://www.uguelph.network/webAssets/gryphon.svg"
-                alt="Guelph Webring"
-                style={{ width: "24px", height: "auto", opacity: 0.8 }}
-              />
-            </a>
-            <a
-              href="https://www.uguelph.network/#faizm.ca?nav=next"
-              aria-label="Next site"
-            >
-              →
-            </a>
-          </div>
-        </footer>
+        <SiteFooter />
       </body>
     </html>
   );
