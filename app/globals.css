@@ -217,6 +217,39 @@ body {
   color: var(--accent) !important;
 }
 
+.build-list-title {
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+
+.build-list {
+  margin-top: 0.4rem;
+  display: grid;
+  gap: 0.42rem;
+}
+
+.build-list li {
+  display: grid;
+  grid-template-columns: 1rem minmax(0, 1fr);
+  column-gap: 0.45rem;
+  align-items: baseline;
+  color: var(--ink-2);
+}
+
+.build-arrow {
+  color: var(--ink-3);
+  font-size: 0.9rem;
+  line-height: 1;
+  transform: translateY(1px);
+}
+
+.build-keyword {
+  color: var(--ink);
+  font-weight: 600;
+}
+
 /* ── Blog/slug pages: fully theme-aware ──────────────────────── */
 
 /* Override Tailwind Typography prose variables */

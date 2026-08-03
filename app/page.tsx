@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { homepageHobbies, homepageSocials, site } from "@/app/data/site";
 import { bioInternships, homepageExperiences } from "@/app/data/experience";
-import { showcaseProjects } from "@/app/data/projects";
+import { showcaseProjects, type ProjectType } from "@/app/data/projects";
 import ProjectsGrid from "./components/ProjectsGrid";
 import ExperienceList from "./components/ExperienceList";
 import SketchBackground from "./components/SketchBackground";
@@ -72,6 +72,52 @@ function OrgInline({
   );
 }
 
+function ProjectInline({ project }: { project: ProjectType }) {
+  return (
+    <LinkPreview
+      url={project.url}
+      className="inline font-normal underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+      width={240}
+      height={150}
+      isStatic
+      imageSrc={project.banner}
+    >
+      <span style={{ color: "var(--ink)" }}>{project.name}</span>
+    </LinkPreview>
+  );
+}
+
+function ExternalProjectInline({
+  href,
+  label,
+  imageSrc,
+}: {
+  href: string;
+  label: string;
+  imageSrc: string;
+}) {
+  return (
+    <LinkPreview
+      url={href}
+      className="inline font-normal underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+      width={360}
+      height={180}
+      isStatic
+      imageSrc={imageSrc}
+    >
+      <span style={{ color: "var(--ink)" }}>{label}</span>
+    </LinkPreview>
+  );
+}
+
+function Metric({ children }: { children: React.ReactNode }) {
+  return (
+    <strong className="font-extrabold" style={{ color: "var(--ink)" }}>
+      {children}
+    </strong>
+  );
+}
+
 const fadeUp = {
   hidden: { opacity: 0, y: 8 },
   show: (i: number) => ({
@@ -87,6 +133,7 @@ export default function Home() {
   const work = bioInternships.current;
   const prevWork = bioInternships.previous[0]; // td bank
   const topProject = showcaseProjects.find((p) => p.slug === "uoguelphcourses")!;
+  const octreeProject = showcaseProjects.find((p) => p.slug === "octree")!;
   const transitProject = showcaseProjects.find((p) => p.slug === "transit-flow")!;
 
   return (
@@ -246,8 +293,69 @@ export default function Home() {
           </motion.p>
 
 
-          <motion.p
+          <motion.div
             custom={4}
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            className="mt-6 text-[15px] leading-7 lowercase md:text-base md:leading-7"
+            style={{ color: "var(--ink-2)" }}
+          >
+            <p className="build-list-title">
+              what i&apos;ve been building:
+            </p>
+            <ul className="build-list">
+              <li>
+                <span className="build-arrow">↳</span>
+                <span>
+                  shipped <ProjectInline project={topProject} />, course search
+                  and reviews for the university of guelph:{" "}
+                  <Metric>5k+</Metric>{" "}
+                  students,{" "}
+                  <Metric>75k+</Metric>{" "}
+                  views
+                </span>
+              </li>
+              <li>
+                <span className="build-arrow">↳</span>
+                <span>
+                  contributed to <ProjectInline project={octreeProject} />, an
+                  open-source ai-powered latex editor:{" "}
+                  <Metric>2k+</Metric>{" "}
+                  users,{" "}
+                  <Metric>250+</Metric>{" "}
+                  github stars, <Metric>50+</Metric> forks
+                </span>
+              </li>
+              <li>
+                <span className="build-arrow">↳</span>
+                <span>
+                  built{" "}
+                  <ExternalProjectInline
+                    href="https://www.pitchpulse.ca/"
+                    label="pitchpulse"
+                    imageSrc="/previews/pitchpulse.png"
+                  />
+                  ,
+                  an ai-powered platform for world cup 2026:{" "}
+                  <Metric>300+</Metric>{" "}
+                  users <Metric>within days</Metric>
+                </span>
+              </li>
+              <li>
+                <span className="build-arrow">↳</span>
+                <span>
+                  built <ProjectInline project={transitProject} />, a transit
+                  planning tool:{" "}
+                  <Metric>300+</Metric>{" "}
+                  users
+                </span>
+              </li>
+            </ul>
+          </motion.div>
+
+          <motion.p
+            custom={5}
             variants={fadeUp}
             initial="hidden"
             animate="show"
@@ -291,53 +399,6 @@ export default function Home() {
                 </span>
               );
             })}
-          </motion.p>
-
-          <motion.p
-            custom={5}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="mt-5 text-[15px] leading-7 lowercase md:text-base md:leading-8"
-            style={{ color: "var(--ink-2)" }}
-          >
-            i built{" "}
-            <LinkPreview
-              url={topProject.url}
-              className="inline font-normal underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
-              width={240}
-              height={150}
-              isStatic
-              imageSrc={topProject.banner}
-            >
-              <span style={{ color: "var(--ink)" }}>{topProject.name}</span>
-            </LinkPreview>
-            , course search &amp; reviews for u of g, now at{" "}
-            <strong style={{ color: "var(--ink)", fontWeight: 600 }}>
-              5k+
-            </strong>{" "}
-            users and{" "}
-            <strong style={{ color: "var(--ink)", fontWeight: 600 }}>
-              75k+
-            </strong>{" "}
-            views. i also built{" "}
-            <LinkPreview
-              url={transitProject.url}
-              className="inline font-normal underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
-              width={240}
-              height={150}
-              isStatic
-              imageSrc={transitProject.banner}
-            >
-              <span style={{ color: "var(--ink)" }}>
-                {transitProject.name}
-              </span>
-            </LinkPreview>{" "}
-            , a transit planning tool, now at{" "}
-            <strong style={{ color: "var(--ink)", fontWeight: 600 }}>
-              300+
-            </strong>{" "}
-            users
           </motion.p>
 
         </div>
