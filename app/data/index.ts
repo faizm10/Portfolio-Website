@@ -9,7 +9,14 @@
  * Blog index: `app/posts.ts`
  */
 export { site, headerNav, commandNav } from "./site";
-export { homepageExperiences, bioInternships, orgs } from "./experience";
+export {
+  homepageExperiences,
+  experienceItems,
+  communityItems,
+  schoolItems,
+  bioInternships,
+  orgs,
+} from "./experience";
 export { showcaseProjects, resumeProjects } from "./projects";
 export {
   hackathonEntries,
