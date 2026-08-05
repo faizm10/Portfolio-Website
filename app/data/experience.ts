@@ -40,92 +40,215 @@ export const orgs = {
     icon: "/exp/uog.png",
     preview: "/previews/uoguelph.jpeg",
   },
+  waterloo: {
+    title: "university of waterloo",
+    href: "https://uwaterloo.ca/",
+    icon: "/uw.png",
+    preview: "/previews/waterloo.jpeg",
+  },
+  ottawa: {
+    title: "university of ottawa",
+    href: "https://www.uottawa.ca/",
+    icon: "/exp/uottawa.png",
+    preview: "/previews/uoguelph.jpeg",
+  },
+  lang: {
+    title: "lang school of business",
+    href: "https://www.uoguelph.ca/business/",
+    icon: "/exp/uog.png",
+    preview: "/previews/uoguelph.jpeg",
+  },
 } as const satisfies Record<string, Org>;
 
 export type HomepageExperience = {
-  title: string;
-  role: string;
-  dates: string;
-  blurb: string;
-  icon: string;
-  href: string;
-  /** Banner image revealed on hover (right side) */
-  preview: string;
-  logoBackgroundColor: string;
-  /** Banner width in px */
-  bannerWidth?: number;
-  /** Vertical offset of the banner crop (px, often negative) */
-  bgOffsetY?: number;
+  company: string;
+  position: string;
+  location: string;
+  date: string;
+  logo: string;
+  color: string;
+  link: string;
+  present: boolean;
+  incoming: boolean;
+  /** Optional logo scale % (e.g. 90) */
   logoScale?: number;
+  /** Cached screenshot for homepage preload */
+  preview?: string;
 };
 
-/** Minimal experience cards on the homepage. */
-export const homepageExperiences: HomepageExperience[] = [
+/** Work experience on the homepage (newest first). */
+export const experienceItems: HomepageExperience[] = [
   {
-    title: orgs.tangerine.title,
-    role: "swe intern",
-    dates: "summer 2026",
-    blurb: "microservices backend team",
-    icon: orgs.tangerine.icon,
-    href: orgs.tangerine.href,
+    company: orgs.tangerine.title,
+    position: "swe intern",
+    location: "toronto",
+    date: "05/2026 - 08/2026",
+    logo: orgs.tangerine.icon,
+    color: "#FF6A00",
+    link: orgs.tangerine.href,
+    present: true,
+    incoming: false,
     preview: orgs.tangerine.preview,
-    logoBackgroundColor: "#FF6A00",
-    bannerWidth: 320,
-    bgOffsetY: -20,
-    logoScale: 100,
   },
   {
-    title: orgs.td.title,
-    role: "swe intern",
-    dates: "winter2026",
-    blurb: "credit origination and funding",
-    icon: orgs.td.icon,
-    href: orgs.td.href,
+    company: orgs.td.title,
+    position: "swe intern",
+    location: "toronto",
+    date: "01/2026 - 04/2026",
+    logo: orgs.td.icon,
+    color: "#34A853",
+    link: orgs.td.href,
+    present: false,
+    incoming: false,
     preview: orgs.td.preview,
-    logoBackgroundColor: "#34A853",
-    bannerWidth: 340,
-    bgOffsetY: -40,
-    logoScale: 100,
   },
   {
-    title: orgs.sertus.title,
-    role: "swe intern",
-    dates: "2025",
-    blurb: "client platform",
-    icon: orgs.sertus.icon,
-    href: orgs.sertus.href,
+    company: orgs.sertus.title,
+    position: "swe · contract",
+    location: "remote",
+    date: "05/2025 - 01/2026",
+    logo: orgs.sertus.icon,
+    color: "#E8F1FF",
+    link: orgs.sertus.href,
+    present: false,
+    incoming: false,
     preview: orgs.sertus.preview,
-    logoBackgroundColor: "#E8F1FF",
-    bannerWidth: 300,
-    bgOffsetY: -30,
-    logoScale: 100,
   },
   {
-    title: orgs.guelph.title,
-    role: "teaching assistant",
-    dates: "2025",
-    blurb: "mcs2020, mcs2000, and spmt1020",
-    icon: orgs.guelph.icon,
-    href: orgs.guelph.href,
-    preview: orgs.guelph.preview,
-    logoBackgroundColor: "#FFFFFF",
-    bannerWidth: 320,
-    bgOffsetY: -35,
-    logoScale: 100,
+    company: orgs.lang.title,
+    position: "full stack developer",
+    location: "guelph",
+    date: "05/2025 - 08/2025",
+    logo: orgs.lang.icon,
+    color: "#FFFFFF",
+    link: orgs.lang.href,
+    present: false,
+    incoming: false,
+    preview: orgs.lang.preview,
   },
   {
-    title: orgs.hackcanada.title,
-    role: "vp of tech",
-    dates: "2025 to 2026",
-    blurb: "vp of tech",
-    icon: orgs.hackcanada.icon,
-    href: orgs.hackcanada.href,
-    preview: orgs.hackcanada.preview,
-    logoBackgroundColor: "#1A1410",
-    bannerWidth: 360,
-    bgOffsetY: -50,
+    company: orgs.lang.title,
+    position: "undergraduate research assistant",
+    location: "guelph",
+    date: "05/2024 - 03/2025",
+    logo: orgs.lang.icon,
+    color: "#FFFFFF",
+    link: orgs.lang.href,
+    present: false,
+    incoming: false,
+    preview: orgs.lang.preview,
+  },
+];
+
+/** Community / org roles on the homepage (newest first). */
+export const communityItems: HomepageExperience[] = [
+  {
+    company: orgs.hackcanada.title,
+    position: "vp of tech",
+    location: "remote",
+    date: "08/2025 - Present",
+    logo: orgs.hackcanada.icon,
+    color: "#1A1410",
+    link: orgs.hackcanada.href,
+    present: true,
+    incoming: false,
     logoScale: 90,
+    preview: orgs.hackcanada.preview,
   },
+  {
+    company: orgs.guelph.title,
+    position: "teaching assistant · spmt1120",
+    location: "guelph",
+    date: "05/2026 - 06/2026",
+    logo: orgs.guelph.icon,
+    color: "#FFFFFF",
+    link: orgs.guelph.href,
+    present: false,
+    incoming: false,
+    preview: orgs.guelph.preview,
+  },
+  {
+    company: orgs.guelph.title,
+    position: "teaching assistant · mcs2000",
+    location: "guelph",
+    date: "09/2025 - 12/2025",
+    logo: orgs.guelph.icon,
+    color: "#FFFFFF",
+    link: orgs.guelph.href,
+    present: false,
+    incoming: false,
+    preview: orgs.guelph.preview,
+  },
+  {
+    company: orgs.guelph.title,
+    position: "teaching assistant · mcs2020",
+    location: "guelph",
+    date: "01/2025 - 04/2025",
+    logo: orgs.guelph.icon,
+    color: "#FFFFFF",
+    link: orgs.guelph.href,
+    present: false,
+    incoming: false,
+    preview: orgs.guelph.preview,
+  },
+  {
+    company: orgs.guelph.title,
+    position: "teaching assistant · mcs2020",
+    location: "guelph",
+    date: "09/2024 - 12/2024",
+    logo: orgs.guelph.icon,
+    color: "#FFFFFF",
+    link: orgs.guelph.href,
+    present: false,
+    incoming: false,
+    preview: orgs.guelph.preview,
+  },
+];
+
+/** School / degree entries on the homepage. */
+export const schoolItems: HomepageExperience[] = [
+  {
+    company: orgs.guelph.title,
+    position: "b.comp · computer science",
+    location: "guelph",
+    date: "09/2023 - Present",
+    logo: orgs.guelph.icon,
+    color: "#FFFFFF",
+    link: orgs.guelph.href,
+    present: true,
+    incoming: false,
+    preview: orgs.guelph.preview,
+  },
+  {
+    company: orgs.waterloo.title,
+    position: "mathematics · visiting",
+    location: "waterloo",
+    date: "05/2025 - 01/2026",
+    logo: orgs.waterloo.icon,
+    color: "#FFFFFF",
+    link: orgs.waterloo.href,
+    present: false,
+    incoming: false,
+    preview: orgs.waterloo.preview,
+  },
+  {
+    company: orgs.ottawa.title,
+    position: "engineering · visiting",
+    location: "ottawa",
+    date: "05/2025 - 08/2025",
+    logo: orgs.ottawa.icon,
+    color: "#FFFFFF",
+    link: orgs.ottawa.href,
+    present: false,
+    incoming: false,
+  },
+];
+
+/** All homepage experience rows (work + community + school). */
+export const homepageExperiences: HomepageExperience[] = [
+  ...experienceItems,
+  ...communityItems,
+  ...schoolItems,
 ];
 
 /** Bio line: currently @ X · prev Y & Z */
