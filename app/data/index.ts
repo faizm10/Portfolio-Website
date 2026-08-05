@@ -18,8 +18,4 @@ export {
   totalHackathons,
   hackathonsSummary,
 } from "./hackathons";
-export {
-  locationCoordinates,
-  placesFromCoordinates,
-  type Place,
-} from "./places";
+export { locationCoordinates, formatPhotoDate, type Place } from "./places";

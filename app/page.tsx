@@ -187,6 +187,13 @@ export default function Home() {
               >
                 blog
               </Link>
+              <Link
+                href="/photos"
+                className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+                style={{ color: "var(--ink)" }}
+              >
+                photos
+              </Link>
               {homepageSocials.map((item) => {
                 const linkClass =
                   "underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70";
@@ -374,13 +381,13 @@ export default function Home() {
 
               return (
                 <span key={hobby.key}>
-                  <span
-                    className="underline underline-offset-[3px] decoration-[var(--ink-3)]"
+                  <Link
+                    href={hobby.href}
+                    className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
                     style={{ color: "var(--ink)" }}
-                    title="coming soon"
                   >
                     {hobby.label}
-                  </span>
+                  </Link>
                   {sep}
                 </span>
               );

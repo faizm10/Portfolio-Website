@@ -1,1 +1,281 @@
-[]
+[
+  {
+    "filename": "ottawa-1.jpeg",
+    "date": "2026-07-12T21:33:51.000Z",
+    "location": "Ottawa, Canada",
+    "lng": -75.697717,
+    "lat": 45.423997,
+    "width": 360,
+    "height": 480
+  },
+  {
+    "filename": "ottawa-2.jpeg",
+    "date": "2026-07-10T22:02:48.000Z",
+    "location": "Ottawa, Canada",
+    "lng": -75.65175,
+    "lat": 45.416575,
+    "width": 360,
+    "height": 480
+  },
+  {
+    "filename": "frankfurt-3.jpeg",
+    "date": "2026-05-04T15:15:35.000Z",
+    "location": "Frankfurt, Germany",
+    "lng": 8.576483,
+    "lat": 50.047967,
+    "width": 360,
+    "height": 480
+  },
+  {
+    "filename": "frankfurt-2.jpeg",
+    "date": "2026-05-04T12:11:31.000Z",
+    "location": "Frankfurt, Germany",
+    "lng": 8.642303,
+    "lat": 50.069264,
+    "width": 360,
+    "height": 480
+  },
+  {
+    "filename": "frankfurt-1.jpeg",
+    "date": "2026-05-03T20:38:08.000Z",
+    "location": "Frankfurt, Germany",
+    "lng": 8.682208,
+    "lat": 50.110997,
+    "width": 360,
+    "height": 480
+  },
+  {
+    "filename": "munich-1.jpeg",
+    "date": "2026-05-03T07:30:15.000Z",
+    "location": "Munich, Germany",
+    "lng": 11.549014,
+    "lat": 48.1421,
+    "width": 360,
+    "height": 480
+  },
+  {
+    "filename": "salzburg-5.jpeg",
+    "date": "2026-05-02T19:24:31.000Z",
+    "location": "Salzburg, Austria",
+    "lng": 13.045292,
+    "lat": 47.811706,
+    "width": 360,
+    "height": 480
+  },
+  {
+    "filename": "salzburg-1.jpeg",
+    "date": "2026-05-02T18:22:40.000Z",
+    "location": "Salzburg, Austria",
+    "lng": 13.036569,
+    "lat": 47.810997,
+    "width": 1024,
+    "height": 768
+  },
+  {
+    "filename": "salzburg-3.jpeg",
+    "date": "2026-05-02T13:32:09.000Z",
+    "location": "Salzburg, Austria",
+    "lng": 12.99785,
+    "lat": 47.816483,
+    "width": 1024,
+    "height": 768
+  },
+  {
+    "filename": "salzburg-2.jpeg",
+    "date": "2026-05-02T12:00:00.000Z",
+    "location": "Salzburg, Austria",
+    "lng": 13.003472,
+    "lat": 47.805222,
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "filename": "salzburg-4.jpeg",
+    "date": "2026-05-02T12:00:00.000Z",
+    "location": "Salzburg, Austria",
+    "lng": 13.042753,
+    "lat": 47.799019,
+    "width": 360,
+    "height": 480
+  },
+  {
+    "filename": "munich-3.jpeg",
+    "date": "2026-05-01T18:12:41.000Z",
+    "location": "Munich, Germany",
+    "lng": 11.564958,
+    "lat": 48.138242,
+    "width": 360,
+    "height": 480
+  },
+  {
+    "filename": "munich-2.jpeg",
+    "date": "2026-05-01T12:52:45.000Z",
+    "location": "Munich, Germany",
+    "lng": 11.624703,
+    "lat": 48.218964,
+    "width": 360,
+    "height": 480
+  },
+  {
+    "filename": "prague-2.jpeg",
+    "date": "2026-04-29T13:46:01.000Z",
+    "location": "Prague, Czech Republic",
+    "lng": 14.440114,
+    "lat": 50.089436,
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "filename": "prague-1.jpeg",
+    "date": "2026-04-29T10:40:56.000Z",
+    "location": "Prague, Czech Republic",
+    "lng": 14.407311,
+    "lat": 50.089825,
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "filename": "prague-3.jpeg",
+    "date": "2026-04-29T10:20:33.000Z",
+    "location": "Prague, Czech Republic",
+    "lng": 14.417494,
+    "lat": 50.092503,
+    "width": 360,
+    "height": 480
+  },
+  {
+    "filename": "berlin-2.jpeg",
+    "date": "2026-04-26T13:51:55.000Z",
+    "location": "Berlin, Germany",
+    "lng": 13.402022,
+    "lat": 52.522678,
+    "width": 360,
+    "height": 480
+  },
+  {
+    "filename": "berlin-3.jpeg",
+    "date": "2026-04-26T12:00:00.000Z",
+    "location": "Berlin, Germany",
+    "lng": 13.23885,
+    "lat": 52.515169,
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "filename": "berlin-1.jpeg",
+    "date": "2026-04-26T11:50:14.000Z",
+    "location": "Berlin, Germany",
+    "lng": 13.370464,
+    "lat": 52.523625,
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "filename": "montreal-2.jpeg",
+    "date": "2025-06-15T16:39:17.000Z",
+    "location": "Mont-Tremblant, Canada",
+    "lng": -74.5812,
+    "lat": 46.215675,
+    "width": 1024,
+    "height": 768
+  },
+  {
+    "filename": "montreal-1.jpeg",
+    "date": "2025-06-15T13:46:11.000Z",
+    "location": "Mont-Tremblant, Canada",
+    "lng": -74.708747,
+    "lat": 46.209197,
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "filename": "ottawa-3.jpeg",
+    "date": "2025-05-06T14:03:28.000Z",
+    "location": "Ottawa, Canada",
+    "lng": -75.692733,
+    "lat": 45.425419,
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "filename": "iceland-1.jpeg",
+    "date": "2024-12-31T17:13:45.000Z",
+    "location": "Reykjanes, Iceland",
+    "lng": -22.718794,
+    "lat": 64.065042,
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "filename": "manchester-2.jpeg",
+    "date": "2024-12-30T20:05:54.000Z",
+    "location": "Manchester, UK",
+    "lng": -2.290364,
+    "lat": 53.463439,
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "filename": "manchester-4.jpeg",
+    "date": "2024-12-30T16:06:20.000Z",
+    "location": "Manchester, UK",
+    "lng": -2.63935,
+    "lat": 53.415869,
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "filename": "manchester-1.jpeg",
+    "date": "2024-12-28T17:10:02.000Z",
+    "location": "Manchester, UK",
+    "lng": -2.200853,
+    "lat": 53.483025,
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "filename": "manchester-3.jpeg",
+    "date": "2024-12-26T12:29:12.000Z",
+    "location": "Manchester, UK",
+    "lng": -2.349164,
+    "lat": 53.464792,
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "filename": "nyc-1.jpeg",
+    "date": "2024-07-01T20:40:00.000Z",
+    "location": "New York City, New York",
+    "lng": -73.985694,
+    "lat": 40.758817,
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "filename": "nyc-2.jpeg",
+    "date": "2024-06-30T19:02:02.000Z",
+    "location": "New York City, New York",
+    "lng": -74.034064,
+    "lat": 40.773889,
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "filename": "nyc-3.jpeg",
+    "date": "2024-06-30T18:55:11.000Z",
+    "location": "New York City, New York",
+    "lng": -74.022269,
+    "lat": 40.763417,
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "filename": "nyc-4.jpeg",
+    "date": "2024-06-30T17:48:37.000Z",
+    "location": "New York City, New York",
+    "lng": -74.009139,
+    "lat": 40.710706,
+    "width": 768,
+    "height": 1024
+  }
+]

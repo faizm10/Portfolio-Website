@@ -10,6 +10,7 @@ import {
   IoSearchOutline,
   IoHomeOutline,
   IoBookOutline,
+  IoImagesOutline,
 } from "react-icons/io5";
 import { PiLinkedinLogo } from "react-icons/pi";
 import { commandNav, site } from "@/app/data/site";
@@ -17,10 +18,11 @@ import { commandNav, site } from "@/app/data/site";
 const commandIcons = {
   home: IoHomeOutline,
   blog: IoBookOutline,
+  photos: IoImagesOutline,
   linkedin: PiLinkedinLogo,
   github: FiGithub,
   instagram: IoLogoInstagram,
-} as const;
+} as const satisfies Record<(typeof commandNav)[number]["key"], unknown>;
 
 export default function CommandPalette() {
   const [open, setOpen] = useState(false);

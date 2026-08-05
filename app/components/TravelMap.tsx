@@ -1,8 +1,8 @@
 import PlacesMap from "@/components/ui/PlacesMap";
 import photosData from "@/app/data/photos.json";
 import {
+  formatPhotoDate,
   locationCoordinates,
-  placesFromCoordinates,
   type Place,
 } from "@/app/data/places";
 
@@ -27,10 +27,11 @@ function getPlaces(): Place[] {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .forEach((photo) => {
       const image = `/img/photos/${photo.filename}`;
+      const date = formatPhotoDate(photo.date);
       const existing = byLocation.get(photo.location);
       if (existing) {
         existing.count += 1;
-        existing.photos.push({ image, date: photo.date });
+        existing.photos.push({ image, date });
         return;
       }
       const [lng, lat] = coordsFor(photo)!;
@@ -39,17 +40,15 @@ function getPlaces(): Place[] {
         lng,
         lat,
         image,
-        date: photo.date,
+        date,
         count: 1,
-        photos: [{ image, date: photo.date }],
+        photos: [{ image, date }],
       });
     });
 
-  const fromPhotos = Array.from(byLocation.values());
-  if (fromPhotos.length > 0) return fromPhotos;
-
-  // Until photos.json is populated, show seed travel destinations.
-  return placesFromCoordinates();
+  // Only places I have photos of — somewhere I've been but not shot yet
+  // doesn't earn a pin.
+  return Array.from(byLocation.values());
 }
 
 export default function TravelMap() {
