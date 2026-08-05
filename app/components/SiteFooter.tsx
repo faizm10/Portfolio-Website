@@ -61,6 +61,12 @@ export default function SiteFooter() {
             <Link href="/blog" className={linkClass} style={{ color: "var(--ink)" }}>
               blog
             </Link>
+            <span aria-hidden style={{ color: "var(--ink-3)" }}>
+              ·
+            </span>
+            <Link href="/photos" className={linkClass} style={{ color: "var(--ink)" }}>
+              photos
+            </Link>
             {homepageSocials.map((item) => (
               <span key={item.key} className="inline-flex items-center gap-x-3">
                 <span aria-hidden style={{ color: "var(--ink-3)" }}>

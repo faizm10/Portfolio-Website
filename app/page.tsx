@@ -9,6 +9,7 @@ import { bioInternships, homepageExperiences } from "@/app/data/experience";
 import { showcaseProjects, type ProjectType } from "@/app/data/projects";
 import ProjectsGrid from "./components/ProjectsGrid";
 import ExperienceList from "./components/ExperienceList";
+import TravelMap from "./components/TravelMap";
 import SketchBackground from "./components/SketchBackground";
 import { Gradients } from "./components/Gradients";
 import HeroBanner from "./components/HeroBanner";
@@ -185,6 +186,13 @@ export default function Home() {
                 style={{ color: "var(--ink)" }}
               >
                 blog
+              </Link>
+              <Link
+                href="/photos"
+                className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+                style={{ color: "var(--ink)" }}
+              >
+                photos
               </Link>
               {homepageSocials.map((item) => {
                 const linkClass =
@@ -373,13 +381,13 @@ export default function Home() {
 
               return (
                 <span key={hobby.key}>
-                  <span
-                    className="underline underline-offset-[3px] decoration-[var(--ink-3)]"
+                  <Link
+                    href={hobby.href}
+                    className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
                     style={{ color: "var(--ink)" }}
-                    title="coming soon"
                   >
                     {hobby.label}
-                  </span>
+                  </Link>
                   {sep}
                 </span>
               );
@@ -409,6 +417,10 @@ export default function Home() {
 
         <div className="mt-20 md:mt-28">
           <ExperienceList />
+        </div>
+
+        <div className="mt-20 md:mt-28">
+          <TravelMap />
         </div>
 
         <div className="mt-20 md:mt-28">

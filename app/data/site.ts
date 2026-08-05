@@ -68,11 +68,11 @@ export const site = {
   },
 } as const;
 
-/** Hobby labels in the bio (pages coming soon — not linked yet). */
+/** Hobby labels in the bio. */
 export const homepageHobbies = [
-  { key: "photography" as const, label: "photography" },
-  { key: "travel" as const, label: "travel" },
-  { key: "soccer" as const, label: "soccer" },
+  { key: "photography" as const, label: "photography", href: "/photos" },
+  { key: "travel" as const, label: "travel", href: "/#places" },
+  { key: "soccer" as const, label: "soccer", href: "/soccer-stats" },
 ] as const;
 
 export type SocialKey = keyof typeof site.socials;
@@ -116,10 +116,18 @@ export const commandNav = [
     searchValue: "blog notes writing posts",
   },
   {
+    key: "photos",
+    href: "/photos",
+    label: "photos",
+    shortcut: "2",
+    external: false,
+    searchValue: "photos photography gallery camera",
+  },
+  {
     key: "linkedin",
     href: site.socials.linkedin,
     label: "linkedin",
-    shortcut: "2",
+    shortcut: "3",
     external: true,
     searchValue: "linkedin profile socials faiz",
   },
@@ -127,7 +135,7 @@ export const commandNav = [
     key: "github",
     href: site.socials.github,
     label: "github",
-    shortcut: "3",
+    shortcut: "4",
     external: true,
     searchValue: "github git profile faiz",
   },
@@ -135,7 +143,7 @@ export const commandNav = [
     key: "instagram",
     href: site.socials.instagram,
     label: "instagram",
-    shortcut: "4",
+    shortcut: "5",
     external: true,
     searchValue: "ig instagram profile socials faiz",
   },
