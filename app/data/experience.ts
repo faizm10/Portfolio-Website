@@ -148,7 +148,7 @@ export const communityItems: HomepageExperience[] = [
     location: "remote",
     date: "08/2025 - Present",
     logo: orgs.hackcanada.icon,
-    color: "#1A1410",
+    color: "transparent",
     link: orgs.hackcanada.href,
     present: true,
     incoming: false,
