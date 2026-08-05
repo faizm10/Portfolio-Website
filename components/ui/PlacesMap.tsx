@@ -85,7 +85,9 @@ export default function PlacesMap({
       }),
     );
 
-    const optimized = (src: string, width: number, quality = 70) =>
+    // `quality` must be one of `images.qualities` in next.config.ts — the
+    // optimizer 400s on any other value, which silently blanks the markers.
+    const optimized = (src: string, width: number, quality = 75) =>
       `/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=${quality}`;
 
     map.current.on("style.load", () => {
