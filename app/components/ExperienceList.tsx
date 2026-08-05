@@ -3,22 +3,23 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import {
-  homepageExperiences,
+  communityItems,
+  experienceItems,
+  schoolItems,
   type HomepageExperience,
 } from "@/app/data/experience";
 
 /**
- * Experience list: logo + company / role · dates / blurb.
+ * Experience card: logo · company + badges / position · location / date
  */
 function ExperienceCard({
-  exp,
+  item,
   index,
 }: {
-  exp: HomepageExperience;
+  item: HomepageExperience;
   index: number;
 }) {
-  const logoScale = (exp.logoScale ?? 100) / 100;
-  const showDesc = exp.blurb && exp.blurb !== exp.role;
+  const logoScale = (item.logoScale ?? 100) / 100;
 
   return (
     <motion.li
@@ -32,51 +33,111 @@ function ExperienceCard({
       }}
     >
       <a
-        href={exp.href}
+        href={item.link}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-start gap-3.5 rounded-xl px-1 py-2 transition-opacity hover:opacity-70 sm:gap-4"
+        className="flex items-center justify-between gap-3 rounded-xl px-1 py-1.5 transition-opacity hover:opacity-70"
       >
         <div
-          className="flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-[12px] sm:size-14"
-          style={{ backgroundColor: exp.logoBackgroundColor }}
+          className="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-lg p-0.5 sm:size-11"
+          style={{ backgroundColor: item.color }}
         >
           <Image
-            src={exp.icon}
-            alt=""
-            width={56}
-            height={56}
-            className="size-full object-contain p-1.5"
+            src={item.logo}
+            alt={`${item.company} logo`}
+            width={40}
+            height={40}
+            className="size-full object-contain"
             style={{ transform: `scale(${logoScale})` }}
           />
         </div>
 
-        <div className="min-w-0 flex-1 pt-0.5">
-          <p
-            className="text-[15px] font-semibold tracking-tight lowercase sm:text-base"
+        <div className="ml-0.5 flex min-w-0 flex-grow flex-col justify-between">
+          <span
+            className="flex flex-wrap items-center gap-x-1.5 text-[15px] font-semibold lowercase tracking-tight md:text-base"
             style={{ color: "var(--ink)" }}
           >
-            {exp.title}
-          </p>
-          <p
-            className="mt-0.5 text-[13px] lowercase leading-snug sm:text-sm"
+            {item.company}
+            {item.present && (
+              <span
+                className="rounded-md px-1.5 py-0.5 text-[11px] font-normal normal-case sm:text-xs"
+                style={{
+                  backgroundColor: "var(--surface-alt, #f0f0f0)",
+                  color: "var(--ink-2)",
+                }}
+              >
+                Present
+              </span>
+            )}
+            {item.incoming && (
+              <span
+                className="rounded-md px-1.5 py-0.5 text-[11px] font-normal normal-case sm:text-xs"
+                style={{
+                  backgroundColor: "var(--surface-alt, #f0f0f0)",
+                  color: "var(--ink-2)",
+                }}
+              >
+                Incoming
+              </span>
+            )}
+          </span>
+          <span
+            className="text-[13px] lowercase leading-snug sm:text-sm"
             style={{ color: "var(--ink-2)" }}
           >
-            {exp.role}
-            <span style={{ color: "var(--ink-3)" }}> · </span>
-            {exp.dates}
-          </p>
-          {showDesc && (
-            <p
-              className="mt-1.5 text-[13px] lowercase leading-relaxed sm:text-sm"
-              style={{ color: "var(--ink-3)" }}
-            >
-              {exp.blurb}
-            </p>
-          )}
+            {item.position}
+          </span>
+        </div>
+
+        <div className="flex shrink-0 flex-col items-end text-right">
+          <span
+            className="text-[13px] lowercase sm:text-[15px]"
+            style={{ color: "var(--ink)" }}
+          >
+            {item.location}
+          </span>
+          <span
+            className="text-xs lowercase sm:text-sm"
+            style={{ color: "var(--ink-3)" }}
+          >
+            {item.date}
+          </span>
         </div>
       </a>
     </motion.li>
+  );
+}
+
+function ExperienceGroup({
+  id,
+  title,
+  items,
+}: {
+  id: string;
+  title: string;
+  items: HomepageExperience[];
+}) {
+  if (items.length === 0) return null;
+
+  return (
+    <div>
+      <h2
+        id={`${id}-heading`}
+        className="mb-6 text-center text-xs font-medium uppercase tracking-[0.2em]"
+        style={{ color: "var(--ink-3)" }}
+      >
+        {title}
+      </h2>
+      <ul className="mx-auto flex max-w-xl flex-col gap-5 sm:gap-6">
+        {items.map((item, i) => (
+          <ExperienceCard
+            key={`${item.company}-${item.position}-${item.date}`}
+            item={item}
+            index={i}
+          />
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -84,26 +145,16 @@ export default function ExperienceList() {
   return (
     <section
       id="experience"
-      className="w-full scroll-mt-24"
-      aria-labelledby="experience-heading"
+      className="mx-auto w-full max-w-xl scroll-mt-24 space-y-16 sm:space-y-20"
+      aria-label="experience"
     >
-      <h2
-        id="experience-heading"
-        className="mb-6 text-center text-xs font-medium uppercase tracking-[0.2em]"
-        style={{ color: "var(--ink-3)" }}
-      >
-        experience
-      </h2>
-
-      <ul className="mx-auto flex max-w-xl flex-col gap-5 sm:gap-6">
-        {homepageExperiences.map((exp, i) => (
-          <ExperienceCard
-            key={`${exp.title}-${exp.dates}`}
-            exp={exp}
-            index={i}
-          />
-        ))}
-      </ul>
+      <ExperienceGroup id="work" title="experience" items={experienceItems} />
+      <ExperienceGroup
+        id="community"
+        title="community"
+        items={communityItems}
+      />
+      <ExperienceGroup id="school" title="school" items={schoolItems} />
     </section>
   );
 }
