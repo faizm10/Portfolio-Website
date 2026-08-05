@@ -5,6 +5,8 @@
  * - `experience.ts`   homepage experience cards + bio internship orgs
  * - `projects.ts`     showcase projects (homepage cards + optional detail copy)
  * - `hackathons.ts`   hackathon tallies / summary (list UI stays in MDX)
+ * - `places.ts`       travel map coordinates + place types
+ * - `photos.json`     photo metadata for the places map
  *
  * Blog index: `app/posts.ts`
  */
@@ -16,3 +18,8 @@ export {
   totalHackathons,
   hackathonsSummary,
 } from "./hackathons";
+export {
+  locationCoordinates,
+  placesFromCoordinates,
+  type Place,
+} from "./places";
