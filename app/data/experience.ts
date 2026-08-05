@@ -152,7 +152,6 @@ export const communityItems: HomepageExperience[] = [
     link: orgs.hackcanada.href,
     present: true,
     incoming: false,
-    logoScale: 90,
     preview: orgs.hackcanada.preview,
   },
   {
@@ -221,7 +220,7 @@ export const schoolItems: HomepageExperience[] = [
   },
   {
     company: orgs.waterloo.title,
-    position: "mathematics · visiting",
+    position: "mathematics",
     location: "waterloo",
     date: "05/2025 - 01/2026",
     logo: orgs.waterloo.icon,
@@ -233,7 +232,7 @@ export const schoolItems: HomepageExperience[] = [
   },
   {
     company: orgs.ottawa.title,
-    position: "engineering · visiting",
+    position: "engineering",
     location: "ottawa",
     date: "05/2025 - 08/2025",
     logo: orgs.ottawa.icon,
