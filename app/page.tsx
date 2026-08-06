@@ -12,7 +12,6 @@ import ExperienceList from "./components/ExperienceList";
 import TravelMap from "./components/TravelMap";
 import SketchBackground from "./components/SketchBackground";
 import { Gradients } from "./components/Gradients";
-import HeroBanner from "./components/HeroBanner";
 import GitHubContributionsPreview from "./components/GitHubContributionsPreview";
 
 function OrgInline({
@@ -141,7 +140,6 @@ export default function Home() {
     <div className="relative min-h-screen w-full bg-white">
       <Gradients />
       <SketchBackground />
-      <HeroBanner />
       <div className="pointer-events-none absolute h-0 w-0 overflow-hidden opacity-0" aria-hidden>
         {[
           ...new Set(
