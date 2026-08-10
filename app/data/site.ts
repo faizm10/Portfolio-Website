@@ -54,7 +54,6 @@ export const site = {
       "portfolio of faiz mustansar— computer science at the university of guelph.",
   },
   pageTitles: {
-    contract: "contract · faiz mustansar",
     notFoundDescription: "this page does not exist on faizm.ca",
   },
   /** Homepage copy (austin-style minimal bio). */
