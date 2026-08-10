@@ -10,7 +10,6 @@ export const site = {
   githubUsername: "faizm10",
   brandIcon: "/jsl.png",
   ogImage: "/banner.png",
-  resumePdfDownloadName: "faiz-mustansar-resume-2026.pdf",
   socials: {
     linkedin: "https://www.linkedin.com/in/faizmustansar/",
     github: "https://github.com/faizm10",
