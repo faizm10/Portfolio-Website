@@ -86,7 +86,7 @@ export const experienceItems: HomepageExperience[] = [
     logo: orgs.tangerine.icon,
     color: "#FF6A00",
     link: orgs.tangerine.href,
-    present: true,
+    present: false,
     incoming: false,
     preview: orgs.tangerine.preview,
   },
@@ -250,8 +250,8 @@ export const homepageExperiences: HomepageExperience[] = [
   ...schoolItems,
 ];
 
-/** Bio line: currently @ X · prev Y & Z */
+/** Bio line: no current internship — tangerine is most recent previous. */
 export const bioInternships = {
-  current: orgs.tangerine,
-  previous: [orgs.td, orgs.sertus] as const,
+  current: null,
+  previous: [orgs.tangerine, orgs.td, orgs.sertus] as const,
 };

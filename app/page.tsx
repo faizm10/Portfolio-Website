@@ -130,8 +130,8 @@ const fadeUp = {
 export default function Home() {
   const school = site.schools.guelph;
   const waterloo = site.schools.waterloo;
-  const work = bioInternships.current;
-  const prevWork = bioInternships.previous[0]; // td bank
+  const recentWork = bioInternships.previous[0]; // tangerine
+  const earlierWork = bioInternships.previous[1]; // td bank
   const topProject = showcaseProjects.find((p) => p.slug === "uoguelphcourses")!;
   const octreeProject = showcaseProjects.find((p) => p.slug === "octree")!;
   const transitProject = showcaseProjects.find((p) => p.slug === "transit-flow")!;
@@ -146,7 +146,8 @@ export default function Home() {
             [
               school.preview,
               waterloo.preview,
-              work.preview,
+              recentWork.preview,
+              earlierWork.preview,
               ...homepageExperiences.map((e) => e.preview),
               ...homepageSocials.map((s) => s.preview),
             ].filter(Boolean) as string[],
@@ -270,19 +271,19 @@ export default function Home() {
               preview={waterloo.preview}
               external={waterloo.external}
             />
-            . i&apos;m currently based in {site.homepage.location}, where i work at{" "}
+            . currently {site.homepage.currentFocus}. previously at{" "}
             <OrgInline
-              href={work.href}
-              icon={work.icon}
-              label={work.title}
-              preview={work.preview}
+              href={recentWork.href}
+              icon={recentWork.icon}
+              label={recentWork.title}
+              preview={recentWork.preview}
             />
-            , previously at{" "}
+            , and before that at{" "}
             <OrgInline
-              href={prevWork.href}
-              icon={prevWork.icon}
-              label={prevWork.title}
-              preview={prevWork.preview}
+              href={earlierWork.href}
+              icon={earlierWork.icon}
+              label={earlierWork.title}
+              preview={earlierWork.preview}
             />
             .
           </motion.p>
