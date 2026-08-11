@@ -3,9 +3,16 @@ interface Post {
   title: string;
   date: string;
   pinned: boolean;
+  comingSoon?: boolean;
 }
 
 export const posts: Post[] = [
+  {
+    slug: "influential-peers",
+    title: "influential peers",
+    date: "ongoing",
+    pinned: true,
+  },
   {
     slug: "hackathons",
     title: "all hackathons i've participated in",
@@ -21,7 +28,7 @@ export const posts: Post[] = [
   {
     slug: "hc26",
     title: "organized hc26 experience",
-    date: "ongoing",
+    date: "mar 2026",
     pinned: true,
   },
   {
@@ -49,4 +56,3 @@ export const posts: Post[] = [
     pinned: false,
   },
 ];
-

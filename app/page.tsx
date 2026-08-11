@@ -3,10 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
+import { FileText, Images } from "lucide-react";
+import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { homepageHobbies, homepageSocials, site } from "@/app/data/site";
 import { bioInternships, homepageExperiences } from "@/app/data/experience";
 import { showcaseProjects, type ProjectType } from "@/app/data/projects";
+import { posts } from "@/app/posts";
 import ProjectsGrid from "./components/ProjectsGrid";
 import ExperienceList from "./components/ExperienceList";
 import TravelMap from "./components/TravelMap";
@@ -110,6 +113,20 @@ function ExternalProjectInline({
   );
 }
 
+function IconLabel({ label }: { label: string }) {
+  return <span className="sr-only">{label}</span>;
+}
+
+const navIconClass =
+  "inline-flex size-7 items-center justify-center rounded-sm transition-opacity hover:opacity-70";
+const navIconStyle = { color: "var(--ink)" };
+
+const socialIcons = {
+  x: FaXTwitter,
+  github: FaGithub,
+  linkedin: FaLinkedin,
+} as const;
+
 function Metric({ children }: { children: React.ReactNode }) {
   return (
     <strong className="font-extrabold" style={{ color: "var(--ink)" }}>
@@ -135,6 +152,7 @@ export default function Home() {
   const topProject = showcaseProjects.find((p) => p.slug === "uoguelphcourses")!;
   const octreeProject = showcaseProjects.find((p) => p.slug === "octree")!;
   const transitProject = showcaseProjects.find((p) => p.slug === "transit-flow")!;
+  const latestPosts = posts.slice(0, 4);
 
   return (
     <div className="relative min-h-screen w-full bg-white">
@@ -158,7 +176,7 @@ export default function Home() {
 
       <main className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-24 pt-10 md:px-8 md:pt-12">
         <div id="about" className="mx-auto max-w-xl scroll-mt-24">
-          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
+          <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-x-6">
             <motion.h1
               custom={0}
               variants={fadeUp}
@@ -175,41 +193,53 @@ export default function Home() {
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              className="ml-auto flex flex-wrap justify-end gap-x-5 gap-y-2 text-[15px] lowercase"
+              className="flex w-full flex-wrap justify-start gap-x-3 gap-y-2 sm:ml-auto sm:w-auto sm:justify-end sm:gap-x-2"
               aria-label="social links"
             >
               <Link
                 href="/blog"
-                className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
-                style={{ color: "var(--ink)" }}
+                className={navIconClass}
+                style={navIconStyle}
+                aria-label="blog"
+                title="blog"
               >
-                blog
+                <FileText size={20} strokeWidth={1.8} aria-hidden />
+                <IconLabel label="blog" />
               </Link>
               <Link
                 href="/photos"
-                className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
-                style={{ color: "var(--ink)" }}
+                className={navIconClass}
+                style={navIconStyle}
+                aria-label="photos"
+                title="photos"
               >
-                photos
+                <Images size={20} strokeWidth={1.8} aria-hidden />
+                <IconLabel label="photos" />
               </Link>
               {homepageSocials.map((item) => {
-                const linkClass =
-                  "underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70";
-                const linkStyle = { color: "var(--ink)" };
+                const Icon = socialIcons[item.key];
 
                 if (item.key === "github") {
                   return (
                     <LinkPreview
                       key={item.key}
                       url={item.href}
-                      className={`inline font-normal ${linkClass}`}
+                      className={navIconClass}
                       width={520}
                       height={138}
                       isStatic
                       imageSrc={item.preview ?? "/previews/github.jpeg"}
                       previewContent={<GitHubContributionsPreview />}
                     >
-                      <span style={linkStyle}>{item.label}</span>
+                      <span
+                        className="inline-flex size-full items-center justify-center"
+                        style={navIconStyle}
+                        aria-label={item.label}
+                        title={item.label}
+                      >
+                        <Icon size={20} aria-hidden />
+                        <IconLabel label={item.label} />
+                      </span>
                     </LinkPreview>
                   );
                 }
@@ -219,13 +249,21 @@ export default function Home() {
                     <LinkPreview
                       key={item.key}
                       url={item.href}
-                      className={`inline font-normal ${linkClass}`}
+                      className={navIconClass}
                       width={240}
                       height={150}
                       isStatic
                       imageSrc={item.preview}
                     >
-                      <span style={linkStyle}>{item.label}</span>
+                      <span
+                        className="inline-flex size-full items-center justify-center"
+                        style={navIconStyle}
+                        aria-label={item.label}
+                        title={item.label}
+                      >
+                        <Icon size={20} aria-hidden />
+                        <IconLabel label={item.label} />
+                      </span>
                     </LinkPreview>
                   );
                 }
@@ -236,10 +274,13 @@ export default function Home() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={linkClass}
-                    style={linkStyle}
+                    className={navIconClass}
+                    style={navIconStyle}
+                    aria-label={item.label}
+                    title={item.label}
                   >
-                    {item.label}
+                    <Icon size={20} aria-hidden />
+                    <IconLabel label={item.label} />
                   </a>
                 );
               })}
@@ -392,6 +433,76 @@ export default function Home() {
             })}
           </motion.p>
 
+          <motion.section
+            id="writing"
+            custom={6}
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            className="mt-10 scroll-mt-24 text-[15px] lowercase md:mt-12 md:text-base"
+            aria-labelledby="writing-heading"
+          >
+            <h2
+              id="writing-heading"
+              className="mb-4 text-center text-xs font-medium uppercase tracking-[0.2em]"
+              style={{ color: "var(--ink-3)" }}
+            >
+              writing
+            </h2>
+
+            <div className="mb-2 flex justify-end">
+              <Link
+                href="/blog"
+                className="shrink-0 text-[13px] underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+                style={{ color: "var(--ink-2)" }}
+              >
+                all posts
+              </Link>
+            </div>
+
+            <ul className="grid gap-1.5">
+              {latestPosts.map((post) => {
+                const title = (
+                  <span
+                    className="truncate text-[15px] underline-offset-[3px] decoration-[var(--ink-3)] group-hover:underline md:text-base"
+                    style={{ color: "var(--ink)" }}
+                  >
+                    {post.title}
+                  </span>
+                );
+
+                return (
+                  <li
+                    key={post.slug}
+                    className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-4"
+                  >
+                    {post.comingSoon ? (
+                      <div
+                        aria-disabled="true"
+                        className="min-w-0 cursor-default opacity-65"
+                      >
+                        {title}
+                      </div>
+                    ) : (
+                      <Link
+                        href={`/${post.slug}`}
+                        className="group min-w-0 transition-opacity hover:opacity-70"
+                      >
+                        {title}
+                      </Link>
+                    )}
+                    <span
+                      className="shrink-0 text-[13px] lowercase"
+                      style={{ color: "var(--ink-3)" }}
+                    >
+                      {post.date}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          </motion.section>
+
         </div>
 
         {/* <motion.div
@@ -413,7 +524,7 @@ export default function Home() {
           />
         </motion.div> */}
 
-        <div className="mt-20 md:mt-28">
+        <div className="mt-14 md:mt-20">
           <ExperienceList />
         </div>
 

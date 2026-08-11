@@ -1,0 +1,81 @@
+import {
+  influentialPeers,
+  influentialPeersPage,
+} from "@/app/data/influential-peers";
+
+export default function InfluentialPeersPost() {
+  return (
+    <article className="not-prose space-y-8 lowercase">
+      <header className="space-y-3">
+        <h1
+          className="text-3xl font-semibold tracking-tight md:text-4xl"
+          style={{ color: "var(--ink)" }}
+        >
+          {influentialPeersPage.title}
+        </h1>
+        <p
+          className="max-w-2xl text-[15px] leading-7 md:text-base md:leading-8"
+          style={{ color: "var(--ink-2)" }}
+        >
+          {influentialPeersPage.intro}
+        </p>
+      </header>
+
+      {influentialPeers.length > 0 ? (
+        <section className="space-y-8">
+          {influentialPeers.map((peer) => (
+            <div
+              key={peer.name}
+              className="flex flex-col gap-4 sm:flex-row sm:items-start"
+            >
+              {peer.image ? (
+                <img
+                  src={peer.image}
+                  alt=""
+                  className="size-12 shrink-0 rounded-full object-cover"
+                />
+              ) : (
+                <div
+                  className="flex size-12 shrink-0 items-center justify-center rounded-full border text-sm font-semibold uppercase"
+                  style={{
+                    borderColor: "var(--border)",
+                    color: "var(--ink)",
+                    backgroundColor: "var(--surface-alt)",
+                  }}
+                  aria-hidden="true"
+                >
+                  {peer.initials}
+                </div>
+              )}
+
+              <div className="min-w-0 flex-1">
+                <h2
+                  className="text-xl font-semibold tracking-tight"
+                  style={{ color: "var(--ink)" }}
+                >
+                  {peer.name}
+                </h2>
+                <p className="mt-1 text-sm" style={{ color: "var(--ink-3)" }}>
+                  {peer.role}
+                </p>
+                <p
+                  className="mt-4 max-w-2xl text-[15px] leading-7 md:text-base md:leading-8"
+                  style={{ color: "var(--ink-2)" }}
+                >
+                  {peer.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </section>
+      ) : (
+        <p
+          className="text-[15px] leading-7 md:text-base md:leading-8"
+          style={{ color: "var(--ink-2)" }}
+        >
+          coming soon
+        </p>
+      )}
+    </article>
+  );
+}

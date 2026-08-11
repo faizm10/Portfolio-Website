@@ -21,6 +21,7 @@ import Converge from "./mdx/converge.mdx";
 import UoGReflection from "./mdx/uogreflection.mdx";
 import Footy from "./mdx/footy.mdx";
 import Hackathons from "./mdx/hackathons.mdx";
+import InfluentialPeers from "./mdx/influential-peers.mdx";
 import SoccerStats from "./mdx/soccer-stats.mdx";
 import CodeKeeper from "./mdx/code-keeper.mdx";
 import TextAnxiety from "./mdx/text-anxiety.mdx";
@@ -42,6 +43,7 @@ const MDX_MAP: Record<string, ComponentType> = {
   uogreflection: UoGReflection,
   footy: Footy,
   hackathons: Hackathons,
+  "influential-peers": InfluentialPeers,
   "soccer-stats": SoccerStats,
   "code-keeper": CodeKeeper,
   "text-anxiety": TextAnxiety,
@@ -79,6 +81,8 @@ export default function SlugPageClient({ slug }: { slug: string }) {
 
   /** full-bleed MDX layouts use their own typography; `prose` here can emit invalid nested `<p>` */
   const skipArticleProse = slug === "jachacks";
+  const contentMaxWidth =
+    slug === "influential-peers" ? "max-w-3xl" : "max-w-xl";
 
   const components = {
     a: ({ href, children }: { href: string; children: ReactNode }) => (
@@ -108,7 +112,7 @@ export default function SlugPageClient({ slug }: { slug: string }) {
 
   return (
     <div className="min-h-screen w-full overflow-x-hidden px-6 py-12" style={{ backgroundColor: "var(--canvas)" }}>
-      <div className="mx-auto max-w-xl blog-content">
+      <div className={clsx("mx-auto blog-content", contentMaxWidth)}>
         <div className="mb-8">
           <button
             onClick={() => router.push(isBlogPost ? "/blog" : "/")}
