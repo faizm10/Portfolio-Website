@@ -395,14 +395,23 @@ export default function Home() {
           </motion.p>
 
           <motion.section
+            id="writing"
             custom={6}
             variants={fadeUp}
             initial="hidden"
             animate="show"
-            className="mt-8 text-[15px] lowercase md:text-base"
+            className="mt-16 scroll-mt-24 text-[15px] lowercase md:text-base"
+            aria-labelledby="writing-heading"
           >
-            <div className="flex items-baseline justify-between gap-5">
-              <p className="build-list-title">latest blog:</p>
+            <h2
+              id="writing-heading"
+              className="mb-6 text-center text-xs font-medium uppercase tracking-[0.2em]"
+              style={{ color: "var(--ink-3)" }}
+            >
+              writing
+            </h2>
+
+            <div className="mb-3 flex justify-end">
               <Link
                 href="/blog"
                 className="shrink-0 text-[13px] underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
@@ -412,7 +421,7 @@ export default function Home() {
               </Link>
             </div>
 
-            <ul className="mt-3 grid gap-2">
+            <ul className="grid gap-2">
               {latestPosts.map((post) => {
                 const title = (
                   <span
