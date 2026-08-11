@@ -1,11 +1,154 @@
-<article className="space-y-6">
-  <header className="space-y-2">
-    <h1>influential peers</h1>
-    <p className="text-neutral-500">coming soon</p>
-  </header>
+export default function InfluentialPeersPost() {
+  return (
+    <article className="not-prose space-y-10 lowercase">
+      <header className="space-y-4">
+        <p
+          className="text-xs font-medium uppercase tracking-[0.2em]"
+          style={{ color: "var(--ink-3)" }}
+        >
+          draft directory
+        </p>
+        <h1
+          className="text-3xl font-semibold tracking-tight md:text-4xl"
+          style={{ color: "var(--ink)" }}
+        >
+          influential peers
+        </h1>
+        <p
+          className="max-w-2xl text-[15px] leading-7 md:text-base md:leading-8"
+          style={{ color: "var(--ink-2)" }}
+        >
+          a quiet list of people who make the standard feel higher: how they
+          think, what they repeat, and what i end up copying from being around
+          them.
+        </p>
+      </header>
 
-  <p>
-    a draft note on the people around you, how peer groups shape ambition, and
-    why the right circle can change the standard you hold yourself to.
-  </p>
-</article>
+      <section
+        className="border-y py-6"
+        style={{ borderColor: "var(--border)" }}
+      >
+        <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+          <div
+            className="flex size-14 shrink-0 items-center justify-center rounded-full border text-sm font-semibold uppercase"
+            style={{
+              borderColor: "var(--border)",
+              color: "var(--ink)",
+              backgroundColor: "var(--surface-alt)",
+            }}
+            aria-hidden="true"
+          >
+            mr
+          </div>
+
+          <div className="min-w-0 flex-1 space-y-5">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+              <div>
+                <h2
+                  className="text-xl font-semibold tracking-tight"
+                  style={{ color: "var(--ink)" }}
+                >
+                  maya rahman
+                </h2>
+                <p
+                  className="mt-1 text-sm"
+                  style={{ color: "var(--ink-3)" }}
+                >
+                  product-minded engineer · mock entry
+                </p>
+              </div>
+              <span
+                className="text-xs uppercase tracking-[0.18em]"
+                style={{ color: "var(--ink-3)" }}
+              >
+                peer 01
+              </span>
+            </div>
+
+            <p
+              className="text-[15px] leading-7 md:text-base md:leading-8"
+              style={{ color: "var(--ink-2)" }}
+            >
+              maya is the kind of peer who turns vague ambition into operating
+              standards. she asks why something matters before asking how to
+              build it, ships small versions quickly, and keeps the conversation
+              grounded in taste, usefulness, and pace.
+            </p>
+
+            <div
+              className="grid gap-4 border-t pt-5 sm:grid-cols-3"
+              style={{ borderColor: "var(--border)" }}
+            >
+              <div>
+                <p
+                  className="text-xs uppercase tracking-[0.18em]"
+                  style={{ color: "var(--ink-3)" }}
+                >
+                  signal
+                </p>
+                <p
+                  className="mt-2 text-sm leading-6"
+                  style={{ color: "var(--ink-2)" }}
+                >
+                  raises the bar without making it loud
+                </p>
+              </div>
+              <div>
+                <p
+                  className="text-xs uppercase tracking-[0.18em]"
+                  style={{ color: "var(--ink-3)" }}
+                >
+                  lesson
+                </p>
+                <p
+                  className="mt-2 text-sm leading-6"
+                  style={{ color: "var(--ink-2)" }}
+                >
+                  momentum comes from clear taste
+                </p>
+              </div>
+              <div>
+                <p
+                  className="text-xs uppercase tracking-[0.18em]"
+                  style={{ color: "var(--ink-3)" }}
+                >
+                  habit
+                </p>
+                <p
+                  className="mt-2 text-sm leading-6"
+                  style={{ color: "var(--ink-2)" }}
+                >
+                  writes decisions down before building
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="space-y-4">
+        <h2
+          className="text-sm font-semibold uppercase tracking-[0.2em]"
+          style={{ color: "var(--ink-3)" }}
+        >
+          why they matter
+        </h2>
+        <ul className="grid gap-3">
+          {[
+            "they make hard work feel normal instead of dramatic.",
+            "they are precise with feedback, but never performative about it.",
+            "they remind me that the best peers do not just motivate you, they calibrate you.",
+          ].map((reason) => (
+            <li
+              key={reason}
+              className="border-t pt-3 text-[15px] leading-7"
+              style={{ borderColor: "var(--border)", color: "var(--ink-2)" }}
+            >
+              {reason}
+            </li>
+          ))}
+        </ul>
+      </section>
+    </article>
+  );
+}
