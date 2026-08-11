@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
 import { motion } from "motion/react";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { homepageHobbies, homepageSocials, site } from "@/app/data/site";
@@ -11,7 +12,9 @@ import ProjectsGrid from "./components/ProjectsGrid";
 import ExperienceList from "./components/ExperienceList";
 import SketchBackground from "./components/SketchBackground";
 import { Gradients } from "./components/Gradients";
-import GitHubContributionsPreview from "./components/GitHubContributionsPreview";
+import GitHubContributionsPreview, {
+  preloadGitHubContributions,
+} from "./components/GitHubContributionsPreview";
 import { socialIcons, type SocialIconKey } from "./components/SocialIcons";
 
 function OrgInline({
@@ -169,6 +172,10 @@ const fadeUp = {
 };
 
 export default function Home() {
+  useEffect(() => {
+    preloadGitHubContributions();
+  }, []);
+
   return (
     <div className="relative min-h-screen w-full bg-white">
       <Gradients />
