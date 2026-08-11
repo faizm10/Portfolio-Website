@@ -28,7 +28,7 @@ export const posts: Post[] = [
   {
     slug: "hc26",
     title: "organized hc26 experience",
-    date: "ongoing",
+    date: "mar 2026",
     pinned: true,
   },
   {
