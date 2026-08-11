@@ -7,6 +7,7 @@ import { LinkPreview } from "@/components/ui/link-preview";
 import { homepageHobbies, homepageSocials, site } from "@/app/data/site";
 import { bioInternships, homepageExperiences } from "@/app/data/experience";
 import { showcaseProjects, type ProjectType } from "@/app/data/projects";
+import { posts } from "@/app/posts";
 import ProjectsGrid from "./components/ProjectsGrid";
 import ExperienceList from "./components/ExperienceList";
 import TravelMap from "./components/TravelMap";
@@ -135,6 +136,7 @@ export default function Home() {
   const topProject = showcaseProjects.find((p) => p.slug === "uoguelphcourses")!;
   const octreeProject = showcaseProjects.find((p) => p.slug === "octree")!;
   const transitProject = showcaseProjects.find((p) => p.slug === "transit-flow")!;
+  const latestPosts = posts.slice(0, 4);
 
   return (
     <div className="relative min-h-screen w-full bg-white">
@@ -391,6 +393,67 @@ export default function Home() {
               );
             })}
           </motion.p>
+
+          <motion.section
+            custom={6}
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            className="mt-8 text-[15px] lowercase md:text-base"
+          >
+            <div className="flex items-baseline justify-between gap-5">
+              <p className="build-list-title">latest blog:</p>
+              <Link
+                href="/blog"
+                className="shrink-0 text-[13px] underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+                style={{ color: "var(--ink-2)" }}
+              >
+                all posts
+              </Link>
+            </div>
+
+            <ul className="mt-3 grid gap-2">
+              {latestPosts.map((post) => {
+                const title = (
+                  <span
+                    className="truncate text-[15px] underline-offset-[3px] decoration-[var(--ink-3)] group-hover:underline md:text-base"
+                    style={{ color: "var(--ink)" }}
+                  >
+                    {post.title}
+                  </span>
+                );
+
+                return (
+                  <li
+                    key={post.slug}
+                    className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-4"
+                  >
+                    {post.comingSoon ? (
+                      <div
+                        aria-disabled="true"
+                        className="min-w-0 cursor-default opacity-65"
+                      >
+                        {title}
+                      </div>
+                    ) : (
+                      <Link
+                        href={`/${post.slug}`}
+                        className="group min-w-0 transition-opacity hover:opacity-70"
+                      >
+                        {title}
+                      </Link>
+                    )}
+                    <span
+                      className="shrink-0 text-[13px] lowercase"
+                      style={{ color: "var(--ink-3)" }}
+                    >
+                      {post.date}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          </motion.section>
 
         </div>
 
