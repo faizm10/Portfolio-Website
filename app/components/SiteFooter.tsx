@@ -1,5 +1,9 @@
 import Link from "next/link";
 import { homepageSocials, site, webringUrl } from "@/app/data/site";
+import {
+  socialIcons,
+  type SocialIconKey,
+} from "@/app/components/SocialIcons";
 
 const linkClass =
   "underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70";
@@ -73,22 +77,26 @@ export default function SiteFooter() {
             <Link href="/travel" className={linkClass} style={{ color: "var(--ink)" }}>
               travel
             </Link>
-            {homepageSocials.map((item) => (
-              <span key={item.key} className="inline-flex items-center gap-x-3">
-                <span aria-hidden style={{ color: "var(--ink-3)" }}>
-                  ·
+            {homepageSocials.map((item) => {
+              const Icon = socialIcons[item.key as SocialIconKey];
+              return (
+                <span key={item.key} className="inline-flex items-center gap-x-3">
+                  <span aria-hidden style={{ color: "var(--ink-3)" }}>
+                    ·
+                  </span>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center transition-opacity hover:opacity-70"
+                    style={{ color: "var(--ink)" }}
+                    aria-label={item.label}
+                  >
+                    <Icon size={16} />
+                  </a>
                 </span>
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={linkClass}
-                  style={{ color: "var(--ink)" }}
-                >
-                  {item.label}
-                </a>
-              </span>
-            ))}
+              );
+            })}
           </nav>
         </div>
       </div>
