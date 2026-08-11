@@ -11,6 +11,7 @@ import {
   IoHomeOutline,
   IoBookOutline,
   IoImagesOutline,
+  IoGlobeOutline,
 } from "react-icons/io5";
 import { PiLinkedinLogo } from "react-icons/pi";
 import { commandNav, site } from "@/app/data/site";
@@ -19,6 +20,7 @@ const commandIcons = {
   home: IoHomeOutline,
   blog: IoBookOutline,
   photos: IoImagesOutline,
+  travel: IoGlobeOutline,
   linkedin: PiLinkedinLogo,
   github: FiGithub,
   instagram: IoLogoInstagram,

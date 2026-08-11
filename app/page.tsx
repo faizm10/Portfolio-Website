@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
 import { motion } from "motion/react";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { homepageHobbies, homepageSocials, site } from "@/app/data/site";
@@ -9,10 +10,12 @@ import { homepageExperiences, homepageUpTo } from "@/app/data/experience";
 import { showcaseProjects, type ProjectType } from "@/app/data/projects";
 import ProjectsGrid from "./components/ProjectsGrid";
 import ExperienceList from "./components/ExperienceList";
-import TravelMap from "./components/TravelMap";
 import SketchBackground from "./components/SketchBackground";
 import { Gradients } from "./components/Gradients";
-import GitHubContributionsPreview from "./components/GitHubContributionsPreview";
+import GitHubContributionsPreview, {
+  preloadGitHubContributions,
+} from "./components/GitHubContributionsPreview";
+import { socialIcons, type SocialIconKey } from "./components/SocialIcons";
 
 function OrgInline({
   href,
@@ -28,16 +31,16 @@ function OrgInline({
   external?: boolean;
 }) {
   const content = (
-    <span className="inline-flex items-baseline gap-1 underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70">
+    <span className="inline-flex items-baseline gap-1.5 underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70">
       <span className="font-semibold" style={{ color: "var(--ink)" }}>
         {label}
       </span>
       <Image
         src={icon}
         alt=""
-        width={16}
-        height={16}
-        className="relative top-[2px] size-4 rounded-[3px] object-contain"
+        width={20}
+        height={20}
+        className="relative top-[3px] size-5 rounded-[4px] object-contain"
         aria-hidden
       />
     </span>
@@ -169,6 +172,10 @@ const fadeUp = {
 };
 
 export default function Home() {
+  useEffect(() => {
+    preloadGitHubContributions();
+  }, []);
+
   return (
     <div className="relative min-h-screen w-full bg-white">
       <Gradients />
@@ -190,185 +197,189 @@ export default function Home() {
       </div>
 
       <main className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-24 pt-10 md:px-8 md:pt-12">
-        <div id="about" className="mx-auto max-w-xl scroll-mt-24">
-          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
-            <motion.h1
-              custom={0}
+        <div className="mx-auto w-full max-w-xl">
+          <section id="about" className="scroll-mt-24">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
+              <motion.h1
+                custom={0}
+                variants={fadeUp}
+                initial="hidden"
+                animate="show"
+                className="font-[family-name:var(--font-newsreader)] text-[1.75rem] font-medium tracking-tight lowercase md:text-[2rem]"
+                style={{ color: "var(--ink)" }}
+              >
+                {site.name}
+              </motion.h1>
+
+              <motion.nav
+                custom={1}
+                variants={fadeUp}
+                initial="hidden"
+                animate="show"
+                className="ml-auto flex flex-wrap items-center justify-end gap-x-4 gap-y-2 text-[15px] lowercase"
+                aria-label="social links"
+              >
+                <Link
+                  href="/blog"
+                  className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+                  style={{ color: "var(--ink)" }}
+                >
+                  blog
+                </Link>
+                <Link
+                  href="/photos"
+                  className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+                  style={{ color: "var(--ink)" }}
+                >
+                  photos
+                </Link>
+                {homepageSocials.map((item) => {
+                  const Icon = socialIcons[item.key as SocialIconKey];
+                  const iconClass =
+                    "inline-flex items-center justify-center transition-opacity hover:opacity-70";
+                  const iconStyle = { color: "var(--ink)" };
+
+                  if (item.key === "github") {
+                    return (
+                      <LinkPreview
+                        key={item.key}
+                        url={item.href}
+                        className={`inline font-normal ${iconClass}`}
+                        width={520}
+                        height={138}
+                        isStatic
+                        imageSrc={item.preview ?? "/previews/github.jpeg"}
+                        previewContent={<GitHubContributionsPreview />}
+                      >
+                        <span style={iconStyle} aria-label={item.label}>
+                          <Icon size={18} />
+                        </span>
+                      </LinkPreview>
+                    );
+                  }
+
+                  if (item.preview) {
+                    return (
+                      <LinkPreview
+                        key={item.key}
+                        url={item.href}
+                        className={`inline font-normal ${iconClass}`}
+                        width={240}
+                        height={150}
+                        isStatic
+                        imageSrc={item.preview}
+                      >
+                        <span style={iconStyle} aria-label={item.label}>
+                          <Icon size={18} />
+                        </span>
+                      </LinkPreview>
+                    );
+                  }
+
+                  return (
+                    <a
+                      key={item.key}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={iconClass}
+                      style={iconStyle}
+                      aria-label={item.label}
+                    >
+                      <Icon size={18} />
+                    </a>
+                  );
+                })}
+              </motion.nav>
+            </div>
+
+            <motion.p
+              custom={2}
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              className="font-[family-name:var(--font-newsreader)] text-[1.75rem] font-medium tracking-tight lowercase md:text-[2rem]"
-              style={{ color: "var(--ink)" }}
+              className="mt-3 text-[14px] lowercase tracking-wide md:text-[15px]"
+              style={{ color: "var(--ink-3)" }}
             >
-              {site.name}
-            </motion.h1>
+              cs @ guelph · {site.homepage.location}
+            </motion.p>
 
-            <motion.nav
-              custom={1}
+            <motion.div
+              custom={3}
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              className="ml-auto flex flex-wrap justify-end gap-x-5 gap-y-2 text-[15px] lowercase"
-              aria-label="social links"
+              className="mt-10"
             >
-              <Link
-                href="/blog"
-                className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
-                style={{ color: "var(--ink)" }}
-              >
-                blog
-              </Link>
-              <Link
-                href="/photos"
-                className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
-                style={{ color: "var(--ink)" }}
-              >
-                photos
-              </Link>
-              {homepageSocials.map((item) => {
-                const linkClass =
-                  "underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70";
-                const linkStyle = { color: "var(--ink)" };
-
-                if (item.key === "github") {
-                  return (
-                    <LinkPreview
-                      key={item.key}
-                      url={item.href}
-                      className={`inline font-normal ${linkClass}`}
-                      width={520}
-                      height={138}
-                      isStatic
-                      imageSrc={item.preview ?? "/previews/github.jpeg"}
-                      previewContent={<GitHubContributionsPreview />}
-                    >
-                      <span style={linkStyle}>{item.label}</span>
-                    </LinkPreview>
-                  );
-                }
-
-                if (item.preview) {
-                  return (
-                    <LinkPreview
-                      key={item.key}
-                      url={item.href}
-                      className={`inline font-normal ${linkClass}`}
-                      width={240}
-                      height={150}
-                      isStatic
-                      imageSrc={item.preview}
-                    >
-                      <span style={linkStyle}>{item.label}</span>
-                    </LinkPreview>
-                  );
-                }
-
-                return (
-                  <a
-                    key={item.key}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={linkClass}
-                    style={linkStyle}
-                  >
-                    {item.label}
-                  </a>
-                );
-              })}
-            </motion.nav>
-          </div>
-
-          <motion.p
-            custom={2}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="mt-3 text-[14px] lowercase tracking-wide md:text-[15px]"
-            style={{ color: "var(--ink-3)" }}
-          >
-            cs @ guelph · {site.homepage.location}
-          </motion.p>
-
-          <motion.div
-            custom={3}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="mt-10"
-          >
-            <h2 className="up-to-title">what i&apos;m up to...</h2>
-            <ul className="build-list lowercase">
-              {homepageUpTo.map((item) => (
-                <li key={item.id}>
+              <h2 className="up-to-title">what i&apos;m up to...</h2>
+              <ul className="build-list lowercase">
+                {homepageUpTo.map((item) => (
+                  <li key={item.id}>
+                    <span className="build-arrow" aria-hidden>
+                      →
+                    </span>
+                    <span>
+                      {item.before} <UpToEntity entity={item.entity} />
+                      {item.after ? <> {item.after}</> : null}
+                      {item.then ? (
+                        <>
+                          {" "}
+                          {item.then.before}{" "}
+                          <UpToEntity entity={item.then.entity} />
+                        </>
+                      ) : null}
+                      {item.metrics?.map((m, i) =>
+                        /^\d/.test(m) ? (
+                          <span key={`${item.id}-m-${i}`}>
+                            {" "}
+                            <Metric>{m}</Metric>
+                          </span>
+                        ) : (
+                          <span key={`${item.id}-m-${i}`}> {m}</span>
+                        ),
+                      )}
+                    </span>
+                  </li>
+                ))}
+                <li>
                   <span className="build-arrow" aria-hidden>
                     →
                   </span>
                   <span>
-                    {item.before} <UpToEntity entity={item.entity} />
-                    {item.after ? <> {item.after}</> : null}
-                    {item.then ? (
-                      <>
-                        {" "}
-                        {item.then.before}{" "}
-                        <UpToEntity entity={item.then.entity} />
-                      </>
-                    ) : null}
-                    {item.metrics?.map((m, i) =>
-                      /^\d/.test(m) ? (
-                        <span key={`${item.id}-m-${i}`}>
-                          {" "}
-                          <Metric>{m}</Metric>
+                    {site.homepage.hobbiesLead}{" "}
+                    {homepageHobbies.map((hobby, i) => {
+                      const sep =
+                        i === homepageHobbies.length - 1
+                          ? ""
+                          : i === homepageHobbies.length - 2
+                            ? ", and "
+                            : ", ";
+
+                      return (
+                        <span key={hobby.key}>
+                          <Link
+                            href={hobby.href}
+                            className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+                            style={{ color: "var(--ink)" }}
+                          >
+                            {hobby.label}
+                          </Link>
+                          {sep}
                         </span>
-                      ) : (
-                        <span key={`${item.id}-m-${i}`}> {m}</span>
-                      ),
-                    )}
+                      );
+                    })}
                   </span>
                 </li>
-              ))}
-              <li>
-                <span className="build-arrow" aria-hidden>
-                  →
-                </span>
-                <span>
-                  {site.homepage.hobbiesLead}{" "}
-                  {homepageHobbies.map((hobby, i) => {
-                    const sep =
-                      i === homepageHobbies.length - 1
-                        ? ""
-                        : i === homepageHobbies.length - 2
-                          ? ", and "
-                          : ", ";
+              </ul>
+              <p className="up-to-more lowercase">
+                see more of what i&apos;m working on below ↓
+              </p>
+            </motion.div>
+          </section>
 
-                    return (
-                      <span key={hobby.key}>
-                        <Link
-                          href={hobby.href}
-                          className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
-                          style={{ color: "var(--ink)" }}
-                        >
-                          {hobby.label}
-                        </Link>
-                        {sep}
-                      </span>
-                    );
-                  })}
-                </span>
-              </li>
-            </ul>
-            <p className="up-to-more lowercase">
-              see more of what i&apos;m working on below ↓
-            </p>
-          </motion.div>
-        </div>
-
-        <div className="mt-16 md:mt-20">
-          <ExperienceList />
-        </div>
-
-        <div className="mt-20 md:mt-28">
-          <TravelMap />
+          <div className="mt-16 md:mt-20">
+            <ExperienceList />
+          </div>
         </div>
 
         <div className="mt-20 md:mt-28">

@@ -54,3 +54,63 @@ export const locationCoordinates: Record<string, [number, number]> = {
   "Prague, Czech Republic": [14.4378, 50.0755],
   "Salzburg, Austria": [13.055, 47.8095],
 };
+
+/** Places I want to visit — travel page bucket list. */
+export const travelBucketList = [
+  "los angeles",
+  "south korea",
+  "china",
+  "italy",
+  "hong kong",
+  "singapore",
+  "vietnam",
+  "malaysia",
+  "kazakhstan",
+  "turkey",
+] as const;
+
+type RawPhoto = {
+  filename: string;
+  date: string;
+  location: string;
+  lng?: number | null;
+  lat?: number | null;
+};
+
+function coordsFor(photo: RawPhoto): [number, number] | null {
+  if (photo.lng != null && photo.lat != null) return [photo.lng, photo.lat];
+  return locationCoordinates[photo.location] ?? null;
+}
+
+/** Aggregate photos.json into place pins (photo places only). */
+export function getPlacesFromPhotos(
+  photos: RawPhoto[],
+): Place[] {
+  const byLocation = new Map<string, Place>();
+
+  photos
+    .filter((p) => p.location && p.filename && coordsFor(p))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .forEach((photo) => {
+      const image = `/img/photos/${photo.filename}`;
+      const date = formatPhotoDate(photo.date);
+      const existing = byLocation.get(photo.location);
+      if (existing) {
+        existing.count += 1;
+        existing.photos.push({ image, date });
+        return;
+      }
+      const [lng, lat] = coordsFor(photo)!;
+      byLocation.set(photo.location, {
+        location: photo.location,
+        lng,
+        lat,
+        image,
+        date,
+        count: 1,
+        photos: [{ image, date }],
+      });
+    });
+
+  return Array.from(byLocation.values());
+}

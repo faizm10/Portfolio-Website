@@ -324,7 +324,7 @@ export const homepageUpTo: UpToItem[] = [
       label: orgs.hackcanada.title,
       preview: orgs.hackcanada.preview,
     },
-    after: "behind main site, judging platform & inaugural ctf",
+    after: "behind main site, judging platform & ctf",
   },
   {
     id: "waterloo",
