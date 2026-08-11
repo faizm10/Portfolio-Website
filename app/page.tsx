@@ -176,7 +176,7 @@ export default function Home() {
 
       <main className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-24 pt-10 md:px-8 md:pt-12">
         <div id="about" className="mx-auto max-w-xl scroll-mt-24">
-          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
+          <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-x-6">
             <motion.h1
               custom={0}
               variants={fadeUp}
@@ -193,7 +193,7 @@ export default function Home() {
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              className="ml-auto flex flex-wrap justify-end gap-x-2 gap-y-2"
+              className="flex w-full flex-wrap justify-start gap-x-3 gap-y-2 sm:ml-auto sm:w-auto sm:justify-end sm:gap-x-2"
               aria-label="social links"
             >
               <Link
