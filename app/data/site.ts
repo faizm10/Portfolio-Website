@@ -71,7 +71,7 @@ export const site = {
 /** Hobby labels in the bio. */
 export const homepageHobbies = [
   { key: "photography" as const, label: "photography", href: "/photos" },
-  { key: "travel" as const, label: "travel", href: "/#places" },
+  { key: "travel" as const, label: "travel", href: "/travel" },
   { key: "soccer" as const, label: "soccer", href: "/soccer-stats" },
 ] as const;
 
@@ -122,6 +122,14 @@ export const commandNav = [
     shortcut: "2",
     external: false,
     searchValue: "photos photography gallery camera",
+  },
+  {
+    key: "travel",
+    href: "/travel",
+    label: "travel",
+    shortcut: "t",
+    external: false,
+    searchValue: "travel places map camera trips",
   },
   {
     key: "linkedin",
