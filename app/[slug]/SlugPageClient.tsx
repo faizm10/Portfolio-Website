@@ -81,6 +81,8 @@ export default function SlugPageClient({ slug }: { slug: string }) {
 
   /** full-bleed MDX layouts use their own typography; `prose` here can emit invalid nested `<p>` */
   const skipArticleProse = slug === "jachacks";
+  const contentMaxWidth =
+    slug === "influential-peers" ? "max-w-3xl" : "max-w-xl";
 
   const components = {
     a: ({ href, children }: { href: string; children: ReactNode }) => (
@@ -110,7 +112,7 @@ export default function SlugPageClient({ slug }: { slug: string }) {
 
   return (
     <div className="min-h-screen w-full overflow-x-hidden px-6 py-12" style={{ backgroundColor: "var(--canvas)" }}>
-      <div className="mx-auto max-w-xl blog-content">
+      <div className={clsx("mx-auto blog-content", contentMaxWidth)}>
         <div className="mb-8">
           <button
             onClick={() => router.push(isBlogPost ? "/blog" : "/")}
