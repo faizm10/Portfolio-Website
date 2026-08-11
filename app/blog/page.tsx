@@ -39,12 +39,9 @@ export default function BlogPage() {
         </p>
 
         <ul className="mt-10 flex flex-col gap-5">
-          {sorted.map((post) => (
-            <li key={post.slug}>
-              <Link
-                href={`/${post.slug}`}
-                className="group flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
-              >
+          {sorted.map((post) => {
+            const content = (
+              <>
                 <span
                   className="text-[15px] lowercase underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity group-hover:underline group-hover:opacity-70 md:text-base"
                   style={{ color: "var(--ink)" }}
@@ -57,9 +54,29 @@ export default function BlogPage() {
                 >
                   {post.date}
                 </span>
-              </Link>
-            </li>
-          ))}
+              </>
+            );
+
+            return (
+              <li key={post.slug}>
+                {post.comingSoon ? (
+                  <div
+                    aria-disabled="true"
+                    className="flex cursor-default flex-col gap-0.5 opacity-70 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+                  >
+                    {content}
+                  </div>
+                ) : (
+                  <Link
+                    href={`/${post.slug}`}
+                    className="group flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+                  >
+                    {content}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </main>
