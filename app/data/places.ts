@@ -65,6 +65,8 @@ export const travelBucketList = [
   "singapore",
   "vietnam",
   "malaysia",
+  "kazakhstan",
+  "turkey",
 ] as const;
 
 type RawPhoto = {
