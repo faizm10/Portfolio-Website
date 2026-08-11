@@ -83,7 +83,7 @@ export default function SiteFooter() {
               aria-label="blog"
               title="blog"
             >
-              <FileText size={17} strokeWidth={1.8} aria-hidden />
+              <FileText size={19} strokeWidth={1.8} aria-hidden />
               <IconLabel label="blog" />
             </Link>
             <Link
@@ -93,7 +93,7 @@ export default function SiteFooter() {
               aria-label="photos"
               title="photos"
             >
-              <Images size={17} strokeWidth={1.8} aria-hidden />
+              <Images size={19} strokeWidth={1.8} aria-hidden />
               <IconLabel label="photos" />
             </Link>
             {homepageSocials.map((item) => {
@@ -110,7 +110,7 @@ export default function SiteFooter() {
                   aria-label={item.label}
                   title={item.label}
                 >
-                  <Icon size={17} aria-hidden />
+                  <Icon size={19} aria-hidden />
                   <IconLabel label={item.label} />
                 </a>
               );
