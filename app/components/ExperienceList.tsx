@@ -1,18 +1,19 @@
 "use client";
 
 import Image from "next/image";
+import clsx from "clsx";
 import { motion } from "motion/react";
 import {
-  communityItems,
-  experienceItems,
+  currentItems,
+  previouslyItems,
   schoolItems,
   type HomepageExperience,
 } from "@/app/data/experience";
 
 /**
- * Experience card: logo · company + badges / position · location / date
+ * Slim experience row: logo · company / role · dates (right)
  */
-function ExperienceCard({
+function ExperienceRow({
   item,
   index,
 }: {
@@ -23,12 +24,12 @@ function ExperienceCard({
 
   return (
     <motion.li
-      initial={{ opacity: 0, y: 8 }}
+      initial={{ opacity: 0, y: 6 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{
-        delay: 0.04 * index,
-        duration: 0.4,
+        delay: 0.03 * index,
+        duration: 0.35,
         ease: [0.22, 1, 0.36, 1],
       }}
     >
@@ -36,72 +37,45 @@ function ExperienceCard({
         href={item.link}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-between gap-3 rounded-xl px-1 py-1.5 transition-opacity hover:opacity-70"
+        className="group flex items-center gap-3 py-2 transition-opacity hover:opacity-70"
       >
         <div
-          className="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-lg p-0.5 sm:size-11"
-          style={{ backgroundColor: item.color }}
+          className={clsx(
+            "flex size-11 shrink-0 items-center justify-center overflow-hidden bg-transparent sm:size-12",
+            item.logoRound ? "rounded-full" : "rounded-md",
+          )}
         >
           <Image
             src={item.logo}
-            alt={`${item.company} logo`}
-            width={40}
-            height={40}
+            alt=""
+            width={48}
+            height={48}
             className="size-full object-contain"
             style={{ transform: `scale(${logoScale})` }}
+            aria-hidden
           />
         </div>
 
-        <div className="ml-0.5 flex min-w-0 flex-grow flex-col justify-between">
-          <span
-            className="flex flex-wrap items-center gap-x-1.5 text-[15px] font-semibold lowercase tracking-tight md:text-base"
+        <div className="min-w-0 flex-1">
+          <div
+            className="truncate text-[15px] font-medium lowercase tracking-tight md:text-base"
             style={{ color: "var(--ink)" }}
           >
             {item.company}
-            {item.present && (
-              <span
-                className="rounded-md px-1.5 py-0.5 text-[11px] font-normal normal-case sm:text-xs"
-                style={{
-                  backgroundColor: "var(--surface-alt, #f0f0f0)",
-                  color: "var(--ink-2)",
-                }}
-              >
-                Present
-              </span>
-            )}
-            {item.incoming && (
-              <span
-                className="rounded-md px-1.5 py-0.5 text-[11px] font-normal normal-case sm:text-xs"
-                style={{
-                  backgroundColor: "var(--surface-alt, #f0f0f0)",
-                  color: "var(--ink-2)",
-                }}
-              >
-                Incoming
-              </span>
-            )}
-          </span>
-          <span
-            className="text-[13px] lowercase leading-snug sm:text-sm"
+          </div>
+          <div
+            className="truncate text-[13px] lowercase sm:text-sm"
             style={{ color: "var(--ink-2)" }}
           >
             {item.position}
-          </span>
+          </div>
         </div>
 
-        <div className="flex shrink-0 flex-col items-end text-right">
-          <span
-            className="text-[13px] lowercase sm:text-[15px]"
-            style={{ color: "var(--ink)" }}
-          >
-            {item.location}
-          </span>
-          <span
-            className="text-xs lowercase sm:text-sm"
-            style={{ color: "var(--ink-3)" }}
-          >
-            {item.date}
-          </span>
+        <div
+          className="shrink-0 text-right text-[12px] lowercase tabular-nums sm:text-[13px]"
+          style={{ color: "var(--ink-3)" }}
+        >
+          {item.date}
         </div>
       </a>
     </motion.li>
@@ -123,14 +97,14 @@ function ExperienceGroup({
     <div>
       <h2
         id={`${id}-heading`}
-        className="mb-6 text-center text-xs font-medium uppercase tracking-[0.2em]"
+        className="mb-2 text-[13px] font-medium lowercase tracking-wide"
         style={{ color: "var(--ink-3)" }}
       >
         {title}
       </h2>
-      <ul className="mx-auto flex max-w-xl flex-col gap-5 sm:gap-6">
+      <ul className="flex flex-col">
         {items.map((item, i) => (
-          <ExperienceCard
+          <ExperienceRow
             key={`${item.company}-${item.position}-${item.date}`}
             item={item}
             index={i}
@@ -145,16 +119,20 @@ export default function ExperienceList() {
   return (
     <section
       id="experience"
-      className="mx-auto w-full max-w-xl scroll-mt-24 space-y-16 sm:space-y-20"
+      className="mx-auto w-full max-w-xl scroll-mt-24 space-y-10 sm:space-y-12"
       aria-label="experience"
     >
-      <ExperienceGroup id="work" title="experience" items={experienceItems} />
+      <ExperienceGroup id="current" title="current" items={currentItems} />
       <ExperienceGroup
-        id="community"
-        title="community"
-        items={communityItems}
+        id="education"
+        title="education"
+        items={schoolItems}
       />
-      <ExperienceGroup id="school" title="school" items={schoolItems} />
+      <ExperienceGroup
+        id="previously"
+        title="previously"
+        items={previouslyItems}
+      />
     </section>
   );
 }
