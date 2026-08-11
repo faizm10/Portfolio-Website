@@ -72,6 +72,8 @@ export type HomepageExperience = {
   incoming: boolean;
   /** Optional logo scale % (e.g. 90) */
   logoScale?: number;
+  /** Clip logo to a circle (for round badges) */
+  logoRound?: boolean;
   /** Cached screenshot for homepage preload */
   preview?: string;
 };
@@ -152,6 +154,7 @@ export const communityItems: HomepageExperience[] = [
     link: orgs.hackcanada.href,
     present: true,
     incoming: false,
+    logoRound: true,
     preview: orgs.hackcanada.preview,
   },
   {
@@ -255,3 +258,133 @@ export const bioInternships = {
   current: orgs.tangerine,
   previous: [orgs.td, orgs.sertus] as const,
 };
+
+/** Concise “what i'm up to” rows — homepage only. */
+export type UpToOrgRef = {
+  type: "org";
+  href: string;
+  icon: string;
+  label: string;
+  preview?: string;
+};
+
+export type UpToProjectRef = {
+  type: "project";
+  /** slug in showcaseProjects, or external */
+  project?: "uoguelphcourses" | "octree" | "transit-flow";
+  external?: { href: string; label: string; imageSrc: string };
+};
+
+export type UpToItem = {
+  id: string;
+  /** text before the linked entity */
+  before: string;
+  entity: UpToOrgRef | UpToProjectRef;
+  /** text after the linked entity */
+  after?: string;
+  /** optional second entity on the same line (e.g. prev @ td) */
+  then?: {
+    before: string;
+    entity: UpToOrgRef | UpToProjectRef;
+  };
+  /** optional bold metric fragments after `after` */
+  metrics?: string[];
+};
+
+export const homepageUpTo: UpToItem[] = [
+  {
+    id: "work",
+    before: "swe intern at",
+    entity: {
+      type: "org",
+      href: orgs.tangerine.href,
+      icon: orgs.tangerine.icon,
+      label: orgs.tangerine.title,
+      preview: orgs.tangerine.preview,
+    },
+    after: "in toronto",
+    then: {
+      before: "· prev @",
+      entity: {
+        type: "org",
+        href: orgs.td.href,
+        icon: orgs.td.icon,
+        label: orgs.td.title,
+        preview: orgs.td.preview,
+      },
+    },
+  },
+  {
+    id: "hackcanada",
+    before: "vp of tech at",
+    entity: {
+      type: "org",
+      href: orgs.hackcanada.href,
+      icon: orgs.hackcanada.icon,
+      label: orgs.hackcanada.title,
+      preview: orgs.hackcanada.preview,
+    },
+    after: "behind main site, judging platform & inaugural ctf",
+  },
+  {
+    id: "waterloo",
+    before: "spent 3 terms at",
+    entity: {
+      type: "org",
+      href: orgs.waterloo.href,
+      icon: orgs.waterloo.icon,
+      label: orgs.waterloo.title,
+      preview: orgs.waterloo.preview,
+    },
+  },
+  {
+    id: "guelphcourses",
+    before: "shipped",
+    entity: { type: "project", project: "uoguelphcourses" },
+    after: "course search for uoguelph,",
+    metrics: ["5k+", "students ·", "75k+", "views"],
+  },
+  {
+    id: "octree",
+    before: "contributed to",
+    entity: { type: "project", project: "octree" },
+    after: "open-source ai latex editor,",
+    metrics: ["8k–9k", "mau ·", "250+", "stars"],
+  },
+  {
+    id: "pitchpulse",
+    before: "built",
+    entity: {
+      type: "project",
+      external: {
+        href: "https://www.pitchpulse.ca/",
+        label: "pitchpulse",
+        imageSrc: "/previews/pitchpulse.png",
+      },
+    },
+    after: "for world cup 2026,",
+    metrics: ["300+", "users in 72h"],
+  },
+  {
+    id: "guelph",
+    before: "studying cs at",
+    entity: {
+      type: "org",
+      href: orgs.guelph.href,
+      icon: orgs.guelph.icon,
+      label: orgs.guelph.title,
+      preview: orgs.guelph.preview,
+    },
+  },
+];
+
+/** Evan-style homepage groupings */
+export const currentItems: HomepageExperience[] = [
+  ...experienceItems.filter((e) => e.present),
+  ...communityItems.filter((e) => e.present),
+];
+
+/** Past work only — teaching roles stay in data but off the concise homepage list. */
+export const previouslyItems: HomepageExperience[] = experienceItems.filter(
+  (e) => !e.present,
+);
