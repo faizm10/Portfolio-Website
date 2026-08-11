@@ -12,6 +12,7 @@ import ExperienceList from "./components/ExperienceList";
 import SketchBackground from "./components/SketchBackground";
 import { Gradients } from "./components/Gradients";
 import GitHubContributionsPreview from "./components/GitHubContributionsPreview";
+import { socialIcons, type SocialIconKey } from "./components/SocialIcons";
 
 function OrgInline({
   href,
@@ -208,7 +209,7 @@ export default function Home() {
                 variants={fadeUp}
                 initial="hidden"
                 animate="show"
-                className="ml-auto flex flex-wrap justify-end gap-x-5 gap-y-2 text-[15px] lowercase"
+                className="ml-auto flex flex-wrap items-center justify-end gap-x-4 gap-y-2 text-[15px] lowercase"
                 aria-label="social links"
               >
                 <Link
@@ -226,23 +227,26 @@ export default function Home() {
                   photos
                 </Link>
                 {homepageSocials.map((item) => {
-                  const linkClass =
-                    "underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70";
-                  const linkStyle = { color: "var(--ink)" };
+                  const Icon = socialIcons[item.key as SocialIconKey];
+                  const iconClass =
+                    "inline-flex items-center justify-center transition-opacity hover:opacity-70";
+                  const iconStyle = { color: "var(--ink)" };
 
                   if (item.key === "github") {
                     return (
                       <LinkPreview
                         key={item.key}
                         url={item.href}
-                        className={`inline font-normal ${linkClass}`}
+                        className={`inline font-normal ${iconClass}`}
                         width={520}
                         height={138}
                         isStatic
                         imageSrc={item.preview ?? "/previews/github.jpeg"}
                         previewContent={<GitHubContributionsPreview />}
                       >
-                        <span style={linkStyle}>{item.label}</span>
+                        <span style={iconStyle} aria-label={item.label}>
+                          <Icon size={18} />
+                        </span>
                       </LinkPreview>
                     );
                   }
@@ -252,13 +256,15 @@ export default function Home() {
                       <LinkPreview
                         key={item.key}
                         url={item.href}
-                        className={`inline font-normal ${linkClass}`}
+                        className={`inline font-normal ${iconClass}`}
                         width={240}
                         height={150}
                         isStatic
                         imageSrc={item.preview}
                       >
-                        <span style={linkStyle}>{item.label}</span>
+                        <span style={iconStyle} aria-label={item.label}>
+                          <Icon size={18} />
+                        </span>
                       </LinkPreview>
                     );
                   }
@@ -269,10 +275,11 @@ export default function Home() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={linkClass}
-                      style={linkStyle}
+                      className={iconClass}
+                      style={iconStyle}
+                      aria-label={item.label}
                     >
-                      {item.label}
+                      <Icon size={18} />
                     </a>
                   );
                 })}
