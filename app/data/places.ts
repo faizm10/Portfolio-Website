@@ -55,6 +55,18 @@ export const locationCoordinates: Record<string, [number, number]> = {
   "Salzburg, Austria": [13.055, 47.8095],
 };
 
+/** Places I want to visit — travel page bucket list. */
+export const travelBucketList = [
+  "los angeles",
+  "south korea",
+  "china",
+  "italy",
+  "hong kong",
+  "singapore",
+  "vietnam",
+  "malaysia",
+] as const;
+
 type RawPhoto = {
   filename: string;
   date: string;
