@@ -10,7 +10,7 @@ export const posts: Post[] = [
   {
     slug: "influential-peers",
     title: "influential peers",
-    date: "aug 2026",
+    date: "ongoing",
     pinned: true,
   },
   {
