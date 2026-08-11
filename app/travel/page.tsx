@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import PlacesMap from "@/components/ui/PlacesMap";
 import photosData from "@/app/data/photos.json";
-import { getPlacesFromPhotos } from "@/app/data/places";
+import { getPlacesFromPhotos, travelBucketList } from "@/app/data/places";
 import { site } from "@/app/data/site";
 
 export const metadata: Metadata = {
@@ -108,6 +108,30 @@ export default function TravelPage() {
               ))}
             </ul>
           )}
+        </section>
+
+        <section className="mt-14" aria-labelledby="bucket-list-heading">
+          <h2
+            id="bucket-list-heading"
+            className="mb-5 text-xs font-medium uppercase tracking-[0.2em]"
+            style={{ color: "var(--ink-3)" }}
+          >
+            bucket list
+          </h2>
+          <ul className="flex flex-col gap-2">
+            {travelBucketList.map((place) => (
+              <li
+                key={place}
+                className="flex items-baseline gap-2 text-[15px] lowercase md:text-base"
+                style={{ color: "var(--ink-2)" }}
+              >
+                <span style={{ color: "#e85d04" }} aria-hidden>
+                  →
+                </span>
+                <span style={{ color: "var(--ink)" }}>{place}</span>
+              </li>
+            ))}
+          </ul>
         </section>
       </div>
     </main>
