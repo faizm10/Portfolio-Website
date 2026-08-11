@@ -203,7 +203,7 @@ export default function Home() {
                 aria-label="blog"
                 title="blog"
               >
-                <FileText size={18} strokeWidth={1.8} aria-hidden />
+                <FileText size={20} strokeWidth={1.8} aria-hidden />
                 <IconLabel label="blog" />
               </Link>
               <Link
@@ -213,7 +213,7 @@ export default function Home() {
                 aria-label="photos"
                 title="photos"
               >
-                <Images size={18} strokeWidth={1.8} aria-hidden />
+                <Images size={20} strokeWidth={1.8} aria-hidden />
                 <IconLabel label="photos" />
               </Link>
               {homepageSocials.map((item) => {
@@ -237,7 +237,7 @@ export default function Home() {
                         aria-label={item.label}
                         title={item.label}
                       >
-                        <Icon size={18} aria-hidden />
+                        <Icon size={20} aria-hidden />
                         <IconLabel label={item.label} />
                       </span>
                     </LinkPreview>
@@ -261,7 +261,7 @@ export default function Home() {
                         aria-label={item.label}
                         title={item.label}
                       >
-                        <Icon size={18} aria-hidden />
+                        <Icon size={20} aria-hidden />
                         <IconLabel label={item.label} />
                       </span>
                     </LinkPreview>
@@ -279,7 +279,7 @@ export default function Home() {
                     aria-label={item.label}
                     title={item.label}
                   >
-                    <Icon size={18} aria-hidden />
+                    <Icon size={20} aria-hidden />
                     <IconLabel label={item.label} />
                   </a>
                 );
