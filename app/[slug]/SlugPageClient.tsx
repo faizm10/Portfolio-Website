@@ -21,6 +21,7 @@ import Converge from "./mdx/converge.mdx";
 import UoGReflection from "./mdx/uogreflection.mdx";
 import Footy from "./mdx/footy.mdx";
 import Hackathons from "./mdx/hackathons.mdx";
+import InfluentialPeers from "./mdx/influential-peers.mdx";
 import SoccerStats from "./mdx/soccer-stats.mdx";
 import CodeKeeper from "./mdx/code-keeper.mdx";
 import TextAnxiety from "./mdx/text-anxiety.mdx";
@@ -42,6 +43,7 @@ const MDX_MAP: Record<string, ComponentType> = {
   uogreflection: UoGReflection,
   footy: Footy,
   hackathons: Hackathons,
+  "influential-peers": InfluentialPeers,
   "soccer-stats": SoccerStats,
   "code-keeper": CodeKeeper,
   "text-anxiety": TextAnxiety,

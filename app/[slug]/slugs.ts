@@ -12,6 +12,7 @@ export const SLUGS = [
   "uogreflection",
   "footy",
   "hackathons",
+  "influential-peers",
   "soccer-stats",
   "code-keeper",
   "text-anxiety",
