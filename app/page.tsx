@@ -400,18 +400,18 @@ export default function Home() {
             variants={fadeUp}
             initial="hidden"
             animate="show"
-            className="mt-16 scroll-mt-24 text-[15px] lowercase md:text-base"
+            className="mt-10 scroll-mt-24 text-[15px] lowercase md:mt-12 md:text-base"
             aria-labelledby="writing-heading"
           >
             <h2
               id="writing-heading"
-              className="mb-6 text-center text-xs font-medium uppercase tracking-[0.2em]"
+              className="mb-4 text-center text-xs font-medium uppercase tracking-[0.2em]"
               style={{ color: "var(--ink-3)" }}
             >
               writing
             </h2>
 
-            <div className="mb-3 flex justify-end">
+            <div className="mb-2 flex justify-end">
               <Link
                 href="/blog"
                 className="shrink-0 text-[13px] underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
@@ -421,7 +421,7 @@ export default function Home() {
               </Link>
             </div>
 
-            <ul className="grid gap-2">
+            <ul className="grid gap-1.5">
               {latestPosts.map((post) => {
                 const title = (
                   <span
@@ -485,7 +485,7 @@ export default function Home() {
           />
         </motion.div> */}
 
-        <div className="mt-20 md:mt-28">
+        <div className="mt-14 md:mt-20">
           <ExperienceList />
         </div>
 
