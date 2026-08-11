@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
+import { FileText, Images } from "lucide-react";
+import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { homepageHobbies, homepageSocials, site } from "@/app/data/site";
 import { bioInternships, homepageExperiences } from "@/app/data/experience";
@@ -111,6 +113,20 @@ function ExternalProjectInline({
   );
 }
 
+function IconLabel({ label }: { label: string }) {
+  return <span className="sr-only">{label}</span>;
+}
+
+const navIconClass =
+  "inline-flex size-7 items-center justify-center rounded-sm transition-opacity hover:opacity-70";
+const navIconStyle = { color: "var(--ink)" };
+
+const socialIcons = {
+  x: FaXTwitter,
+  github: FaGithub,
+  linkedin: FaLinkedin,
+} as const;
+
 function Metric({ children }: { children: React.ReactNode }) {
   return (
     <strong className="font-extrabold" style={{ color: "var(--ink)" }}>
@@ -177,41 +193,53 @@ export default function Home() {
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              className="ml-auto flex flex-wrap justify-end gap-x-5 gap-y-2 text-[15px] lowercase"
+              className="ml-auto flex flex-wrap justify-end gap-x-2 gap-y-2"
               aria-label="social links"
             >
               <Link
                 href="/blog"
-                className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
-                style={{ color: "var(--ink)" }}
+                className={navIconClass}
+                style={navIconStyle}
+                aria-label="blog"
+                title="blog"
               >
-                blog
+                <FileText size={18} strokeWidth={1.8} aria-hidden />
+                <IconLabel label="blog" />
               </Link>
               <Link
                 href="/photos"
-                className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
-                style={{ color: "var(--ink)" }}
+                className={navIconClass}
+                style={navIconStyle}
+                aria-label="photos"
+                title="photos"
               >
-                photos
+                <Images size={18} strokeWidth={1.8} aria-hidden />
+                <IconLabel label="photos" />
               </Link>
               {homepageSocials.map((item) => {
-                const linkClass =
-                  "underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70";
-                const linkStyle = { color: "var(--ink)" };
+                const Icon = socialIcons[item.key];
 
                 if (item.key === "github") {
                   return (
                     <LinkPreview
                       key={item.key}
                       url={item.href}
-                      className={`inline font-normal ${linkClass}`}
+                      className={navIconClass}
                       width={520}
                       height={138}
                       isStatic
                       imageSrc={item.preview ?? "/previews/github.jpeg"}
                       previewContent={<GitHubContributionsPreview />}
                     >
-                      <span style={linkStyle}>{item.label}</span>
+                      <span
+                        className="inline-flex size-full items-center justify-center"
+                        style={navIconStyle}
+                        aria-label={item.label}
+                        title={item.label}
+                      >
+                        <Icon size={18} aria-hidden />
+                        <IconLabel label={item.label} />
+                      </span>
                     </LinkPreview>
                   );
                 }
@@ -221,13 +249,21 @@ export default function Home() {
                     <LinkPreview
                       key={item.key}
                       url={item.href}
-                      className={`inline font-normal ${linkClass}`}
+                      className={navIconClass}
                       width={240}
                       height={150}
                       isStatic
                       imageSrc={item.preview}
                     >
-                      <span style={linkStyle}>{item.label}</span>
+                      <span
+                        className="inline-flex size-full items-center justify-center"
+                        style={navIconStyle}
+                        aria-label={item.label}
+                        title={item.label}
+                      >
+                        <Icon size={18} aria-hidden />
+                        <IconLabel label={item.label} />
+                      </span>
                     </LinkPreview>
                   );
                 }
@@ -238,10 +274,13 @@ export default function Home() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={linkClass}
-                    style={linkStyle}
+                    className={navIconClass}
+                    style={navIconStyle}
+                    aria-label={item.label}
+                    title={item.label}
                   >
-                    {item.label}
+                    <Icon size={18} aria-hidden />
+                    <IconLabel label={item.label} />
                   </a>
                 );
               })}
