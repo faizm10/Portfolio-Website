@@ -18,7 +18,14 @@ type RawPhoto = {
   height: number;
 };
 
-export default function PhotosPage() {
+type PhotosPageProps = {
+  searchParams: Promise<{ place?: string }>;
+};
+
+export default async function PhotosPage({ searchParams }: PhotosPageProps) {
+  const { place: placeParam } = await searchParams;
+  const placeFilter = placeParam?.trim() || null;
+
   const allPhotos = (photosData as RawPhoto[])
     .filter((p) => p.filename)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -30,39 +37,58 @@ export default function PhotosPage() {
       height: photo.height,
     }));
 
+  const photos = placeFilter
+    ? allPhotos.filter((p) => p.location === placeFilter)
+    : allPhotos;
+
   return (
     <main className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-24 pt-10 md:px-8 md:pt-12">
       <div className="mx-auto max-w-xl">
         <Link
-          href="/"
+          href={placeFilter ? "/travel" : "/"}
           className="text-sm lowercase transition-opacity hover:opacity-70"
           style={{ color: "var(--ink-2)" }}
         >
-          ← home
+          {placeFilter ? "← travel" : "← home"}
         </Link>
 
         <h1
           className="mt-8 text-2xl font-semibold tracking-tight lowercase md:text-[1.75rem]"
           style={{ color: "var(--ink)" }}
         >
-          photos
+          {placeFilter ? placeFilter.toLowerCase() : "photos"}
         </h1>
         <p
           className="mt-3 text-[15px] lowercase leading-7 md:text-base md:leading-8"
           style={{ color: "var(--ink-2)" }}
         >
-          sidequesting at its finest
+          {placeFilter ? (
+            <>
+              {photos.length} {photos.length === 1 ? "photo" : "photos"} ·{" "}
+              <Link
+                href="/photos"
+                className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+                style={{ color: "var(--ink)" }}
+              >
+                all photos
+              </Link>
+            </>
+          ) : (
+            "sidequesting at its finest"
+          )}
         </p>
 
         <div className="mt-10">
-          {allPhotos.length > 0 ? (
-            <PhotoGrid photos={allPhotos} />
+          {photos.length > 0 ? (
+            <PhotoGrid photos={photos} />
           ) : (
             <p
               className="text-[15px] lowercase italic"
               style={{ color: "var(--ink-3)" }}
             >
-              stay tuned!
+              {placeFilter
+                ? "no photos for this place yet."
+                : "stay tuned!"}
             </p>
           )}
         </div>
