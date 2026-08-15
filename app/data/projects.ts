@@ -96,35 +96,3 @@ export const showcaseProjects: ProjectType[] = [
   },
 ];
 
-/** Extra resume-only projects (not on homepage showcase). */
-export const resumeOnlyProjects = [
-  {
-    name: "UoG webring",
-    url: "https://github.com/faizm10/uog-webring",
-    detail: "Community webring for U of G CS & SWE students.",
-  },
-  {
-    name: "TripLoom",
-    url: "https://github.com/faizm10/TripLoom",
-    detail: "AI-assisted travel planner for flights, transit, and itineraries.",
-  },
-  {
-    name: "Foco",
-    url: "https://github.com/faizm10/jachacks26",
-    detail: "2nd place at JAC Hacks 2026",
-  },
-] as const;
-
-/** Resume “Selected projects” — showcase + extras. */
-export function resumeProjects() {
-  return [
-    ...showcaseProjects
-      .filter((p) => p.resumeDetail)
-      .map((p) => ({
-        name: p.resumeName ?? p.name,
-        url: p.url,
-        detail: p.resumeDetail!,
-      })),
-    ...resumeOnlyProjects,
-  ];
-}

@@ -10,7 +10,6 @@ export const site = {
   githubUsername: "faizm10",
   brandIcon: "/jsl.png",
   ogImage: "/banner.png",
-  resumePdfDownloadName: "faiz-mustansar-resume-2026.pdf",
   socials: {
     linkedin: "https://www.linkedin.com/in/faizmustansar/",
     github: "https://github.com/faizm10",
@@ -55,7 +54,6 @@ export const site = {
       "portfolio of faiz mustansar— computer science at the university of guelph.",
   },
   pageTitles: {
-    contract: "contract · faiz mustansar",
     notFoundDescription: "this page does not exist on faizm.ca",
   },
   /** Homepage copy (austin-style minimal bio). */

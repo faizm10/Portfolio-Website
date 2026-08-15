@@ -19,7 +19,7 @@ export {
   bioInternships,
   orgs,
 } from "./experience";
-export { showcaseProjects, resumeProjects } from "./projects";
+export { showcaseProjects } from "./projects";
 export {
   hackathonEntries,
   totalHackathons,
