@@ -59,11 +59,8 @@ export const site = {
   /** Homepage copy (austin-style minimal bio). */
   homepage: {
     location: "toronto",
-    /**
-     * Fall 2026 status — swap this string when plans firm up.
-     * Options considered: gap term / travelling / building.
-     */
-    currentFocus: "on a gap term — travelling and building",
+    /** Fall 2026 status — swap when plans firm up. */
+    currentFocus: "building",
     interests:
       "interested in full-stack and product engineering, shipping consumer apps, and building in public",
     hobbiesLead: "beyond software, my interests include",
