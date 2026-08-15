@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Newsreader, Inter, Pacifico } from "next/font/google";
 import CommandPalette from "./components/Cmd";
+import LoadingGate from "./components/LoadingGate";
 import SiteFooter from "./components/SiteFooter";
 import { site, siteHostname } from "@/app/data/site";
 
@@ -84,11 +85,13 @@ export default function RootLayout({
         className={`${inter.className} min-h-screen w-full bg-white text-neutral-900 antialiased`}
         suppressHydrationWarning
       >
-        <div className="min-h-screen w-full bg-white">
-          {children}
-          <CommandPalette />
-        </div>
-        <SiteFooter />
+        <LoadingGate>
+          <div className="min-h-screen w-full bg-white">
+            {children}
+            <CommandPalette />
+          </div>
+          <SiteFooter />
+        </LoadingGate>
       </body>
     </html>
   );
