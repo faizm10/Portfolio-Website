@@ -302,9 +302,8 @@ export const homepageUpTo: UpToItem[] = [
       label: orgs.tangerine.title,
       preview: orgs.tangerine.preview,
     },
-    after: "in toronto",
     then: {
-      before: "· and",
+      before: "and",
       entity: {
         type: "org",
         href: orgs.td.href,
