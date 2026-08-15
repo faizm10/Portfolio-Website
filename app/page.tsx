@@ -301,7 +301,7 @@ export default function Home() {
               className="mt-3 text-[14px] lowercase tracking-wide md:text-[15px]"
               style={{ color: "var(--ink-3)" }}
             >
-              cs @ guelph · {site.homepage.location} · {site.homepage.currentFocus}
+              cs @ guelph · {site.homepage.currentFocus}
             </motion.p>
 
             <motion.div
