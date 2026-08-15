@@ -88,7 +88,7 @@ export const experienceItems: HomepageExperience[] = [
     logo: orgs.tangerine.icon,
     color: "#FF6A00",
     link: orgs.tangerine.href,
-    present: true,
+    present: false,
     incoming: false,
     preview: orgs.tangerine.preview,
   },
@@ -253,10 +253,10 @@ export const homepageExperiences: HomepageExperience[] = [
   ...schoolItems,
 ];
 
-/** Bio line: currently @ X · prev Y & Z */
+/** Bio line: no current internship — tangerine is most recent previous. */
 export const bioInternships = {
-  current: orgs.tangerine,
-  previous: [orgs.td, orgs.sertus] as const,
+  current: null,
+  previous: [orgs.tangerine, orgs.td, orgs.sertus] as const,
 };
 
 /** Concise “what i'm up to” rows — homepage only. */
@@ -294,7 +294,7 @@ export type UpToItem = {
 export const homepageUpTo: UpToItem[] = [
   {
     id: "work",
-    before: "swe intern at",
+    before: "previously swe intern at",
     entity: {
       type: "org",
       href: orgs.tangerine.href,
@@ -302,9 +302,8 @@ export const homepageUpTo: UpToItem[] = [
       label: orgs.tangerine.title,
       preview: orgs.tangerine.preview,
     },
-    after: "in toronto",
     then: {
-      before: "· prev @",
+      before: "and",
       entity: {
         type: "org",
         href: orgs.td.href,

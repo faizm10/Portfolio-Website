@@ -59,6 +59,8 @@ export const site = {
   /** Homepage copy (austin-style minimal bio). */
   homepage: {
     location: "toronto",
+    /** Fall 2026 status — swap when plans firm up. */
+    currentFocus: "building",
     interests:
       "interested in full-stack and product engineering, shipping consumer apps, and building in public",
     hobbiesLead: "beyond software, my interests include",
