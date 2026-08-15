@@ -6,6 +6,7 @@ export const hackathonEntries = [
   { role: "hacker" },
   { role: "hacker" },
   { role: "hacker" },
+  { role: "hacker" },
   { role: "judge" },
   { role: "hacker" },
   { role: "hacker", awards: 1 },

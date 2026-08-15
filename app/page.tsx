@@ -2,17 +2,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
 import { motion } from "motion/react";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { homepageHobbies, homepageSocials, site } from "@/app/data/site";
-import { bioInternships, homepageExperiences } from "@/app/data/experience";
+import { homepageExperiences, homepageUpTo } from "@/app/data/experience";
 import { showcaseProjects, type ProjectType } from "@/app/data/projects";
 import ProjectsGrid from "./components/ProjectsGrid";
 import ExperienceList from "./components/ExperienceList";
-import TravelMap from "./components/TravelMap";
 import SketchBackground from "./components/SketchBackground";
 import { Gradients } from "./components/Gradients";
-import GitHubContributionsPreview from "./components/GitHubContributionsPreview";
+import GitHubContributionsPreview, {
+  preloadGitHubContributions,
+} from "./components/GitHubContributionsPreview";
+import { socialIcons, type SocialIconKey } from "./components/SocialIcons";
 
 function OrgInline({
   href,
@@ -29,15 +32,17 @@ function OrgInline({
 }) {
   const content = (
     <span className="inline-flex items-baseline gap-1.5 underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70">
+      <span className="font-semibold" style={{ color: "var(--ink)" }}>
+        {label}
+      </span>
       <Image
         src={icon}
         alt=""
-        width={24}
-        height={24}
-        className="relative top-[2px] size-6 rounded-sm object-contain"
+        width={20}
+        height={20}
+        className="relative top-[3px] size-5 rounded-[4px] object-contain"
         aria-hidden
       />
-      <span>{label}</span>
     </span>
   );
 
@@ -82,7 +87,9 @@ function ProjectInline({ project }: { project: ProjectType }) {
       isStatic
       imageSrc={project.banner}
     >
-      <span style={{ color: "var(--ink)" }}>{project.name}</span>
+      <span className="font-semibold" style={{ color: "var(--ink)" }}>
+        {project.name}
+      </span>
     </LinkPreview>
   );
 }
@@ -105,17 +112,54 @@ function ExternalProjectInline({
       isStatic
       imageSrc={imageSrc}
     >
-      <span style={{ color: "var(--ink)" }}>{label}</span>
+      <span className="font-semibold" style={{ color: "var(--ink)" }}>
+        {label}
+      </span>
     </LinkPreview>
   );
 }
 
 function Metric({ children }: { children: React.ReactNode }) {
   return (
-    <strong className="font-extrabold" style={{ color: "var(--ink)" }}>
+    <strong className="font-semibold" style={{ color: "var(--ink)" }}>
       {children}
     </strong>
   );
+}
+
+function UpToEntity({
+  entity,
+}: {
+  entity: (typeof homepageUpTo)[number]["entity"];
+}) {
+  if (entity.type === "org") {
+    return (
+      <OrgInline
+        href={entity.href}
+        icon={entity.icon}
+        label={entity.label}
+        preview={entity.preview}
+      />
+    );
+  }
+
+  if (entity.project) {
+    const project = showcaseProjects.find((p) => p.slug === entity.project);
+    if (!project) return null;
+    return <ProjectInline project={project} />;
+  }
+
+  if (entity.external) {
+    return (
+      <ExternalProjectInline
+        href={entity.external.href}
+        label={entity.external.label}
+        imageSrc={entity.external.imageSrc}
+      />
+    );
+  }
+
+  return null;
 }
 
 const fadeUp = {
@@ -128,13 +172,9 @@ const fadeUp = {
 };
 
 export default function Home() {
-  const school = site.schools.guelph;
-  const waterloo = site.schools.waterloo;
-  const recentWork = bioInternships.previous[0]; // tangerine
-  const earlierWork = bioInternships.previous[1]; // td bank
-  const topProject = showcaseProjects.find((p) => p.slug === "uoguelphcourses")!;
-  const octreeProject = showcaseProjects.find((p) => p.slug === "octree")!;
-  const transitProject = showcaseProjects.find((p) => p.slug === "transit-flow")!;
+  useEffect(() => {
+    preloadGitHubContributions();
+  }, []);
 
   return (
     <div className="relative min-h-screen w-full bg-white">
@@ -144,12 +184,11 @@ export default function Home() {
         {[
           ...new Set(
             [
-              school.preview,
-              waterloo.preview,
-              recentWork.preview,
-              earlierWork.preview,
               ...homepageExperiences.map((e) => e.preview),
               ...homepageSocials.map((s) => s.preview),
+              ...homepageUpTo
+                .filter((i) => i.entity.type === "org")
+                .map((i) => (i.entity.type === "org" ? i.entity.preview : null)),
             ].filter(Boolean) as string[],
           ),
         ].map((src) => (
@@ -158,268 +197,189 @@ export default function Home() {
       </div>
 
       <main className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-24 pt-10 md:px-8 md:pt-12">
-        <div id="about" className="mx-auto max-w-xl scroll-mt-24">
-          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
-            <motion.h1
-              custom={0}
+        <div className="mx-auto w-full max-w-xl">
+          <section id="about" className="scroll-mt-24">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
+              <motion.h1
+                custom={0}
+                variants={fadeUp}
+                initial="hidden"
+                animate="show"
+                className="font-[family-name:var(--font-newsreader)] text-[1.75rem] font-medium tracking-tight lowercase md:text-[2rem]"
+                style={{ color: "var(--ink)" }}
+              >
+                {site.name}
+              </motion.h1>
+
+              <motion.nav
+                custom={1}
+                variants={fadeUp}
+                initial="hidden"
+                animate="show"
+                className="ml-auto flex flex-wrap items-center justify-end gap-x-4 gap-y-2 text-[15px] lowercase"
+                aria-label="social links"
+              >
+                <Link
+                  href="/blog"
+                  className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+                  style={{ color: "var(--ink)" }}
+                >
+                  blog
+                </Link>
+                <Link
+                  href="/photos"
+                  className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+                  style={{ color: "var(--ink)" }}
+                >
+                  photos
+                </Link>
+                {homepageSocials.map((item) => {
+                  const Icon = socialIcons[item.key as SocialIconKey];
+                  const iconClass =
+                    "inline-flex items-center justify-center transition-opacity hover:opacity-70";
+                  const iconStyle = { color: "var(--ink)" };
+
+                  if (item.key === "github") {
+                    return (
+                      <LinkPreview
+                        key={item.key}
+                        url={item.href}
+                        className={`inline font-normal ${iconClass}`}
+                        width={520}
+                        height={138}
+                        isStatic
+                        imageSrc={item.preview ?? "/previews/github.jpeg"}
+                        previewContent={<GitHubContributionsPreview />}
+                      >
+                        <span style={iconStyle} aria-label={item.label}>
+                          <Icon size={18} />
+                        </span>
+                      </LinkPreview>
+                    );
+                  }
+
+                  if (item.preview) {
+                    return (
+                      <LinkPreview
+                        key={item.key}
+                        url={item.href}
+                        className={`inline font-normal ${iconClass}`}
+                        width={240}
+                        height={150}
+                        isStatic
+                        imageSrc={item.preview}
+                      >
+                        <span style={iconStyle} aria-label={item.label}>
+                          <Icon size={18} />
+                        </span>
+                      </LinkPreview>
+                    );
+                  }
+
+                  return (
+                    <a
+                      key={item.key}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={iconClass}
+                      style={iconStyle}
+                      aria-label={item.label}
+                    >
+                      <Icon size={18} />
+                    </a>
+                  );
+                })}
+              </motion.nav>
+            </div>
+
+            <motion.p
+              custom={2}
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              className="text-2xl font-semibold tracking-tight lowercase md:text-[1.75rem]"
-              style={{ color: "var(--ink)" }}
+              className="mt-3 text-[14px] lowercase tracking-wide md:text-[15px]"
+              style={{ color: "var(--ink-3)" }}
             >
-              {site.name}
-            </motion.h1>
+              cs @ guelph · {site.homepage.location} · {site.homepage.currentFocus}
+            </motion.p>
 
-            <motion.nav
-              custom={1}
+            <motion.div
+              custom={3}
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              className="ml-auto flex flex-wrap justify-end gap-x-5 gap-y-2 text-[15px] lowercase"
-              aria-label="social links"
+              className="mt-10"
             >
-              <Link
-                href="/blog"
-                className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
-                style={{ color: "var(--ink)" }}
-              >
-                blog
-              </Link>
-              <Link
-                href="/photos"
-                className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
-                style={{ color: "var(--ink)" }}
-              >
-                photos
-              </Link>
-              {homepageSocials.map((item) => {
-                const linkClass =
-                  "underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70";
-                const linkStyle = { color: "var(--ink)" };
+              <h2 className="up-to-title">what i&apos;m up to...</h2>
+              <ul className="build-list lowercase">
+                {homepageUpTo.map((item) => (
+                  <li key={item.id}>
+                    <span className="build-arrow" aria-hidden>
+                      →
+                    </span>
+                    <span>
+                      {item.before} <UpToEntity entity={item.entity} />
+                      {item.after ? <> {item.after}</> : null}
+                      {item.then ? (
+                        <>
+                          {" "}
+                          {item.then.before}{" "}
+                          <UpToEntity entity={item.then.entity} />
+                        </>
+                      ) : null}
+                      {item.metrics?.map((m, i) =>
+                        /^\d/.test(m) ? (
+                          <span key={`${item.id}-m-${i}`}>
+                            {" "}
+                            <Metric>{m}</Metric>
+                          </span>
+                        ) : (
+                          <span key={`${item.id}-m-${i}`}> {m}</span>
+                        ),
+                      )}
+                    </span>
+                  </li>
+                ))}
+                <li>
+                  <span className="build-arrow" aria-hidden>
+                    →
+                  </span>
+                  <span>
+                    {site.homepage.hobbiesLead}{" "}
+                    {homepageHobbies.map((hobby, i) => {
+                      const sep =
+                        i === homepageHobbies.length - 1
+                          ? ""
+                          : i === homepageHobbies.length - 2
+                            ? ", and "
+                            : ", ";
 
-                if (item.key === "github") {
-                  return (
-                    <LinkPreview
-                      key={item.key}
-                      url={item.href}
-                      className={`inline font-normal ${linkClass}`}
-                      width={520}
-                      height={138}
-                      isStatic
-                      imageSrc={item.preview ?? "/previews/github.jpeg"}
-                      previewContent={<GitHubContributionsPreview />}
-                    >
-                      <span style={linkStyle}>{item.label}</span>
-                    </LinkPreview>
-                  );
-                }
+                      return (
+                        <span key={hobby.key}>
+                          <Link
+                            href={hobby.href}
+                            className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+                            style={{ color: "var(--ink)" }}
+                          >
+                            {hobby.label}
+                          </Link>
+                          {sep}
+                        </span>
+                      );
+                    })}
+                  </span>
+                </li>
+              </ul>
+              <p className="up-to-more lowercase">
+                see more of what i&apos;m working on below ↓
+              </p>
+            </motion.div>
+          </section>
 
-                if (item.preview) {
-                  return (
-                    <LinkPreview
-                      key={item.key}
-                      url={item.href}
-                      className={`inline font-normal ${linkClass}`}
-                      width={240}
-                      height={150}
-                      isStatic
-                      imageSrc={item.preview}
-                    >
-                      <span style={linkStyle}>{item.label}</span>
-                    </LinkPreview>
-                  );
-                }
-
-                return (
-                  <a
-                    key={item.key}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={linkClass}
-                    style={linkStyle}
-                  >
-                    {item.label}
-                  </a>
-                );
-              })}
-            </motion.nav>
+          <div className="mt-16 md:mt-20">
+            <ExperienceList />
           </div>
-
-          <motion.p
-            custom={2}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="mt-8 text-[15px] leading-7 lowercase md:text-base md:leading-8"
-            style={{ color: "var(--ink-2)" }}
-          >
-            i study computer science at{" "}
-            <OrgInline
-              href={school.href}
-              icon={school.icon}
-              label={school.label}
-              preview={school.preview}
-              external={school.external}
-            />
-            , and spent three terms at{" "}
-            <OrgInline
-              href={waterloo.href}
-              icon={waterloo.icon}
-              label={waterloo.label}
-              preview={waterloo.preview}
-              external={waterloo.external}
-            />
-            . currently {site.homepage.currentFocus}. previously at{" "}
-            <OrgInline
-              href={recentWork.href}
-              icon={recentWork.icon}
-              label={recentWork.title}
-              preview={recentWork.preview}
-            />
-            , and before that at{" "}
-            <OrgInline
-              href={earlierWork.href}
-              icon={earlierWork.icon}
-              label={earlierWork.title}
-              preview={earlierWork.preview}
-            />
-            .
-          </motion.p>
-
-          <motion.p
-            custom={3}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="mt-5 text-[15px] leading-7 lowercase md:text-base md:leading-8"
-            style={{ color: "var(--ink-2)" }}
-          >
-            {site.homepage.interests}
-          </motion.p>
-
-
-          <motion.div
-            custom={4}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="mt-6 text-[15px] leading-7 lowercase md:text-base md:leading-7"
-            style={{ color: "var(--ink-2)" }}
-          >
-            <p className="build-list-title">
-              what i&apos;ve been building:
-            </p>
-            <ul className="build-list">
-              <li>
-                <span className="build-arrow">↳</span>
-                <span>
-                  shipped <ProjectInline project={topProject} />, course search
-                  and reviews for the university of guelph:{" "}
-                  <Metric>5k+</Metric>{" "}
-                  students,{" "}
-                  <Metric>75k+</Metric>{" "}
-                  views
-                </span>
-              </li>
-              <li>
-                <span className="build-arrow">↳</span>
-                <span>
-                  contributed to <ProjectInline project={octreeProject} />, an
-                  open-source ai-powered latex editor:{" "}
-                  <Metric>2k+</Metric>{" "}
-                  users,{" "}
-                  <Metric>250+</Metric>{" "}
-                  github stars, <Metric>50+</Metric> forks
-                </span>
-              </li>
-              <li>
-                <span className="build-arrow">↳</span>
-                <span>
-                  built{" "}
-                  <ExternalProjectInline
-                    href="https://www.pitchpulse.ca/"
-                    label="pitchpulse"
-                    imageSrc="/previews/pitchpulse.png"
-                  />
-                  ,
-                  an ai-powered platform for world cup 2026:{" "}
-                  <Metric>300+</Metric>{" "}
-                  users <Metric>within 72 hours</Metric>
-                </span>
-              </li>
-              <li>
-                <span className="build-arrow">↳</span>
-                <span>
-                  built <ProjectInline project={transitProject} />, a transit
-                  planning tool:{" "}
-                  <Metric>300+</Metric>{" "}
-                  users
-                </span>
-              </li>
-            </ul>
-          </motion.div>
-
-          <motion.p
-            custom={5}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="mt-5 text-[15px] leading-7 lowercase md:text-base md:leading-8"
-            style={{ color: "var(--ink-2)" }}
-          >
-            {site.homepage.hobbiesLead}{" "}
-            {homepageHobbies.map((hobby, i) => {
-              const sep =
-                i === homepageHobbies.length - 1
-                  ? ""
-                  : i === homepageHobbies.length - 2
-                    ? ", and "
-                    : ", ";
-
-              return (
-                <span key={hobby.key}>
-                  <Link
-                    href={hobby.href}
-                    className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
-                    style={{ color: "var(--ink)" }}
-                  >
-                    {hobby.label}
-                  </Link>
-                  {sep}
-                </span>
-              );
-            })}
-          </motion.p>
-
-        </div>
-
-        {/* <motion.div
-          custom={7}
-          variants={fadeUp}
-          initial="hidden"
-          animate="show"
-          className="mx-auto mt-14 max-w-xl md:mt-16"
-        >
-          <Image
-            src="/mount-fuji.png"
-            alt="pixel art of mount fuji at sunset with a pagoda and cherry blossoms"
-            width={1024}
-            height={682}
-            className="h-auto w-full"
-            style={{ imageRendering: "pixelated" }}
-            sizes="(max-width: 576px) 100vw, 576px"
-            priority={false}
-          />
-        </motion.div> */}
-
-        <div className="mt-20 md:mt-28">
-          <ExperienceList />
-        </div>
-
-        <div className="mt-20 md:mt-28">
-          <TravelMap />
         </div>
 
         <div className="mt-20 md:mt-28">

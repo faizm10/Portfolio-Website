@@ -6,49 +6,30 @@ import { useRouter } from "next/navigation";
 import { MDXProvider } from "@mdx-js/react";
 import { posts } from "@/app/posts";
 import "./codeblocks.css";
-// projects
-import Flowboard from "./mdx/flowboard.mdx";
 import Uoguelphcourses from "./mdx/uoguelphcourses.mdx";
-// notes
 import UWReflection from "./mdx/uw-reflection.mdx";
 import Arcki from "./mdx/arcki.mdx";
 import TransitFlow from "./mdx/transit-flow.mdx";
-import UogWebring from "./mdx/uog-webring.mdx";
-import TripLoom from "./mdx/triploom.mdx";
-import Echolag from "./mdx/echolag.mdx";
 import Octree from "./mdx/octree.mdx";
-import Converge from "./mdx/converge.mdx";
 import UoGReflection from "./mdx/uogreflection.mdx";
 import Footy from "./mdx/footy.mdx";
 import Hackathons from "./mdx/hackathons.mdx";
 import SoccerStats from "./mdx/soccer-stats.mdx";
-import CodeKeeper from "./mdx/code-keeper.mdx";
-import TextAnxiety from "./mdx/text-anxiety.mdx";
-import Htv from "./mdx/htv.mdx";
 import Jachacks from "./mdx/jachacks.mdx";
-import hc26 from "./mdx/hc26.mdx"
-import Terrahacks from "./mdx/terrahacks.mdx";
+import hc26 from "./mdx/hc26.mdx";
+
 const MDX_MAP: Record<string, ComponentType> = {
   uwreflection: UWReflection,
-  flowboard: Flowboard,
   uoguelphcourses: Uoguelphcourses,
   arcki: Arcki,
   "transit-flow": TransitFlow,
-  "uog-webring": UogWebring,
-  triploom: TripLoom,
   octree: Octree,
-  converge: Converge,
-  echolag: Echolag,
   uogreflection: UoGReflection,
   footy: Footy,
   hackathons: Hackathons,
   "soccer-stats": SoccerStats,
-  "code-keeper": CodeKeeper,
-  "text-anxiety": TextAnxiety,
-  htv: Htv,
   jachacks: Jachacks,
   hc26: hc26,
-  terrahacks: Terrahacks,
 };
 
 export default function SlugPageClient({ slug }: { slug: string }) {

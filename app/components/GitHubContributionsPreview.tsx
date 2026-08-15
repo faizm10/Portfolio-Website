@@ -19,7 +19,50 @@ const STEP = CELL + GAP;
 const LEFT_OFFSET = 24;
 const TOP_OFFSET = 18;
 const CELL_EMPTY = "#ebedf0";
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const MONTHS = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+const SKELETON_WEEKS = 53;
+
+type CachedPayload = { year: number; calendar: CalendarData };
+
+let cached: CachedPayload | null = null;
+let inflight: Promise<CachedPayload> | null = null;
+
+function loadContributions(): Promise<CachedPayload> {
+  if (cached) return Promise.resolve(cached);
+  if (!inflight) {
+    inflight = fetch("/api/github-contributions")
+      .then(async (res) => {
+        if (!res.ok) throw new Error(`status ${res.status}`);
+        return res.json() as Promise<CachedPayload>;
+      })
+      .then((json) => {
+        cached = json;
+        return json;
+      })
+      .finally(() => {
+        inflight = null;
+      });
+  }
+  return inflight;
+}
+
+/** Warm the contributions cache so the first hover can skip a cold fetch. */
+export function preloadGitHubContributions() {
+  void loadContributions().catch(() => {});
+}
 
 function cellColor(count: number) {
   if (count === 0) return CELL_EMPTY;
@@ -29,20 +72,72 @@ function cellColor(count: number) {
   return "#216e39";
 }
 
+function ContributionsSkeleton() {
+  const width = LEFT_OFFSET + SKELETON_WEEKS * STEP;
+  const height = TOP_OFFSET + 7 * STEP;
+
+  return (
+    <div
+      className="flex h-full w-full flex-col rounded-lg bg-white px-3 py-2.5"
+      aria-hidden
+    >
+      <div className="flex items-center justify-between gap-4">
+        <div className="h-3.5 w-44 animate-pulse rounded bg-neutral-100" />
+        <div className="h-3 w-20 animate-pulse rounded bg-neutral-100" />
+      </div>
+
+      <svg
+        width={width}
+        height={height}
+        viewBox={`0 0 ${width} ${height}`}
+        className="mt-2 block h-auto w-full flex-1"
+      >
+        {Array.from({ length: 12 }).map((_, index) => (
+          <rect
+            key={`m-${index}`}
+            x={LEFT_OFFSET + index * ((SKELETON_WEEKS * STEP) / 12)}
+            y={3}
+            width={14}
+            height={6}
+            rx={2}
+            className="animate-pulse"
+            fill="#f5f5f5"
+          />
+        ))}
+
+        {Array.from({ length: SKELETON_WEEKS }).map((_, weekIndex) =>
+          Array.from({ length: 7 }).map((__, dayIndex) => (
+            <rect
+              key={`${weekIndex}-${dayIndex}`}
+              x={LEFT_OFFSET + weekIndex * STEP}
+              y={TOP_OFFSET + dayIndex * STEP}
+              width={CELL}
+              height={CELL}
+              rx={2}
+              className="animate-pulse"
+              fill="#f0f0f0"
+            />
+          )),
+        )}
+      </svg>
+    </div>
+  );
+}
+
 export default function GitHubContributionsPreview() {
-  const [data, setData] = useState<CalendarData | null>(null);
-  const [year, setYear] = useState(new Date().getFullYear());
+  const [data, setData] = useState<CalendarData | null>(
+    () => cached?.calendar ?? null,
+  );
+  const [year, setYear] = useState(
+    () => cached?.year ?? new Date().getFullYear(),
+  );
   const [error, setError] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
 
-    fetch("/api/github-contributions")
-      .then(async (res) => {
-        if (!res.ok) throw new Error(`status ${res.status}`);
-        return res.json();
-      })
-      .then((json: { year: number; calendar: CalendarData }) => {
+    loadContributions()
+      .then((json) => {
         if (cancelled) return;
         setYear(json.year);
         setData(json.calendar);
@@ -118,16 +213,7 @@ export default function GitHubContributionsPreview() {
   }
 
   if (!chart) {
-    return (
-      <div className="h-full w-full rounded-lg bg-white p-4">
-        <div className="h-3 w-36 rounded bg-neutral-100" />
-        <div className="mt-4 grid grid-flow-col grid-rows-7 gap-1">
-          {Array.from({ length: 52 * 7 }).map((_, index) => (
-            <span key={index} className="size-2 rounded-[2px] bg-neutral-100" />
-          ))}
-        </div>
-      </div>
-    );
+    return <ContributionsSkeleton />;
   }
 
   return (
