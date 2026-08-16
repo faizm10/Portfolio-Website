@@ -106,6 +106,128 @@
   }
 
   --animate-ken-burns: ken-burns 28s ease-in-out infinite;
+
+  /* Loading screen: the tired face nods off, then catches itself. */
+  @keyframes nod-off {
+    0%,
+    12% {
+      transform: rotate(0deg) translateY(0);
+    }
+    45% {
+      transform: rotate(7deg) translateY(7px);
+    }
+    58% {
+      transform: rotate(9deg) translateY(10px);
+    }
+    66% {
+      transform: rotate(-3deg) translateY(-3px);
+    }
+    78% {
+      transform: rotate(1deg) translateY(1px);
+    }
+    100% {
+      transform: rotate(0deg) translateY(0);
+    }
+  }
+
+  --animate-nod-off: nod-off 3.4s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+
+  @keyframes drowsy-breathe {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.035);
+    }
+  }
+
+  --animate-drowsy-breathe: drowsy-breathe 2.6s ease-in-out infinite;
+
+  @keyframes zzz-drift {
+    0% {
+      opacity: 0;
+      transform: translate(0, 0) scale(0.6) rotate(-10deg);
+    }
+    18% {
+      opacity: 1;
+    }
+    70% {
+      opacity: 0.85;
+    }
+    100% {
+      opacity: 0;
+      transform: translate(18px, -42px) scale(1.15) rotate(12deg);
+    }
+  }
+
+  --animate-zzz-drift: zzz-drift 3s ease-out infinite;
+
+  @keyframes rest-shadow {
+    0%,
+    100% {
+      transform: scaleX(1);
+      opacity: 0.16;
+    }
+    58% {
+      transform: scaleX(1.18);
+      opacity: 0.09;
+    }
+  }
+
+  --animate-rest-shadow: rest-shadow 3.4s cubic-bezier(0.45, 0, 0.25, 1)
+    infinite;
+
+  /* Loading screen, working variant: a quicker hunched-over-the-keyboard bob. */
+  @keyframes desk-bob {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-3px) rotate(-1deg);
+    }
+    60% {
+      transform: translateY(1px) rotate(0.8deg);
+    }
+  }
+
+  --animate-desk-bob: desk-bob 1.15s ease-in-out infinite;
+
+  @keyframes think-dot {
+    0%,
+    70%,
+    100% {
+      opacity: 0.2;
+      transform: translateY(0);
+    }
+    35% {
+      opacity: 1;
+      transform: translateY(-3px);
+    }
+  }
+
+  --animate-think-dot: think-dot 1.4s ease-in-out infinite;
+
+  /* Just the arm, pivoting at the shoulder so the hand taps the keyboard.
+     Faster than desk-bob on purpose, so the two rhythms stay distinct. */
+  @keyframes arm-tap {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    30% {
+      transform: rotate(-2.6deg);
+    }
+    55% {
+      transform: rotate(1.4deg);
+    }
+    80% {
+      transform: rotate(-0.9deg);
+    }
+  }
+
+  --animate-arm-tap: arm-tap 0.62s ease-in-out infinite;
 }
 
 .animation-delay-2000 {

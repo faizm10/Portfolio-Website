@@ -45,3 +45,9 @@ yarn-error.log*
 next-env.d.ts
 .gstack/
 .env*
+
+# local MCP server config (these files hold plaintext API keys)
+.mcp.json
+.vscode/mcp.json
+.cursor/mcp.json
+.claude/settings.local.json
