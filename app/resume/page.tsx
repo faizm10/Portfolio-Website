@@ -31,12 +31,15 @@ const jsonLd = {
   },
 };
 
+const linkClass =
+  "transition-opacity hover:opacity-70";
+
 function SectionHeading({ id, children }: { id: string; children: string }) {
   return (
     <h2
       id={id}
-      className="mb-3 border-b pb-1 text-[11px] font-medium uppercase tracking-[0.2em]"
-      style={{ color: "var(--ink)", borderColor: "var(--border)" }}
+      className="mb-4 text-xs font-medium uppercase tracking-[0.18em]"
+      style={{ color: "var(--ink-3)" }}
     >
       {children}
     </h2>
@@ -59,7 +62,7 @@ function MetaRow({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="underline decoration-[var(--ink-3)] underline-offset-[3px] transition-opacity hover:opacity-70"
+      className={linkClass}
     >
       {left}
     </a>
@@ -70,14 +73,14 @@ function MetaRow({
   return (
     <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
       <span
-        className={strong ? "font-semibold" : "font-medium"}
+        className={strong ? "font-medium" : undefined}
         style={{ color: "var(--ink)" }}
       >
         {leftEl}
       </span>
       <span
         className="shrink-0 text-[13px] tabular-nums sm:text-sm"
-        style={{ color: "var(--ink-2)" }}
+        style={{ color: "var(--ink-3)" }}
       >
         {right}
       </span>
@@ -88,13 +91,11 @@ function MetaRow({
 function Bullets({ items }: { items: readonly string[] }) {
   return (
     <ul
-      className="mt-2 list-disc space-y-1.5 pl-[1.1rem] text-[14px] leading-6 sm:text-[15px] sm:leading-7"
+      className="mt-2 space-y-1.5 text-[14px] leading-6 sm:text-[15px] sm:leading-7"
       style={{ color: "var(--ink-2)" }}
     >
       {items.map((item) => (
-        <li key={item} className="pl-1">
-          {item}
-        </li>
+        <li key={item}>{item}</li>
       ))}
     </ul>
   );
@@ -114,30 +115,22 @@ export default function ResumePage() {
         <div className="flex items-center justify-between gap-4 print:hidden">
           <Link
             href="/"
-            className="text-sm lowercase transition-opacity hover:opacity-70"
+            className={`text-sm lowercase ${linkClass}`}
             style={{ color: "var(--ink-2)" }}
           >
             ← home
           </Link>
-          <div className="flex items-center gap-4 text-sm lowercase">
-            <a
-              href={resumePdfHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline decoration-[var(--ink-3)] underline-offset-[3px] transition-opacity hover:opacity-70"
-              style={{ color: "var(--ink)" }}
-            >
-              view pdf
-            </a>
-            <a
-              href={resumePdfHref}
-              download={resumePdfFilename}
-              className="underline decoration-[var(--ink-3)] underline-offset-[3px] transition-opacity hover:opacity-70"
-              style={{ color: "var(--ink)" }}
-            >
-              download pdf
-            </a>
-          </div>
+          <a
+            href={resumePdfHref}
+            download={resumePdfFilename}
+            className="inline-flex min-h-9 items-center rounded-md px-3.5 text-sm lowercase transition-opacity hover:opacity-80"
+            style={{
+              backgroundColor: "var(--ink)",
+              color: "#fff",
+            }}
+          >
+            download pdf
+          </a>
         </div>
 
         <h1
@@ -150,15 +143,14 @@ export default function ResumePage() {
           className="mt-3 text-[15px] lowercase leading-7 md:text-base md:leading-8 print:hidden"
           style={{ color: "var(--ink-2)" }}
         >
-          the same document as the pdf — internships, projects, and what i&apos;ve
-          shipped
+          internships, projects, and what i&apos;ve shipped
         </p>
 
         <article
-          className="mt-10 print:mt-0"
+          className="mt-12 print:mt-0"
           aria-label={`${resume.name} resume`}
         >
-          <header className="text-center">
+          <header>
             <p
               className="font-[family-name:var(--font-newsreader)] text-[1.65rem] font-medium tracking-tight md:text-[1.85rem]"
               style={{ color: "var(--ink)" }}
@@ -166,34 +158,28 @@ export default function ResumePage() {
               {resume.name}
             </p>
             <p
-              className="mt-2 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[13px] sm:text-sm"
+              className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[13px] sm:text-sm"
               style={{ color: "var(--ink-2)" }}
             >
-              {resume.contacts.map((contact, i) => (
-                <span key={contact.href} className="inline-flex items-center">
-                  {i > 0 ? (
-                    <span className="mr-2" style={{ color: "var(--ink-3)" }} aria-hidden>
-                      ·
-                    </span>
-                  ) : null}
-                  <a
-                    href={contact.href}
-                    target={contact.href.startsWith("mailto:") ? undefined : "_blank"}
-                    rel={
-                      contact.href.startsWith("mailto:")
-                        ? undefined
-                        : "noopener noreferrer"
-                    }
-                    className="underline decoration-[var(--ink-3)] underline-offset-[3px] transition-opacity hover:opacity-70"
-                  >
-                    {contact.label}
-                  </a>
-                </span>
+              {resume.contacts.map((contact) => (
+                <a
+                  key={contact.href}
+                  href={contact.href}
+                  target={contact.href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={
+                    contact.href.startsWith("mailto:")
+                      ? undefined
+                      : "noopener noreferrer"
+                  }
+                  className={linkClass}
+                >
+                  {contact.label}
+                </a>
               ))}
             </p>
           </header>
 
-          <section className="mt-8" aria-labelledby="education-heading">
+          <section className="mt-12" aria-labelledby="education-heading">
             <SectionHeading id="education-heading">Education</SectionHeading>
             <MetaRow
               left={education.school}
@@ -204,9 +190,9 @@ export default function ResumePage() {
             <Bullets items={education.bullets} />
           </section>
 
-          <section className="mt-7" aria-labelledby="experience-heading">
+          <section className="mt-10" aria-labelledby="experience-heading">
             <SectionHeading id="experience-heading">Experience</SectionHeading>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-7">
               {resume.experience.map((role) => (
                 <div key={`${role.company}-${role.dates}`}>
                   <MetaRow
@@ -225,42 +211,42 @@ export default function ResumePage() {
             </div>
           </section>
 
-          <section className="mt-7" aria-labelledby="projects-heading">
+          <section className="mt-10" aria-labelledby="projects-heading">
             <SectionHeading id="projects-heading">Projects</SectionHeading>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-7">
               {resume.projects.map((project) => (
                 <div key={project.name}>
                   <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
                     <p style={{ color: "var(--ink)" }}>
-                      <span className="font-semibold">{project.name}</span>
-                      <span style={{ color: "var(--ink-2)" }}>
+                      <span className="font-medium">{project.name}</span>
+                      <span style={{ color: "var(--ink-3)" }}>
                         {" "}
-                        – {project.subtitle}
+                        {project.subtitle}
                       </span>
                     </p>
-                    <p
-                      className="text-[13px] sm:text-sm"
+                    <a
+                      href={project.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`text-[13px] sm:text-sm ${linkClass}`}
                       style={{ color: "var(--ink-2)" }}
                     >
-                      <a
-                        href={project.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline decoration-[var(--ink-3)] underline-offset-[3px] transition-opacity hover:opacity-70"
-                      >
-                        {project.linkLabel}
-                      </a>
-                      <span aria-hidden> | </span>
-                      <span>{project.stack}</span>
-                    </p>
+                      {project.linkLabel}
+                    </a>
                   </div>
+                  <p
+                    className="mt-0.5 text-[13px] sm:text-sm"
+                    style={{ color: "var(--ink-3)" }}
+                  >
+                    {project.stack}
+                  </p>
                   <Bullets items={project.bullets} />
                 </div>
               ))}
             </div>
           </section>
 
-          <section className="mt-7" aria-labelledby="leadership-heading">
+          <section className="mt-10" aria-labelledby="leadership-heading">
             <SectionHeading id="leadership-heading">Leadership</SectionHeading>
             <MetaRow
               left={leadership.title}
@@ -275,19 +261,19 @@ export default function ResumePage() {
             <Bullets items={leadership.bullets} />
           </section>
 
-          <section className="mt-7" aria-labelledby="skills-heading">
-            <SectionHeading id="skills-heading">Technical Skills</SectionHeading>
+          <section className="mt-10" aria-labelledby="skills-heading">
+            <SectionHeading id="skills-heading">Skills</SectionHeading>
             <dl className="flex flex-col gap-2 text-[14px] leading-6 sm:text-[15px] sm:leading-7">
               {resume.skills.map((group) => (
                 <div key={group.label}>
                   <dt
-                    className="inline font-semibold"
+                    className="inline font-medium"
                     style={{ color: "var(--ink)" }}
                   >
-                    {group.label}:
-                  </dt>{" "}
+                    {group.label}
+                  </dt>
                   <dd
-                    className="inline"
+                    className="mt-0.5 block"
                     style={{ color: "var(--ink-2)" }}
                   >
                     {group.items}
