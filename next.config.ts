@@ -30,6 +30,15 @@ const nextConfig: NextConfig = {
           { key: 'Accept-Ranges', value: 'bytes' },
         ],
       },
+      {
+        source: '/resume.pdf',
+        headers: [
+          {
+            key: 'Content-Disposition',
+            value: 'inline; filename="FaizMustansarResume.pdf"',
+          },
+        ],
+      },
     ];
   },
 };

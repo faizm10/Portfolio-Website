@@ -233,6 +233,13 @@ export default function Home() {
                 >
                   photos
                 </Link>
+                <Link
+                  href="/resume"
+                  className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
+                  style={{ color: "var(--ink)" }}
+                >
+                  resume
+                </Link>
                 {homepageSocials.map((item) => {
                   const Icon = socialIcons[item.key as SocialIconKey];
                   const iconClass =

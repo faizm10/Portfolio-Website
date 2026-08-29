@@ -132,6 +132,14 @@ export const commandNav = [
     searchValue: "travel places map camera trips",
   },
   {
+    key: "resume",
+    href: "/resume",
+    label: "resume",
+    shortcut: "r",
+    external: false,
+    searchValue: "resume cv pdf work experience internships",
+  },
+  {
     key: "linkedin",
     href: site.socials.linkedin,
     label: "linkedin",

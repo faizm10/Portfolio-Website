@@ -3,6 +3,7 @@
  *
  * - `site.ts`         name, email, socials, metadata, webring, nav links
  * - `experience.ts`   homepage experience cards + bio internship orgs
+ * - `resume.ts`       /resume page copy (keep in sync with public/resume.pdf)
  * - `projects.ts`     showcase projects (homepage cards + optional detail copy)
  * - `hackathons.ts`   hackathon tallies / summary (list UI stays in MDX)
  * - `places.ts`       travel map coordinates + place types
