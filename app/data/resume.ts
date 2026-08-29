@@ -40,7 +40,7 @@ export const resume = {
       company: "Tangerine",
       href: "https://www.tangerine.ca/en/personal",
       location: "Toronto, Canada",
-      dates: "May 2026 – Aug 2026",
+      dates: "May 2026 to Aug 2026",
       bullets: [
         "Designed and shipped a production Java Spring Boot microservice end-to-end, owning OpenAPI REST APIs, backend workflows, validation, testing, and deployment across multiple environments.",
         "Deployed and operated the service on GCP using Kubernetes, Helm, and CI/CD, debugging application and infrastructure issues across TQA and production.",
@@ -52,7 +52,7 @@ export const resume = {
       company: "TD Bank",
       href: "https://www.td.com/ca/en/personal-banking",
       location: "Toronto, Canada",
-      dates: "Jan 2026 – Apr 2026",
+      dates: "Jan 2026 to Apr 2026",
       bullets: [
         "Designed an AI-assisted modernization workflow for legacy Java 8 services, translating system architectures into structured migration plans for Spring Boot and Angular.",
         "Achieved 90%+ test coverage with JUnit and integration tests, validating edge cases and preventing regressions across migrated services.",
@@ -63,7 +63,7 @@ export const resume = {
       company: "Sertus",
       href: "https://www.sertus.app/",
       location: "Toronto, Ontario",
-      dates: "May 2025 – Jan 2026",
+      dates: "May 2025 to Jan 2026",
       bullets: [
         "Owned a production customer-facing workflow system as the sole engineer, from requirements and architecture through implementation and deployment, reducing administrative work by 60%+.",
         "Shipped 5+ full-stack features using TypeScript, Node.js, React, and PostgreSQL, owning system design, data modeling, APIs, testing, and production debugging.",
@@ -85,7 +85,7 @@ export const resume = {
     },
     {
       name: "uoguelph.courses",
-      subtitle: "Co-Founder & Tech Lead",
+      subtitle: "Co-Founder and Tech Lead",
       linkLabel: "Website",
       href: "https://uoguelph.courses",
       stack: "TypeScript, Next.js, PostgreSQL, REST APIs",
@@ -100,7 +100,7 @@ export const resume = {
     org: "HackCanada",
     href: "https://hackcanada.org/",
     location: "Remote",
-    dates: "Sept 2025 – Present",
+    dates: "Sept 2025 to Present",
     bullets: [
       "Led 4 developers and owned architecture and delivery for 3 production products, supporting 700+ hackers, 200+ projects, and 10K+ website views.",
       "Architected and shipped full-stack judging and CTF systems, including custom judge-slotting logic, real-time rankings, and live operational dashboards.",
@@ -109,7 +109,7 @@ export const resume = {
   },
   skills: [
     {
-      label: "Languages & Frameworks",
+      label: "Languages and Frameworks",
       items:
         "Java, Python, Go, TypeScript, JavaScript, SQL, Spring Boot, FastAPI, Node.js, React, Next.js",
     },
