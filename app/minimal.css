@@ -235,6 +235,35 @@
   display: flex;
   align-items: center;
   gap: 18px;
+  width: 100%;
+}
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 0;
+  gap: 20px;
+}
+.minimal-header .header-socials {
+  gap: 16px;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.minimal-header .header-socials a {
+  text-decoration: underline;
+  text-decoration-color: #bcc0c7;
+  text-underline-offset: 4px;
+}
+.minimal-header .header-socials a::after { content: none; }
+.minimal-header .header-socials a:hover { color: var(--ink); }
+@media (max-width: 520px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .minimal-header .header-socials { gap: 14px; }
 }
 .minimal-header:has(.avatar-companion) {
   margin-top: clamp(36px, 8vh, 90px);
