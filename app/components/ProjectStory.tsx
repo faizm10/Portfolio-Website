@@ -11,7 +11,6 @@ export default function ProjectStory({
   children: ReactNode;
 }) {
   const index = showcaseProjects.findIndex((p) => p.slug === project.slug);
-  const next = showcaseProjects[(index + 1) % showcaseProjects.length];
   return (
     <main id="main-content" className="project-story">
       <header className="story-header">
@@ -58,13 +57,6 @@ export default function ProjectStory({
         />
       </header>
       <div className="story-body">{children}</div>
-      <Link
-        className="next-project"
-        href={next.slug === "pitchpulse" ? next.url : `/${next.slug}`}
-      >
-        <span className="eyebrow">UP NEXT</span>
-        <span>{next.name} ↗</span>
-      </Link>
     </main>
   );
 }
