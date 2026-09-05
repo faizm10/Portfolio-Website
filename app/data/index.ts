@@ -19,6 +19,7 @@ export {
   communityItems,
   schoolItems,
   bioInternships,
+  homepageUpTo,
   orgs,
 } from "./experience";
 export { showcaseProjects, projectHref } from "./projects";
