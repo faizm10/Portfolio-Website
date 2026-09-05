@@ -14,6 +14,7 @@ import {
 } from "react";
 
 type Placement = {
+  firstScreen: boolean;
   row: number;
   rows: number;
   horizontal: number;
@@ -30,8 +31,9 @@ function randomPlacements(): Placement[] {
   }
   const firstSide = Math.random() < 0.5 ? "left" : "right";
   return slots.map((slot) => ({
-    row: Math.floor(slot / 2),
-    rows: slot % 2 === 0 ? Math.ceil(stickers.length / 2) : Math.floor(stickers.length / 2),
+    firstScreen: slot < 8,
+    row: Math.floor((slot < 8 ? slot : slot - 8) / 2),
+    rows: slot < 8 ? 4 : slot % 2 === 0 ? Math.ceil((stickers.length - 8) / 2) : Math.floor((stickers.length - 8) / 2),
     side: slot % 2 === 0 ? firstSide : firstSide === "left" ? "right" : "left",
     horizontal: Math.random(),
     vertical: Math.random(),
@@ -44,9 +46,14 @@ function dimensions(sticker: Sticker, placement: Placement) {
   const pageWidth = document.documentElement.clientWidth;
   const lane = Math.max(0, (pageWidth - 920) / 2);
   // Leave room for rotation on both sides of the widest content section.
-  const width = Math.max(1, Math.min(sticker.width, 160, 160 * sticker.ratio, lane - 64));
-  const height = width / sticker.ratio;
   const angle = Math.abs(placement.angle) * Math.PI / 180;
+  const firstScreenBand = (window.innerHeight - 120) / 4;
+  const heightLimit = placement.firstScreen
+    ? (firstScreenBand - 40) / (Math.cos(angle) / sticker.ratio + Math.sin(angle))
+    : Infinity;
+  const width = Math.max(1, Math.min(sticker.width, 160, 160 * sticker.ratio, lane - 64, heightLimit));
+  const height = width / sticker.ratio;
+  const rotatedHeight = height * Math.cos(angle) + width * Math.sin(angle);
   const rotatedWidth = width * Math.cos(angle) + height * Math.sin(angle);
   const inset = 24 + Math.max(0, (rotatedWidth - width) / 2);
   const footer = document.querySelector(".site-footer");
@@ -54,20 +61,21 @@ function dimensions(sticker: Sticker, placement: Placement) {
     window.innerHeight,
     footer ? footer.getBoundingClientRect().bottom + window.scrollY : document.documentElement.scrollHeight,
   );
-  return { pageWidth, lane, width, height, inset, pageHeight };
+  return { pageWidth, lane, width, height, rotatedHeight, inset, pageHeight };
 }
 
 function initialPosition(sticker: Sticker, placement: Placement): Position {
-  const { pageWidth, lane, width, height, inset, pageHeight } = dimensions(sticker, placement);
+  const { pageWidth, lane, width, height, rotatedHeight, inset, pageHeight } = dimensions(sticker, placement);
   const left = placement.side === "left" ? inset : pageWidth - lane + inset;
   const horizontalSpace = Math.max(0, lane - width - inset * 2);
-  const startY = 130;
-  const rowHeight = (pageHeight - startY - 160) / placement.rows;
+  const startY = placement.firstScreen ? 80 : window.innerHeight + 80;
+  const endY = placement.firstScreen ? window.innerHeight - 40 : pageHeight - 160;
+  const rowHeight = (endY - startY) / placement.rows;
   // Give every sticker its own vertical band, with breathing room between bands.
-  const verticalSpace = Math.max(0, rowHeight - height - 64);
+  const verticalSpace = Math.max(0, rowHeight - rotatedHeight - 32);
   return constrain(sticker, placement,
     left + horizontalSpace * placement.horizontal,
-    startY + placement.row * rowHeight + 32 + verticalSpace * placement.vertical,
+    startY + placement.row * rowHeight + 16 + (rotatedHeight - height) / 2 + verticalSpace * placement.vertical,
   );
 }
 
@@ -112,10 +120,12 @@ function DraggableSticker({
     current.current = start;
     setPosition(start);
     let previousWidth = window.innerWidth;
+    let previousHeight = window.innerHeight;
     const resize = () => {
-      if (window.innerWidth === previousWidth) return;
+      if (window.innerWidth === previousWidth && window.innerHeight === previousHeight) return;
       const crossedBreakpoint = (previousWidth < 1280) !== (window.innerWidth < 1280);
       previousWidth = window.innerWidth;
+      previousHeight = window.innerHeight;
       drag.current = null;
       setDragging(false);
       cancelAnimationFrame(pendingFrame.current);
