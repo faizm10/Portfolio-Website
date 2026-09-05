@@ -3,7 +3,6 @@ import Image from "next/image";
 import { MermaidDiagram } from "@/components/MermaidDiagram";
 
 <div className='not-prose w-full text-center flowboard-page'>
-    <span className='block text-lightBeige/95 italic text-2xl md:text-3xl'>jachacks 2026</span>
     <div className="w-[95vw] relative left-1/2 -ml-[47.5vw] md:w-[105%] md:left-0 md:-ml-[2.5%] md:static">
         <Image
             src="/projects/foco/hero-page.png"
@@ -33,7 +32,7 @@ import { MermaidDiagram } from "@/components/MermaidDiagram";
         </div>
 
         <div className='flex flex-col text-left'>
-            <span className='text-lightBeige/95 text-xl'>overview</span>
+            <h2>overview</h2>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
                 <div className='leading-relaxed'>
                     i was in montreal the weekend before jachacks for a normal trip, then went back the next weekend for the hackathon.
@@ -92,7 +91,7 @@ import { MermaidDiagram } from "@/components/MermaidDiagram";
         </div>
 
         <div className='flex flex-col text-left mt-15'>
-            <span className='text-lightBeige/95 text-xl'>where the idea came from</span>
+            <h2>where the idea came from</h2>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
                 <div className="leading-relaxed">
                     we did not jump straight to foco. the first thing we threw around was a silly site about touching grass, just something fun and pointless. we thought it was funny but we scrapped it pretty fast once we started thinking about what we actually wanted to build.
@@ -107,7 +106,7 @@ import { MermaidDiagram } from "@/components/MermaidDiagram";
         </div>
 
         <div className='flex flex-col text-left mt-10'>
-            <span className='text-lightBeige/95 text-xl'>what we built</span>
+            <h2>what we built</h2>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
                 <div className='leading-relaxed'>
                     <strong className='font-normal text-lightBeige/90'>foco</strong> takes a clip + floor plan, runs motion and detection, draws heat on a 3d slab. rooms link to a footprint strip. gemini summarizes single frames (people, activity, short blurb). demo flow: pick clip, watch the map, click rooms, read the card.
@@ -119,7 +118,7 @@ import { MermaidDiagram } from "@/components/MermaidDiagram";
         </div>
 
         <div className='flex flex-col text-left mt-10'>
-            <span className='text-lightBeige/95 text-xl'>weekend war stories</span>
+            <h2>weekend war stories</h2>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
                 <div className='leading-relaxed'>
                     both our laptops were running hot the whole time. we had heavy backend work going constantly in the background, and on top of that the ui was hitting the backend with calls nonstop during testing. it got to the point where everything started slowing down noticeably. after the demo, our google cloud bill had jumped to somewhere between $30 and $40, and the reason it spiked that hard is that we were running two instances at the same time, so double the compute, double the cost. the hardest bug was getting the heat to sit correctly on the 3d floor plan. it kept drifting or covering areas that had no actual activity.
@@ -139,7 +138,7 @@ import { MermaidDiagram } from "@/components/MermaidDiagram";
                     herzberg library stack in 3d: heat on rooms, vibe tags, floor labels lined up to the real plan.
                 </div>
             </div>
-                <div className='leading-relaxed'>
+                <p className='leading-relaxed'>
                     via train ran a{' '}
                     <a
                         href="https://service-pages.viarail.ca/kingston-sub-maintenance-apr-2026-passenger-travel-advisory-bulletin-en"
@@ -150,12 +149,12 @@ import { MermaidDiagram } from "@/components/MermaidDiagram";
                         kingston sub maintenance detour
                     </a>
                     {' '}that weekend (metrolinx work, slower toronto to montreal runs). i had to switch up ticket to get home earlier rather than 2 am and it means that i had to drop business for an earlier economy ticket, and paid more than i wanted. roughly 12 hours round trip and ~$300 all in.
-                </div>
+                </p>
             </div>
         </div>
 
         <div className='flex flex-col text-left mt-10'>
-            <span className='text-lightBeige/95 text-xl'>judging and the floor</span>
+            <h2>judging and the floor</h2>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
                 <div className='leading-relaxed'>
                     jachacks used a science fair style expo, which was the first time i had done that format. i expected mostly judges rotating through. instead we got a steady line of people at the table: judges, other teams, organizers, and a few guests who were just curious. they actually wanted to hear the pitch and poke at the demo, not only score rubrics.
@@ -189,7 +188,7 @@ import { MermaidDiagram } from "@/components/MermaidDiagram";
         </div>
 
         <div className='flex flex-col text-left mt-10'>
-            <span className='text-lightBeige/95 text-xl'>architecture notes</span>
+            <h2>architecture notes</h2>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
                 <div className='leading-relaxed'>
                     next.js ui, clips in supabase. fastapi behind cors for opencv, yolo, gemini. ui on vercel, api on render. r3f: memo + stable refs so handlers did not break under expo wifi and reloads.
@@ -213,7 +212,7 @@ import { MermaidDiagram } from "@/components/MermaidDiagram";
         </div>
 
         <div className='flex flex-col text-left mt-10'>
-            <span className='text-lightBeige/95 text-xl'>what is next</span>
+            <h2>what is next</h2>
             <div className='text-lighterBeige font-inter font-extralight text-[1rem] mt-3 space-y-4'>
                 <div className='leading-relaxed'>
                     plan is to open source it so others can fork. links at the top.
