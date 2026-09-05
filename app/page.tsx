@@ -3,7 +3,7 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import Activity from "./components/Activity";
 import DesktopStickers from "./components/DesktopStickers";
-import { homepageHobbies, homepageSocials } from "@/app/data/site";
+import { homepageHobbies } from "@/app/data/site";
 import { posts } from "@/app/posts";
 import {
   experienceItems,
@@ -141,18 +141,6 @@ export default function Home() {
             </li>
           ))}
         </ul>
-        <nav className="minimal-links" aria-label="Social links">
-          {homepageSocials.map((item) => (
-            <a
-              key={item.key}
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
       </div>
 
 
