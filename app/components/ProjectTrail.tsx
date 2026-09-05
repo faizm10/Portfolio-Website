@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { showcaseProjects } from "@/app/data/projects";
+import { showcaseProjects, projectHref } from "@/app/data/projects";
 
 /** A fixed pool: distance-sampled pointer input, at most one write per frame. */
 export default function ProjectTrail() {
@@ -171,11 +171,9 @@ export default function ProjectTrail() {
       </div>
       <div className="hero-specimen">
         <Link
-          href={
-            project.slug === "pitchpulse" ? project.url : `/${project.slug}`
-          }
-          aria-label={`Explore ${project.name}`}
-        >
+            href={projectHref(project)}
+            aria-label={`Explore ${project.name}`}
+          >
           <Image
             src={project.banner}
             alt={`${project.name} interface`}
