@@ -1,6 +1,6 @@
 # Current addition: FIFA night controller and editable captions
 
-Added the supplied transparent controller PNG as a draggable sticker with the caption “fifa night.” It starts beside the first project row on desktop and joins the compact randomized arrangement on mobile. The source image is preserved; CSS frames its transparent margins. All 11 captions now live in app/data/sticker-captions.json, with editing instructions in public/stickers/README.md.
+Added the supplied transparent controller PNG as a draggable sticker with the caption “fifa night.” It starts beside the first project row on desktop and joins the compact randomized arrangement on mobile. The source image is preserved; CSS frames its transparent margins. All sticker labels, captions, assets, and desktop placements live in app/data/stickers.ts, with editing instructions in public/stickers/README.md.
 
 Production build and lint pass (two existing warnings). Browser review confirmed the controller loads, its focus caption reads “fifa night,” and the page has no horizontal overflow.
 
@@ -70,7 +70,7 @@ Hover captions are now plain text, with no background, border, or shadow. Sticke
 
 Each sticker now has a short draft caption in a small, tilted white label beneath it. Captions appear on hover and keyboard focus, remain reachable by the pointer, hide during dragging, and dismiss with Escape. Native title tooltips were removed to avoid duplicate labels. The fade respects reduced-motion preferences.
 
-Production build and lint pass (two existing warnings). Browser review verified the label appearance, keyboard focus, Escape dismissal, hover after dragging, and no horizontal overflow. Captions are editable in app/components/DesktopStickers.tsx.
+Production build and lint pass (two existing warnings). Browser review verified the label appearance, keyboard focus, Escape dismissal, hover after dragging, and no horizontal overflow. Captions are editable in app/data/stickers.ts.
 
 ---
 
