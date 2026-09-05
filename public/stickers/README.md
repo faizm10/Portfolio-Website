@@ -2,7 +2,7 @@
 
 ## Editing stickers
 
-Edit `app/data/stickers.ts`. Each entry has `label` (accessible name), `caption` (hover/focus text), `src`, size fields, and a matching key in `desktopComposition` for the desktop starting layout. Save to preview with `npm run dev`; rebuild/deploy to update the live site.
+Edit `app/data/stickers.ts`. Each entry has `label` (accessible name), `caption` (hover/focus text), `src`, and size fields. On desktop, all stickers are distributed through randomized vertical bands in the homepage margins on each refresh. `DesktopStickers.tsx` controls placement and keeps the reading column clear. Save to preview with `npm run dev`; rebuild/deploy to update the live site.
 
 ## Controller
 
