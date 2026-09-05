@@ -6,11 +6,8 @@ import { useRouter } from "next/navigation";
 import { MDXProvider } from "@mdx-js/react";
 import { posts } from "@/app/posts";
 import "./codeblocks.css";
-import Uoguelphcourses from "./mdx/uoguelphcourses.mdx";
 import UWReflection from "./mdx/uw-reflection.mdx";
 import Arcki from "./mdx/arcki.mdx";
-import TransitFlow from "./mdx/transit-flow.mdx";
-import Octree from "./mdx/octree.mdx";
 import UoGReflection from "./mdx/uogreflection.mdx";
 import Footy from "./mdx/footy.mdx";
 import Hackathons from "./mdx/hackathons.mdx";
@@ -21,10 +18,7 @@ import FastTrackedUniCareer from "./mdx/fast-tracked-uni-career.mdx";
 
 const MDX_MAP: Record<string, ComponentType> = {
   uwreflection: UWReflection,
-  uoguelphcourses: Uoguelphcourses,
   arcki: Arcki,
-  "transit-flow": TransitFlow,
-  octree: Octree,
   uogreflection: UoGReflection,
   footy: Footy,
   hackathons: Hackathons,
