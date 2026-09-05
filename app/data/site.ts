@@ -77,7 +77,7 @@ export const homepageHobbies = [
 
 export type SocialKey = keyof typeof site.socials;
 
-/** Text socials shown at the bottom of the homepage. */
+/** Text socials shown beside the name in the homepage header. */
 export const homepageSocials = [
   { key: "x" as const, label: "twitter", href: site.socials.x, preview: null as string | null },
   {
