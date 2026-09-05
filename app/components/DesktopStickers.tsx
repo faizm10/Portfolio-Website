@@ -15,86 +15,41 @@ import {
   type KeyboardEvent,
 } from "react";
 
-type Placement = {
-  slot: number;
-  horizontal: number;
-  vertical: number;
-  angle: number;
-  desktop?: DesktopPlacement;
-};
-type Position = { x: number; y: number; width: number; compact: boolean };
-
-function shuffledPlacements(): Placement[] {
-  const slots = stickers.map((_, index) => index);
-  for (let index = slots.length - 1; index > 0; index--) {
-    const other = Math.floor(Math.random() * (index + 1));
-    [slots[index], slots[other]] = [slots[other], slots[index]];
-  }
-  return slots.map((slot) => ({
-    slot,
-    horizontal: Math.random(),
-    vertical: Math.random(),
-    angle: Math.random() * 30 - 15,
-  }));
-}
+type Placement = DesktopPlacement;
+type Position = { x: number; y: number; width: number };
 
 function dimensions(sticker: Sticker) {
   const pageWidth = document.documentElement.clientWidth;
-  const compact = window.innerWidth < 1280;
   const lane = Math.max(0, (pageWidth - 920) / 2);
-  const compositionScale = Math.min(1, (pageWidth - 512) / 1408);
-  const width = compact
-    ? Math.min(88, Math.max(48, sticker.width * 0.42), 108 * sticker.ratio)
-    : sticker.width * compositionScale;
+  // Leave room for rotation on both sides of the widest content section.
+  const width = Math.max(1, Math.min(sticker.width, 160, 160 * sticker.ratio, lane - 64));
+  const height = width / sticker.ratio;
+  const angle = Math.abs(desktopComposition[sticker.id].angle) * Math.PI / 180;
+  const rotatedWidth = width * Math.cos(angle) + height * Math.sin(angle);
+  const inset = 24 + Math.max(0, (rotatedWidth - width) / 2);
   const footer = document.querySelector(".site-footer");
   const pageHeight = Math.max(
     window.innerHeight,
     footer ? footer.getBoundingClientRect().bottom + window.scrollY : document.documentElement.scrollHeight,
   );
-  return {
-    compact, lane, pageWidth, pageHeight, width, compositionScale,
-    left: 24,
-    right: Math.max(24, pageWidth - width - 24),
-    bottom: Math.max(24, pageHeight - width / sticker.ratio - 40),
-  };
+  return { pageWidth, lane, width, height, inset, pageHeight };
 }
+
 function initialPosition(sticker: Sticker, placement: Placement): Position {
-  const bounds = dimensions(sticker);
-  if (!bounds.compact && placement.desktop) {
-    const { x, y, anchor } = placement.desktop;
-    const scale = bounds.compositionScale;
-    const leftInset = Math.max(0, (bounds.pageWidth - 1920) / 2);
-    const positionedX = anchor === "left"
-      ? leftInset + x * scale
-      : anchor === "right"
-        ? bounds.pageWidth / 2 + 256 + (x - 1216) * scale
-        : bounds.pageWidth / 2 + (x - 960) * scale;
-    const safeX = sticker.id === "controller"
-      ? Math.max(positionedX, (bounds.pageWidth + 920) / 2 + 28)
-      : positionedX;
-    return constrain(sticker, safeX, y);
-  }
-  const rows = bounds.compact ? stickers.length : Math.ceil(stickers.length / 2);
-  const row = bounds.compact ? placement.slot : Math.floor(placement.slot / 2);
-  const startY = bounds.compact ? 190 : 160;
-  const rowHeight = Math.max(0, (bounds.pageHeight - startY - 180) / rows);
-  const sideStart = placement.slot % 2 === 0 ? 24 : bounds.pageWidth - bounds.lane + 24;
-  const laneSpace = Math.max(0, bounds.lane - bounds.width - 48);
-  return constrain(
-    sticker,
-    bounds.compact
-      ? bounds.left + placement.horizontal * (bounds.right - bounds.left)
-      : sideStart + placement.horizontal * laneSpace,
-    startY + row * rowHeight + placement.vertical * Math.max(0, rowHeight - bounds.width / sticker.ratio - 48),
-  );
+  const { pageWidth, lane, width, height } = dimensions(sticker);
+  const center = placement.side === "left" ? lane / 2 : pageWidth - lane / 2;
+  return constrain(sticker, center - width / 2, 190 + placement.row * 220 - height / 2);
 }
+
 function constrain(sticker: Sticker, x: number, y: number): Position {
-  const bounds = dimensions(sticker);
+  const { pageWidth, lane, width, height, inset, pageHeight } = dimensions(sticker);
+  const leftSide = desktopComposition[sticker.id].side === "left";
+  const left = leftSide ? inset : pageWidth - lane + inset;
+  const right = leftSide ? lane - width - inset : pageWidth - width - inset;
   return {
-    x: Math.max(bounds.left, Math.min(bounds.right, x)),
-    y: Math.max(24, Math.min(bounds.bottom, y)),
-    width: bounds.width,
-    compact: bounds.compact,
+    x: Math.max(left, Math.min(right, x)),
+    y: Math.max(24, Math.min(pageHeight - height - 40, y)),
+    width,
   };
 }
 
@@ -214,9 +169,7 @@ function DraggableSticker({
     current.current = next;
     setPosition(next);
   };
-  const angle = !position?.compact && placement.desktop
-    ? placement.desktop.angle
-    : placement.angle;
+  const angle = placement.angle;
 
   return (
     <button
@@ -279,31 +232,25 @@ function DraggableSticker({
 }
 
 export default function DesktopStickers() {
-  const [placements, setPlacements] = useState<Placement[] | null>(null);
-  useEffect(() => {
-    setPlacements(shuffledPlacements().map((placement, index) => ({
-      ...placement,
-      desktop: desktopComposition[stickers[index].id],
-    })));
-  }, []);
+  const [resetVersion, setResetVersion] = useState(0);
   return (
     <aside
       className="desktop-stickers"
       aria-label="Draggable personal stickers"
     >
       <p className="sr-only">
-        Drag the stickers anywhere on the page, including over sections.
+        Drag the stickers within the side margins.
         Hold near the top or bottom edge to scroll while dragging.
         Arrow keys move a focused sticker. Home resets it.
       </p>
-      {placements && stickers.map((sticker, index) => (
-        <DraggableSticker key={sticker.id} sticker={sticker} placement={placements[index]} />
+      {stickers.map((sticker) => (
+        <DraggableSticker key={`${sticker.id}-${resetVersion}`} sticker={sticker} placement={desktopComposition[sticker.id]} />
       ))}
       <button
         className="reset-stickers"
-        onClick={() => setPlacements(shuffledPlacements())}
+        onClick={() => setResetVersion((version) => version + 1)}
       >
-        shuffle stickers
+        reset stickers
       </button>
     </aside>
   );
