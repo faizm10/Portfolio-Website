@@ -1,6 +1,6 @@
 # Current addition: FIFA night controller and editable captions
 
-Added the supplied transparent controller PNG as a draggable sticker with the caption “fifa night.” It starts beside the first project row on desktop, opposite the soccer stamp, and joins the compact randomized arrangement on mobile. The source image is preserved; CSS frames its transparent margins. All 12 captions now live in app/data/sticker-captions.json, with editing instructions in public/stickers/README.md.
+Added the supplied transparent controller PNG as a draggable sticker with the caption “fifa night.” It starts beside the first project row on desktop and joins the compact randomized arrangement on mobile. The source image is preserved; CSS frames its transparent margins. All 11 captions now live in app/data/sticker-captions.json, with editing instructions in public/stickers/README.md.
 
 Production build and lint pass (two existing warnings). Browser review confirmed the controller loads, its focus caption reads “fifa night,” and the page has no horizontal overflow.
 
@@ -8,7 +8,7 @@ Production build and lint pass (two existing warnings). Browser review confirmed
 
 # Current refinement: composed desktop starting layout
 
-At viewport widths of 1280px and above, all 11 stickers now start in the arrangement from the supplied reference: trophy photo, laptop, ball, player, and stamp on the left; drink, postcard, Originals, and shoes on the right; plane and Claude above the projects. Side clusters scale with available space and the stamp stays outside the gallery. Untouched positions adapt as desktop width changes; dragged stickers retain their placement within page bounds. The shuffle control still randomizes the layout, while a fresh desktop visit restores the composition. Smaller viewports retain randomized, compact stickers down the page.
+At viewport widths of 1280px and above, stickers start in the arrangement from the supplied reference: trophy photo, laptop, ball, and player on the left; drink, postcard, Originals, and shoes on the right; plane and Claude above the projects. Side clusters scale with available space. Untouched positions adapt as desktop width changes; dragged stickers retain their placement within page bounds. The shuffle control still randomizes the layout, while a fresh desktop visit restores the composition. Smaller viewports retain randomized, compact stickers down the page.
 
 Build and lint pass (two existing lint warnings). Browser review confirmed the reference composition and identical positions after desktop refresh, along with compact mobile sizes and no horizontal overflow.
 
@@ -27,12 +27,6 @@ Production build, route smoke checks, and lint pass (two existing warnings). Bro
 Added the supplied Hack the North postcard, Air Canada plane, and a drink cutout derived from IMG_8433.JPG. All three use the existing page-relative dragging and plain hover captions. The plane is framed to remove empty margins; the drink uses a CSS outline mask because the image-tool output was opaque. Asset sources and the final built-in edit prompt are in public/stickers/README.md.
 
 When the desktop project count is odd, the final card spans both grid columns while retaining the same width as a regular card and centering horizontally. Mobile remains a full-width single column. Production build, lint (two existing warnings), and route smoke checks pass. Browser checks confirmed all 11 sticker assets load, the final project has zero center offset and matches the other cards at 442px, and all mobile cards are 344px without overflow at a 390px viewport.
-
----
-
-# Current addition: Guelph soccer stamp
-
-Added the user-supplied stamp as an eighth draggable sticker in the left margin farther down the page. Preserved the original transparent PNG, perforated border, and printed artwork; CSS compensates for the large transparent margins. The plain caption reads “guelph very own.” Production build passed.
 
 ---
 
