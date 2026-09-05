@@ -1,9 +1,20 @@
 /**
- * Homepage draggable stickers — edit labels, captions, assets, and desktop
- * starting positions here (not in DesktopStickers.tsx).
+ * Homepage draggable stickers — edit labels, captions, assets, and sizes here.
+ * Positions are randomized in DesktopStickers.tsx.
  */
 
-export type StickerId = "soccer" | "claude" | "player" | "macbook" | "hack-the-north" | "plane";
+export type StickerId =
+  | "soccer"
+  | "claude"
+  | "player"
+  | "spezial"
+  | "macbook"
+  | "world-cup-moment"
+  | "hack-the-north"
+  | "plane"
+  | "drink"
+  | "adidas"
+  | "controller";
 
 export type Sticker = {
   id: StickerId;
@@ -42,12 +53,28 @@ export const stickers: Sticker[] = [
     ratio: 604 / 977,
   },
   {
+    id: "spezial",
+    label: "Adidas Argentina Handball Spezial",
+    caption: "current kicks",
+    src: "/stickers/argentina-spezial.png",
+    width: 220,
+    ratio: 1,
+  },
+  {
     id: "macbook",
     label: "MacBook",
     caption: "madness occurs",
     src: "/stickers/macbook.png",
     width: 200,
     ratio: 1.5,
+  },
+  {
+    id: "world-cup-moment",
+    label: "World Cup trophy moment",
+    caption: "a world cup moment",
+    src: "/stickers/world-cup-moment.png",
+    width: 180,
+    ratio: 500 / 667,
   },
   {
     id: "hack-the-north",
@@ -65,20 +92,28 @@ export const stickers: Sticker[] = [
     width: 220,
     ratio: 3.28,
   },
+  {
+    id: "drink",
+    label: "Coconut Mango Boom drink",
+    caption: "coconut mango boom",
+    src: "/stickers/coconut-mango.png",
+    width: 150,
+    ratio: 941 / 1672,
+  },
+  {
+    id: "adidas",
+    label: "Adidas Originals",
+    caption: "fav brand",
+    src: "/stickers/adidas-originals.svg",
+    width: 135,
+    ratio: 1,
+  },
+  {
+    id: "controller",
+    label: "PlayStation controller",
+    caption: "fifa night",
+    src: "/stickers/fifa-controller.png",
+    width: 190,
+    ratio: 1.45,
+  },
 ];
-
-export type DesktopPlacement = {
-  row: number;
-  angle: number;
-  side: "left" | "right";
-};
-
-/** Three aligned pairs, with the reading column reserved for content. */
-export const desktopComposition: Record<StickerId, DesktopPlacement> = {
-  player: { row: 0, angle: -4, side: "left" },
-  "hack-the-north": { row: 0, angle: 4, side: "right" },
-  macbook: { row: 1, angle: -5, side: "left" },
-  soccer: { row: 1, angle: 5, side: "right" },
-  plane: { row: 2, angle: -5, side: "left" },
-  claude: { row: 2, angle: 5, side: "right" },
-};
