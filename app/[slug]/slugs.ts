@@ -1,9 +1,6 @@
 export const SLUGS = [
   "uwreflection",
-  "uoguelphcourses",
   "arcki",
-  "transit-flow",
-  "octree",
   "uogreflection",
   "footy",
   "hackathons",
