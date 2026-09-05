@@ -305,6 +305,17 @@ export type UpToItem = {
 
 export const homepageUpTo: UpToItem[] = [
   {
+    id: "guelph",
+    before: "studying cs at",
+    entity: {
+      type: "org",
+      href: orgs.guelph.href,
+      icon: orgs.guelph.icon,
+      label: orgs.guelph.title,
+      preview: orgs.guelph.preview,
+    },
+  },
+  {
     id: "work",
     before: "previously swe intern at",
     entity: {
@@ -330,7 +341,7 @@ export const homepageUpTo: UpToItem[] = [
     before: "vp of tech at",
     entity: {
       type: "org",
-      href: orgs.hackcanada.href,
+      href: "/hc26",
       icon: orgs.hackcanada.icon,
       label: orgs.hackcanada.title,
       preview: orgs.hackcanada.preview,
@@ -376,17 +387,7 @@ export const homepageUpTo: UpToItem[] = [
     after: "for world cup 2026,",
     metrics: ["300+", "users in 72h"],
   },
-  {
-    id: "guelph",
-    before: "studying cs at",
-    entity: {
-      type: "org",
-      href: orgs.guelph.href,
-      icon: orgs.guelph.icon,
-      label: orgs.guelph.title,
-      preview: orgs.guelph.preview,
-    },
-  },
+  
 ];
 
 /** Evan-style homepage groupings */
