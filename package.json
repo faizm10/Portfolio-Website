@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test:smoke": "node scripts/check-portfolio.mjs"
+    "test:smoke": "node scripts/check-portfolio.mjs",
+    "test:writing": "node scripts/check-writing.mjs"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
@@ -34,6 +35,7 @@
     "react-device-detect": "^2.2.3",
     "react-dom": "^19.2.3",
     "react-icons": "^5.5.0",
+    "remark-gfm": "^4.0.1",
     "shadcn": "^4.1.2",
     "tailwind-merge": "^3.5.0",
     "three": "^0.185.1",
