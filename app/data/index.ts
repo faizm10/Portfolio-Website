@@ -21,7 +21,7 @@ export {
   bioInternships,
   orgs,
 } from "./experience";
-export { showcaseProjects } from "./projects";
+export { showcaseProjects, projectHref } from "./projects";
 export {
   hackathonEntries,
   totalHackathons,
