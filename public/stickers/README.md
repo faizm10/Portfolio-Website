@@ -1,8 +1,8 @@
 # Portfolio sticker assets
 
-## Editing captions
+## Editing stickers
 
-Edit `app/data/sticker-captions.json`. Each key identifies a sticker; change only its quoted text to update the hover/focus caption. For example, `"controller": "fifa night"`. Keep the keys and JSON commas intact. Save to preview with `npm run dev`; rebuild/deploy to update the live site. All 11 captions live in this file.
+Edit `app/data/stickers.ts`. Each entry has `label` (accessible name), `caption` (hover/focus text), `src`, size fields, and a matching key in `desktopComposition` for the desktop starting layout. Save to preview with `npm run dev`; rebuild/deploy to update the live site.
 
 ## Controller
 
