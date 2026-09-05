@@ -1,19 +1,6 @@
 export default function BlogPost() {
   return (
-    <article className="p-6 md:p-8 rounded-2xl max-w-3xl mx-auto space-y-8">
-      <header className="space-y-3">
-        <h1 className="text-2xl md:text-3xl font-extrabold text-neutral-900 leading-tight">
-          university of guelph
-        </h1>
-
-        <div className="flex items-center gap-3 text-sm text-neutral-500">
-          <span>Faiz Mustansar</span>
-          <span>·</span>
-          <time dateTime="2024-08-31">Aug 31, 2024</time>
-          <span>·</span>
-          <span>8 min read</span>
-        </div>
-      </header>
+    <div className="article-section">
 
       <section className="prose prose-neutral max-w-none prose-p:text-neutral-700 prose-headings:text-neutral-900">
         <p className="text-base leading-relaxed text-neutral-700 md:text-lg">
@@ -261,6 +248,6 @@ export default function BlogPost() {
           <li>cis3700 - intro to intelligent systems</li>
         </ul>
       </section>
-    </article>
+    </div>
   );
 }
