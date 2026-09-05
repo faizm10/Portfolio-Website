@@ -2,7 +2,7 @@
 
 ## Editing stickers
 
-Edit `app/data/stickers.ts`. Each entry has `label` (accessible name), `caption` (hover/focus text), `src`, and size fields. On desktop, eight stickers frame the first screen (four per side), while the other three appear farther down the homepage. Each side alternates inward and outward, starting inward, to create a mirrored stagger. Sticker assignments, small offsets, and angles randomize on each refresh; reserved vertical bands keep them spaced apart. `DesktopStickers.tsx` controls placement and keeps the reading column clear. Save to preview with `npm run dev`; rebuild/deploy to update the live site.
+Edit `app/data/stickers.ts`. Each entry has `label` (accessible name), `caption` (hover/focus text), `src`, and size fields. On desktop, eight stickers frame the first screen (four per side), while the other four appear farther down the homepage. Each side alternates inward and outward, starting inward, to create a mirrored stagger. Sticker assignments, small offsets, and angles randomize on each refresh; reserved vertical bands keep them spaced apart. `DesktopStickers.tsx` controls placement and keeps the reading column clear. Save to preview with `npm run dev`; rebuild/deploy to update the live site.
 
 ## Controller
 
@@ -56,3 +56,7 @@ Use case: background-extraction. Edit target: the attached official product phot
 Final drink edit prompt:
 
 Use case: background-extraction. Edit target: supplied coconut mango drink photo. Create a standalone photo cutout of ONLY the cup and white lid, remove hand, fingers, and entire background. Preserve the exact cup shape, yellow mango and white coconut swirls, white lid, original label with Coconut Mango Boom (Large Cup), and photographic texture. Reconstruct only the small portions of cup obscured by fingers. Keep whole cup visible with close crop and small margins. Actual transparent alpha background, no checkerboard drawn in the image, no background, no cast shadow, no sticker outline or added text. Portrait composition. This is a personal portfolio sticker asset.
+
+## Favorite player
+
+`favorite-player.png` is the supplied 479 × 640 image, preserved unchanged. Its checkerboard is baked into the pixels. A CSS silhouette mask, including the gap beneath the bent arm, hides it for display. The caption is “my fav player besides messi.”
