@@ -261,7 +261,7 @@ function DraggableSticker({
         sizes={sticker.id === "plane" ? "440px" : "200px"}
         loading="eager"
         draggable={false}
-        unoptimized={sticker.src.endsWith(".svg")}
+        unoptimized={sticker.unoptimized || sticker.src.endsWith(".svg")}
       />
       </span>
       <span
