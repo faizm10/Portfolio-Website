@@ -29,7 +29,7 @@ export default function Home() {
       <h1 className="sr-only">Faiz Mustansar</h1>
       <div className="minimal-intro" id="about">
         <p>
-          I study computer science at the{" "}
+          currently in my last year at
           <a href={site.schools.guelph.href} className="inline-organization">
             <Image
               src={orgs.guelph.icon}
@@ -38,9 +38,9 @@ export default function Home() {
               height={24}
               quality={85}
             />
-            University of Guelph
+            guelph
           </a>
-          . Currently building things at{" "}
+          . currently leading tech at{" "}
           <Link href="/hc26" className="inline-organization">
             <Image
               src={orgs.hackcanada.icon}
