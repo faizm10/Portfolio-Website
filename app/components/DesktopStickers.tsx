@@ -61,13 +61,6 @@ const stickers: Sticker[] = [
     ratio: 500 / 667,
   },
   {
-    id: "stamp",
-    label: "Guelph soccer postage stamp",
-    src: "/stickers/guelph-soccer-stamp.png",
-    width: 220,
-    ratio: 1.245,
-  },
-  {
     id: "hack-the-north",
     label: "Hack the North 2026 postcard",
     src: "/stickers/hack-the-north-2026.png",
@@ -117,7 +110,6 @@ const desktopComposition: Record<string, DesktopPlacement> = {
   macbook: { x: 275, y: 25, angle: -12, anchor: "left" },
   soccer: { x: 412, y: 145, angle: 8, anchor: "left" },
   player: { x: 250, y: 205, angle: 16, anchor: "left" },
-  stamp: { x: 155, y: 500, angle: 6, anchor: "left" },
   drink: { x: 1218, y: 90, angle: 4, anchor: "right" },
   "hack-the-north": { x: 1395, y: 52, angle: 2, anchor: "right" },
   adidas: { x: 1350, y: 265, angle: 12, anchor: "right" },
@@ -180,11 +172,9 @@ function initialPosition(sticker: Sticker, placement: Placement): Position {
       : anchor === "right"
         ? bounds.pageWidth / 2 + 256 + (x - 1216) * scale
         : bounds.pageWidth / 2 + (x - 960) * scale;
-    const safeX = sticker.id === "stamp"
-      ? Math.min(positionedX, (bounds.pageWidth - 920) / 2 - bounds.width - 28)
-      : sticker.id === "controller"
-        ? Math.max(positionedX, (bounds.pageWidth + 920) / 2 + 28)
-        : positionedX;
+    const safeX = sticker.id === "controller"
+      ? Math.max(positionedX, (bounds.pageWidth + 920) / 2 + 28)
+      : positionedX;
     return constrain(sticker, safeX, y);
   }
   const rows = bounds.compact ? stickers.length : Math.ceil(stickers.length / 2);
@@ -373,7 +363,7 @@ function DraggableSticker({
         src={sticker.src}
         alt=""
         fill
-        sizes={sticker.id === "stamp" || sticker.id === "plane" ? "440px" : "200px"}
+        sizes={sticker.id === "plane" ? "440px" : "200px"}
         loading="eager"
         draggable={false}
         unoptimized={sticker.src.endsWith(".svg")}
