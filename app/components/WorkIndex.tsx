@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { showcaseProjects } from "@/app/data/projects";
+import { showcaseProjects, projectHref } from "@/app/data/projects";
 
 export default function WorkIndex() {
   const root = useRef<HTMLElement>(null);
@@ -98,9 +98,7 @@ export default function WorkIndex() {
       {showcaseProjects.map((project, index) => (
         <div className="project-entry" key={project.slug} data-project={index}>
           <Link
-            href={
-              project.slug === "pitchpulse" ? project.url : `/${project.slug}`
-            }
+            href={projectHref(project)}
             className="project-row"
             draggable={false}
           >
