@@ -3,13 +3,11 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import Activity from "./components/Activity";
 import DesktopStickers from "./components/DesktopStickers";
-import { site, homepageHobbies, homepageSocials } from "@/app/data/site";
+import { homepageHobbies, homepageSocials } from "@/app/data/site";
 import { posts } from "@/app/posts";
 import {
   experienceItems,
   communityItems,
-  schoolItems,
-  orgs,
   homepageUpTo,
   type UpToOrgRef,
   type UpToProjectRef,
@@ -186,8 +184,8 @@ export default function Home() {
         aria-labelledby="writing-title"
       >
         <div className="minimal-section-heading">
-          <h2 id="writing-title">writing</h2>
-          <Link href="/blog">all notes</Link>
+          <h2 id="writing-title">some thoughts</h2>
+          <Link href="/blog">all thoughts</Link>
         </div>
         <ul className="minimal-list">
           {writing.map((post) => (
