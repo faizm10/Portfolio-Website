@@ -9,7 +9,7 @@ Posts are built as static pages from trusted MDX in this repository. Keep the ex
 3. Add an explicit import loader to `lib/writing.ts`. Routes are derived from the post/project catalogs, so there is no separate slug list to edit.
 4. Run `npm run typecheck`, `npm run test:writing`, and `npm run build`.
 
-The layout supplies the title, description, byline, date, estimated reading time, contents, theme controls. Do not duplicate these in the MDX body.
+The layout supplies the title, description, byline, date, estimated reading time, and contents. Do not duplicate these in the MDX body.
 
 ```mdx
 An opening paragraph in your own voice.
@@ -53,7 +53,7 @@ Reading time is an estimate at 220 words per minute, based on visible literal te
 
 ## Presentation
 
-`app/writing.css` scopes the journal design to the writing archive and article reader. The homepage and project pages keep their own styling. Both reading themes share the same layout; the preference is stored locally in `faiz-writing-theme`. The desktop contents rail stays within the article, stopping before the footer, and becomes a native expandable section menu below 960px. Reduced motion and print layouts are included.
+`app/writing.css` scopes the journal design to the writing archive and article reader. The homepage and project pages keep their own styling. The reader uses a single light appearance. The desktop contents rail stays within the article, stopping before the footer, and becomes a native expandable section menu below 960px. Reduced motion and print layouts are included.
 
 ## Checks
 
