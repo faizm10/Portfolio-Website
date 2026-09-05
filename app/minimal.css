@@ -534,8 +534,8 @@
   display: none;
 }
 @media screen {
-  .desktop-stickers {
-    display: block;
+  @media (min-width: 1280px) {
+    .desktop-stickers { display: block; }
   }
   .desktop-sticker {
     position: absolute;
