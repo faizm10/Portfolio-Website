@@ -3,9 +3,7 @@
 import Image from "next/image";
 import {
   stickers,
-  desktopComposition,
   type Sticker,
-  type DesktopPlacement,
 } from "@/app/data/stickers";
 import {
   useEffect,
@@ -15,16 +13,40 @@ import {
   type KeyboardEvent,
 } from "react";
 
-type Placement = DesktopPlacement;
+type Placement = {
+  row: number;
+  rows: number;
+  horizontal: number;
+  vertical: number;
+  angle: number;
+  side: "left" | "right";
+};
+
+function randomPlacements(): Placement[] {
+  const slots = stickers.map((_, index) => index);
+  for (let index = slots.length - 1; index > 0; index--) {
+    const other = Math.floor(Math.random() * (index + 1));
+    [slots[index], slots[other]] = [slots[other], slots[index]];
+  }
+  const firstSide = Math.random() < 0.5 ? "left" : "right";
+  return slots.map((slot) => ({
+    row: Math.floor(slot / 2),
+    rows: slot % 2 === 0 ? Math.ceil(stickers.length / 2) : Math.floor(stickers.length / 2),
+    side: slot % 2 === 0 ? firstSide : firstSide === "left" ? "right" : "left",
+    horizontal: Math.random(),
+    vertical: Math.random(),
+    angle: Math.random() * 16 - 8,
+  }));
+}
 type Position = { x: number; y: number; width: number };
 
-function dimensions(sticker: Sticker) {
+function dimensions(sticker: Sticker, placement: Placement) {
   const pageWidth = document.documentElement.clientWidth;
   const lane = Math.max(0, (pageWidth - 920) / 2);
   // Leave room for rotation on both sides of the widest content section.
   const width = Math.max(1, Math.min(sticker.width, 160, 160 * sticker.ratio, lane - 64));
   const height = width / sticker.ratio;
-  const angle = Math.abs(desktopComposition[sticker.id].angle) * Math.PI / 180;
+  const angle = Math.abs(placement.angle) * Math.PI / 180;
   const rotatedWidth = width * Math.cos(angle) + height * Math.sin(angle);
   const inset = 24 + Math.max(0, (rotatedWidth - width) / 2);
   const footer = document.querySelector(".site-footer");
@@ -36,14 +58,22 @@ function dimensions(sticker: Sticker) {
 }
 
 function initialPosition(sticker: Sticker, placement: Placement): Position {
-  const { pageWidth, lane, width, height } = dimensions(sticker);
-  const center = placement.side === "left" ? lane / 2 : pageWidth - lane / 2;
-  return constrain(sticker, center - width / 2, 190 + placement.row * 220 - height / 2);
+  const { pageWidth, lane, width, height, inset, pageHeight } = dimensions(sticker, placement);
+  const left = placement.side === "left" ? inset : pageWidth - lane + inset;
+  const horizontalSpace = Math.max(0, lane - width - inset * 2);
+  const startY = 130;
+  const rowHeight = (pageHeight - startY - 160) / placement.rows;
+  // Give every sticker its own vertical band, with breathing room between bands.
+  const verticalSpace = Math.max(0, rowHeight - height - 64);
+  return constrain(sticker, placement,
+    left + horizontalSpace * placement.horizontal,
+    startY + placement.row * rowHeight + 32 + verticalSpace * placement.vertical,
+  );
 }
 
-function constrain(sticker: Sticker, x: number, y: number): Position {
-  const { pageWidth, lane, width, height, inset, pageHeight } = dimensions(sticker);
-  const leftSide = desktopComposition[sticker.id].side === "left";
+function constrain(sticker: Sticker, placement: Placement, x: number, y: number): Position {
+  const { pageWidth, lane, width, height, inset, pageHeight } = dimensions(sticker, placement);
+  const leftSide = placement.side === "left";
   const left = leftSide ? inset : pageWidth - lane + inset;
   const right = leftSide ? lane - width - inset : pageWidth - width - inset;
   return {
@@ -90,7 +120,7 @@ function DraggableSticker({
       setDragging(false);
       cancelAnimationFrame(pendingFrame.current);
       const next = current.current && moved.current && !crossedBreakpoint
-        ? constrain(sticker, current.current.x, current.current.y)
+        ? constrain(sticker, placement, current.current.x, current.current.y)
         : initialPosition(sticker, placement);
       current.current = next;
       setPosition(next);
@@ -107,6 +137,7 @@ function DraggableSticker({
     if (!start) return;
     current.current = constrain(
       sticker,
+      placement,
       start.origin.x + start.clientX + window.scrollX - start.x,
       start.origin.y + start.clientY + window.scrollY - start.y,
     );
@@ -162,6 +193,7 @@ function DraggableSticker({
         ? initialPosition(sticker, placement)
         : constrain(
             sticker,
+            placement,
             current.current.x + direction![0],
             current.current.y + direction![1],
           );
@@ -232,7 +264,8 @@ function DraggableSticker({
 }
 
 export default function DesktopStickers() {
-  const [resetVersion, setResetVersion] = useState(0);
+  const [placements, setPlacements] = useState<Placement[] | null>(null);
+  useEffect(() => { setPlacements(randomPlacements()); }, []);
   return (
     <aside
       className="desktop-stickers"
@@ -243,14 +276,14 @@ export default function DesktopStickers() {
         Hold near the top or bottom edge to scroll while dragging.
         Arrow keys move a focused sticker. Home resets it.
       </p>
-      {stickers.map((sticker) => (
-        <DraggableSticker key={`${sticker.id}-${resetVersion}`} sticker={sticker} placement={desktopComposition[sticker.id]} />
+      {placements && stickers.map((sticker, index) => (
+        <DraggableSticker key={sticker.id} sticker={sticker} placement={placements[index]} />
       ))}
       <button
         className="reset-stickers"
-        onClick={() => setResetVersion((version) => version + 1)}
+        onClick={() => setPlacements(randomPlacements())}
       >
-        reset stickers
+        shuffle stickers
       </button>
     </aside>
   );
