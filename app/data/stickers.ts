@@ -14,7 +14,8 @@ export type StickerId =
   | "plane"
   | "drink"
   | "adidas"
-  | "controller";
+  | "controller"
+  | "favorite-player";
 
 export type Sticker = {
   id: StickerId;
@@ -25,9 +26,20 @@ export type Sticker = {
   src: string;
   width: number;
   ratio: number;
+  /** Serve the original when image conversion is unsuitable for an asset. */
+  unoptimized?: boolean;
 };
 
 export const stickers: Sticker[] = [
+  {
+    id: "favorite-player",
+    label: "Favorite football player",
+    caption: "my fav player besides messi",
+    src: "/stickers/favorite-player.png",
+    width: 150,
+    ratio: 479 / 640,
+    unoptimized: true,
+  },
   {
     id: "soccer",
     label: "2026 World Cup Trionda ball",
