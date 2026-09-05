@@ -16,20 +16,8 @@
   font-family: var(--font-inter), sans-serif;
   -webkit-font-smoothing: antialiased;
 }
-.writing-shell[data-theme='dark'] {
-  --paper: #151713;
-  --text: #e2e3db;
-  --muted: #9a9f92;
-  --body-text: #bec3b7;
-  --rule: #30352a;
-  --wash: #20251c;
-  --olive: #b1c08b;
-  --blue: #9ab6d1;
-  --rust: #d4a084;
-  color-scheme: dark;
-}
+
 body:has(.writing-shell) { background: #fdfcf9; overflow-x: clip; overflow-y: visible; }
-body:has(.writing-shell[data-theme='dark']) { background: #151713; }
 body:has(.writing-shell) > .site-header,
 body:has(.writing-shell) > .site-footer { display: none; }
 .writing-shell ::selection { background: #b8c89560; color: var(--text); }
@@ -49,8 +37,6 @@ body:has(.writing-shell) > .site-footer { display: none; }
 .journal-nav nav a { padding-block: 8px; }
 .journal-nav a[aria-current], .journal-nav a:hover { color: var(--text); }
 .journal-nav a[aria-current] { text-decoration: underline; text-underline-offset: 6px; text-decoration-color: var(--olive); }
-.journal-theme { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--rule); border-radius: 50%; }
-.journal-theme:hover { background: var(--wash); color: var(--text); }
 .journal-index { width: min(100%, 960px); margin: 0 auto; }
 .journal-intro { padding: 78px 0 48px; }
 .journal-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; color: var(--muted); line-height: 1.6; }
@@ -247,7 +233,7 @@ body:has(.writing-shell) > .site-footer { display: none; }
 }
 @media print {
   body:has(.writing-shell) { background: white; }
-  .writing-shell[data-theme] { --paper: white; --text: black; --body-text: #333; --muted: #555; color-scheme: light; background: white; padding: 0; }
+  .writing-shell { --paper: white; --text: black; --body-text: #333; --muted: #555; color-scheme: light; background: white; padding: 0; }
   .journal-nav, .journal-rail, .journal-progress, .journal-mobile-toc, .journal-mobile-back, .journal-footer { display: none; }
   .journal-reader { display: block; padding: 0; }
   .journal-article { width: 100%; margin: 0; }
