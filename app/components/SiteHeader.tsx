@@ -3,7 +3,7 @@
 import Link from "next/link";
 import AnimatedAvatar from "./AnimatedAvatar";
 import { usePathname } from "next/navigation";
-import { site } from "@/app/data/site";
+import { site, homepageSocials } from "@/app/data/site";
 
 export default function SiteHeader() {
   const home = usePathname() === "/";
@@ -11,13 +11,24 @@ export default function SiteHeader() {
     <header className="site-header minimal-header">
       <div className="header-identity">
         {home && <AnimatedAvatar />}
-        <Link
-          className="minimal-name"
-          href="/"
-          aria-label="Faiz Mustansar home"
-        >
-          {site.name}
-        </Link>
+        <div className="header-content">
+          <Link
+            className="minimal-name"
+            href="/"
+            aria-label="Faiz Mustansar home"
+          >
+            {site.name}
+          </Link>
+          {home && (
+            <nav className="header-socials" aria-label="Social links">
+              {homepageSocials.map((item) => (
+                <a key={item.key} href={item.href} target="_blank" rel="noopener noreferrer">
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          )}
+        </div>
       </div>
     </header>
   );
