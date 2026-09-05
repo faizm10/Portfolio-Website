@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { ReactNode } from "react";
 import Activity from "./components/Activity";
 import DesktopStickers from "./components/DesktopStickers";
 import { site, homepageHobbies, homepageSocials } from "@/app/data/site";
@@ -9,7 +10,11 @@ import {
   communityItems,
   schoolItems,
   orgs,
+  homepageUpTo,
+  type UpToOrgRef,
+  type UpToProjectRef,
 } from "@/app/data/experience";
+import { showcaseProjects, projectHref } from "@/app/data/projects";
 import ProjectGallery from "./components/ProjectGallery";
 import ExperienceList from "./components/ExperienceList";
 
@@ -17,6 +22,87 @@ const writingLabels: Record<string, string> = {
   "fast-tracked-uni-career": "university in 2½ years",
   uwreflection: "thoughts on waterloo cs",
 };
+
+function Metric({ children }: { children: ReactNode }) {
+  return <span className="build-keyword">{children}</span>;
+}
+
+function OrgEntity({ entity }: { entity: UpToOrgRef }) {
+  const content = (
+    <>
+      {entity.label}
+      <Image src={entity.icon} alt="" width={18} height={18} quality={85} />
+    </>
+  );
+
+  if (entity.href.startsWith("/")) {
+    return (
+      <Link href={entity.href} className="build-entity">
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <a
+      href={entity.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="build-entity"
+    >
+      {content}
+    </a>
+  );
+}
+
+function ProjectEntity({ entity }: { entity: UpToProjectRef }) {
+  if (entity.external) {
+    return (
+      <a
+        href={entity.external.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="build-entity build-entity-text"
+      >
+        {entity.external.label}
+      </a>
+    );
+  }
+
+  const project = showcaseProjects.find((p) => p.slug === entity.project);
+  if (!project) return null;
+
+  const href = projectHref(project);
+  const external = !project.writeup;
+
+  if (external) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="build-entity build-entity-text"
+      >
+        {project.name}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} className="build-entity build-entity-text">
+      {project.name}
+    </Link>
+  );
+}
+
+function UpToEntity({
+  entity,
+}: {
+  entity: UpToOrgRef | UpToProjectRef;
+}) {
+  if (entity.type === "org") return <OrgEntity entity={entity} />;
+  return <ProjectEntity entity={entity} />;
+}
 
 export default function Home() {
   const writing = posts
@@ -28,31 +114,35 @@ export default function Home() {
       <DesktopStickers />
       <h1 className="sr-only">Faiz Mustansar</h1>
       <div className="minimal-intro" id="about">
-        <p>
-          currently in my last year at
-          <a href={site.schools.guelph.href} className="inline-organization">
-            <Image
-              src={orgs.guelph.icon}
-              alt=""
-              width={24}
-              height={24}
-              quality={85}
-            />
-            guelph
-          </a>
-          . currently leading tech at{" "}
-          <Link href="/hc26" className="inline-organization">
-            <Image
-              src={orgs.hackcanada.icon}
-              alt=""
-              width={24}
-              height={24}
-              quality={85}
-            />
-            Hack Canada
-          </Link>
-          .
-        </p>
+        <ul className="build-list">
+          {homepageUpTo.map((item) => (
+            <li key={item.id}>
+              <span className="build-arrow" aria-hidden>
+                →
+              </span>
+              <span>
+                {item.before} <UpToEntity entity={item.entity} />
+                {item.after ? <> {item.after}</> : null}
+                {item.then ? (
+                  <>
+                    {" "}
+                    {item.then.before} <UpToEntity entity={item.then.entity} />
+                  </>
+                ) : null}
+                {item.metrics?.map((m, i) =>
+                  /^\d/.test(m) ? (
+                    <span key={`${item.id}-m-${i}`}>
+                      {" "}
+                      <Metric>{m}</Metric>
+                    </span>
+                  ) : (
+                    <span key={`${item.id}-m-${i}`}> {m}</span>
+                  ),
+                )}
+              </span>
+            </li>
+          ))}
+        </ul>
         <nav className="minimal-links" aria-label="Social links">
           {homepageSocials.map((item) => (
             <a
@@ -67,7 +157,6 @@ export default function Home() {
         </nav>
       </div>
 
-      <ProjectGallery />
 
       <section
         id="work"
@@ -81,14 +170,15 @@ export default function Home() {
         <ExperienceList items={[...experienceItems, ...communityItems]} />
       </section>
 
-      <section className="minimal-section" aria-labelledby="education-title">
+      {/* <section className="minimal-section" aria-labelledby="education-title">
         <h2 id="education-title">education</h2>
         <ExperienceList
           items={schoolItems.filter(
             (school) => school.link !== orgs.ottawa.href,
           )}
         />
-      </section>
+      </section> */}
+      <ProjectGallery />
 
       <section
         id="writing"
