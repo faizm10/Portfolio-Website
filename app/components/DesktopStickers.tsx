@@ -37,7 +37,7 @@ function randomPlacements(): Placement[] {
     side: slot % 2 === 0 ? firstSide : firstSide === "left" ? "right" : "left",
     horizontal: Math.random(),
     vertical: Math.random(),
-    angle: Math.random() * 16 - 8,
+    angle: (8 + Math.random() * 4) * ((Math.floor(slot / 2) + slot % 2) % 2 === 0 ? -1 : 1),
   }));
 }
 type Position = { x: number; y: number; width: number };
