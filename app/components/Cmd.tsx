@@ -1,278 +1,95 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+
+import { useEffect, useState, useCallback } from "react";
 import { Command } from "cmdk";
 import { useRouter } from "next/navigation";
 import * as Dialog from "@radix-ui/react-dialog";
-import { isMobile } from "react-device-detect";
-import { FiGithub } from "react-icons/fi";
-import {
-  IoLogoInstagram,
-  IoSearchOutline,
-  IoHomeOutline,
-  IoBookOutline,
-  IoImagesOutline,
-  IoGlobeOutline,
-  IoDocumentTextOutline,
-} from "react-icons/io5";
-import { PiLinkedinLogo } from "react-icons/pi";
-import { commandNav, site } from "@/app/data/site";
-
-const commandIcons = {
-  home: IoHomeOutline,
-  blog: IoBookOutline,
-  photos: IoImagesOutline,
-  travel: IoGlobeOutline,
-  resume: IoDocumentTextOutline,
-  linkedin: PiLinkedinLogo,
-  github: FiGithub,
-  instagram: IoLogoInstagram,
-} as const satisfies Record<(typeof commandNav)[number]["key"], unknown>;
+import { commandNav } from "@/app/data/site";
 
 export default function CommandPalette() {
   const [open, setOpen] = useState(false);
-  const [showDialog, setShowDialog] = useState(false);
-  const [isShiftKeyPressed, setisShiftKeyPressed] = useState(false);
   const router = useRouter();
-
-  const handleOpen = useCallback(() => {
-    setOpen(true);
-    window.dispatchEvent(new CustomEvent("command-palette-opened"));
-  }, []);
-
-  // set timeout on close for loading animation
-  useEffect(() => {
-    if (isMobile) return;
-    if (open) {
-      setShowDialog(true);
-    } else {
-      const timeout = setTimeout(() => setShowDialog(false), 500);
-      return () => clearTimeout(timeout);
-    }
-  }, [open]);
-
-  // tracks modifier key state when cmd is open
-  useEffect(() => {
-    if (isMobile || !open) return;
-
-    const handleKeyDown = (e: any) => {
-      if (e.shiftKey) {
-        setisShiftKeyPressed(true);
-      }
-    };
-
-    const handleKeyUp = (e: any) => {
-      if (!e.shiftKey) {
-        setisShiftKeyPressed(false);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("keyup", handleKeyUp);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("keyup", handleKeyUp);
-    };
-  }, [open]);
-
-  // listen for event to open palette, needs event listener so can open the palette globally
-  useEffect(() => {
-    if (isMobile) return;
-    const handleCustomOpen = () => handleOpen();
-    window.addEventListener("open-command-palette", handleCustomOpen);
-    return () =>
-      window.removeEventListener("open-command-palette", handleCustomOpen);
-  }, [handleOpen]);
-
-  // toggle the menu when ⌘K / crtlK is pressed
-  useEffect(() => {
-    if (isMobile) return;
-    const down = (e: any) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        if (!open) {
-          handleOpen();
-        } else {
-          setOpen(false);
-        }
-      }
-    };
-
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
-  }, [open, handleOpen]);
-
-  // handle keyboard shortcuts when cmd is open
-  useEffect(() => {
-    if (isMobile || !open) return;
-
-    const handleKeyDown = (e: any) => {
-      // only handle shift + number combinations
-      if (!e.shiftKey) return;
-
-      e.preventDefault();
-
-      switch (e.code) {
-        case "Digit0":
-        case "Numpad0":
-          openNextLink(() => router.push("/"));
-          break;
-        case "Digit1":
-        case "Numpad1":
-          openNextLink(() => router.push("/blog"));
-          break;
-        case "Digit2":
-        case "Numpad2":
-          openLink(() => window.open(site.socials.linkedin, "_blank"));
-          break;
-        case "Digit3":
-        case "Numpad3":
-          openLink(() => window.open(site.socials.github, "_blank"));
-          break;
-        case "Digit4":
-        case "Numpad4":
-          openLink(() => window.open(site.socials.instagram, "_blank"));
-          break;
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [open, router]);
-
-  // regular links remain open as href target blank
-  const openLink = (command: any) => {
-    setOpen(true);
-    command();
-  };
-
-  // next links close as it redirects to a different page
-  const openNextLink = (command: any) => {
-    setOpen(false);
-    command();
-  };
-
-  const kbdStyle = {
-    backgroundColor: "var(--surface-alt)",
-    color: "var(--ink-2)",
-    border: "1px solid var(--border)",
-  };
-
-  if (isMobile) {
-    return null;
-  }
-
-  const Shortcut: React.FC<{ children: any }> = ({ children }) => (
-    <div className="flex text-xs items-center gap-1 ml-auto" style={{ color: "var(--ink-3)" }}>
-      <kbd className={`px-1.5 py-0.5 rounded ${isShiftKeyPressed ? "opacity-60" : "opacity-100"}`} style={kbdStyle}>
-        shift
-      </kbd>
-      <span>+</span>
-      <kbd className="px-1.5 py-0.5 rounded" style={kbdStyle}>{children}</kbd>
-    </div>
+  const navigate = useCallback(
+    (item: (typeof commandNav)[number]) => {
+      setOpen(false);
+      if (item.external)
+        window.open(item.href, "_blank", "noopener,noreferrer");
+      else router.push(item.href);
+    },
+    [router],
   );
-
+  useEffect(() => {
+    const show = () => setOpen(true);
+    const key = (e: KeyboardEvent) => {
+      if (e.key.toLowerCase() === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setOpen((o) => !o);
+        return;
+      }
+      if (!open || !e.shiftKey || !e.code.startsWith("Digit")) return;
+      const item = commandNav.find((item) => item.shortcut === e.code.slice(5));
+      if (item) {
+        e.preventDefault();
+        navigate(item);
+      }
+    };
+    window.addEventListener("open-command-palette", show);
+    document.addEventListener("keydown", key);
+    return () => {
+      window.removeEventListener("open-command-palette", show);
+      document.removeEventListener("keydown", key);
+    };
+  }, [open, navigate]);
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
-      {showDialog && (
-        <Dialog.Portal>
-          <Dialog.Overlay
-            className="fixed inset-0 animate-fade-in z-40"
-            style={{ backgroundColor: "var(--overlay)" }}
-          />
-          <Dialog.Content
-            className={`fixed top-[20%] left-1/2 -translate-x-1/2 w-full max-w-125 p-3 z-50 ${
-              open ? "animate-slide-down" : "animate-slide-up"
-            }`}
+      <Dialog.Portal>
+        <Dialog.Overlay className="palette-overlay" />
+        <Dialog.Content className="palette-content">
+          <Dialog.Title className="palette-title">
+            A shortcut to anywhere.
+          </Dialog.Title>
+          <Dialog.Description className="sr-only">
+            Search pages and social links. Use arrow keys to select, Enter to
+            open, and Escape to close.
+          </Dialog.Description>
+          <Dialog.Close
+            className="palette-close"
+            aria-label="Close command palette"
           >
-            <Dialog.Title></Dialog.Title>
-            <Command
-              className="w-full rounded overflow-hidden"
-              style={{
-                border: "1px solid var(--border)",
-                backgroundColor: "var(--canvas)",
-                boxShadow: "0 8px 32px var(--accent-shadow-lg)",
-              }}
-              loop={true}
-              shouldFilter={true}
-              onClick={(e) => {
-                const input = e.currentTarget.querySelector("input");
-                if (input) input.focus();
-              }}
-            >
-              <div className="px-5 py-5 flex items-center gap-3" style={{ borderBottom: "1px solid var(--border)" }}>
-                <img src={site.brandIcon} alt="jsl" className="w-7 rounded-sm" />
-                <div className="flex-1">
-                  <h2 className="font-medium" style={{ color: "var(--ink)" }}>
-                    {site.email}
-                  </h2>
-                  <p className="text-xs" style={{ color: "var(--ink-3)" }}>
-                    use <kbd className="px-1 rounded" style={kbdStyle}>esc</kbd> or click outside to close
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center px-4 py-3" style={{ borderBottom: "1px solid var(--border)" }}>
-                <IoSearchOutline className="h-4 w-4" style={{ color: "var(--ink-3)" }} />
-                <Command.Input
-                  placeholder="search for topics ..."
-                  className="flex-1 w-full bg-transparent px-3 text-sm focus:outline-none"
-                  style={{ color: "var(--ink)" }}
-                  autoFocus={true}
-                />
-              </div>
-
-              <Command.List className="max-h-75 overflow-y-auto px-3 py-3">
-                <Command.Empty className="px-5 py-4 text-sm" style={{ color: "var(--ink-3)" }}>
-                  no results found.
-                </Command.Empty>
-
-                <Command.Group heading="links" className="px-2 text-xs uppercase tracking-widest mb-1"
-                  style={{ color: "var(--ink-3)" }}>
-                  {commandNav.map((item) => {
-                    const Icon = commandIcons[item.key];
-                    return (
-                    <Command.Item
-                      key={item.key}
-                      value={item.searchValue}
-                      onSelect={() => {
-                        if (item.external) {
-                          openLink(() => window.open(item.href, "_blank"));
-                        } else {
-                          setTimeout(() => openNextLink(() => router.push(item.href)), 0);
-                        }
-                      }}
-                      className="flex items-center gap-2 px-3 py-2 text-sm rounded cursor-pointer cmd-item"
-                      style={{ color: "var(--ink-2)" }}
-                    >
-                      <Icon className="h-4 w-4" />
-                      <span className="flex-1">{item.label}</span>
-                      <Shortcut>{item.shortcut}</Shortcut>
-                    </Command.Item>
-                    );
-                  })}
-                </Command.Group>
-              </Command.List>
-
-              <div className="px-3 py-3" style={{ borderTop: "1px solid var(--border)" }}>
-                <div className="flex items-center justify-between text-xs" style={{ color: "var(--ink-3)" }}>
-                  <div className="flex items-center gap-2">
-                    <span>use</span>
-                    <kbd className="px-1 py-0.5 rounded" style={kbdStyle}>↑</kbd>|
-                    <kbd className="px-1 py-0.5 rounded" style={kbdStyle}>↓</kbd>
-                    <span>to toggle</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span>press</span>
-                    <kbd className="px-1.5 py-0.5 rounded" style={kbdStyle}>↵</kbd>
-                    <span>to open</span>
-                  </div>
-                </div>
-              </div>
-            </Command>
-          </Dialog.Content>
-        </Dialog.Portal>
-      )}
+            esc
+          </Dialog.Close>
+          <Command loop>
+            <Command.Input
+              autoFocus
+              placeholder="Where to?"
+              aria-label="Search pages and links"
+            />
+            <Command.List>
+              <Command.Empty>
+                No matches. Try “photos” or “résumé”.
+              </Command.Empty>
+              <Command.Group heading="Around here">
+                {commandNav.map((item) => (
+                  <Command.Item
+                    key={item.key}
+                    value={item.searchValue}
+                    onSelect={() => navigate(item)}
+                    className="cmd-item"
+                  >
+                    <span>{item.label}</span>
+                    <span>
+                      {/^\d$/.test(item.shortcut) ? `⇧ ${item.shortcut}` : "↗"}
+                    </span>
+                  </Command.Item>
+                ))}
+              </Command.Group>
+            </Command.List>
+            <div className="palette-hint">
+              ↑ ↓ to explore <span>↵ to go</span>
+            </div>
+          </Command>
+        </Dialog.Content>
+      </Dialog.Portal>
     </Dialog.Root>
   );
 }

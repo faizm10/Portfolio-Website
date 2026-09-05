@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Newsreader, Inter, Pacifico } from "next/font/google";
+import { Newsreader, DM_Sans, Pacifico } from "next/font/google";
 import CommandPalette from "./components/Cmd";
-import LoadingGate from "./components/LoadingGate";
+import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
 import { site, siteHostname } from "@/app/data/site";
 
@@ -12,21 +12,14 @@ const newsreader = Newsreader({
   variable: "--font-newsreader",
 });
 
-const inter = Inter({
+const inter = DM_Sans({
   subsets: ["latin"],
   variable: "--font-inter",
 });
-import "prismjs/themes/prism-twilight.css";
-import "prismjs/plugins/line-numbers/prism-line-numbers.css";
-import "prismjs";
-import "prismjs/plugins/line-numbers/prism-line-numbers";
-import "prismjs/components/prism-kotlin";
-import "prismjs/components/prism-typescript";
-import "prismjs/components/prism-python";
-import "prismjs/components/prism-json";
-import "prismjs/components/prism-yaml";
-import "prismjs/components/prism-bash";
 import "./globals.css";
+import "./redesign.css";
+import "./minimal.css";
+import "./writing.css";
 import { cn } from "@/lib/utils";
 
 const pacifico = Pacifico({
@@ -78,20 +71,21 @@ export default function RootLayout({
       className={cn(newsreader.variable, inter.variable, pacifico.variable)}
       suppressHydrationWarning
     >
-      <head>
-        <link rel="canonical" href={site.url} />
-      </head>
       <body
-        className={`${inter.className} min-h-screen w-full bg-white text-neutral-900 antialiased`}
+        className={`${inter.className} min-h-screen w-full text-neutral-900 antialiased`}
         suppressHydrationWarning
       >
-        <LoadingGate>
-          <div className="min-h-screen w-full bg-white">
+        <>
+          <a className="skip-link" href="#main-content">
+            Skip to content
+          </a>
+          <SiteHeader />
+          <div className="site-content">
             {children}
             <CommandPalette />
           </div>
           <SiteFooter />
-        </LoadingGate>
+        </>
       </body>
     </html>
   );

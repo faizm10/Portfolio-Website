@@ -1,5 +1,7 @@
 import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
+import recmaArticle from "./lib/mdx/recma-article.mjs";
+import remarkGfm from "remark-gfm";
 
 const isGithubPages = process.env.GITHUB_PAGES === "true";
 
@@ -45,7 +47,8 @@ const nextConfig: NextConfig = {
 
 const withMDX = createMDX({
   options: {
-    providerImportSource: "@mdx-js/react",
+    remarkPlugins: [remarkGfm],
+    recmaPlugins: [recmaArticle],
   },
 });
 

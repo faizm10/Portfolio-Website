@@ -2,7 +2,7 @@ export function Gradients() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none fixed inset-0 z-0 overflow-hidden opacity-0 md:opacity-40 lg:opacity-50"
+      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden opacity-0 md:opacity-40 lg:opacity-50 print:hidden"
     >
       <div className="absolute top-0 -left-4 h-[70vh] w-[18vw] animate-blob rounded-full bg-amber-100 mix-blend-multiply blur-3xl filter" />
       <div className="animation-delay-2000 absolute top-0 -right-4 h-[60vh] w-[18vw] animate-blob rounded-full bg-orange-100 mix-blend-multiply blur-3xl filter" />

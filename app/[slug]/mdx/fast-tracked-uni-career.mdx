@@ -1,0 +1,318 @@
+import Image from "next/image";
+
+export default function BlogPost() {
+  const normalPath = [
+    "sem 1: intro cs + math + electives",
+    "sem 2: intermediate programming + discrete + linear algebra",
+    "sem 3: microcomputers + oop + data structures",
+    "sem 4: software systems + os + algorithms",
+    "sem 5: theory + systems analysis + stats",
+    "sem 6: software engineering + upper-year cis + electives",
+    "sem 7: upper-year cis + 4000-level cis",
+    "sem 8: compilers + final cis + electives",
+  ];
+
+  const myPath = [
+    "fall 23: 5 courses",
+    "winter 24: 5 courses",
+    "summer 24: 4 courses + ura",
+    "fall 24: 4 courses + ura + ta",
+    "winter 25: 4 courses + ta + os pivot",
+    "summer 25: 7 courses across 3 schools + swe",
+    "fall 25: 6 courses across 2 schools + swe + ta + hackcanada",
+    "winter 26: td work term + 3 courses + research",
+    "summer 26: tangerine + final course",
+  ];
+
+  return (
+    <div className="article-section">
+
+      <section className="prose prose-neutral max-w-none prose-p:text-neutral-700 prose-headings:text-neutral-900">
+        <p className="text-base leading-relaxed text-neutral-700 md:text-lg">
+          a breakdown of how i compressed my university timeline, stacked
+          transfer credits, and planned to finish in 2 and a half years.
+        </p>
+
+        <h2>courses</h2>
+        <p>
+          the main idea was simple: i kept full course loads during fall and
+          winter, used summer terms aggressively, and layered in transfer credits
+          when they made sense for my degree plan.
+        </p>
+
+        <h3>fall 2023</h3>
+        <ul>
+          <li>CIS1910</li>
+          <li>CIS1300</li>
+          <li>MATH1160</li>
+          <li>MATH1200</li>
+          <li>MCS1000</li>
+        </ul>
+
+        <h3>winter 2024</h3>
+        <ul>
+          <li>CIS2910</li>
+          <li>CIS2500</li>
+          <li>HROB2010</li>
+          <li>CIS1050</li>
+          <li>STAT2040</li>
+        </ul>
+
+        <h3>summer 2024</h3>
+        <ul>
+          <li>MCS2100</li>
+          <li>NUTR1010</li>
+          <li>FRHD1010</li>
+          <li>MGMT2150</li>
+        </ul>
+        <p>
+          <em>work: undergraduate research assistant</em>
+        </p>
+
+        <h3>fall 2024</h3>
+        <ul>
+          <li>CIS2030</li>
+          <li>CIS2430</li>
+          <li>CIS2520</li>
+          <li>FRHD1100</li>
+        </ul>
+        <p>
+          <em>work: undergraduate research assistant and teaching assistant</em>
+        </p>
+
+        <h3>winter 2025</h3>
+        <ul>
+          <li>CIS3750</li>
+          <li>CIS2750</li>
+          <li>CIS3190</li>
+          <li>CIS3490</li>
+        </ul>
+        <p>
+          i originally tried taking operating systems at guelph in winter 2025,
+          but i dropped it because the prof was rlly cooked. it was probably the
+          worst course i had taken so far: lecture slides had tons of errors, and
+          some assignments looked like they came from a different university 23
+          years ago. after dropping it, i started looking for options to take OS
+          elsewhere and ended up retaking it in the summer at uottawa.
+        </p>
+        <p>
+          some{" "}
+          <a
+            href="https://www.reddit.com/r/uoguelph/comments/1indyyi/cis3110_prof_receives_30_10_reviews_in_3_hours/"
+            target="_blank"
+            className="a"
+          >
+            stories
+          </a>{" "}
+          and{" "}
+          <a
+            href="https://www.ratemyprofessors.com/professor/2707345"
+            target="_blank"
+            className="a"
+          >
+            ratings
+          </a>
+          .
+        </p>
+        <figure>
+          <Image
+            src="/notes/fast-tracked-uni-career/hamilton-wright-rmp.png"
+            alt="Rate My Professors screenshot for Andrew Hamilton-Wright"
+            width={1059}
+            height={546}
+            className="rounded-xl border border-neutral-200"
+            sizes="(min-width: 768px) 672px, calc(100vw - 48px)"
+          />
+          <figcaption>
+            a screenshot i saved while deciding whether to finish OS at guelph
+            or take it elsewhere.
+          </figcaption>
+        </figure>
+        <p>
+          <em>work: teaching assistant</em>
+        </p>
+        <p>
+          <strong>credits achieved:</strong> 11.5 credits
+        </p>
+
+        <h3>summer 2025</h3>
+        <h4>university of guelph</h4>
+        <ul>
+          <li>FRHD1020</li>
+          <li>MGMT3300</li>
+          <li>MGMT3100</li>
+          <li>SPMT1120</li>
+          <li>SPMT1020</li>
+        </ul>
+
+        <h4>university of waterloo</h4>
+        <ul>
+          <li>CS349: user interface</li>
+        </ul>
+
+        <h4>university of ottawa</h4>
+        <ul>
+          <li>CPI3131: operating systems</li>
+        </ul>
+        <p>
+          yes, seven courses, and that was not it. i was also working as an
+          undergraduate research assistant, working part time as a software
+          engineer at B&amp;B AI, and keeping side projects moving.
+        </p>
+        <p>
+          <em>work: undergraduate research assistant and part-time swe at B&amp;B AI</em>
+        </p>
+        <p>
+          <strong>credits achieved:</strong> 15 credits
+        </p>
+
+        <h3>fall 2025</h3>
+        <h4>university of guelph</h4>
+        <ul>
+          <li>CIS3150</li>
+          <li>CIS3760</li>
+          <li>CIS4150</li>
+          <li>CIS3090</li>
+        </ul>
+
+        <h4>university of waterloo</h4>
+        <ul>
+          <li>CS346</li>
+          <li>CS449</li>
+        </ul>
+        <p>
+          the workload stayed heavy in fall too: part-time software engineer at
+          B&amp;B AI, teaching assistant for MCS2000 in person and distance
+          education, frontend developer for hackcanada, and a few side projects.
+        </p>
+        <p>
+          <em>work: part-time swe at B&amp;B AI, MCS2000 teaching assistant, and hackcanada frontend developer</em>
+        </p>
+        <p>hub incubator program: 1k grant</p>
+        <p>
+          <strong>credits achieved:</strong> 18 credits
+        </p>
+
+        <h3>winter 2026</h3>
+        <p>
+          <em>work term: td bank</em>
+        </p>
+        <h4>university of guelph</h4>
+        <ul>
+          <li>CIS4900: research project, online with John Akinyemi</li>
+          <li>CIS4650</li>
+          <li>CIS3700</li>
+        </ul>
+        <p>
+          for CIS4900, i worked on CS Learning Map: a "google maps for learning"
+          style platform that builds adaptive prerequisite paths through computer
+          science concepts using bayesian knowledge tracing, prerequisite graphs,
+          and a decision policy for advancing, remediating, or rerouting learners.
+          the project is on{" "}
+          <a
+            href="https://github.com/faizm10/cis4900"
+            target="_blank"
+            className="a"
+          >
+            github
+          </a>
+          .
+        </p>
+        <p>
+          <strong>credits achieved:</strong> 19.5 credits
+        </p>
+
+        <h3>summer 2026</h3>
+        <p>
+          my plan for my final semester was to take{" "}
+          <a
+            href="https://colleague-ss.uoguelph.ca/Student/Planning/Programs/MyProgress"
+            target="_blank"
+            className="a"
+          >
+            ENVS2210: apiculture &amp; honey bee biology
+          </a>{" "}
+          at the university of guelph, apply for credit/no credit, aim for 50
+          percent, and just get the credit. i kinda forgot about that plan and
+          ended up with an 88, which is how i ended my university career.
+        </p>
+        <p>
+          <em>work: software developer intern at tangerine</em>
+        </p>
+
+        <h2>by the numbers</h2>
+        <ul>
+          <li>
+            <strong>20 credits</strong> across the full degree plan.
+          </li>
+          <li>
+            <strong>9 terms</strong> from fall 2023 to summer 2026.
+          </li>
+          <li>
+            <strong>3 universities</strong>: guelph, waterloo, and ottawa.
+          </li>
+          <li>
+            <strong>13 courses</strong> across summer 2025 and fall 2025 alone.
+          </li>
+        </ul>
+
+        <h2>normal path vs mine</h2>
+        <p>
+          the normal guelph cs schedule without co-op is designed across 8
+          semesters. it spreads the core courses, area of emphasis, and electives
+          across the regular fall and winter rhythm so students can move through
+          prerequisites in order.
+        </p>
+
+        <div className="not-prose my-8 grid gap-8 md:grid-cols-2">
+          <section aria-labelledby="normal-guelph-path">
+            <h3
+              id="normal-guelph-path"
+              className="text-sm font-semibold uppercase tracking-[0.14em] text-neutral-500"
+            >
+              normal guelph no-coop path
+            </h3>
+            <ol className="mt-4 space-y-3">
+              {normalPath.map((step, index) => (
+                <li key={step} className="flex gap-3 text-sm leading-6">
+                  <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-xs font-semibold text-white">
+                    {index + 1}
+                  </span>
+                  <span className="text-neutral-700">{step}</span>
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          <section aria-labelledby="my-degree-path">
+            <h3
+              id="my-degree-path"
+              className="text-sm font-semibold uppercase tracking-[0.14em] text-neutral-500"
+            >
+              my compressed path
+            </h3>
+            <ol className="mt-4 space-y-3">
+              {myPath.map((step, index) => (
+                <li key={step} className="flex gap-3 text-sm leading-6">
+                  <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-xs font-semibold text-white">
+                    {index + 1}
+                  </span>
+                  <span className="text-neutral-700">{step}</span>
+                </li>
+              ))}
+            </ol>
+          </section>
+        </div>
+
+        <p>
+          the big difference is that the official path is paced for 8 semesters,
+          while mine ran year-round and pulled in waterloo and ottawa whenever
+          guelph timing got in the way. the course load was heavier, but the
+          harder part was stacking it with research, TA work, part-time software
+          engineering, hackcanada, side projects, a TD work term, and a Tangerine
+          internship.
+        </p>
+      </section>
+    </div>
+  );
+}

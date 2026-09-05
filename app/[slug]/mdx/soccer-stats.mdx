@@ -6,7 +6,7 @@ export const periods = [
       { text: "thursday stadium sports league - ongoing", tag: "summer" },
       { text: "sunday stadium sports league - ongoing", tag: "summer" },
       { text: "wednesday stadium sports league - ongoing", tag: "summer" },
-      { text: "vball scotiabank tournament - ongoing", tag: "summer" },
+      { text: "vball scotiabank tournament - 3rd place", tag: "summer" },
     ],
   },
   {
@@ -146,63 +146,26 @@ export const performanceTag = (text) => {
   return "record";
 };
 
-<section className="relative isolate mx-auto w-full px-1 py-4">
-  <div className="absolute -top-6 left-1/2 -z-10 h-32 w-32 -translate-x-1/2 rounded-full bg-emerald-300/30 blur-3xl" />
-  <div className="rounded-3xl border border-emerald-100 bg-gradient-to-b from-emerald-50/70 via-white to-cyan-50/60 p-5 md:p-6">
-    <p className="mb-2 text-xs font-semibold tracking-[0.22em] text-emerald-700">performance archive</p>
-    <h1 className="m-0 text-3xl font-black leading-tight text-neutral-900 md:text-4xl">soccer stats</h1>
-    <p className="mb-0 mt-3 text-sm text-neutral-600">latest to earliest, with source tags on every league entry.</p>
+export const tableOfContents = periods.map((period) => ({ id: period.label.replace(/\s+/g, "-"), title: period.label, depth: 2 }));
 
-    <div className="mt-5 grid grid-cols-2 gap-2.5 text-center md:grid-cols-4">
-      <div className="rounded-xl border border-white/60 bg-white/80 p-3">
-        <p className="m-0 text-xs tracking-wide text-neutral-500">periods</p>
-        <p className="m-0 mt-1 text-xl font-bold text-neutral-900">{totalPeriods}</p>
-      </div>
-      <div className="rounded-xl border border-white/60 bg-white/80 p-3">
-        <p className="m-0 text-xs tracking-wide text-neutral-500">entries</p>
-        <p className="m-0 mt-1 text-xl font-bold text-neutral-900">{totalEntries}</p>
-      </div>
-      <div className="rounded-xl border border-white/60 bg-white/80 p-3">
-        <p className="m-0 text-xs tracking-wide text-neutral-500">tags</p>
-        <p className="m-0 mt-1 text-xl font-bold text-neutral-900">{totalTags}</p>
-      </div>
-      <div className="rounded-xl border border-white/60 bg-white/80 p-3">
-        <p className="m-0 text-xs tracking-wide text-neutral-500">podium</p>
-        <p className="m-0 mt-1 text-xl font-bold text-neutral-900">{podiumFinishes}</p>
-      </div>
-    </div>
+<section className="journal-sports-record">
+  <div className="journal-stats-summary" aria-label="Performance summary">
+    <div><span>periods</span><strong>{totalPeriods}</strong></div>
+    <div><span>entries</span><strong>{totalEntries}</strong></div>
+    <div><span>tags</span><strong>{totalTags}</strong></div>
+    <div><span>podium finishes</span><strong>{podiumFinishes}</strong></div>
   </div>
-
-  <div className="relative mt-8 space-y-6">
-    <div className="absolute left-3 top-2 h-[calc(100%-1rem)] w-px bg-gradient-to-b from-emerald-300 via-cyan-300 to-transparent" />
-    {periods.map((period, index) => (
-      <div key={period.label} className="relative pl-8">
-        <div className="absolute left-0 top-1 flex h-6 w-6 items-center justify-center rounded-full border border-emerald-300 bg-emerald-100 text-xs font-bold text-emerald-700">
-          {index + 1}
-        </div>
-        <h2 className="m-0 text-xl font-bold text-neutral-900">{period.label}</h2>
-        <div className="mt-3 rounded-2xl border border-neutral-200 bg-white/85 p-4 shadow-[0_8px_30px_-22px_rgba(16,185,129,0.8)]">
-          <div className="mb-3">
-            <span className="rounded-full bg-neutral-100 px-2.5 py-1 text-[11px] font-medium tracking-wide text-neutral-600">
-              {period.entries.length} entries
-            </span>
-          </div>
-          <div className="flex flex-col gap-2">
-            {period.entries.map((entry) => (
-              <div key={`${period.label}-${entry.text}`} className="flex flex-wrap items-center gap-2 rounded-lg border border-neutral-100 bg-neutral-50 px-3 py-2">
-                <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
-                <span className="text-sm text-neutral-700">{entry.text}</span>
-                <span className="ml-auto rounded-full border border-emerald-200 bg-emerald-50 px-2 py-[2px] text-[10px] font-semibold tracking-wide text-emerald-700">
-                  {entry.tag}
-                </span>
-                <span className="rounded-full border border-neutral-200 bg-white px-2 py-[2px] text-[10px] font-semibold tracking-wide text-neutral-500">
-                  {performanceTag(entry.text)}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
+  {periods.map((period) => (
+    <section key={period.label} className="journal-sport-season">
+      <h2 id={period.label.replace(/\s+/g, "-")}>{period.label}</h2>
+      <ul>
+        {period.entries.map((entry) => (
+          <li key={`${period.label}-${entry.text}`}>
+            <span>{entry.text}</span>
+            <span className="journal-sport-tags"><span>{entry.tag}</span><span>{performanceTag(entry.text)}</span></span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
 </section>

@@ -16,7 +16,7 @@ type CalendarData = {
 const CELL = 8;
 const GAP = 2;
 const STEP = CELL + GAP;
-const LEFT_OFFSET = 24;
+const LEFT_OFFSET = 0;
 const TOP_OFFSET = 18;
 const CELL_EMPTY = "#ebedf0";
 const MONTHS = [
@@ -124,7 +124,11 @@ function ContributionsSkeleton() {
   );
 }
 
-export default function GitHubContributionsPreview() {
+export default function GitHubContributionsPreview({
+  compact = false,
+}: {
+  compact?: boolean;
+}) {
   const [data, setData] = useState<CalendarData | null>(
     () => cached?.calendar ?? null,
   );
@@ -159,7 +163,9 @@ export default function GitHubContributionsPreview() {
       week.contributionDays.some((day) => day.date.startsWith(yearPrefix)),
     );
     const lastWeekIdx = data.weeks.reduce((acc, week, index) => {
-      return week.contributionDays.some((day) => day.date.startsWith(yearPrefix))
+      return week.contributionDays.some((day) =>
+        day.date.startsWith(yearPrefix),
+      )
         ? index
         : acc;
     }, -1);
@@ -188,7 +194,8 @@ export default function GitHubContributionsPreview() {
         sum +
         week.contributionDays.reduce(
           (daySum, day) =>
-            daySum + (day.date.startsWith(yearPrefix) ? day.contributionCount : 0),
+            daySum +
+            (day.date.startsWith(yearPrefix) ? day.contributionCount : 0),
           0,
         ),
       0,
@@ -217,12 +224,18 @@ export default function GitHubContributionsPreview() {
   }
 
   return (
-    <div className="flex h-full w-full flex-col rounded-lg bg-white px-3 py-2.5 text-neutral-900">
+    <div
+      className={`flex h-full w-full flex-col bg-white text-neutral-900 ${compact ? "" : "rounded-lg px-3 py-2.5"}`}
+    >
       <div className="flex items-baseline justify-between gap-4">
         <p className="text-[13px] font-medium lowercase">
           {chart.total.toLocaleString()} contributions in {year}
         </p>
-        <p className="text-[11px] lowercase text-neutral-500">github activity</p>
+        {!compact && (
+          <p className="text-[11px] lowercase text-neutral-500">
+            github activity
+          </p>
+        )}
       </div>
 
       <svg

@@ -1,13 +1,4 @@
-export const SLUGS = [
-  "uwreflection",
-  "uoguelphcourses",
-  "arcki",
-  "transit-flow",
-  "octree",
-  "uogreflection",
-  "footy",
-  "hackathons",
-  "soccer-stats",
-  "jachacks",
-  "hc26",
-] as const;
+import { posts } from '@/app/posts';
+import { showcaseProjects } from '@/app/data/projects';
+
+export const SLUGS = [...new Set([...posts.map((post) => post.slug), ...showcaseProjects.map((project) => project.slug)])];

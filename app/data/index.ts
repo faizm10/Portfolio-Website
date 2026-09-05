@@ -8,6 +8,7 @@
  * - `hackathons.ts`   hackathon tallies / summary (list UI stays in MDX)
  * - `places.ts`       travel map coordinates + place types
  * - `photos.json`     photo metadata for the places map
+ * - `stickers.ts`     homepage sticker labels, captions, assets, desktop layout
  *
  * Blog index: `app/posts.ts`
  */
@@ -18,12 +19,18 @@ export {
   communityItems,
   schoolItems,
   bioInternships,
+  homepageUpTo,
   orgs,
 } from "./experience";
-export { showcaseProjects } from "./projects";
+export { showcaseProjects, projectHref } from "./projects";
 export {
   hackathonEntries,
   totalHackathons,
   hackathonsSummary,
 } from "./hackathons";
 export { locationCoordinates, formatPhotoDate, type Place } from "./places";
+export {
+  stickers,
+  type Sticker,
+  type StickerId,
+} from "./stickers";
