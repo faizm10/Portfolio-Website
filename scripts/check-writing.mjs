@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { readFile, readdir } from 'node:fs/promises';
 import { compile } from '@mdx-js/mdx';
 import { createRequire } from 'node:module';
 import { pathToFileURL } from 'node:url';
@@ -27,6 +28,24 @@ assert.match(rich.html, /<table>/);
 assert.match(rich.html, /data-footnote-ref/);
 assert.match(rich.html, /id="user-content-fn-one"/);
 console.log('PASS MDX metadata: Markdown and JSX anchors, duplicate headings, explicit IDs, reading time');
+
+// Check the compiled HTML tree: multiline JSX can introduce Markdown paragraphs
+// even when the source contains only one explicit <p> tag.
+const articleDirectory = new URL('../app/[slug]/mdx/', import.meta.url);
+for (const file of (await readdir(articleDirectory)).filter((name) => name.endsWith('.mdx'))) {
+  await compile(await readFile(new URL(file, articleDirectory), 'utf8'), {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [() => (tree) => {
+      function visit(node, insideParagraph = false) {
+        const tag = node.tagName ?? node.name;
+        assert.ok(!(tag === 'p' && insideParagraph), `${file}:${node.position?.start.line}: nested paragraph causes hydration errors`);
+        for (const child of node.children ?? []) visit(child, insideParagraph || tag === 'p');
+      }
+      visit(tree);
+    }],
+  });
+}
+console.log('PASS article markup: no nested paragraphs in compiled MDX');
 
 if (process.env.PORTFOLIO_ORIGIN) {
   const routes = ['hackathons', 'jachacks', 'hc26', 'footy', 'fast-tracked-uni-career', 'uwreflection', 'uogreflection', 'soccer-stats'];
