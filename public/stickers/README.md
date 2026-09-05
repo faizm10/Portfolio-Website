@@ -2,7 +2,7 @@
 
 ## Editing stickers
 
-Edit `app/data/stickers.ts`. Each entry has `label` (accessible name), `caption` (hover/focus text), `src`, and size fields. On desktop, eight stickers frame the first screen (four per side), while the other three appear farther down the homepage. Sticker assignments, offsets, and angles randomize on each refresh; reserved vertical bands keep them spaced apart. `DesktopStickers.tsx` controls placement and keeps the reading column clear. Save to preview with `npm run dev`; rebuild/deploy to update the live site.
+Edit `app/data/stickers.ts`. Each entry has `label` (accessible name), `caption` (hover/focus text), `src`, and size fields. On desktop, eight stickers frame the first screen (four per side), while the other three appear farther down the homepage. Each side alternates inward and outward, starting inward, to create a mirrored stagger. Sticker assignments, small offsets, and angles randomize on each refresh; reserved vertical bands keep them spaced apart. `DesktopStickers.tsx` controls placement and keeps the reading column clear. Save to preview with `npm run dev`; rebuild/deploy to update the live site.
 
 ## Controller
 
