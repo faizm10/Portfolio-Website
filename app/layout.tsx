@@ -16,19 +16,10 @@ const inter = DM_Sans({
   subsets: ["latin"],
   variable: "--font-inter",
 });
-import "prismjs/themes/prism-twilight.css";
-import "prismjs/plugins/line-numbers/prism-line-numbers.css";
-import "prismjs";
-import "prismjs/plugins/line-numbers/prism-line-numbers";
-import "prismjs/components/prism-kotlin";
-import "prismjs/components/prism-typescript";
-import "prismjs/components/prism-python";
-import "prismjs/components/prism-json";
-import "prismjs/components/prism-yaml";
-import "prismjs/components/prism-bash";
 import "./globals.css";
 import "./redesign.css";
 import "./minimal.css";
+import "./writing.css";
 import { cn } from "@/lib/utils";
 
 const pacifico = Pacifico({
