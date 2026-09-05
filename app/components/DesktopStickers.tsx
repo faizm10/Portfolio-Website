@@ -68,13 +68,16 @@ function initialPosition(sticker: Sticker, placement: Placement): Position {
   const { pageWidth, lane, width, height, rotatedHeight, inset, pageHeight } = dimensions(sticker, placement);
   const left = placement.side === "left" ? inset : pageWidth - lane + inset;
   const horizontalSpace = Math.max(0, lane - width - inset * 2);
+  // Alternate inward and outward, mirroring the pattern across the content.
+  const towardRight = (placement.row % 2 === 0) === (placement.side === "left");
+  const horizontalOffset = (towardRight ? 0.8 : 0.2) + (placement.horizontal - 0.5) * 0.08;
   const startY = placement.firstScreen ? 80 : window.innerHeight + 80;
   const endY = placement.firstScreen ? window.innerHeight - 40 : pageHeight - 160;
   const rowHeight = (endY - startY) / placement.rows;
   // Give every sticker its own vertical band, with breathing room between bands.
   const verticalSpace = Math.max(0, rowHeight - rotatedHeight - 32);
   return constrain(sticker, placement,
-    left + horizontalSpace * placement.horizontal,
+    left + horizontalSpace * horizontalOffset,
     startY + placement.row * rowHeight + 16 + (rotatedHeight - height) / 2 + verticalSpace * placement.vertical,
   );
 }
