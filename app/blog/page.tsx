@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  const sorted = [...posts].sort((a, b) => {
+  const sorted = posts.filter((post) => post.slug !== "soccer-stats").sort((a, b) => {
     if (a.pinned !== b.pinned) return a.pinned ? -1 : 1;
     return 0;
   });

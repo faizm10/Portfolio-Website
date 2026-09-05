@@ -50,11 +50,16 @@ export default function PlacesMap({
       style: "mapbox://styles/mapbox/standard",
     });
 
+    const motionPreference = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
     const secondsPerRevolution = 120;
 
     const spinGlobe = () => {
       if (
         !map.current ||
+        motionPreference.matches ||
+        document.hidden ||
         interactingRef.current ||
         lightboxOpenRef.current ||
         map.current.getZoom() > 4
@@ -66,6 +71,12 @@ export default function PlacesMap({
       map.current.easeTo({ center, duration: 1000, easing: (n) => n });
     };
     spinRef.current = spinGlobe;
+    const syncMotion = () => {
+      if (motionPreference.matches || document.hidden) map.current?.stop();
+      else spinGlobe();
+    };
+    motionPreference.addEventListener("change", syncMotion);
+    document.addEventListener("visibilitychange", syncMotion);
 
     const startInteract = () => {
       interactingRef.current = true;
@@ -156,6 +167,8 @@ export default function PlacesMap({
     });
 
     return () => {
+      motionPreference.removeEventListener("change", syncMotion);
+      document.removeEventListener("visibilitychange", syncMotion);
       markers.current.forEach((m) => m.remove());
       markers.current = [];
       map.current?.remove();
@@ -178,11 +191,7 @@ export default function PlacesMap({
         className="flex h-[400px] items-center justify-center rounded-2xl border px-6 text-center text-sm lowercase"
         style={{ borderColor: "var(--border)", color: "var(--ink-3)" }}
       >
-        add{" "}
-        <code className="mx-1 normal-case" style={{ color: "var(--ink-2)" }}>
-          NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
-        </code>{" "}
-        to enable the places map
+        The map is taking a break. Explore the places and photos below.
       </div>
     );
   }

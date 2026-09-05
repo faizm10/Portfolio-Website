@@ -31,6 +31,12 @@ export const posts: Post[] = [
     pinned: true,
   },
   {
+    slug: "fast-tracked-uni-career",
+    title: "how i fast tracked my uni career, completing in 2 and a half years",
+    date: "aug 2026",
+    pinned: false,
+  },
+  {
     slug: "uwreflection",
     title: "thoughts on uw cs",
     date: "jan 2026",
@@ -49,4 +55,3 @@ export const posts: Post[] = [
     pinned: false,
   },
 ];
-

@@ -17,6 +17,7 @@ import Hackathons from "./mdx/hackathons.mdx";
 import SoccerStats from "./mdx/soccer-stats.mdx";
 import Jachacks from "./mdx/jachacks.mdx";
 import hc26 from "./mdx/hc26.mdx";
+import FastTrackedUniCareer from "./mdx/fast-tracked-uni-career.mdx";
 
 const MDX_MAP: Record<string, ComponentType> = {
   uwreflection: UWReflection,
@@ -27,6 +28,7 @@ const MDX_MAP: Record<string, ComponentType> = {
   uogreflection: UoGReflection,
   footy: Footy,
   hackathons: Hackathons,
+  "fast-tracked-uni-career": FastTrackedUniCareer,
   "soccer-stats": SoccerStats,
   jachacks: Jachacks,
   hc26: hc26,
