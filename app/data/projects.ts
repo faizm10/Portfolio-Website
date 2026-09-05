@@ -16,7 +16,14 @@ export type ProjectType = {
   resumeDetail?: string;
   year?: string;
   glowColors: string;
+  /** Internal writeup at `/[slug]`; otherwise link the live site only */
+  writeup?: boolean;
 };
+
+/** Prefer the project story when one exists; otherwise the live URL. */
+export function projectHref(project: ProjectType) {
+  return project.writeup ? `/${project.slug}` : project.url;
+}
 
 export const showcaseProjects: ProjectType[] = [
   {
@@ -60,6 +67,7 @@ export const showcaseProjects: ProjectType[] = [
     stat: "1K+ users, 50K+ views, and 50+ GitHub stars",
     resumeDetail: "3D world editor on a globe — 1k+ users, 50k+ views, 50+ stars.",
     year: "2026",
+    writeup: true,
     glowColors:
       "drop-shadow(0 8px 16px rgba(204, 85, 0, 0.04)) drop-shadow(0 12px 24px rgba(230, 115, 40, 0.04)) drop-shadow(0 16px 32px rgba(255, 140, 0, 0.03)) drop-shadow(0 20px 40px rgba(255, 165, 50, 0.03))",
   },
@@ -95,4 +103,3 @@ export const showcaseProjects: ProjectType[] = [
       "drop-shadow(0 8px 16px rgba(220, 38, 38, 0.05)) drop-shadow(0 12px 24px rgba(15, 23, 42, 0.04)) drop-shadow(0 16px 32px rgba(37, 99, 235, 0.035)) drop-shadow(0 20px 40px rgba(220, 38, 38, 0.025))",
   },
 ];
-
