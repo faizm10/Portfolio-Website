@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { showcaseProjects } from "@/app/data/projects";
+import { showcaseProjects, projectHref } from "@/app/data/projects";
 
 export default function ProjectGallery() {
   return (
@@ -13,11 +13,12 @@ export default function ProjectGallery() {
         {showcaseProjects.map((project) => (
           <article className="gallery-project" key={project.slug}>
             <Link
-              href={
-                project.slug === "pitchpulse" ? project.url : `/${project.slug}`
-              }
+              href={projectHref(project)}
               className="gallery-image-link"
               aria-label={`Explore ${project.name}`}
+              {...(project.writeup
+                ? {}
+                : { target: "_blank", rel: "noopener noreferrer" })}
             >
               <Image
                 src={project.banner}
@@ -38,9 +39,9 @@ export default function ProjectGallery() {
               className="gallery-project-links"
               aria-label={`${project.name} links`}
             >
-              {project.slug !== "pitchpulse" && (
+              {project.writeup ? (
                 <Link href={`/${project.slug}`}>about</Link>
-              )}
+              ) : null}
               <a href={project.url} target="_blank" rel="noopener noreferrer">
                 live site ↗
               </a>
