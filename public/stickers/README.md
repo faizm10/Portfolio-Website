@@ -2,7 +2,7 @@
 
 ## Editing captions
 
-Edit `app/data/sticker-captions.json`. Each key identifies a sticker; change only its quoted text to update the hover/focus caption. For example, `"controller": "fifa night"`. Keep the keys and JSON commas intact. Save to preview with `npm run dev`; rebuild/deploy to update the live site. All 12 captions live in this file.
+Edit `app/data/sticker-captions.json`. Each key identifies a sticker; change only its quoted text to update the hover/focus caption. For example, `"controller": "fifa night"`. Keep the keys and JSON commas intact. Save to preview with `npm run dev`; rebuild/deploy to update the live site. All 11 captions live in this file.
 
 ## Controller
 
@@ -46,10 +46,6 @@ Use case: background-extraction. Edit target: the attached official product phot
 ## World Cup trophy moment
 
 `world-cup-moment.png` is the user-supplied 500 × 667 clipboard image. Its checkerboard is baked into the pixels, so it is not a transparent PNG. The website uses a CSS silhouette mask around the person and trophies. The source photo is unchanged. The plain hover caption is “a world cup moment.”
-
-## Guelph soccer stamp
-
-`guelph-soccer-stamp.png` is the user-supplied `img-8291-stamp.png`, preserved at 2048 × 2048 with its alpha channel. CSS enlarges the artwork within its frame to compensate for transparent margins, keeping the stamp's printed artwork and perforated edges intact. Its plain hover caption is “guelph very own.”
 
 ## Hack the North, plane, and drink
 
