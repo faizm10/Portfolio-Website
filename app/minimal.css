@@ -34,6 +34,53 @@
 .minimal-intro {
   color: var(--ink-2);
 }
+.minimal-intro .build-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: 40rem;
+}
+.minimal-intro .build-list li {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.minimal-intro .build-entity {
+  display: inline;
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: #bcc0c7;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  white-space: nowrap;
+}
+.minimal-intro .build-entity img {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  vertical-align: -3px;
+  margin: 0 0 0 5px;
+  border-radius: 3px;
+}
+.minimal-intro .build-entity-text {
+  white-space: normal;
+}
+.minimal-intro .build-hobby {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: #bcc0c7;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.minimal-intro .build-keyword {
+  color: var(--ink);
+  font-weight: 600;
+}
+.minimal-intro .minimal-links {
+  margin-top: 22px;
+}
 .minimal-intro p {
   margin-bottom: 18px;
 }
