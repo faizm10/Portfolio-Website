@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import Activity from "./components/Activity";
 import DesktopStickers from "./components/DesktopStickers";
+import { Gradients } from "./components/Gradients";
 import { homepageHobbies } from "@/app/data/site";
 import { posts } from "@/app/posts";
 import {
@@ -108,7 +109,8 @@ export default function Home() {
     .slice(0, 2);
 
   return (
-    <main id="main-content" className="portfolio minimal-home">
+    <main id="main-content" className="portfolio minimal-home isolate">
+      <Gradients />
       <DesktopStickers />
       <h1 className="sr-only">Faiz Mustansar</h1>
       <div className="minimal-intro" id="about">
