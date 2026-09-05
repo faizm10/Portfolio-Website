@@ -584,10 +584,6 @@
   .sticker-soccer img {
     clip-path: ellipse(37.4% 37.7% at 50% 50.2%);
   }
-  .sticker-stamp img {
-    object-fit: cover;
-    transform: scale(1.51);
-  }
   .sticker-world-cup-moment img {
     clip-path: polygon(
       20% 88.8%, 20% 79%, 18.5% 81.3%, 15.8% 84%,
