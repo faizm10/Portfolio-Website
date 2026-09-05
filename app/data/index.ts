@@ -31,8 +31,6 @@ export {
 export { locationCoordinates, formatPhotoDate, type Place } from "./places";
 export {
   stickers,
-  desktopComposition,
   type Sticker,
   type StickerId,
-  type DesktopPlacement,
 } from "./stickers";
