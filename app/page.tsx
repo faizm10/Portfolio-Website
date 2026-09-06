@@ -3,7 +3,6 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import Activity from "./components/Activity";
 import DesktopStickers from "./components/DesktopStickers";
-import { Gradients } from "./components/Gradients";
 import { homepageHobbies } from "@/app/data/site";
 import { posts } from "@/app/posts";
 import {
@@ -16,6 +15,14 @@ import {
 import { showcaseProjects, projectHref } from "@/app/data/projects";
 import ProjectGallery from "./components/ProjectGallery";
 import ExperienceList from "./components/ExperienceList";
+import AnimatedAvatar from "./components/AnimatedAvatar";
+import HandwrittenNote from "./components/sketch/HandwrittenNote";
+import DoodleArrow from "./components/sketch/DoodleArrow";
+import FloatingDoodle from "./components/sketch/FloatingDoodle";
+import AnimatedStar from "./components/sketch/AnimatedStar";
+import SketchMark from "./components/sketch/SketchMark";
+import { CharacterSit } from "./components/sketch/TinyCharacter";
+import ScribbleUnderline from "./components/sketch/ScribbleUnderline";
 
 const writingLabels: Record<string, string> = {
   "fast-tracked-uni-career": "university in 2½ years",
@@ -110,10 +117,44 @@ export default function Home() {
 
   return (
     <main id="main-content" className="portfolio minimal-home isolate">
-      <Gradients />
       <DesktopStickers />
-      <h1 className="sr-only">Faiz Mustansar</h1>
+      <section className="sketch-hero" aria-labelledby="hero-title">
+        <p className="sketch-hero-kicker">
+          cs @ guelph
+          <span aria-hidden>·</span>
+          currently building
+        </p>
+        <div className="hero-stage">
+          <h1 id="hero-title">things worth shipping.</h1>
+          <HandwrittenNote className="hero-note" tilt="right">
+            ← this is the good part
+          </HandwrittenNote>
+          <FloatingDoodle className="hero-character">
+            <CharacterSit />
+          </FloatingDoodle>
+          <div className="hero-avatar">
+            <AnimatedAvatar />
+          </div>
+          <AnimatedStar className="hero-star" />
+          <SketchMark kind="scribble" className="hero-scribble" />
+        </div>
+        <p className="sketch-hero-lead">
+          full-stack and product work, with a little room left for photos,
+          travel, and pickup games.
+        </p>
+        <div className="sketch-hero-actions">
+          <a href="#work" className="sketch-cta">
+            see the work
+          </a>
+          <Link href="/resume" className="sketch-text-link">
+            résumé
+            <DoodleArrow wobble />
+          </Link>
+        </div>
+      </section>
+
       <div className="minimal-intro" id="about">
+        <HandwrittenNote tilt="left">right now</HandwrittenNote>
         <ul className="build-list">
           {homepageUpTo.map((item) => (
             <li key={item.id}>
@@ -145,27 +186,22 @@ export default function Home() {
         </ul>
       </div>
 
-
       <section
         id="work"
         className="minimal-section"
         aria-labelledby="work-title"
       >
+        <SketchMark kind="flower" className="section-doodle is-flower" />
         <div className="minimal-section-heading">
           <h2 id="work-title">work</h2>
-          <Link href="/resume">résumé</Link>
+          <Link href="/resume" className="nav-link">
+            résumé
+            <ScribbleUnderline />
+          </Link>
         </div>
         <ExperienceList items={[...experienceItems, ...communityItems]} />
       </section>
 
-      {/* <section className="minimal-section" aria-labelledby="education-title">
-        <h2 id="education-title">education</h2>
-        <ExperienceList
-          items={schoolItems.filter(
-            (school) => school.link !== orgs.ottawa.href,
-          )}
-        />
-      </section> */}
       <ProjectGallery />
 
       <section
@@ -173,9 +209,13 @@ export default function Home() {
         className="minimal-section home-writing"
         aria-labelledby="writing-title"
       >
+        <SketchMark kind="leaf" className="section-doodle is-leaf" />
         <div className="minimal-section-heading">
           <h2 id="writing-title">some thoughts</h2>
-          <Link href="/blog">all thoughts</Link>
+          <Link href="/blog" className="nav-link">
+            all thoughts
+            <ScribbleUnderline />
+          </Link>
         </div>
         <ul className="minimal-list">
           {writing.map((post) => (

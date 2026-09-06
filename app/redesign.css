@@ -65,9 +65,10 @@ input:focus-visible {
   z-index: 30;
 }
 .wordmark {
-  font-family: var(--font-newsreader), serif;
-  font-size: 36px;
-  letter-spacing: -2px;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 .wordmark span {
   color: var(--signal);
@@ -134,12 +135,12 @@ input:focus-visible {
   z-index: 2;
   width: max-content;
   max-width: 100%;
-  font-family: var(--font-newsreader), Georgia, serif;
-  font-size: clamp(46px, 11.8vw, 58px);
-  line-height: 1.02;
-  font-weight: 400;
-  letter-spacing: -0.055em;
-  margin: 86px 0 38px;
+  font-family: var(--font-inter), sans-serif;
+  font-size: clamp(1.75rem, 2.4vw, 2.25rem);
+  line-height: 1.32;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 24px 0 18px;
 }
 .hero h1 em {
   color: var(--signal);
@@ -205,9 +206,9 @@ input:focus-visible {
   gap: 20px;
 }
 .section-heading h2 {
-  font-size: 20px;
-  font-weight: 400;
-  letter-spacing: -0.04em;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 .section-heading > span {
   color: var(--ink-3);
@@ -227,11 +228,11 @@ input:focus-visible {
   padding-top: 13px;
 }
 .project-row h3 {
-  font-family: var(--font-newsreader), Georgia, serif;
-  font-size: 34px;
-  line-height: 1.1;
-  font-weight: 400;
-  letter-spacing: -0.045em;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.32;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   transition: transform 0.25s;
 }
 .project-row p {
@@ -268,10 +269,11 @@ input:focus-visible {
   margin: 65px 0;
 }
 .about-intro > p {
-  font-family: var(--font-newsreader), serif;
-  font-size: 40px;
-  line-height: 1.08;
-  letter-spacing: -0.035em;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+  font-weight: 600;
 }
 .about-intro > p em {
   color: var(--signal);
@@ -331,10 +333,11 @@ input:focus-visible {
 }
 .writing-row > span:first-child {
   max-width: 700px;
-  font-family: var(--font-newsreader), serif;
-  font-size: 27px;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  font-weight: 600;
 }
 .writing-row > span:last-child {
   flex-shrink: 0;
@@ -356,10 +359,11 @@ input:focus-visible {
 }
 .contact-section > a {
   display: block;
-  font-family: var(--font-newsreader), serif;
-  font-size: clamp(44px, 9vw, 58px);
-  letter-spacing: -0.05em;
-  line-height: 1.05;
+  font-family: var(--font-inter), sans-serif;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  letter-spacing: -0.01em;
+  line-height: 1.32;
+  font-weight: 600;
   margin: 35px 0;
 }
 .contact-section > a em {
@@ -388,7 +392,7 @@ input:focus-visible {
     min-height: 0;
   }
   .hero h1 {
-    font-size: 58px;
+    font-size: 1.75rem;
   }
   .hero-bottom {
     width: 100%;
@@ -430,7 +434,7 @@ input:focus-visible {
     font-size: 13px;
   }
   .wordmark {
-    font-size: 32px;
+    font-size: 1rem;
   }
   .command-trigger {
     display: none;
@@ -448,9 +452,9 @@ input:focus-visible {
     text-align: right;
   }
   .hero h1 {
-    font-size: clamp(46px, 11.8vw, 70px);
-    margin-top: 65px;
-    letter-spacing: -0.055em;
+    font-size: 1.75rem;
+    margin-top: 24px;
+    letter-spacing: -0.01em;
   }
   .hero-bottom {
     width: 100%;
@@ -485,7 +489,7 @@ input:focus-visible {
     padding: 25px 0;
   }
   .project-row h3 {
-    font-size: 32px;
+    font-size: 1.2rem;
   }
   .project-row p {
     font-size: 14px;
@@ -505,7 +509,7 @@ input:focus-visible {
     margin: 40px 0;
   }
   .about-intro > p {
-    font-size: 40px;
+    font-size: 1.375rem;
   }
   .experience-columns {
     grid-template-columns: 1fr;
@@ -769,10 +773,11 @@ input:focus-visible {
   margin: 60px 0 50px;
 }
 .play-intro > p {
-  font-family: var(--font-newsreader), serif;
-  font-size: clamp(42px, 9vw, 52px);
-  line-height: 1.05;
-  letter-spacing: -0.045em;
+  font-family: var(--font-inter), sans-serif;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+  font-weight: 600;
 }
 .play-intro > p em {
   color: var(--signal);
@@ -850,7 +855,7 @@ input:focus-visible {
   display: flex;
   justify-content: space-between;
   margin: 13px 4px 0;
-  font-family: var(--font-newsreader), serif;
+  font-family: var(--font-inter), sans-serif;
   font-size: 17px;
 }
 .postcard > span > span {
@@ -1100,7 +1105,7 @@ input:focus-visible {
   padding: 24px;
 }
 .palette-title {
-  font-family: var(--font-newsreader), serif;
+  font-family: var(--font-inter), sans-serif;
   font-size: 28px;
   letter-spacing: -0.035em;
   margin-bottom: 25px;
@@ -1173,10 +1178,11 @@ input:focus-visible {
   color: var(--ink-3);
 }
 .story-header h1 {
-  font-family: var(--font-newsreader), serif;
-  font-size: clamp(32px, 9vw, 54px);
-  letter-spacing: -0.055em;
-  line-height: 1.1;
+  font-family: var(--font-inter), sans-serif;
+  font-size: clamp(1.5rem, 2vw, 1.875rem);
+  letter-spacing: -0.01em;
+  line-height: 1.32;
+  font-weight: 600;
 }
 .story-header > p {
   color: var(--ink-2);
@@ -1231,9 +1237,10 @@ input:focus-visible {
 }
 .story-body .flowboard-page span[class*="text-xl"],
 .story-body .flowboard-page span[class*="text-lg"] {
-  font-family: var(--font-newsreader), serif;
-  font-size: 30px;
-  letter-spacing: -0.025em;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  font-weight: 600;
   margin: 18px 0 12px;
 }
 .story-body .flowboard-page span[class*="font-inter"] {
@@ -1330,10 +1337,10 @@ input:focus-visible {
   text-transform: lowercase;
 }
 .writing-index h1 {
-  font-family: var(--font-newsreader), serif;
-  font-size: 28px !important;
-  font-weight: 500;
-  letter-spacing: -0.03em;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1.75rem !important;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   margin-top: 28px;
 }
 .writing-index main ul {
@@ -1361,11 +1368,11 @@ input:focus-visible {
   line-height: 1.85;
 }
 .editorial-article h1 {
-  font-family: var(--font-newsreader), serif;
-  font-size: clamp(36px, 5vw, 62px);
-  line-height: 1.1;
-  letter-spacing: -0.04em;
-  font-weight: 400;
+  font-family: var(--font-inter), sans-serif;
+  font-size: clamp(1.5rem, 2vw, 1.875rem);
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+  font-weight: 600;
 }
 .blog-content .shiny-green-dot {
   background: var(--signal);
@@ -1386,7 +1393,7 @@ input:focus-visible {
     font-size: 10px;
   }
   .story-header h1 {
-    font-size: clamp(32px, 9vw, 54px);
+    font-size: 1.5rem;
   }
   .story-header > p {
     font-size: 16px;
@@ -1442,11 +1449,11 @@ input:focus-visible {
   max-width: 100%;
 }
 .personal-page h1 {
-  font-family: var(--font-newsreader), serif;
-  font-size: clamp(42px, 9vw, 58px);
-  line-height: 1.08;
-  font-weight: 400;
-  letter-spacing: -0.045em;
+  font-family: var(--font-inter), sans-serif;
+  font-size: clamp(1.5rem, 2vw, 1.875rem);
+  line-height: 1.32;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 @media (max-width: 600px) {
   .trail-layer,
@@ -1489,7 +1496,7 @@ html {
   margin: auto;
   padding: 60px 0;
   color: var(--ink-2);
-  font-family: var(--font-newsreader), serif;
+  font-family: var(--font-inter), sans-serif;
   font-size: 24px;
 }
 
@@ -1511,8 +1518,8 @@ html {
   padding-inline: 0;
 }
 .hero h1 {
-  margin-top: 60px;
-  font-size: clamp(36px, 10.5vw, 58px);
+  margin-top: 24px;
+  font-size: clamp(1.75rem, 2.4vw, 2.25rem);
 }
 .hero-bottom {
   display: block;

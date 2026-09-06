@@ -24,7 +24,7 @@ function Tired() {
           <span
             key={i}
             style={{ animationDelay: delay }}
-            className={`absolute font-[family-name:var(--font-newsreader)] italic text-neutral-400 opacity-40 motion-safe:animate-zzz-drift motion-safe:opacity-0 ${className}`}
+            className={`absolute font-[family-name:var(--font-inter)] italic text-neutral-400 opacity-40 motion-safe:animate-zzz-drift motion-safe:opacity-0 ${className}`}
           >
             z
           </span>

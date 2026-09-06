@@ -340,7 +340,7 @@ body {
 }
 
 .up-to-title {
-  font-family: var(--font-newsreader), Georgia, serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   color: var(--ink);
   font-size: 1.65rem;
   font-weight: 500;
@@ -394,7 +394,7 @@ body {
 /* Override Tailwind Typography prose variables */
 .blog-content .prose,
 .blog-content article {
-  font-family: var(--font-newsreader), Georgia, serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --tw-prose-body:          var(--ink-2);
   --tw-prose-headings:      var(--ink);
   --tw-prose-lead:          var(--ink-2);
@@ -603,8 +603,8 @@ body {
 }
 
 @theme inline {
-  --font-heading: var(--font-newsreader);
-  --font-serif: var(--font-newsreader);
+  --font-heading: var(--font-inter);
+  --font-serif: var(--font-inter);
   --font-sans: var(--font-inter);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);

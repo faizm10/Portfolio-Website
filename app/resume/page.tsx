@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { resume, resumePdfFilename, resumePdfHref } from "@/app/data/resume";
 import { site } from "@/app/data/site";
+import PageIntro from "@/app/components/sketch/PageIntro";
 
 export const metadata: Metadata = {
   title: `resume · ${site.name}`,
@@ -112,39 +112,18 @@ export default function ResumePage() {
       />
 
       <div className="mx-auto w-full max-w-2xl print:max-w-none">
-        <div className="flex items-center justify-between gap-4 print:hidden">
-          <Link
-            href="/"
-            className={`text-sm lowercase ${linkClass}`}
-            style={{ color: "var(--ink-2)" }}
+        <div className="print:hidden">
+          <PageIntro
+            eyebrow="on paper"
+            title="resume"
+            note="← internships, projects, shipped work"
+            character="point"
           >
-            ← home
-          </Link>
-          <a
-            href={resumePdfHref}
-            download={resumePdfFilename}
-            className="inline-flex min-h-9 items-center rounded-md px-3.5 text-sm lowercase transition-opacity hover:opacity-80"
-            style={{
-              backgroundColor: "var(--ink)",
-              color: "#fff",
-            }}
-          >
-            download pdf
-          </a>
+            <a href={resumePdfHref} download={resumePdfFilename} className="sketch-cta">
+              download pdf
+            </a>
+          </PageIntro>
         </div>
-
-        <h1
-          className="mt-8 font-[family-name:var(--font-newsreader)] text-2xl font-medium tracking-tight lowercase md:text-[1.85rem] print:hidden"
-          style={{ color: "var(--ink)" }}
-        >
-          resume
-        </h1>
-        <p
-          className="mt-3 text-[15px] lowercase leading-7 md:text-base md:leading-8 print:hidden"
-          style={{ color: "var(--ink-2)" }}
-        >
-          internships, projects, and what i&apos;ve shipped
-        </p>
 
         <article
           className="mt-12 print:mt-0"
@@ -152,7 +131,7 @@ export default function ResumePage() {
         >
           <header>
             <p
-              className="font-[family-name:var(--font-newsreader)] text-[1.65rem] font-medium tracking-tight md:text-[1.85rem]"
+              className="text-[1.65rem] font-medium tracking-tight md:text-[1.85rem]"
               style={{ color: "var(--ink)" }}
             >
               {resume.name}

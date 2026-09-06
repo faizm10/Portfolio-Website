@@ -4,6 +4,7 @@ import PhotoGrid from "@/components/ui/PhotoGrid";
 import photosData from "@/app/data/photos.json";
 import { formatPhotoDate } from "@/app/data/places";
 import { site } from "@/app/data/site";
+import PageIntro from "@/app/components/sketch/PageIntro";
 
 export const metadata: Metadata = {
   title: `photos · ${site.name}`,
@@ -42,56 +43,31 @@ export default async function PhotosPage({ searchParams }: PhotosPageProps) {
     : allPhotos;
 
   return (
-    <main className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-24 pt-10 md:px-8 md:pt-12">
-      <div className="mx-auto max-w-xl">
-        <Link
-          href={placeFilter ? "/travel" : "/"}
-          className="text-sm lowercase transition-opacity hover:opacity-70"
-          style={{ color: "var(--ink-2)" }}
-        >
-          {placeFilter ? "← travel" : "← home"}
-        </Link>
+    <main className="personal-page-inner">
+      <PageIntro
+        eyebrow={placeFilter ? "from the map" : "field notes"}
+        title={placeFilter ? placeFilter.toLowerCase() : "photos"}
+        note={placeFilter ? "← a little pocket of a place" : "← sidequesting at its finest"}
+        character={placeFilter ? "peek" : "sit"}
+      >
+        {placeFilter ? (
+          <p>
+            {photos.length} {photos.length === 1 ? "photo" : "photos"} ·{" "}
+            <Link href="/photos">all photos</Link>
+          </p>
+        ) : (
+          <p>quiet frames, leftover light, and the walk between them.</p>
+        )}
+      </PageIntro>
 
-        <h1
-          className="mt-8 text-2xl font-semibold tracking-tight lowercase md:text-[1.75rem]"
-          style={{ color: "var(--ink)" }}
-        >
-          {placeFilter ? placeFilter.toLowerCase() : "photos"}
-        </h1>
-        <p
-          className="mt-3 text-[15px] lowercase leading-7 md:text-base md:leading-8"
-          style={{ color: "var(--ink-2)" }}
-        >
-          {placeFilter ? (
-            <>
-              {photos.length} {photos.length === 1 ? "photo" : "photos"} ·{" "}
-              <Link
-                href="/photos"
-                className="underline underline-offset-[3px] decoration-[var(--ink-3)] transition-opacity hover:opacity-70"
-                style={{ color: "var(--ink)" }}
-              >
-                all photos
-              </Link>
-            </>
-          ) : (
-            "sidequesting at its finest"
-          )}
-        </p>
-
-        <div className="mt-10">
-          {photos.length > 0 ? (
-            <PhotoGrid photos={photos} />
-          ) : (
-            <p
-              className="text-[15px] lowercase italic"
-              style={{ color: "var(--ink-3)" }}
-            >
-              {placeFilter
-                ? "no photos for this place yet."
-                : "stay tuned!"}
-            </p>
-          )}
-        </div>
+      <div className="mt-4">
+        {photos.length > 0 ? (
+          <PhotoGrid photos={photos} />
+        ) : (
+          <p className="hand-note" style={{ color: "var(--ink-3)" }}>
+            {placeFilter ? "no photos for this place yet." : "stay tuned!"}
+          </p>
+        )}
       </div>
     </main>
   );

@@ -17,6 +17,7 @@ export default function WritingArchive({ entries }: { entries: WritingEntry[] })
       <header className="journal-intro">
         <p className="journal-eyebrow"><span className="journal-dot" /> a little space for my thoughts</p>
         <h1>some <em>thoughts</em></h1>
+        <p className="hand-note" style={{ transform: "rotate(-1.5deg)" }}>← the quieter pages</p>
         <p>things on my mind, lessons along the way,<br className="journal-desktop-break" /> and moments i want to remember.</p>
       </header>
       {category === 'All writing' && featured && (
