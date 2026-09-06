@@ -24,6 +24,7 @@ export default function ProjectStory({
           <span>{project.year}</span>
         </div>
         <h1>{project.name}</h1>
+        <p className="hand-note">← a closer look</p>
         <p>{project.desc}</p>
         <div className="story-meta">
           <span>{project.stat}</span>

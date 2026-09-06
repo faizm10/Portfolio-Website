@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import OrganicFrame from "./sketch/OrganicFrame";
 import { showcaseProjects, projectHref } from "@/app/data/projects";
 
 export default function ProjectGallery() {
@@ -10,7 +11,7 @@ export default function ProjectGallery() {
     >
       <h2 id="projects-title">projects</h2>
       <div className="project-gallery-grid">
-        {showcaseProjects.map((project) => (
+        {showcaseProjects.map((project, index) => (
           <article className="gallery-project" key={project.slug}>
             <Link
               href={projectHref(project)}
@@ -20,14 +21,16 @@ export default function ProjectGallery() {
                 ? {}
                 : { target: "_blank", rel: "noopener noreferrer" })}
             >
-              <Image
-                src={project.banner}
-                alt={`${project.name} interface`}
-                width={960}
-                height={540}
-                sizes="(max-width: 699px) calc(100vw - 40px), (max-width: 959px) calc((100vw - 76px) / 2), 442px"
-                className="gallery-project-image"
-              />
+              <OrganicFrame accent={index === 0}>
+                <Image
+                  src={project.banner}
+                  alt={`${project.name} interface`}
+                  width={960}
+                  height={540}
+                  sizes="(max-width: 699px) calc(100vw - 40px), (max-width: 959px) calc((100vw - 76px) / 2), 442px"
+                  className="gallery-project-image"
+                />
+              </OrganicFrame>
             </Link>
             <div className="gallery-project-heading">
               <h3>{project.name}</h3>
