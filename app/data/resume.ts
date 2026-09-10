@@ -28,10 +28,10 @@ export const resume = {
     school: "University of Guelph",
     location: "Guelph, Ontario",
     degree: "Bachelor of Computing (Honours), Computer Science",
-    dates: "Expected Dec 2027",
+    dates: "Graduation Dec 2027",
     bullets: [
       "Cross-enrolled at University of Waterloo: Application Development, User Interface, Human-Computer Interaction",
-      "Relevant coursework: Data Structures & Algorithms, OOP, Software Engineering, Systems Analysis & Design, Reliability & Testing",
+      "Coursework: Data Structures & Algorithms, Object-Oriented Programming, Software Engineering",
     ],
   },
   experience: [
@@ -42,9 +42,9 @@ export const resume = {
       location: "Toronto, Canada",
       dates: "May 2026 to Aug 2026",
       bullets: [
-        "Designed and shipped a production Java Spring Boot microservice end-to-end, owning OpenAPI REST APIs, backend workflows, validation, testing, and deployment across multiple environments.",
-        "Deployed and operated the service on GCP using Kubernetes, Helm, and CI/CD, debugging application and infrastructure issues across TQA and production.",
-        "Built GCP Logging and automated alerting for unauthorized endpoint access, providing near-real-time detection and improving production observability for downstream engineering teams.",
+        "Eliminated manual handling of sensitive data in QA automation by building a shared hashing utility, consolidating duplicate implementations across the test automation suite and reducing rework for QA teams.",
+        "Operated and deployed a production Java Spring Boot microservice across 2 GCP environments using Kubernetes, Helm, and Jenkins CI/CD, debugging application and infrastructure failures to improve deployment reliability.",
+        "Closed a production visibility gap by building GCP Logging and automated alerting for unauthorized endpoint access that had previously gone undetected, surfacing issues directly to downstream engineering teams.",
       ],
     },
     {
@@ -54,44 +54,46 @@ export const resume = {
       location: "Toronto, Canada",
       dates: "Jan 2026 to Apr 2026",
       bullets: [
-        "Designed an AI-assisted modernization workflow for legacy Java 8 services, translating system architectures into structured migration plans for Spring Boot and Angular.",
-        "Achieved 90%+ test coverage with JUnit and integration tests, validating edge cases and preventing regressions across migrated services.",
+        "Cut legacy service analysis time from weeks to 2 days by designing an AI-assisted developer workflow that traced system behavior and generated structured Spring Boot and Angular migration plans.",
+        "Improved backend maintainability by applying the Command Pattern to consolidate duplicated service logic into reusable, testable components with clearer execution paths across the codebase.",
+        "Achieved 90%+ test coverage by building JUnit and integration tests that validated edge cases and reduced regression risk across modernized services during active development.",
       ],
     },
     {
       title: "Software Engineer Intern",
       company: "Sertus",
       href: "https://www.sertus.app/",
-      location: "Toronto, Ontario",
+      location: "Toronto, Canada",
       dates: "May 2025 to Jan 2026",
       bullets: [
-        "Owned a production customer-facing workflow system as the sole engineer, from requirements and architecture through implementation and deployment, reducing administrative work by 60%+.",
-        "Shipped 5+ full-stack features using TypeScript, Node.js, React, and PostgreSQL, owning system design, data modeling, APIs, testing, and production debugging.",
+        "Built complaint and incident management workflows with case status tracking, employee assignment, audit history, and admin review using React, Node.js REST APIs, and PostgreSQL.",
+        "Reduced manual administrative work by 60%+ by owning a production workflow platform end-to-end as the sole engineer, replacing paper-based form routing with a digital admin board.",
       ],
     },
   ],
   projects: [
     {
-      name: "TransitFlow",
-      subtitle: "Transit Data Platform",
-      linkLabel: "GitHub",
-      href: "https://github.com/faizm10/transit-flow",
-      stack: "Python, TypeScript, FastAPI, GTFS, Mapbox GL",
-      bullets: [
-        "Built a data processing pipeline for 166 MB GTFS datasets and 900+ scheduled trips, transforming raw transit feeds into structured route, stop, schedule, and geospatial data.",
-        "Designed a multi-city ingestion workflow to validate and normalize inconsistent source datasets, generating 8 optimized data artifacts in under 5 minutes.",
-        "Built backend APIs and interactive simulation workflows over processed transit data, supporting 272 monthly active users and 3,100+ page views.",
-      ],
-    },
-    {
       name: "uoguelph.courses",
-      subtitle: "Co-Founder and Tech Lead",
-      linkLabel: "Website",
+      subtitle: "Co-Founder & Tech Lead",
+      linkLabel: "Live",
       href: "https://uoguelph.courses",
       stack: "TypeScript, Next.js, PostgreSQL, REST APIs",
       bullets: [
-        "Built and scaled a production full-stack platform from 0-to-1 to 6,000+ users, owning system design, backend architecture, product development, and production operations.",
-        "Designed REST APIs and PostgreSQL data models, optimizing queries, indexes, and caching as the platform grew to 1,000+ new users/month.",
+        "Scaled a production platform to 6,000+ users by owning backend architecture, frontend systems, deployment, and day-to-day production operations as co-founder.",
+        "Supported 1,000+ new users/month by designing REST APIs and PostgreSQL data models and optimizing queries, indexes, and caching to keep the platform responsive at scale.",
+        "Improved production reliability by monitoring application health and resolving live issues, query bottlenecks, and performance regressions before they significantly affected users.",
+      ],
+    },
+    {
+      name: "TransitFlow",
+      subtitle: "",
+      linkLabel: "GitHub",
+      href: "https://github.com/faizm10/transit-flow",
+      stack: "Python, FastAPI, TypeScript, GTFS",
+      bullets: [
+        "Served 272 monthly active users and 3,100+ page views by building Python/FastAPI backend services and REST APIs over processed, schedule-accurate transit data.",
+        "Built an automated GTFS ingestion pipeline that transformed raw transit feeds into normalized route, stop, schedule, and geospatial datasets across 900+ scheduled trips.",
+        "Generated 8 deployment-ready artifacts in under 5 minutes by validating and normalizing inconsistent datasets through an automated ingestion pipeline.",
       ],
     },
   ],
@@ -102,26 +104,20 @@ export const resume = {
     location: "Remote",
     dates: "Sept 2025 to Present",
     bullets: [
-      "Led 4 developers and owned architecture and delivery for 3 production products, supporting 700+ hackers, 200+ projects, and 10K+ website views.",
-      "Architected and shipped full-stack judging and CTF systems, including custom judge-slotting logic, real-time rankings, and live operational dashboards.",
-      "Owned systems through design, implementation, deployment, and live operations, rapidly debugging production issues and shipping improvements from real-user feedback.",
+      "Delivered 3 production systems for 700+ hackers and 200+ projects by leading 4 developers and owning architecture, technical delivery, and deployment for the event.",
+      "Kept critical event infrastructure operational by owning live debugging, production fixes, and deployment across judging and CTF systems throughout the event.",
     ],
   },
   skills: [
     {
-      label: "Languages and Frameworks",
+      label: "Languages & Frameworks",
       items:
-        "Java, Python, Go, TypeScript, JavaScript, SQL, Spring Boot, FastAPI, Node.js, React, Next.js",
+        "Java, Python, TypeScript, JavaScript, SQL, Spring Boot, FastAPI, Node.js, React",
     },
     {
-      label: "Backend & Data",
+      label: "Infrastructure & Systems",
       items:
-        "REST APIs, PostgreSQL, Microservices, Data Pipelines, Data Processing, Data Modeling, JUnit, Integration Testing",
-    },
-    {
-      label: "Cloud & Infrastructure",
-      items:
-        "GCP, AWS, Kubernetes, Docker, Helm, Jenkins, CI/CD, Git, Observability, Monitoring, Debugging",
+        "GCP, Kubernetes, Docker, Helm, Jenkins, CI/CD, Git, PostgreSQL, REST APIs, OpenAI APIs",
     },
   ],
 } as const;

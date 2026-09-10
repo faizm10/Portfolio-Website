@@ -219,10 +219,12 @@ export default function ResumePage() {
                   <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
                     <p style={{ color: "var(--ink)" }}>
                       <span className="font-medium">{project.name}</span>
-                      <span style={{ color: "var(--ink-3)" }}>
-                        {" "}
-                        {project.subtitle}
-                      </span>
+                      {project.subtitle ? (
+                        <span style={{ color: "var(--ink-3)" }}>
+                          {" "}
+                          {project.subtitle}
+                        </span>
+                      ) : null}
                     </p>
                     <a
                       href={project.href}
