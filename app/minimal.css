@@ -265,73 +265,31 @@
   }
   .minimal-header .header-socials { gap: 14px; }
 }
-.minimal-header:has(.avatar-companion) {
+.minimal-header:has(.page-mascot) {
   margin-top: clamp(36px, 8vh, 90px);
   margin-bottom: 26px;
 }
-.avatar-companion {
-  width: 108px;
-  height: 125px;
+.page-mascot {
+  width: 112px;
+  height: 112px;
   position: relative;
   flex-shrink: 0;
-  margin-left: -12px;
+  margin-left: -8px;
 }
-.avatar-button {
-  position: relative;
-  display: block;
-  width: 108px;
-  height: 112px;
-  border-radius: 50%;
+.page-mascot button {
   cursor: pointer;
-}
-.avatar-canvas,
-.avatar-fallback {
-  position: absolute;
-  inset: 0;
-  width: 108px;
-  height: 108px;
-  transition: opacity 0.3s;
-}
-.avatar-greeting {
-  position: absolute;
-  right: -48px;
-  top: -4px;
-  font-size: 11px;
-  color: #586248;
-  padding: 3px 9px;
-  border: 1px solid #e3e7dc;
-  border-radius: 10px 10px 10px 2px;
-  background: #fbfcf8;
-  opacity: 0;
-  transform: translateY(3px);
-  transition:
-    opacity 0.2s,
-    transform 0.2s;
-  white-space: nowrap;
-}
-.avatar-greeting.is-visible {
-  opacity: 1;
-  transform: none;
 }
 @media (max-width: 380px) {
   .header-identity {
     gap: 8px;
   }
-  .avatar-companion,
-  .avatar-button,
-  .avatar-canvas,
-  .avatar-fallback {
+  .page-mascot {
     width: 88px;
-  }
-  .avatar-companion {
-    height: 105px;
-  }
-  .avatar-button {
-    height: 92px;
-  }
-  .avatar-canvas,
-  .avatar-fallback {
     height: 88px;
+  }
+  .page-mascot > button {
+    width: 88px !important;
+    height: 88px !important;
   }
 }
 
