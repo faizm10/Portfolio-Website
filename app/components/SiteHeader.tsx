@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import AnimatedAvatar from "./AnimatedAvatar";
+import PageMascot from "./PageMascot";
 import { usePathname } from "next/navigation";
 import { site, homepageSocials } from "@/app/data/site";
 
@@ -10,7 +10,7 @@ export default function SiteHeader() {
   return (
     <header className="site-header minimal-header">
       <div className="header-identity">
-        {home && <AnimatedAvatar />}
+        {home && <PageMascot />}
         <div className="header-content">
           <Link
             className="minimal-name"
@@ -22,7 +22,12 @@ export default function SiteHeader() {
           {home && (
             <nav className="header-socials" aria-label="Social links">
               {homepageSocials.map((item) => (
-                <a key={item.key} href={item.href} target="_blank" rel="noopener noreferrer">
+                <a
+                  key={item.key}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {item.label}
                 </a>
               ))}
