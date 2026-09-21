@@ -371,7 +371,7 @@ export const homepageUpTo: UpToItem[] = [
     before: "contributed to",
     entity: { type: "project", project: "octree" },
     after: "open-source ai latex editor,",
-    metrics: ["8k–9k", "mau ·", "250+", "stars"],
+    metrics: ["8k–9k", "mau ·", "293", "stars"],
   },
   {
     id: "pitchpulse",

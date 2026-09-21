@@ -24,6 +24,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/travel",
+        destination: "/photos",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

@@ -1,11 +1,21 @@
 export const periods = [
   {
+    label: "fall 2026",
+    entries: [
+      { text: "competitive soccer 6v6 - ongoing", tag: "uw" },
+      { text: "recreational soccer 11v11 - ongoing", tag: "uog" },
+      { text: "open fun soccer 11v11 - ongoing", tag: "uog" },
+      { text: "indoor competitive soccer 5v5 (mens b) - ongoing", tag: "uog" },
+      { text: "indoor recreational soccer 5v5 - ongoing", tag: "uog" },
+    ],
+  },
+  {
     label: "summer 2026",
     entries: [
       { text: "scotia cup soccer - 3rd place", tag: "summer" },
-      { text: "thursday stadium sports league - ongoing", tag: "summer" },
+      { text: "thursday stadium sports league - 5th place", tag: "summer" },
       { text: "sunday stadium sports league - ongoing", tag: "summer" },
-      { text: "wednesday stadium sports league - ongoing", tag: "summer" },
+      { text: "wednesday stadium sports league - finalist", tag: "summer" },
       { text: "vball scotiabank tournament - 3rd place", tag: "summer" },
     ],
   },
@@ -135,6 +145,7 @@ export const performanceTag = (text) => {
   if (
     text.includes("qf") ||
     text.includes("quarter-finals") ||
+    text.includes("finalist") ||
     text.includes("semi-finalist") ||
     text.includes("semi-finals") ||
     text.includes("rd of 16") ||

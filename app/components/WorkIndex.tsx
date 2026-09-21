@@ -125,14 +125,25 @@ export default function WorkIndex() {
             </div>
           </Link>
           <div className="project-external">
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Open ${project.name} live site`}
-            >
-              Live site ↗
-            </a>
+            {project.devpost ? (
+              <a
+                href={project.devpost}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open ${project.name} on Devpost`}
+              >
+                Devpost ↗
+              </a>
+            ) : (
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open ${project.name} live site`}
+              >
+                Live site ↗
+              </a>
+            )}
             {project.github && (
               <a
                 href={project.github}

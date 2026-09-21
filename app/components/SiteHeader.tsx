@@ -1,12 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import PageMascot from "./PageMascot";
 import { usePathname } from "next/navigation";
-import { site, homepageSocials } from "@/app/data/site";
+import PageMascot from "./PageMascot";
+import { site, headerPageLinks } from "@/app/data/site";
+
+function isCurrent(href: string, pathname: string) {
+  if (href === "/") return pathname === "/";
+  if (href === "/photos") return pathname === "/photos" || pathname === "/travel";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 export default function SiteHeader() {
-  const home = usePathname() === "/";
+  const pathname = usePathname();
+  const home = pathname === "/";
+
   return (
     <header className="site-header minimal-header">
       <div className="header-identity">
@@ -19,20 +27,17 @@ export default function SiteHeader() {
           >
             {site.name}
           </Link>
-          {home && (
-            <nav className="header-socials" aria-label="Social links">
-              {homepageSocials.map((item) => (
-                <a
-                  key={item.key}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </nav>
-          )}
+          <nav className="header-links" aria-label="Site">
+            {headerPageLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={isCurrent(item.href, pathname) ? "page" : undefined}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </div>
     </header>

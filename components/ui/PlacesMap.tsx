@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import PhotoLightbox from "@/components/ui/PhotoLightbox";
@@ -12,7 +14,16 @@ type PlacesMapProps = {
   places: Place[];
   zoom?: number;
   pitch?: number;
+  height?: number;
+  /** Pin and globe clicks go to /photos instead of opening the lightbox. */
+  linkToPhotos?: boolean;
 };
+
+function photosHref(location?: string) {
+  return location
+    ? `/photos?place=${encodeURIComponent(location)}`
+    : "/photos";
+}
 
 /**
  * Spinning Mapbox globe with place markers (photo thumb when available).
@@ -22,7 +33,10 @@ export default function PlacesMap({
   places,
   zoom = 1.4,
   pitch = 20,
+  height = 400,
+  linkToPhotos = false,
 }: PlacesMapProps) {
+  const router = useRouter();
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const map = useRef<mapboxgl.Map | null>(null);
   const markers = useRef<mapboxgl.Marker[]>([]);
@@ -30,10 +44,19 @@ export default function PlacesMap({
   const [activePlace, setActivePlace] = useState<Place | null>(null);
   const openPlace = useRef(setActivePlace);
   openPlace.current = setActivePlace;
+  const goToPhotos = useRef((location?: string) => {
+    router.push(photosHref(location));
+  });
+  goToPhotos.current = (location?: string) => {
+    router.push(photosHref(location));
+  };
+  const linkToPhotosRef = useRef(linkToPhotos);
+  linkToPhotosRef.current = linkToPhotos;
 
   const spinRef = useRef(() => {});
   const interactingRef = useRef(false);
   const lightboxOpenRef = useRef(false);
+  const draggedRef = useRef(false);
 
   const hasToken = Boolean(process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN);
 
@@ -84,6 +107,19 @@ export default function PlacesMap({
     (["mousedown", "dragstart", "touchstart"] as const).forEach((evt) =>
       map.current!.on(evt, startInteract),
     );
+    map.current.on("dragstart", () => {
+      draggedRef.current = true;
+    });
+    map.current.on("click", (event) => {
+      if (!linkToPhotosRef.current) return;
+      const target = event.originalEvent.target;
+      if (target instanceof Element && target.closest(".place-marker")) return;
+      if (draggedRef.current) {
+        draggedRef.current = false;
+        return;
+      }
+      goToPhotos.current();
+    });
 
     map.current.on("moveend", () => {
       if (!interactingRef.current) spinGlobe();
@@ -158,7 +194,12 @@ export default function PlacesMap({
 
         el.addEventListener("mouseenter", () => marker.togglePopup());
         el.addEventListener("mouseleave", () => marker.togglePopup());
-        el.addEventListener("click", () => {
+        el.addEventListener("click", (event) => {
+          event.stopPropagation();
+          if (linkToPhotosRef.current) {
+            goToPhotos.current(place.location);
+            return;
+          }
           if (place.photos.length > 0) openPlace.current(place);
         });
 
@@ -186,19 +227,34 @@ export default function PlacesMap({
   }, [activePlace]);
 
   if (!hasToken) {
-    return (
+    const fallback = (
       <div
-        className="flex h-[400px] items-center justify-center rounded-2xl border px-6 text-center text-sm lowercase"
-        style={{ borderColor: "var(--border)", color: "var(--ink-3)" }}
+        className="flex items-center justify-center rounded-2xl border px-6 text-center text-sm lowercase"
+        style={{
+          height,
+          borderColor: "var(--border)",
+          color: "var(--ink-3)",
+        }}
       >
-        The map is taking a break. Explore the places and photos below.
+        The map is taking a break. Explore the places and photos
+        {linkToPhotos ? "." : " below."}
       </div>
+    );
+    return linkToPhotos ? (
+      <Link href="/photos" aria-label="Open photos">
+        {fallback}
+      </Link>
+    ) : (
+      fallback
     );
   }
 
   return (
     <>
-      <div className="overflow-clip" style={{ height: "400px" }}>
+      <div
+        className="overflow-clip"
+        style={{ height, cursor: linkToPhotos ? "pointer" : undefined }}
+      >
         <div
           ref={mapContainer}
           className="map-container h-full w-full rounded-2xl"

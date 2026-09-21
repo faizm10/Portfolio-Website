@@ -34,7 +34,9 @@ export default function ProjectGallery() {
               <span>{project.year}</span>
             </div>
             <p className="gallery-project-description">{project.desc}</p>
-            <p className="gallery-project-stat">{project.stat}</p>
+            {project.stat ? (
+              <p className="gallery-project-stat">{project.stat}</p>
+            ) : null}
             <nav
               className="gallery-project-links"
               aria-label={`${project.name} links`}
@@ -42,9 +44,19 @@ export default function ProjectGallery() {
               {project.writeup ? (
                 <Link href={`/${project.slug}`}>about</Link>
               ) : null}
-              <a href={project.url} target="_blank" rel="noopener noreferrer">
-                live site ↗
-              </a>
+              {project.devpost ? (
+                <a
+                  href={project.devpost}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  devpost ↗
+                </a>
+              ) : (
+                <a href={project.url} target="_blank" rel="noopener noreferrer">
+                  live site ↗
+                </a>
+              )}
               {project.github && (
                 <a
                   href={project.github}

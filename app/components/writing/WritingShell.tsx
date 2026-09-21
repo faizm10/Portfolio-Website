@@ -12,6 +12,7 @@ export default function WritingShell({ children }: { children: ReactNode }) {
         <nav aria-label="Writing navigation">
           <Link href="/">home</Link>
           <Link href="/blog" aria-current="page">thoughts</Link>
+          <Link href="/photos">photos</Link>
         </nav>
       </header>
       {children}

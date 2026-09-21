@@ -180,7 +180,7 @@ export default function Playground() {
       </div>
       <div className="play-links">
         <span>Other ways I spend my time</span>
-        <Link href="/travel">Places I’ve been ↗</Link>
+        <Link href="/photos">Places I’ve been ↗</Link>
         <Link href="/soccer-stats">On the pitch ↗</Link>
         <Link href="/hackathons">Hackathon log ↗</Link>
       </div>
