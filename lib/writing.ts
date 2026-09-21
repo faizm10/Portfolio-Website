@@ -12,7 +12,6 @@ export type ArticleModule = {
 /** Imported only by server components. Each article remains its own module. */
 const loaders: Record<string, () => Promise<ArticleModule>> = {
   'uwreflection': () => import('@/app/[slug]/mdx/uw-reflection.mdx'),
-  'uogreflection': () => import('@/app/[slug]/mdx/uogreflection.mdx'),
   'fast-tracked-uni-career': () => import('@/app/[slug]/mdx/fast-tracked-uni-career.mdx'),
   'hackathons': () => import('@/app/[slug]/mdx/hackathons.mdx'),
   'jachacks': () => import('@/app/[slug]/mdx/jachacks.mdx'),
