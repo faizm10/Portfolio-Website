@@ -31,6 +31,11 @@ const nextConfig: NextConfig = {
         destination: "/photos",
         permanent: true,
       },
+      {
+        source: "/uogreflection",
+        destination: "/fast-tracked-uni-career",
+        permanent: true,
+      },
     ];
   },
   async headers() {
