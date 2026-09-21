@@ -373,21 +373,6 @@ export const homepageUpTo: UpToItem[] = [
     after: "open-source ai latex editor,",
     metrics: ["8k–9k", "mau ·", "293", "stars"],
   },
-  {
-    id: "pitchpulse",
-    before: "built",
-    entity: {
-      type: "project",
-      external: {
-        href: "https://www.pitchpulse.ca/",
-        label: "pitchpulse",
-        imageSrc: "/previews/pitchpulse.png",
-      },
-    },
-    after: "for world cup 2026,",
-    metrics: ["300+", "users in 72h"],
-  },
-  
 ];
 
 /** Evan-style homepage groupings */
