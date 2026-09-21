@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="FM">
-  <circle cx="16" cy="16" r="16" fill="#262626"/>
+  <rect width="32" height="32" fill="#fff"/>
   <text
     x="16"
     y="21.1"
     text-anchor="middle"
-    fill="#fff"
+    fill="#171717"
     font-family="Georgia, 'Times New Roman', Times, serif"
     font-size="13.2"
     font-weight="700"
