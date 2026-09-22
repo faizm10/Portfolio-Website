@@ -94,7 +94,14 @@ function ProjectCard({
                 <FiGithub className="size-3.5" aria-hidden />
               </ProjectLinkIcon>
             )}
-            <ProjectLinkIcon href={project.url} label={`${title} website`}>
+            <ProjectLinkIcon
+              href={project.devpost ?? project.url}
+              label={
+                project.devpost
+                  ? `${title} on Devpost`
+                  : `${title} website`
+              }
+            >
               <Globe className="size-3.5" aria-hidden />
             </ProjectLinkIcon>
           </div>

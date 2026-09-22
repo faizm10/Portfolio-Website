@@ -7,7 +7,7 @@ export default function SiteFooter() {
       <span>
         © {site.name} {new Date().getFullYear()}
       </span>
-      <nav aria-label="University of Guelph webring">
+      <nav className="footer-webring" aria-label="University of Guelph webring">
         <a href={webringUrl("prev")} aria-label="Previous Guelph webring site">
           ←
         </a>

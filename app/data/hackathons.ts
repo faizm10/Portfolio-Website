@@ -3,7 +3,8 @@
  * `app/[slug]/mdx/hackathons.mdx` (one entry per listed event).
  */
 export const hackathonEntries = [
-  { role: "hacker" },
+  { role: "organizer" },
+  { role: "hacker", awards: 1 },
   { role: "hacker" },
   { role: "hacker" },
   { role: "hacker" },

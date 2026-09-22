@@ -157,28 +157,16 @@
   font-size: 12px;
   padding-top: 2px;
 }
-.personal-links-section {
+.home-photos {
   margin-top: 42px;
 }
-.personal-links-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 30px;
+.home-photos-map {
   margin-top: 18px;
 }
-.personal-links-grid a {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  padding: 11px 0;
-  border-bottom: 1px solid #eef0eb;
-  color: var(--ink-2);
-  font-size: 14px;
-}
-.personal-links-grid a > span {
-  font-size: 12px;
-  color: var(--ink-3);
+.home-photos-map-slot {
+  height: 340px;
+  border-radius: 16px;
+  background: #eef0eb;
 }
 .contributions-bottom {
   margin-top: 40px;
@@ -245,25 +233,31 @@
   min-width: 0;
   gap: 20px;
 }
-.minimal-header .header-socials {
+.minimal-header .header-socials,
+.minimal-header .header-links {
   gap: 16px;
   font-size: 13px;
   color: var(--ink-2);
 }
-.minimal-header .header-socials a {
+.minimal-header .header-socials a,
+.minimal-header .header-links a {
   text-decoration: underline;
   text-decoration-color: #bcc0c7;
   text-underline-offset: 4px;
 }
-.minimal-header .header-socials a::after { content: none; }
-.minimal-header .header-socials a:hover { color: var(--ink); }
+.minimal-header .header-socials a::after,
+.minimal-header .header-links a::after { content: none; }
+.minimal-header .header-socials a:hover,
+.minimal-header .header-links a:hover,
+.minimal-header .header-links a[aria-current] { color: var(--ink); }
 @media (max-width: 520px) {
   .header-content {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0;
+    gap: 6px;
   }
-  .minimal-header .header-socials { gap: 14px; }
+  .minimal-header .header-socials,
+  .minimal-header .header-links { gap: 14px; }
 }
 .minimal-header:has(.page-mascot) {
   margin-top: clamp(36px, 8vh, 90px);
@@ -478,10 +472,10 @@
 .minimal-footer {
   align-items: center;
 }
-.minimal-footer nav {
+.minimal-footer .footer-webring {
   gap: 10px;
 }
-.minimal-footer nav a {
+.minimal-footer .footer-webring a {
   display: grid;
   place-items: center;
   min-width: 24px;

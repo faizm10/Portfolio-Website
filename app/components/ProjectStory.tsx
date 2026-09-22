@@ -28,9 +28,19 @@ export default function ProjectStory({
         <div className="story-meta">
           <span>{project.stat}</span>
           <div>
-            <a href={project.url} target="_blank" rel="noopener noreferrer">
-              Visit project ↗
-            </a>
+            {project.devpost ? (
+              <a
+                href={project.devpost}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Devpost ↗
+              </a>
+            ) : (
+              <a href={project.url} target="_blank" rel="noopener noreferrer">
+                Visit project ↗
+              </a>
+            )}
             {project.github && (
               <a
                 href={project.github}

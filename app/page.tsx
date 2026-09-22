@@ -4,7 +4,10 @@ import type { ReactNode } from "react";
 import Activity from "./components/Activity";
 import DesktopStickers from "./components/DesktopStickers";
 import { Gradients } from "./components/Gradients";
-import { homepageHobbies } from "@/app/data/site";
+import { homepageSocials } from "@/app/data/site";
+import photosData from "@/app/data/photos.json";
+import { getPlacesFromPhotos } from "@/app/data/places";
+import HomePhotosGlobe from "./components/HomePhotosGlobe";
 import { posts } from "@/app/posts";
 import {
   experienceItems,
@@ -20,6 +23,7 @@ import ExperienceList from "./components/ExperienceList";
 const writingLabels: Record<string, string> = {
   "fast-tracked-uni-career": "university in 2½ years",
   uwreflection: "thoughts on waterloo cs",
+  hackathons: "hackathons",
 };
 
 function Metric({ children }: { children: ReactNode }) {
@@ -104,9 +108,12 @@ function UpToEntity({
 }
 
 export default function Home() {
-  const writing = posts
-    .filter((post) => !post.pinned && post.date !== "ongoing")
-    .slice(0, 2);
+  const writing = [
+    ...posts
+      .filter((post) => !post.pinned && post.date !== "ongoing")
+      .slice(0, 2),
+    posts.find((post) => post.slug === "hackathons"),
+  ].filter((post): post is (typeof posts)[number] => Boolean(post));
 
   return (
     <main id="main-content" className="portfolio minimal-home isolate">
@@ -143,6 +150,18 @@ export default function Home() {
             </li>
           ))}
         </ul>
+        <nav className="minimal-links" aria-label="Social links">
+          {homepageSocials.map((item) => (
+            <a
+              key={item.key}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
       </div>
 
 
@@ -190,22 +209,20 @@ export default function Home() {
       </section>
 
       <section
-        id="play"
-        className="minimal-section personal-links-section"
-        aria-labelledby="personal-links-title"
+        id="photos"
+        className="minimal-section home-photos"
+        aria-labelledby="photos-title"
       >
-        <h2 id="personal-links-title">outside of work</h2>
-        <nav className="personal-links-grid" aria-label="Outside of work">
-          {homepageHobbies.map((hobby) => (
-            <Link key={hobby.key} href={hobby.href}>
-              {hobby.label}
-              <span aria-hidden="true">↗</span>
-            </Link>
-          ))}
-          <Link href="/hackathons">
-            hackathons<span aria-hidden="true">↗</span>
-          </Link>
-        </nav>
+        <div className="minimal-section-heading">
+          <h2 id="photos-title">photos</h2>
+          <Link href="/photos">all photos</Link>
+        </div>
+        <HomePhotosGlobe
+          places={getPlacesFromPhotos(photosData).map((place) => ({
+            ...place,
+            photos: [],
+          }))}
+        />
       </section>
       <Activity />
     </main>

@@ -8,7 +8,7 @@ export const site = {
   url: "https://faizm.ca",
   email: "faizmustansar10@gmail.com",
   githubUsername: "faizm10",
-  brandIcon: "/jsl.png",
+  brandIcon: "/fm.png",
   ogImage: "/banner.png",
   socials: {
     linkedin: "https://www.linkedin.com/in/faizmustansar/",
@@ -70,14 +70,20 @@ export const site = {
 
 /** Hobby labels in the bio. */
 export const homepageHobbies = [
-  { key: "photography" as const, label: "photography", href: "/photos" },
-  { key: "travel" as const, label: "travel", href: "/travel" },
+  { key: "photos" as const, label: "photos", href: "/photos" },
   { key: "soccer" as const, label: "soccer", href: "/soccer-stats" },
+] as const;
+
+/** Page links beside the name in the site header. */
+export const headerPageLinks = [
+  { href: "/", label: "home" },
+  { href: "/blog", label: "thoughts" },
+  { href: "/photos", label: "photos" },
 ] as const;
 
 export type SocialKey = keyof typeof site.socials;
 
-/** Text socials shown beside the name in the homepage header. */
+/** Text socials under the homepage intro. */
 export const homepageSocials = [
   { key: "x" as const, label: "twitter", href: site.socials.x, preview: null as string | null },
   {
@@ -90,6 +96,12 @@ export const homepageSocials = [
     key: "linkedin" as const,
     label: "linkedin",
     href: site.socials.linkedin,
+    preview: null as string | null,
+  },
+  {
+    key: "instagram" as const,
+    label: "instagram",
+    href: site.socials.instagram,
     preview: null as string | null,
   },
 ];
@@ -121,15 +133,7 @@ export const commandNav = [
     label: "photos",
     shortcut: "2",
     external: false,
-    searchValue: "photos photography gallery camera",
-  },
-  {
-    key: "travel",
-    href: "/travel",
-    label: "travel",
-    shortcut: "t",
-    external: false,
-    searchValue: "travel places map camera trips",
+    searchValue: "photos photography gallery camera travel places map trips",
   },
   {
     key: "resume",

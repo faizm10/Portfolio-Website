@@ -51,7 +51,7 @@ export const posts: Post[] = [
   },
   {
     slug: 'fast-tracked-uni-career', title: 'how i fast tracked my uni career, completing in 2 and a half years',
-    description: 'Summer terms, transfer credits, and a less conventional route through a computer science degree.',
+    description: 'summer terms, transfer credits, and an honest look at guelph cs along the way.',
     date: 'aug 2026', publishedAt: '2026-08-30', category: 'Essays', pinned: false,
     image: '/exp/uog.png',
     featured: true,
@@ -63,12 +63,6 @@ export const posts: Post[] = [
     description: 'Taking Waterloo courses as a Guelph student, following my curiosity, and what I learned along the way.',
     date: 'jan 2026', publishedAt: '2026-01-19', category: 'Essays', pinned: false,
     image: '/notes/uw/goose.png',
-  },
-  {
-    slug: 'uogreflection', title: 'thoughts on uog cs',
-    description: 'An honest, semester-by-semester look at computer science at Guelph: the courses, professors, and lessons.',
-    date: 'jan 2026', category: 'Essays', pinned: false,
-    image: '/previews/uoguelph.jpeg',
   },
   {
     slug: 'soccer-stats', title: 'soccer stats & achievements',

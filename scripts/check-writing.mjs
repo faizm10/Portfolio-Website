@@ -48,7 +48,7 @@ for (const file of (await readdir(articleDirectory)).filter((name) => name.endsW
 console.log('PASS article markup: no nested paragraphs in compiled MDX');
 
 if (process.env.PORTFOLIO_ORIGIN) {
-  const routes = ['hackathons', 'jachacks', 'hc26', 'footy', 'fast-tracked-uni-career', 'uwreflection', 'uogreflection', 'soccer-stats'];
+  const routes = ['hackathons', 'jachacks', 'hc26', 'footy', 'fast-tracked-uni-career', 'uwreflection', 'soccer-stats'];
   for (const slug of routes) {
     const response = await fetch(`${process.env.PORTFOLIO_ORIGIN}/${slug}`);
     assert.equal(response.status, 200, slug);
