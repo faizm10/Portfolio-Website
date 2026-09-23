@@ -1,0 +1,94 @@
+/* Article pages use the same reading column and type scale as the thoughts index. */
+.thought-article {
+  --text: var(--ink);
+  --body-text: var(--ink-2);
+  --muted: var(--ink-3);
+  --rule: var(--border);
+  --wash: #f3f5f1;
+  --olive: var(--ink);
+  --blue: #526e8c;
+  --rust: #986146;
+  padding: 42px 0 84px;
+  color: var(--ink);
+}
+.thought-article-header {
+  scroll-margin-top: 30px;
+}
+.thought-article-header h1 {
+  margin: 0;
+  font-family: var(--font-inter), sans-serif;
+  font-size: clamp(27px, 6vw, 32px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.045em;
+  text-wrap: pretty;
+}
+.thought-article-header p {
+  margin-top: 12px;
+  color: var(--ink-2);
+  font-size: 14px;
+  line-height: 1.65;
+}
+.thought-article-body.journal-prose {
+  padding-top: 28px;
+  color: var(--ink-2);
+  font-size: 15px;
+  line-height: 1.72;
+}
+.thought-article-body.journal-prose :is(h2, h3, h4) {
+  color: var(--ink);
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 600;
+  scroll-margin-top: 40px;
+}
+.thought-article-body.journal-prose h2 {
+  margin: 42px 0 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 20px;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+}
+.thought-article-body.journal-prose h3 {
+  margin: 30px 0 11px;
+  font-size: 16px;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+.thought-article-body.journal-prose h4 { font-size: 15px; }
+.thought-article-body.journal-prose a {
+  color: var(--ink);
+  text-decoration-color: currentColor;
+}
+.thought-article-body.journal-prose blockquote {
+  border-color: var(--border);
+  color: var(--ink);
+  font-family: var(--font-inter), sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+.thought-article-body.journal-prose hr {
+  margin: 40px 0;
+  border-top: 1px solid var(--border);
+}
+.thought-article-body.journal-prose hr::after { content: none; }
+.thought-article-body.journal-prose figcaption {
+  color: var(--ink-3);
+  font-size: 11px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.thought-article-end {
+  display: inline-block;
+  margin-top: 38px;
+  color: var(--ink-3);
+  font-size: 12px;
+  text-decoration: underline;
+  text-decoration-color: #bcc0c7;
+  text-underline-offset: 4px;
+}
+.thought-article-end:hover { color: var(--ink); }
+@media (max-width: 480px) {
+  .thought-article { padding: 32px 0 54px; }
+  .thought-article-body.journal-prose { padding-top: 24px; }
+}
