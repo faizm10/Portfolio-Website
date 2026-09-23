@@ -25,6 +25,13 @@ export interface Post {
 
 export const posts: Post[] = [
   {
+    slug: 'uoguelphcourses',
+    title: 'building uoguelph.courses',
+    description: 'how a first-year frustration became a student-run platform, and the system behind it.',
+    date: 'sep 2026', publishedAt: '2026-09-22', category: 'Build notes', pinned: false,
+    image: '/notes/uoguelphcourses/home.png',
+  },
+  {
     slug: 'hackathons',
     title: "all hackathons i've participated in",
     description: 'A running record of the weekends, the builds, the people, and the occasional side quest.',

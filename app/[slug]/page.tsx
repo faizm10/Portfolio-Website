@@ -4,6 +4,7 @@ import { posts } from '@/app/posts';
 import { showcaseProjects } from '@/app/data/projects';
 import ProjectStory from '@/app/components/ProjectStory';
 import ArticleLayout from '@/app/components/writing/ArticleLayout';
+import CourseStoryLayout from '@/app/components/writing/CourseStoryLayout';
 import { getArticle } from '@/lib/writing';
 import { notFound } from 'next/navigation';
 import { SLUGS } from './slugs';
@@ -16,8 +17,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const project = showcaseProjects.find((project) => project.slug === slug);
   const post = posts.find((post) => post.slug === slug);
   if (!project && !post) notFound();
-  const title = `${project?.name ?? post?.title} · ${site.name}`;
-  const description = project?.desc ?? post?.description;
+  const title = `${post?.title ?? project?.name} · ${site.name}`;
+  const description = post?.description ?? project?.desc;
   const image = post?.image ?? project?.banner;
   return {
     title, description,
@@ -37,12 +38,12 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const project = showcaseProjects.find((project) => project.slug === slug);
   const article = await getArticle(slug);
   const Content = article?.default;
-  if (project) return (
+  const post = posts.find((post) => post.slug === slug);
+  if (project && !post) return (
     <ProjectStory project={project}>
       {Content && <div className="blog-content"><article className="prose max-w-none"><Content /></article></div>}
     </ProjectStory>
   );
-  const post = posts.find((post) => post.slug === slug);
   if (!post || !article || !Content) notFound();
   const jsonLd = {
     '@context': 'https://schema.org', '@type': 'BlogPosting',
@@ -52,10 +53,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     ...(post.publishedAt ? { datePublished: post.publishedAt } : {}),
     ...(post.image ? { image: `${site.url}${post.image}` } : {}),
   };
+  const Layout = post.slug === 'uoguelphcourses' ? CourseStoryLayout : ArticleLayout;
   return (
-    <ArticleLayout post={post} data={article.articleData}>
+    <Layout post={post} data={article.articleData}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} />
       <Content />
-    </ArticleLayout>
+    </Layout>
   );
 }
