@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import type { Post } from '@/app/posts';
 import type { ArticleData } from '@/lib/writing';
 
-export default function ArticleLayout({ post, data, children }: { post: Post; data: ArticleData; children: ReactNode }) {
+export default function ArticleLayout({ post, children }: { post: Post; data: ArticleData; children: ReactNode }) {
   return (
     <main id="main-content" className="portfolio thought-article">
       <article>
@@ -11,19 +11,6 @@ export default function ArticleLayout({ post, data, children }: { post: Post; da
           <h1>{post.title}</h1>
           <p>{post.description}</p>
         </header>
-
-        {data.toc.length > 0 && (
-          <details className="thought-contents">
-            <summary>on this page</summary>
-            <nav aria-label="Article sections">
-              {data.toc.map((entry) => (
-                <a key={entry.id} href={`#${entry.id}`} className={entry.depth === 3 ? 'thought-contents-subsection' : undefined}>
-                  {entry.title}
-                </a>
-              ))}
-            </nav>
-          </details>
-        )}
 
         <div className={`journal-prose thought-article-body journal-content-${post.slug}`} id="article-body">
           {children}
