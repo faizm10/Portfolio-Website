@@ -192,6 +192,85 @@
   align-items: center;
 }
 /* Supporting pages keep the same restrained type scale. */
+.thoughts-index {
+  padding: 42px 0 84px;
+}
+.thoughts-intro h1 {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.3;
+}
+.thoughts-intro p {
+  margin-top: 10px;
+  color: var(--ink-2);
+  font-size: 14px;
+  line-height: 1.65;
+}
+.thoughts-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 36px 0 10px;
+}
+.thoughts-filters button {
+  color: var(--ink-3);
+  font-size: 12px;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+}
+.thoughts-filters button:hover,
+.thoughts-filters button[aria-pressed='true'] {
+  color: var(--ink);
+  text-decoration-color: currentColor;
+}
+.thoughts-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.thoughts-list li + li {
+  border-top: 1px solid var(--border);
+}
+.thoughts-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 0;
+}
+.thoughts-row-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+}
+.thoughts-row-title {
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+.thoughts-row:hover .thoughts-row-title {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.thoughts-row-description {
+  color: var(--ink-2);
+  font-size: 12px;
+  line-height: 1.55;
+}
+.thoughts-row-date {
+  flex-shrink: 0;
+  padding-top: 2px;
+  color: var(--ink-3);
+  font-size: 12px;
+  white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .thoughts-index { padding-top: 32px; }
+  .thoughts-row { gap: 12px; }
+}
 .writing-index h1,
 .personal-page h1,
 .story-header h1,
