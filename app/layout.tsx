@@ -20,6 +20,7 @@ import "./globals.css";
 import "./redesign.css";
 import "./minimal.css";
 import "./writing.css";
+import "./course-story.css";
 import { cn } from "@/lib/utils";
 
 const pacifico = Pacifico({

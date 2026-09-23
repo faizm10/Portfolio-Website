@@ -1,0 +1,116 @@
+import Image from 'next/image'
+import { MermaidDiagram } from '@/components/MermaidDiagram'
+
+The idea came from a problem we knew from first year. Picking courses meant using WebAdvisor to find sections, looking elsewhere for professor ratings, and trying to piece together a week that actually worked. Even after finding the right courses, you still had to answer two harder questions: *Will these sections fit together? Will they move me toward my degree?*
+
+## where we started
+
+In early 2025, [Harkirat Soomal](https://www.linkedin.com/in/hsoomal/) and I were looking for a project to build in our spare time. We came back to that first-year experience and started [uoguelph.courses](https://uoguelph.courses) to put course information in one place. [Michael Czomko](https://www.linkedin.com/in/michael-czomko/), [Lina Abu Elezz](https://www.linkedin.com/in/lina-abuelezz-a92a10299/), and [Talha Naveed](https://www.linkedin.com/in/talha-naveed-b36290292/) joined us, and the five of us launched the free, student-run site in late March. The first version brought course discovery and professor information together so students could make a choice without hopping between sites.
+
+About a week after launch, [GuelphToday wrote about our project](https://www.guelphtoday.com/local-news/u-of-g-students-launch-platform-to-ease-course-selection-and-planning-10478610). The April 5, 2025 story caught us early: the schedule builder and degree planner were still ideas. It reported nearly 1,000 visitors and 5,000 site views in our first week. We kept building from there.
+
+## from course search to a planning system
+
+Course search grew into a schedule builder that checks whether sections fit together, a degree planner that checks progress and prerequisites, and GryphonBot, an AI agent that can explain answers using the same course data and planning logic. Underneath them is a pipeline that extracts university data, cleans it into usable records, and serves it through Supabase or bundled files.
+
+<figure className="course-story-figure">
+  <Image src="/notes/uoguelphcourses/home.png" alt="The uoguelph.courses home page with search and links to course, schedule, and degree tools" width={1024} height={576} sizes="(max-width: 552px) calc(100vw - 40px), 512px" priority />
+  <figcaption>what began as course discovery now connects schedules, degree planning, and an AI assistant.</figcaption>
+</figure>
+
+## the whole system, end to end
+
+There are four stages: collect source data, turn it into consistent records, store it in the right place, then use it in the student tools. Course data, degree rules, and job listings each take their own path before they meet in the Next.js app.
+
+<MermaidDiagram
+  className="course-diagram course-diagram--wide"
+  aria-label="uoguelph.courses architecture: university data is cleaned into Supabase or bundled files, then used by the Next.js student tools"
+  chart={`flowchart TD
+    Course["Course and term files"] --> Clean["Python cleanup and merge"]
+    Clean --> CSV["Prepared course CSV"]
+    CSV -.->|separate import| DB[("Supabase course catalog")]
+    Calendar["Program calendars"] --> Parse["Parse rules and prerequisites"]
+    Parse --> Rules[("Bundled degree JSON")]
+    Listings["TA and award pages"] --> Scrape["Scheduled Go and Python jobs"]
+    Scrape --> Files[("Bundled CSV and JSON")]
+    DB --> App["Next.js pages and API"]
+    Rules --> App
+    Files --> App
+    App --> Search["Course and professor search"]
+    App --> Schedule["Schedule builder"]
+    App --> Degree["Degree planner"]
+    App --> Agent["GryphonBot AI agent"]`}
+/>
+
+### extracting and cleaning the data
+
+For the course catalog, we start with term course JSON and use Python scripts to turn it into tabular records. One script pulls out a course’s code, title, description, department, requisites, offered terms, instructors, and section IDs. It flattens the nested JSON into CSV columns. Another joins two term CSVs by **course code** and keeps term-specific instructors and sections labelled by term. That gives course search a stable identity for a course without losing which term a section belongs to.
+
+Names need care too. University listings may abbreviate an instructor as “Last, F,” while a professor record uses a full name. A helper groups possible matches by surname and first initial for review. It does not blindly merge people who happen to share those letters. Prerequisite text gets a separate treatment: a parser recognizes course codes, brackets, “or,” and “1 of,” then produces nested JSON that code can check. Anything the parser cannot confidently express needs a manual check; prose requirements are richer than a list of course codes.
+
+Two supporting datasets have actual scheduled extraction jobs. A Go scraper follows University TA listing and detail pages, trims irregular whitespace, normalizes dates, and writes a CSV every 12 hours. A Python scraper visits award pages by college and academic level, extracts fields such as eligibility and deadline, removes repeated awards, and writes JSON daily. GitHub Actions runs these jobs and commits changed output. Those files are read by the app; they are **not** the Supabase course catalog.
+
+There is still an operational gap: the course transformation scripts and live Supabase tables exist, but there is no single scheduled job that imports every catalog record into Supabase. The TA and awards scrapers update their own files, not the course tables.
+
+## where the cleaned data lives
+
+<div className="course-story-system" aria-label="Storage choices in uoguelph.courses">
+  <div><span>Supabase</span><p>courses, term offerings, class times, professors, ratings, accounts, and saved plans.</p></div>
+  <div><span>JSON</span><p>degree requirements and parsed prerequisites bundled with the application.</p></div>
+  <div><span>CSV / JSON</span><p>TA jobs and awards generated by scheduled scrapers and served by the site.</p></div>
+</div>
+
+Supabase handles Auth and Postgres. The browser uses a public Supabase key plus the student’s session; **row-level security** decides what that person may read or change. A student’s saved plans belong to that student. Protected server routes and jobs hold any service-role key, because that key bypasses row-level security. Admin notifications use Supabase Realtime. This is a useful split: the browser can make allowed catalog reads directly, while privileged work stays behind a server boundary.
+
+Bundled degree data has a different tradeoff. It is quick to load and gives the planner deterministic rules, but a new academic calendar requires the data to be regenerated and reviewed. The live catalog can change independently, so the two sources can disagree until they are updated together.
+
+## what the frontend does with it
+
+The React frontend is not just a display layer. It makes fast local decisions with data from Supabase and the bundled files. Next.js pages and hooks handle the interaction; API routes handle protected operations and the assistant.
+
+### course and professor search
+
+The course page queries `CombinedCourseData` by default or a term table when a term is selected. Its hook adds search, department, offered-term, and difficulty filters, then requests a page of results from Supabase. Search input is debounced so every keystroke does not trigger a query. Ratings are fetched separately and joined to course codes in the client. This keeps the catalog query manageable, but it means the UI must handle a missing rating as well as a missing course.
+
+### schedule builder
+
+For a chosen term, the builder reads meeting rows from the corresponding lecture-timings table. A shared loader groups rows by section and converts time strings such as `08:30 - 10:20` into minutes after midnight. Each candidate section carries its lectures, seminars, and labs.
+
+The algorithm first splits meetings marked with multiple weekdays into one event per day. Two sections conflict only when their time intervals overlap **on the same day**. It precomputes those conflicts, then searches one section per course. When a partial timetable already conflicts, it stops exploring that branch. Valid results are packed into typed arrays instead of keeping a large JavaScript object for every combination; full objects are built only for the schedules being shown. The UI can then compare start time, end time, gaps, and days off campus without another server request.
+
+That is fast for normal planning, but the number of combinations can still grow sharply when many courses have many sections. A conflict-free timetable also says nothing about live seat availability.
+
+### degree planner
+
+The planner loads program requirement groups, parsed prerequisites, and course-credit data. Students arrange courses into terms, and the UI checks things such as prerequisite order and progress against required credit groups. It distinguishes a course planned for a future term from one already completed. Signed-in students can keep an automatically updated draft and named plans in Supabase; those plans are account-scoped.
+
+The hard part is interpreting the academic calendar. “Choose one of these courses,” double-counting rules, residency rules, and prose exceptions cannot all be reduced to a simple checklist. The planner is therefore a planning aid rather than an official graduation audit. Ambiguous rules need the current calendar or a program counsellor.
+
+## the AI agent: GryphonBot
+
+We had been talking about an AI planning agent for a while. The hard question was cost. uoguelph.courses is free, but one student question can take several model steps before it has an answer. We wanted to try the idea without leaving an open-ended model bill, and we wanted course facts to come from our data rather than a model's memory.
+
+The first version used [OpenRouter's free-model router](https://openrouter.ai/openrouter/free/apps). It gave us a way to start with models that support tool calling without committing to one paid model. The tradeoff was consistency: the router can pick a different free model for each request, and availability can change. We kept the provider choice in one server-side module so changing models would not mean rewriting the course and planning tools. The code now defaults to a pinned, low-cost Gemini model through Vercel AI Gateway; OpenRouter and direct Google are still supported options.
+
+GryphonBot uses the same data and planning rules through a controlled set of tools. The panel sends a question, the current page context, and a bounded amount of recent chat to a Next.js API route. That route checks the request origin, signs in the user, verifies assistant access, validates the request shape, and reserves a slot against the per-user limit **before** asking a model anything.
+
+<MermaidDiagram
+  className="course-diagram course-diagram--agent"
+  aria-label="GryphonBot request: validate the student, call an approved data or planning tool, then explain the checked result"
+  chart={`flowchart TD
+    Question["Question and page context"] --> API["API checks identity, access, input, and limits"]
+    API --> Model["Model chooses an approved tool"]
+    Model --> Tools["Tool reads catalog or rules, or checks a schedule"]
+    Tools --> Explain["Model explains checked results"]
+    Explain --> UI["Answer and result cards"]`}
+/>
+
+The agent is a tool loop, not a single prompt that invents a plan. It can search courses, inspect a course or professor, get offerings, check prerequisites, review term order, summarize degree requirements, and test whether up to eight courses can fit a timetable. Each database tool receives the request’s own Supabase client, so its queries use that student’s session and row-level security. The model chooses which tool to call, but our code performs the actual lookup or calculation.
+
+For example, “Can these courses fit without Fridays?” becomes a timetable tool call with a term, course codes, and Friday excluded. The tool fetches published sections, applies the same conflict rules as the schedule builder, and reports a possible fit, no match, or an inconclusive result. The assistant then explains that result. It cannot promise a seat, enroll the student, or quietly edit a saved plan. An **Add** button still goes through the ordinary planner validation.
+
+The provider choice was only part of controlling cost. Requests are capped at 8 per minute and 60 per rolling 24 hours per signed-in user. The agent stops after at most six model steps or a 45-second route timeout, and failed model calls are not retried automatically. Usage records keep token counts and tool names, not question text, so we can watch usage without logging student questions. The remaining tradeoffs are latency, provider reliability, and the chance that an explanation is still imperfect. Chat stays in browser memory unless the student opts into saving it. Page text, reviews, and chat history are treated as untrusted input, and the agent is instructed to recheck course facts with tools. If prerequisite data is missing, the answer is **unknown**. A degree review remains a partial planning check, never an official audit.
+
+## the next mission
+
+The next mission is to make uoguelph.courses open source. That means documenting how to run it, making the data-update process reproducible, and separating deployment secrets from the parts other students can study, improve, and build on.
